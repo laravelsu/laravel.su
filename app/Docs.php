@@ -4,6 +4,8 @@ namespace App;
 
 use App\Models\Document;
 use Exception;
+use Illuminate\Contracts\View\View;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -75,26 +77,21 @@ class Docs
 
         try {
             $this->variables = Yaml::parse($variables);
-        }catch (\Throwable){
-
+        } catch (\Throwable) {
         }
     }
 
     /**
      * Get the rendered view of a documentation page.
      *
-     * @param string $view The view name.
-     *
-     * @return \Illuminate\Contracts\View\View The rendered view of the documentation page.
-     *
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
-    public function view(string $view)
+    public function view(string $viewName): View
     {
         $content = Str::of($this->page)
             ->replace('{{version}}', $this->version)
-            ->replace('{note}','⚠️')
-            ->replace('{tip}','💡️')
+            ->replace('{note}', '⚠️')
+            ->replace('{tip}', '💡️')
             ->after('---')
             ->after('---')
             ->markdown();
@@ -104,7 +101,7 @@ class Docs
             'edit'    => $this->goToGitHub(),
         ]);
 
-        return view($view, $all);
+        return view($viewName, $all);
     }
 
     /**
@@ -177,9 +174,9 @@ class Docs
      *
      * @param string $version The version of the Laravel documentation.
      *
-     * @return \Illuminate\Support\Collection A collection of Docs instances.
+     * @return Collection<int, Docs> A collection of Docs instances.
      */
-    static public function every(string $version): \Illuminate\Support\Collection
+    public static function every(string $version): Collection
     {
         $files = Storage::disk('docs')->allFiles($version);
 
@@ -190,12 +187,7 @@ class Docs
             ->map(fn(string $path) => new static($version, $path));
     }
 
-    /**
-     * Fetch the number of commits behind the current commit.
-     *
-     * @return int The number of commits behind.
-     */
-    public function fetchBehind(): int
+    public function countCommitsBehindCurrent(): int
     {
         throw_unless(isset($this->variables['git']), new Exception("Document {$this->path} does not have a git hash"));
 
@@ -235,7 +227,7 @@ class Docs
      *
      * @return string
      */
-    static public function compareLink(string $version, string $hash): string
+    public static function compareLink(string $version, string $hash): string
     {
         $compactHash = Str::of($hash)->limit(7, '')->toString();
 
@@ -245,7 +237,7 @@ class Docs
     /**
      * Get the Document model for the documentation page.
      *
-     * @return \App\Models\Document The Document model.
+     * @return Document The Document model.
      */
     public function getModel(): Document
     {
@@ -259,18 +251,18 @@ class Docs
         return $this->model;
     }
 
-    /**
-     * @return int
-     */
-    public function behind():int
+    public function countCommitsBehind(): int
     {
-        return $this->getModel()->behind;
+        return $this->getModel()->count_commits_behind;
     }
 
-    /**
-     * @return string
-     */
-    public function isOlderVersion()
+
+    public function translationIsLagsBehind(): bool
+    {
+        return $this->getModel()->count_commits_behind > 0;
+    }
+
+    public function isOlderVersion(): bool
     {
         return $this->version !== static::DEFAULT_VERSION;
     }
@@ -283,7 +275,7 @@ class Docs
     public function update()
     {
         $this->getModel()->fill([
-            'behind'         => $this->fetchBehind(),
+            'count_commits_behind' => $this->countCommitsBehindCurrent(),
             'current_commit' => $this->variables['git'],
         ])->save();
     }
