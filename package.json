@@ -16,7 +16,7 @@
         "prettier": "^3.0.3",
         "prismjs": "^1.29.0",
         "sass": "^1.68.0",
-        "vite": "^4.0.0"
+        "vite": "^5.0.2"
     },
     "dependencies": {
         "stimulus-textarea-autogrow": "^4.1.0",
