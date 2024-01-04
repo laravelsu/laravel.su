@@ -21,7 +21,7 @@
         "orchid/platform": "^14.17",
         "overtrue/laravel-like": "^5.2",
         "spatie/laravel-feed": "^4.3",
-        "symfony/dom-crawler": "^6.3",
+        "symfony/dom-crawler": "^7.0",
         "symfony/yaml": "^6.3",
         "twbs/bootstrap-icons": "^1.11",
         "watson/active": "^7.0"
