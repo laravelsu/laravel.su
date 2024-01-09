@@ -97,7 +97,7 @@ class ListScreen extends Screen
                     ->width(150)
                 ->sort(),
 
-                TD::make('Онлайн')
+                TD::make('online','Онлайн')
                     ->width(100)
                     ->render(function (Meet $meet) {
                         if($meet->online==1){
