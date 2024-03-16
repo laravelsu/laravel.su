@@ -26,8 +26,11 @@ RUN apt-get update \
 
 # Composer
 RUN curl -sS https://getcomposer.org/installer | \
-    php -- --install-dir=/usr/local/bin --filename=composer \
-    && mkdir /home/laravel/.composer
+    php -- --install-dir=/usr/local/bin --filename=composer
+
+RUN mkdir -p /home/laravel/.composer \
+    && chown 1000:1000 /home/laravel/.composer -R \
+    && chmod 0777 /home/laravel/.composer -R
 
 # APCU
 RUN pecl install apcu \
