@@ -1,0 +1,40 @@
+version: "3.8"
+
+services:
+  caddy:
+    image: caddy:2.7-alpine
+    container_name: laravelsu-caddy
+    restart: unless-stopped
+    working_dir: /home/laravel/laravel.su
+    env_file:
+      - path: .env
+        required: false
+    ports:
+      - "${LARAVEL_SU_HTTP_PUBLIC_PORT:-80}:80"
+      - "${LARAVEL_SU_HTTPS_PUBLIC_PORT:-443}:443"
+      - "${LARAVEL_SU_HTTPS_PUBLIC_PORT:-443}:443/udp"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - .:/home/laravel/laravel.su
+    depends_on:
+      - php
+    networks:
+      - laravel_su
+
+  php:
+    build: docker/php
+    container_name: laravelsu-php
+    working_dir: /home/laravel/laravel.su
+    env_file:
+      - path: .env
+        required: false
+    volumes:
+      - .:/home/laravel/laravel.su
+      - ./docker/php/php.ini:/usr/local/etc/php/conf.d/local.ini
+    networks:
+      - laravel_su
+
+networks:
+  laravel_su:
+    name: laravel_su
+    driver: bridge
