@@ -1,0 +1,11 @@
+laravel.localhost {
+    tls internal
+    root * /home/laravel/laravel.su/public
+
+    php_fastcgi php:9000 {
+        root /home/laravel/laravel.su/public
+    }
+
+    file_server
+    encode gzip
+}
