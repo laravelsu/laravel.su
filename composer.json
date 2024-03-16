@@ -18,6 +18,7 @@
     "license": "CC BY-NC-SA 4.0",
     "require": {
         "php": "^8.3",
+        "ext-dom": "*",
         "cagilo/cagilo": "^3.2",
         "doctrine/dbal": "^3.7",
         "esplora/spire": "0.0.1",

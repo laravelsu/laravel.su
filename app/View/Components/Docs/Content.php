@@ -24,8 +24,6 @@ class Content extends Component implements Htmlable
 
     /**
      * Create a new component instance.
-     *
-     * @return void
      */
     public function __construct(string $content)
     {
@@ -34,12 +32,8 @@ class Content extends Component implements Htmlable
 
     /**
      * Get the view / contents that represent the component.
-     *
-     * @throws \DOMException
-     *
-     * @return \App\View\Components\DocsContent
      */
-    public function render()
+    public function render(): self
     {
         return $this;
     }
