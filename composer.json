@@ -17,7 +17,7 @@
     ],
     "license": "CC BY-NC-SA 4.0",
     "require": {
-        "php": ">=8.1",
+        "php": "^8.3",
         "cagilo/cagilo": "^3.2",
         "doctrine/dbal": "^3.7",
         "esplora/spire": "0.0.1",
@@ -52,7 +52,8 @@
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^7.0",
         "phpunit/phpunit": "^10.1",
-        "spatie/laravel-ignition": "^2.0"
+        "spatie/laravel-ignition": "^2.0",
+        "vimeo/psalm": "^5.23"
     },
     "autoload": {
         "psr-4": {
