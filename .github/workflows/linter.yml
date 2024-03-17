@@ -6,12 +6,9 @@ on:
       - '.github/workflows/**'
       - '**.php'
       - 'app/**'
-      - 'tests/**'
-      - 'phpunit.xml'
+      - 'psalm.xml'
       - 'composer.json'
       - 'composer.lock'
-      - 'resources/**'
-      - '.prettierrc.json'
 
 jobs:
   static-analysis:
