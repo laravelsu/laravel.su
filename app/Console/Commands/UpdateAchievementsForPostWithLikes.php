@@ -4,7 +4,6 @@ namespace App\Console\Commands;
 
 use App\Achievements\Contents\AuthorHighInteraction;
 use App\Achievements\Contents\AuthorInteraction;
-use App\Achievements\Contents\RecognizedAuthor;
 use App\Models\Post;
 use Illuminate\Console\Command;
 use Illuminate\Database\Eloquent\Collection;
