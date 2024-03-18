@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Achievements\Contents\AuthorHighInteraction;
 use App\Achievements\Contents\AuthorInteraction;
 use App\Achievements\Contents\RecognizedAuthor;
 use App\Models\Post;
@@ -36,7 +37,7 @@ class UpdateAchievementsForPostWithLikes extends Command
             ->chunk(100, function (Collection $posts) {
                 $posts->each(function (Post $post) {
                     if ($post->likers_count >= 30) {
-                        $post->author->reward(RecognizedAuthor::class);
+                        $post->author->reward(AuthorHighInteraction::class);
                     }
 
                     $post->author->reward(AuthorInteraction::class);

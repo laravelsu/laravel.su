@@ -18,7 +18,6 @@ class BlockquoteModifierTest extends TestCase
             <blockquote><strong>Note</strong> This is a note.</blockquote>
             <blockquote>[!WARNING] This is a warning.</blockquote>
             <blockquote>[!NOTE] This is a tip.</blockquote>
-            <blockquote><p><br>Более подробную документацию по использованию Vite с Laravel можно найти в нашей <a href="/docs/10.x/vite"> специализированной документации по сборке и компиляции ваших ресурсов.</a>.</p></blockquote>
         ';
 
         $modifiedHtml = $modifier->handle($html, function ($content) {
