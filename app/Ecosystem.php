@@ -124,6 +124,13 @@ class Ecosystem
                 'href'        => '/docs/'.Docs::DEFAULT_VERSION.'/prompts',
                 'color'       => '#4ade80',
             ],
+            'reverb' => [
+                'name'        => 'Reverb',
+                'image-alt'   => 'Логотип Laravel Reverb',
+                'description' => 'Потрясающе быстрые и масштабируемые WebSocket.',
+                'href'        => 'https://reverb.laravel.com',
+                'color'       => '#f25700',
+            ],
             'sail' => [
                 'name'        => 'Sail',
                 'image-alt'   => 'Логотип Laravel Sail',
