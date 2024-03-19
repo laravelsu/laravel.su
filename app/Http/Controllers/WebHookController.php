@@ -30,6 +30,7 @@ class WebHookController extends Controller
 
         if (empty($text)) {
             $telegramBot->deleteMessage($chatId, $messageId);
+
             return;
         }
 
