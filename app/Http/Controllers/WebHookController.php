@@ -28,6 +28,11 @@ class WebHookController extends Controller
             return;
         }
 
+        if (empty($text)) {
+            $telegramBot->deleteMessage($chatId, $messageId);
+            return;
+        }
+
         if (! $telegramBot->isSpam($text)) {
             return;
         }
