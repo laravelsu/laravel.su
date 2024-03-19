@@ -4,8 +4,55 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4c9a3bcda164fbd9da27007bdc83cb33",
+    "content-hash": "efb0abdc9a8d3ef9d802d491c04d6550",
     "packages": [
+        {
+            "name": "assisted-mindfulness/naive-bayes",
+            "version": "0.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Assisted-Mindfulness/naive-bayes.git",
+                "reference": "b8bd530a5f3c2c5f64118489ca2245dc04140f23"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Assisted-Mindfulness/naive-bayes/zipball/b8bd530a5f3c2c5f64118489ca2245dc04140f23",
+                "reference": "b8bd530a5f3c2c5f64118489ca2245dc04140f23",
+                "shasum": ""
+            },
+            "require": {
+                "brick/math": "^0.9.3|^0.11|^0.12",
+                "illuminate/support": "^9.0|^10.0|^11.0",
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^1.4",
+                "phpunit/phpunit": "^9.5.14|^10",
+                "symfony/var-dumper": "^6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "AssistedMindfulness\\NaiveBayes\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "tabuna",
+                    "email": "bliz48rus@gmail.com"
+                }
+            ],
+            "description": "Naive Bayes classifier algorithm",
+            "support": {
+                "issues": "https://github.com/Assisted-Mindfulness/naive-bayes/issues",
+                "source": "https://github.com/Assisted-Mindfulness/naive-bayes/tree/0.0.3"
+            },
+            "time": "2024-03-19T03:23:43+00:00"
+        },
         {
             "name": "brick/math",
             "version": "0.11.0",
@@ -12804,7 +12851,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^8.3",
+        "php": "^8.2",
         "ext-dom": "*"
     },
     "platform-dev": [],
