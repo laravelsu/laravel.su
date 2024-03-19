@@ -361,11 +361,10 @@ class Docs
     /**
      * Разбивает markdown файл на разделы по заголовкам.
      *
-     * @return Collection разделов с заголовками и содержимым
+     * @return Collection<array-key, array> Массив разделов с заголовками и содержимым
      */
     public function getSections(): Collection
     {
-
         // Разбиваем HTML содержимое на разделы по заголовкам
         preg_match_all('/<h(\d)>(.+)<\/h\d>(.*)/sU', $this->content(), $matches, PREG_SET_ORDER);
 
