@@ -98,7 +98,7 @@ class TelegramBot
 
         TelegramMessage::create()
             ->to(config('services.telegram-bot-api.chat_id'))
-            ->line('*Сообщение было классифицировано как '.$classifier->most($message))
+            ->line('Сообщение было классифицировано как '.$classifier->most($message))
             ->line('')
             ->line('*📂 Текст сообщения*')
             ->escapedLine($message)
