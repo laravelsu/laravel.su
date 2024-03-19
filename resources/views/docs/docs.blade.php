@@ -5,14 +5,34 @@
 
     <div class="container container-docs my-4 my-xxl-5 mx-auto">
         <div class="row gap-2 justify-content-center align-items-start position-relative mb-5">
-            <div class="col-3 col-xl-3 col-xxl-2 order-md-first order-last position-sticky top-0 py-md-3 z-1 d-none d-lg-block doc-navigation">
+            <div class="col-3 col-xl-2 order-md-first order-last position-sticky top-0 py-md-3 z-1 d-none d-lg-block doc-navigation">
 
-                <div class="mb-md-4 ms-md-4 d-flex align-items-stretch flex-column offcanvas-md offcanvas-start" id="docs-menu">
+                <div class="mb-md-4 ms-md-4 d-flex align-items-stretch flex-column offcanvas-md offcanvas-start" id="docs-menu"
+                 data-controller="search-docs"
+                 >
+                            <div>
+                                <div class="mb-3">
+                                    <span data-search-docs-target="spinner" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                                    <form action="{{ route('docs.search', ['versionOfDocs' => $docs->version]) }}" method="post" id="search-form">
+                                        @csrf
+                                        <input class="form-control form-control-md"
+                                               data-action="input->search-docs#search"
+                                               name="text"
+                                               data-search-docs-target="text"
+                                               type="text" placeholder="Поиск по документации..." aria-label=".form-control-lg example">
+                                    </form>
+{{--                                    <template>--}}
+                                        <div class="mt-2" >
+                                          @include('docs._search_lines', ['searchOffer' => []])
+{{--                                        <ul class="list-group">--}}
+{{--                                            <li class="list-group-item">Курс по Laravel (Laravel Bootcamp)</li>--}}
+{{--                                            <li class="list-group-item">Значения атрибутов по умолчанию</li>--}}
+{{--                                        </ul>--}}
+                                        </div>
+{{--                                    </template>--}}
+                                </div>
+                            </div>
 
-                    {{--
-                    <input class="form-control form-control-lg" type="text" placeholder="Поиск по документации..."
-                        aria-label=".form-control-lg example">
---}}
 
                     <div class="d-flex align-items-center p-4 p-sm-0">
                         <select class="form-select form-select-sm rounded-3" onchange="Turbo.visit(this.value);">
@@ -78,32 +98,30 @@
 
                 </div>
             </div>
-            <div class="px-0 px-md-2 px-xl-3 col-md-10 col-lg-8 col-xl-8 col-xxl-6 order-md-1 order-first">
+            <div class="px-0 px-md-2 px-xl-3 col-md-10 col-lg-8 col-xl-7 col-xxl-6 order-md-1 order-first">
 
-                <div class="bg-body-tertiary p-4 p-xl-5 rounded">
-                    <main class="px-md-4 px-xl-5 documentations position-relative" data-controller="prism">
-                        <h1 class="display-6 fw-bold text-body-emphasis">{{ $docs->title() }}</h1>
-                        @if ($docs->isOlderVersion())
-                            <blockquote class="docs-blockquote-note position-relative  mt-4" role="alert">
-                                <a href="{{ route('library.upgrade') }}" class="text-decoration-none link-body-emphasis stretched-link icon-link-hover p-4 text-balance">
-                                    <div>
-                                        <div class="mb-1 d-block fw-bold">Осторожно! Вы просматриваете документ для прошлой версии.</div>
-                                        <div class="mb-0 d-block opacity-75">Рассмотрите возможность обновления вашего проекта до актуальной версии <code>{{ \App\Docs::DEFAULT_VERSION }}</code>.
-                                            <span class="text-decoration-underline">Почему это важно?</span>
-                                        </div>
+                <main class="bg-body-tertiary p-4 p-xl-5 rounded documentations position-relative" §>
+                    <h1 class="display-6 fw-bold text-body-emphasis">{{ $docs->title() }}</h1>
+                    @if ($docs->isOlderVersion())
+                        <blockquote class="docs-blockquote-note position-relative  mt-4" role="alert">
+                            <a href="{{ route('library.upgrade') }}" class="text-decoration-none link-body-emphasis stretched-link icon-link-hover p-4 text-balance">
+                                <div>
+                                    <div class="mb-1 d-block fw-bold">Осторожно! Вы просматриваете документ для прошлой версии.</div>
+                                    <div class="mb-0 d-block opacity-75">Рассмотрите возможность обновления вашего проекта до актуальной версии <code>{{ \App\Docs::DEFAULT_VERSION }}</code>.
+                                        <span class="text-decoration-underline">Почему это важно?</span>
                                     </div>
-                                </a>
-                            </blockquote>
-                        @endif
+                                </div>
+                            </a>
+                        </blockquote>
+                    @endif
 
-                        <div class="d-block d-xxl-none mt-3">
-                            <x-docs.anchors :content="$content"/>
-                        </div>
-                        <x-docs.content :content="$content"/>
-                    </main>
-                </div>
+                    <div class="d-block d-xl-none mt-3">
+                        <x-docs.anchors :content="$content"/>
+                    </div>
+                    <x-docs.content :content="$content"/>
+                </main>
             </div>
-            <div class="col-3 col-xl-2 order-last position-sticky top-0 py-md-3 z-1 d-none d-xxl-block doc-navigation">
+            <div class="col-3 col-xl-2 order-last position-sticky top-0 py-md-3 z-1 d-none d-xl-block doc-navigation">
                 <div class="mb-md-4 d-flex align-items-stretch flex-column offcanvas-md offcanvas-start" id="docs-menu">
                     <main>
                         <x-docs.anchors :content="$content"/>

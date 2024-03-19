@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Docs;
 use App\Models\Document;
+use App\Models\DocumentationSection;
+use Illuminate\Http\Request;
 
 class DocsController extends Controller
 {
@@ -57,5 +59,20 @@ class DocsController extends Controller
             'current'   => $version,
             'documents' => $documents,
         ]);
+    }
+
+    public function search(string $versionOfDocs, Request $request)
+    {
+
+        if (empty($request->text)) {
+            return turbo_stream()->replace('found_candidates', view('docs._search_lines', [
+                'searchOffer' => [],
+            ]));
+        }
+        $searchOffers = DocumentationSection::search($request->text)->where('version', $versionOfDocs)->get();
+
+        return turbo_stream()->replace('found_candidates', view('docs._search_lines', [
+            'searchOffer' => $searchOffers,
+        ]));
     }
 }

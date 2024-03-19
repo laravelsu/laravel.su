@@ -25,7 +25,6 @@ class Docs
      * Array of supported versions
      */
     public const SUPPORT_VERSIONS = [
-        '11.x',
         '10.x',
         '8.x',
         '5.4',
@@ -362,10 +361,11 @@ class Docs
     /**
      * Разбивает markdown файл на разделы по заголовкам.
      *
-     * @return Collection<array-key, array> Массив разделов с заголовками и содержимым
+     * @return Collection разделов с заголовками и содержимым
      */
     public function getSections(): Collection
     {
+
         // Разбиваем HTML содержимое на разделы по заголовкам
         preg_match_all('/<h(\d)>(.+)<\/h\d>(.*)/sU', $this->content(), $matches, PREG_SET_ORDER);
 
@@ -373,9 +373,13 @@ class Docs
         $sections = collect();
         $prevEnd = 0;
 
+        $titlePage = null;
         foreach ($matches as $index => $match) {
             $sectionTitle = $match[2];
 
+            if ($match[1] == '1') {
+                $titlePage = $sectionTitle;
+            }
             // Получаем начальную и конечную позицию текущего заголовка в тексте
             $startPos = strpos($this->content(), $match[0], $prevEnd);
 
@@ -389,12 +393,13 @@ class Docs
             }
 
             $sections->push([
-                'title'   => $sectionTitle,
-                'slug'    => Str::of($sectionTitle)->slug()->toString(),
-                'content' => $sectionContent,
-                'file'    => $this->file,
-                'version' => $this->version,
-                'id'      => Str::uuid(),
+                'title_page' => $titlePage,
+                'title'     => $sectionTitle,
+                'slug'      => Str::of($sectionTitle)->slug()->toString(),
+                'content'   => $sectionContent,
+                'file'      => $this->file,
+                'version'   => $this->version,
+                'id'        => Str::uuid(),
             ]);
         }
 
@@ -403,7 +408,7 @@ class Docs
 
     public function updateSections()
     {
-        // DocumentationSection::where('file', $this->file)->where('version', $this->version)->delete();
-        // DocumentationSection::insert($this->getSections()->toArray());
+        DocumentationSection::where('file', $this->file)->where('version', $this->version)->delete();
+        DocumentationSection::insert($this->getSections()->toArray());
     }
 }
