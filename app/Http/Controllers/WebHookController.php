@@ -17,7 +17,7 @@ class WebHookController extends Controller
      */
     public function telegram(Request $request, TelegramBot $telegramBot): void
     {
-        $text = $request->input('message.text');
+        $text = $request->input('message.text') ?? $request->input('message.caption');
         $messageId = $request->input('message.message_id');
         $chatId = $request->input('message.chat.id');
         $from = $request->input('message.from.id');

@@ -64,11 +64,11 @@ class TelegramBot
     /**
      * Check if a message is spam.
      *
-     * @param string $message
+     * @param string|null $message
      *
      * @return bool
      */
-    public function isSpam(string $message): bool
+    public function isSpam(?string $message): bool
     {
         if (empty($message)) {
             return false;
