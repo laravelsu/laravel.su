@@ -80,7 +80,7 @@ class SpamDetector
             ->trainClassifier($classifier, 'spam.json', static::SPAM)
             ->trainClassifier($classifier, 'ham.json', static::HAM);
 
-        return $classifier->guess($this->message) === static::SPAM;
+        return $classifier->most($this->message) === static::SPAM;
     }
 
     /**
