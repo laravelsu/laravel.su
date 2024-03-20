@@ -2,17 +2,11 @@
 
 namespace App\Services;
 
-use AssistedMindfulness\NaiveBayes\Classifier;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Str;
-use NotificationChannels\Telegram\TelegramMessage;
 
 class TelegramBot
 {
-    public const SPAM = 'spam';
-    public const HAM = 'ham';
-
     private $token;
 
     /**
@@ -76,40 +70,8 @@ class TelegramBot
      */
     public function isSpam(string $message): bool
     {
-        $classifier = new Classifier();
+        $detector = new SpamDetector($message);
 
-        $classifier
-            /**
-             * Spam
-             */
-            ->learn('Здрaвcтвyйте, прeдостaвляю yдалённyю зaнятoсть. 770$+ в нeдeлю Кoмy интepeсно, пишитe  "+"  в личные', static::SPAM)
-            ->learn('Всeх привeтствую. Нyжны пaртнёры для удалённoгo сoтрудничeства. Пoдробнoсти в лс', static::SPAM)
-
-            /**
-             * Hamming
-             */
-            ->learn('а учусь я потому что хочу работу нормальную найти и чтоб дети жили нормально)', static::HAM)
-            ->learn('у тебя переменная передается не так надо массив ->asyncParameters()', static::HAM)
-            ->learn('MVC. Можно ещё там использовать сервис контейнеры, фасады, view-model', static::HAM)
-            ->learn('Попробуем, спасибо 🙏', static::HAM)
-            ->learn('https://laravel.com/docs/', static::HAM)
-            ->learn('Да', static::HAM)
-            ->learn('Получилось', static::HAM);
-
-        TelegramMessage::create()
-            ->to(config('services.telegram-bot-api.chat_id'))
-            ->line('Сообщение было классифицировано как '.$classifier->most($message))
-            ->line('')
-            ->line('*📂 Текст сообщения*')
-            ->escapedLine($message)
-            ->send();
-
-        return Str::of($message)->contains([
-            'yдалённyю',
-            'в нeдeлю',
-            'интepeсно',
-            'пaртнёры',
-            'сoтрудничeств',
-        ]);
+        return $detector->isSpam();
     }
 }
