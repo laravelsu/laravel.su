@@ -48,6 +48,12 @@ return [
             'throw'  => false,
         ],
 
+        'classifiers' => [
+            'driver' => 'local',
+            'root'   => storage_path('classifiers'),
+            'throw'  => false,
+        ],
+
         'public' => [
             'driver'     => 'local',
             'root'       => storage_path('app/public'),

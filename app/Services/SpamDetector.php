@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use AssistedMindfulness\NaiveBayes\Classifier;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class SpamDetector
@@ -42,7 +43,8 @@ class SpamDetector
         'финансовая защита', 'инвестиции в будущее', 'реальный заработок',
         'финансовый инструментарий', 'инвестиции в золото', 'инвестиции в криптовалютные фонды',
         'увеличение прибыли в интернете', 'инвестирование в акции',
-        'финансовая безопасность',
+        'финансовая безопасность', 'нужен только телефон', 'стабильный доход',
+        'бесплатное обучение',
     ];
 
     /**
@@ -75,8 +77,8 @@ class SpamDetector
 
         // Train the classifier with spam and ham messages
         $this
-            ->trainClassifier($classifier, 'classifiers/spam.json', static::SPAM)
-            ->trainClassifier($classifier, 'classifiers/ham.json', static::HAM);
+            ->trainClassifier($classifier, 'spam.json', static::SPAM)
+            ->trainClassifier($classifier, 'ham.json', static::HAM);
 
         return $classifier->guess($this->message) === static::SPAM;
     }
@@ -92,7 +94,7 @@ class SpamDetector
      */
     private function trainClassifier(Classifier $classifier, string $fileName, string $label): self
     {
-        $messages = json_decode(file_get_contents(storage_path($fileName)));
+        $messages = json_decode(Storage::disk('classifiers')->get($fileName));
 
         foreach ($messages as $message) {
             $classifier->learn($message, $label);
