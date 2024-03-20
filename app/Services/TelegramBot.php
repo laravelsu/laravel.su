@@ -70,6 +70,10 @@ class TelegramBot
      */
     public function isSpam(string $message): bool
     {
+        if (empty($message)) {
+            return false;
+        }
+
         $detector = new SpamDetector($message);
 
         return $detector->isSpam();
