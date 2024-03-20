@@ -74,8 +74,9 @@ class SpamDetector
         $classifier = new Classifier();
 
         // Train the classifier with spam and ham messages
-        $this->trainClassifier($classifier, 'classifiers/spam.json', static::SPAM);
-        $this->trainClassifier($classifier, 'classifiers/ham.json', static::HAM);
+        $this
+            ->trainClassifier($classifier, 'classifiers/spam.json', static::SPAM)
+            ->trainClassifier($classifier, 'classifiers/ham.json', static::HAM);
 
         return $classifier->guess($this->message) === static::SPAM;
     }
@@ -87,14 +88,17 @@ class SpamDetector
      * @param string                                     $fileName   The path to the JSON file containing messages
      * @param string                                     $label      The label to assign to the messages (spam or ham)
      *
-     * @return void
+     * @return self
      */
-    private function trainClassifier(Classifier $classifier, string $fileName, string $label): void
+    private function trainClassifier(Classifier $classifier, string $fileName, string $label): self
     {
         $messages = json_decode(file_get_contents(storage_path($fileName)));
+
         foreach ($messages as $message) {
             $classifier->learn($message, $label);
         }
+
+        return $this;
     }
 
     /**
