@@ -26,8 +26,8 @@ class TelegramMessage implements ShouldQueue
     {
         $this->text = $this->message->only(['text', 'caption'])->first();
         $this->messageId = $this->message->get('message_id');
-        $this->chatId = $this->message->get('chat.id');
-        $this->from = $this->message->get('from.id');
+        $this->chatId = $this->message->dot()->get('chat.id');
+        $this->from = $this->message->dot()->get('from.id');
     }
 
     /**
