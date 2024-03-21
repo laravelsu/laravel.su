@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Jobs\TelegramMessage;
-use App\Services\TelegramBot;
 use Illuminate\Http\Request;
 
 class WebHookController extends Controller
@@ -16,11 +15,10 @@ class WebHookController extends Controller
      *
      * @return void
      */
-    public function telegram(Request $request, TelegramBot $telegramBot): void
+    public function telegram(Request $request): void
     {
         TelegramMessage::dispatch(
-            $request->collect('message'),
-            $telegramBot,
+            $request->collect('message')
         );
     }
 }

@@ -22,7 +22,7 @@ class TelegramMessage implements ShouldQueue
     /**
      * Create a new job instance.
      */
-    public function __construct(public Collection $message, public TelegramBot $telegramBot)
+    public function __construct(public Collection $message)
     {
         $this->text = $this->message->only(['text', 'caption'])->first();
         $this->messageId = $this->message->get('message_id');
@@ -33,7 +33,7 @@ class TelegramMessage implements ShouldQueue
     /**
      * Execute the job.
      */
-    public function handle(): void
+    public function handle(TelegramBot $telegramBot): void
     {
         // If the message is a reply to another message, it's likely not spam.
         // Let's not disrupt the conversation and ignore it.
@@ -41,20 +41,12 @@ class TelegramMessage implements ShouldQueue
             return;
         }
 
-        if ($this->telegramBot->isSpam($this->text)) {
-            $this->blocked();
+        if ($telegramBot->isSpam($this->text)) {
+            // Delete the spam message from the group chat.
+            $telegramBot->deleteMessage($this->chatId, $this->messageId);
+
+            // Mute the sender of the spam message in the group chat.
+            $telegramBot->muteUserInGroup($this->chatId, $this->from);
         }
-    }
-
-    /**
-     * Block the message and mute the sender in the group.
-     */
-    public function blocked(): void
-    {
-        // Delete the spam message from the group chat.
-        $this->telegramBot->deleteMessage($this->chatId, $this->messageId);
-
-        // Mute the sender of the spam message in the group chat.
-        $this->telegramBot->muteUserInGroup($this->chatId, $this->from);
     }
 }
