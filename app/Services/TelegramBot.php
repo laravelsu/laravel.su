@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use Illuminate\Http\Client\Response;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 
 class TelegramBot
@@ -62,16 +63,37 @@ class TelegramBot
     }
 
     /**
-     * Check if a message is spam.
+     * Check if a user is spammer via Combot Anti-Spam (CAS)
      *
-     * @param string|null $message
+     * @param $userId
      *
      * @return bool
      */
-    public function isSpam(?string $message): bool
+    public function checkByCAS($userId): bool
+    {
+        return Cache::remember('cas-user-'.$userId, now()->addHours(5), function () use ($userId) {
+            return Http::get('https://api.cas.chat/check', [
+                'user_id' => $userId,
+            ])->json('ok', true) === false;
+        });
+    }
+
+    /**
+     * Check if a message is spam.
+     *
+     * @param string|null $message
+     * @param null        $userId
+     *
+     * @return bool
+     */
+    public function isSpam(?string $message, $userId = null): bool
     {
         if (empty($message)) {
             return false;
+        }
+
+        if ($userId !== null && $this->checkByCAS($userId)) {
+            return true;
         }
 
         $detector = new SpamDetector($message);
