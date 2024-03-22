@@ -26,23 +26,27 @@
                 <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 d-none d-lg-flex">
                     <li><a href="{{ route('feature') }}" class="nav-link px-3 link-body-emphasis">Возможности</a></li>
                     <li><a href="{{ route('feed') }}" class="nav-link px-3 link-body-emphasis">Трибуна</a></li>
+                    {{--
                     <li><a href="{{ route('packages') }}" class="nav-link px-3 link-body-emphasis">Пакеты</a></li>
+                    --}}
                     <li><a href="{{ route('jobs') }}" class="nav-link px-3 link-body-emphasis">Работа</a></li>
+                    {{--
                     <li><a href="{{ route('courses') }}" class="nav-link px-3 link-body-emphasis position-relative">Курсы
                             <span class="badge bg-primary position-absolute top-0 start-100 translate-middle mt-2">Новое</span></a>
                     </li>
+                    --}}
 
                     {{-- TODO: Add dropdown menu --}}
-                    {{--
+
                     <li class="dropdown-menu-end">
-                        <a href="#" class="nav-link px-3 link-body-emphasis dropdown-toggle" data-bs-toggle="dropdown">Ресурсы</a>
+                        <a href="#" class="nav-link px-3 link-body-emphasis dropdown-toggle" data-bs-toggle="dropdown">Больше</a>
                         <div class="dropdown-menu bg-body-tertiary shadow-lg border-0 p-0">
                             <div class="d-lg-flex p-5 gap-4">
                                 <ul class="list-unstyled d-flex flex-column gap-4" style="width: 15rem;">
                                     <li>
                                         <a href="{{ route('packages') }}" class="link-body-emphasis text-decoration-none rounded-2 d-flex align-items-start gap-3 lh-sm text-start">
-                                            <x-icon path="i.ui" height="2em" width="2em" class="text-primary" />
-                                            <div>
+                                            <x-icon path="i.ui" height="2rem" width="2rem" class="text-primary" />
+                                            <div class="col-10">
                                                 <span class="d-block">Пакеты</span>
                                                 <small class="opacity-50 line-clamp line-clamp-2">Великолепные дополнения сообщества</small>
                                             </div>
@@ -50,8 +54,8 @@
                                     </li>
                                     <li>
                                         <a href="{{ route('idea.index') }}" class="link-body-emphasis text-decoration-none rounded-2 d-flex align-items-start gap-3 lh-sm text-start">
-                                            <x-icon path="i.idea1" height="2em" width="2em" />
-                                            <div>
+                                            <x-icon path="i.idea1" height="2rem" width="2rem" class="text-primary" />
+                                            <div class="col-10">
                                                 <span class="d-block">Laravel Idea</span>
                                                 <small class="opacity-50 line-clamp line-clamp-2">
                                                     Генерация кода для PHPStorm
@@ -61,8 +65,8 @@
                                     </li>
                                     <li>
                                         <a href="{{ route('meets') }}" class="link-body-emphasis text-decoration-none rounded-2 d-flex align-items-start gap-3 lh-sm text-start">
-                                            <x-icon path="i.previous_meetings" height="2em" width="2em" class="text-primary" />
-                                            <div>
+                                            <x-icon path="i.previous_meetings" height="2rem" width="2rem" class="text-primary" />
+                                            <div class="col-10">
                                                 <span class="d-block">Мероприятия</span>
                                                 <small class="opacity-50 line-clamp line-clamp-2">
                                                     Ни одна встреча не обходится без Laravel.
@@ -70,30 +74,50 @@
                                             </div>
                                         </a>
                                     </li>
-                                </ul>
-                                <ul class="list-unstyled d-flex flex-column gap-4" style="width: 15rem;">
-                                    <li>
-                                        <a href="#" class="link-body-emphasis text-decoration-none rounded-2 d-flex align-items-start gap-3 lh-sm text-start">
-                                            <x-icon path="i.docs" height="2em" width="2em" />
-                                            <div>
-                                                <span class="d-block">Пакеты</span>
-                                                <small class="opacity-50 line-clamp line-clamp-2">Великолепные дополнения сообщества</small>
-                                            </div>
-                                        </a>
-                                    </li>
                                     <li>
                                         <a href="{{ route('ecosystem') }}" class="link-body-emphasis text-decoration-none rounded-2 d-flex align-items-start gap-3 lh-sm text-start">
-                                            <x-icon path="i.internet-market" height="2em" width="2em" class="text-primary"/>
-                                            <div>
+                                            <x-icon path="i.internet-market" height="2rem" width="2rem" class="text-primary"/>
+                                            <div class="col-10">
                                                 <span class="d-block">Экосистема</span>
                                                 <small class="opacity-50 line-clamp line-clamp-2">Без корпоративной сложности</small>
                                             </div>
                                         </a>
                                     </li>
+                                </ul>
+                                <ul class="list-unstyled d-flex flex-column gap-4" style="width: 15rem;">
+                                    <li>
+                                        <a href="{{ route('courses') }}" class="link-body-emphasis text-decoration-none rounded-2 d-flex align-items-start gap-3 lh-sm text-start">
+                                            <x-icon path="i.docs" height="2rem" width="2rem"  class="text-primary"/>
+                                            <div class="col-10">
+                                                <span class="d-block">Курсы</span>
+                                                <small class="opacity-50 line-clamp line-clamp-2">Учебные материалы для улучшения навыков</small>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('orchid') }}" class="link-body-emphasis text-decoration-none rounded-2 d-flex align-items-start gap-3 lh-sm text-start">
+                                            <x-icon path="i.orchid" height="2rem" width="2rem" class="text-primary"/>
+                                            <div class="col-10">
+                                                <span class="d-block">Orchid</span>
+                                                <small class="opacity-50 line-clamp line-clamp-2">Админ панели и внутренние бизнес системы</small>
+                                            </div>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="{{ route('boilerplate') }}" class="link-body-emphasis text-decoration-none rounded-2 d-flex align-items-start gap-3 lh-sm text-start">
+                                            <x-icon path="i.utilities" height="2rem" width="2rem" class="text-primary"/>
+                                            <div class="col-10">
+                                                <span class="d-block">Boilerplate</span>
+                                                <small class="opacity-50 line-clamp line-clamp-2">Готовый скелет для создания вашего пакета</small>
+                                            </div>
+                                        </a>
+                                    </li>
+
                                     <li>
                                         <a href="{{ route('pastebin') }}" class="link-body-emphasis text-decoration-none rounded-2 d-flex align-items-start gap-3 lh-sm text-start">
-                                            <x-icon path="i.code" height="2em" width="2em" class="text-primary"/>
-                                            <div>
+                                            <x-icon path="i.code" height="2rem" width="2rem" class="text-primary"/>
+                                            <div class="col-10">
                                                 <span class="d-block">Pastebin</span>
                                                 <small class="opacity-50 line-clamp line-clamp-2">Делитесь своим кодом правильно</small>
                                             </div>
@@ -103,7 +127,7 @@
                             </div>
                         </div>
                     </li>
-    --}}
+
                 </ul>
 
                 <div class="nav text-end">
