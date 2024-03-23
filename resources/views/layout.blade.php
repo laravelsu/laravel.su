@@ -2,9 +2,9 @@
 
 @section('body')
 
-    <div class="bg-primary text-bg-primary bg-gradient text-center py-2 d-none d-xxl-block">
-        Любите загадки? Событие еще доступно на  <a href="{{ route('quiz.open') }}" class="text-white">сайте</a>.
-    </div>
+
+    <x-header-banner-line />
+
 
 
 
