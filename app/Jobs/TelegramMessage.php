@@ -41,6 +41,12 @@ class TelegramMessage implements ShouldQueue
             return;
         }
 
+        $existEntities = collect($this->message->get('entities'))->whereIn('type', ['url', 'code'])->isNotEmpty();
+
+        if ($existEntities) {
+            return;
+        }
+
         if ($telegramBot->isSpam($this->text)) {
             // Delete the spam message from the group chat.
             $telegramBot->deleteMessage($this->chatId, $this->messageId);
