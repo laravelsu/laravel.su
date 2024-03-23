@@ -8,7 +8,6 @@ use Illuminate\View\Component;
 
 class HeaderBannerLine extends Component
 {
-
     public string $message;
 
     /**
