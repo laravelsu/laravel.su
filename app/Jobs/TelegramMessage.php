@@ -41,7 +41,7 @@ class TelegramMessage implements ShouldQueue
             return;
         }
 
-        $existEntities = collect($this->message->get('entities'))->whereIn('type', ['url', 'code'])->isNotEmpty();
+        $existEntities = collect($this->message->get('entities'))->whereIn('type', ['url', 'pre'])->isNotEmpty();
 
         if ($existEntities) {
             return;
