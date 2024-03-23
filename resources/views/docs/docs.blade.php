@@ -5,7 +5,7 @@
 
     <div class="container container-docs my-4 my-xxl-5 mx-auto">
         <div class="row gap-2 justify-content-center align-items-start position-relative mb-5">
-            <div class="col-3 col-xl-2 order-md-first order-last position-sticky top-0 py-md-3 z-1 d-none d-lg-block doc-navigation">
+            <div class="col-3 col-xl-3 col-xxl-2 order-md-first order-last position-sticky top-0 py-md-3 z-1 d-none d-lg-block doc-navigation">
 
                 <div class="mb-md-4 ms-md-4 d-flex align-items-stretch flex-column offcanvas-md offcanvas-start" id="docs-menu">
 
@@ -78,9 +78,10 @@
 
                 </div>
             </div>
-            <div class="px-0 px-md-2 px-xl-3 col-md-10 col-lg-8 col-xl-7 col-xxl-6 order-md-1 order-first">
+            <div class="px-0 px-md-2 px-xl-3 col-md-10 col-lg-8 col-xl-8 col-xxl-6 order-md-1 order-first">
 
-                <main class="bg-body-tertiary p-4 p-xl-5 rounded documentations position-relative" data-controller="prism">
+                <div class="bg-body-tertiary px-4 px-xl-5 rounded">
+                    <main class="p-4 p-xl-5 documentations position-relative" data-controller="prism">
                     <h1 class="display-6 fw-bold text-body-emphasis">{{ $docs->title() }}</h1>
                     @if ($docs->isOlderVersion())
                         <blockquote class="docs-blockquote-note position-relative  mt-4" role="alert">
@@ -95,13 +96,14 @@
                         </blockquote>
                     @endif
 
-                    <div class="d-block d-xl-none mt-3">
+                    <div class="d-block d-xxl-none mt-3">
                         <x-docs.anchors :content="$content"/>
                     </div>
                     <x-docs.content :content="$content"/>
                 </main>
+                </div>
             </div>
-            <div class="col-3 col-xl-2 order-last position-sticky top-0 py-md-3 z-1 d-none d-xl-block doc-navigation">
+            <div class="col-3 col-xl-2 order-last position-sticky top-0 py-md-3 z-1 d-none d-xxl-block doc-navigation">
                 <div class="mb-md-4 d-flex align-items-stretch flex-column offcanvas-md offcanvas-start" id="docs-menu">
                     <main>
                         <x-docs.anchors :content="$content"/>

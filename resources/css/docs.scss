@@ -127,6 +127,12 @@ main div {
         margin-top: 1.25em;
     }
 
+    @include media-breakpoint-up(md) {
+        h2{
+            margin-left: -2rem;
+        }
+    }
+
     p {
         font-size: 1em;
         line-height: 1.6em;
