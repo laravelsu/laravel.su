@@ -2096,16 +2096,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v10.48.3",
+            "version": "v10.48.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "5791c052b41c6b593556adc687076bfbdd13c501"
+                "reference": "7e0701bf59cb76a51f7c1f7bea51c0c0c29c0b72"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/5791c052b41c6b593556adc687076bfbdd13c501",
-                "reference": "5791c052b41c6b593556adc687076bfbdd13c501",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/7e0701bf59cb76a51f7c1f7bea51c0c0c29c0b72",
+                "reference": "7e0701bf59cb76a51f7c1f7bea51c0c0c29c0b72",
                 "shasum": ""
             },
             "require": {
@@ -2210,7 +2210,7 @@
                 "league/flysystem-sftp-v3": "^3.0",
                 "mockery/mockery": "^1.5.1",
                 "nyholm/psr7": "^1.2",
-                "orchestra/testbench-core": "^8.18",
+                "orchestra/testbench-core": "^8.23.4",
                 "pda/pheanstalk": "^4.0",
                 "phpstan/phpstan": "^1.4.7",
                 "phpunit/phpunit": "^10.0.7",
@@ -2299,7 +2299,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2024-03-15T10:17:07+00:00"
+            "time": "2024-03-21T13:36:36+00:00"
         },
         {
             "name": "laravel/prompts",
@@ -3933,24 +3933,24 @@
         },
         {
             "name": "orchid/blade-icons",
-            "version": "4.0.1",
+            "version": "4.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/orchidsoftware/blade-icons.git",
-                "reference": "173a26a3b91eb4a7e4aabe50c8d734732a53d994"
+                "reference": "3099e4db64d773b47275a95a403f89eb1cc561cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orchidsoftware/blade-icons/zipball/173a26a3b91eb4a7e4aabe50c8d734732a53d994",
-                "reference": "173a26a3b91eb4a7e4aabe50c8d734732a53d994",
+                "url": "https://api.github.com/repos/orchidsoftware/blade-icons/zipball/3099e4db64d773b47275a95a403f89eb1cc561cb",
+                "reference": "3099e4db64d773b47275a95a403f89eb1cc561cb",
                 "shasum": ""
             },
             "require": {
                 "ext-dom": "*",
-                "laravel/framework": "^10.0"
+                "laravel/framework": "^10.0|^11.0"
             },
             "require-dev": {
-                "orchestra/testbench": "^8.0"
+                "orchestra/testbench": "^8.0|^9.0"
             },
             "type": "library",
             "extra": {
@@ -3978,7 +3978,7 @@
             "description": "An easy way inline SVG images in your Blade templates.",
             "support": {
                 "issues": "https://github.com/orchidsoftware/blade-icons/issues",
-                "source": "https://github.com/orchidsoftware/blade-icons/tree/4.0.1"
+                "source": "https://github.com/orchidsoftware/blade-icons/tree/4.1.0"
             },
             "funding": [
                 {
@@ -3990,25 +3990,25 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2023-11-06T02:14:00+00:00"
+            "time": "2024-03-17T02:40:48+00:00"
         },
         {
             "name": "orchid/platform",
-            "version": "14.19.0",
+            "version": "14.21.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/orchidsoftware/platform.git",
-                "reference": "5e75b4fdc50e5d1c35bdee5194debb8bbf0f3151"
+                "reference": "b83f1c933d190198409e667f6b6644e0a009a217"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orchidsoftware/platform/zipball/5e75b4fdc50e5d1c35bdee5194debb8bbf0f3151",
-                "reference": "5e75b4fdc50e5d1c35bdee5194debb8bbf0f3151",
+                "url": "https://api.github.com/repos/orchidsoftware/platform/zipball/b83f1c933d190198409e667f6b6644e0a009a217",
+                "reference": "b83f1c933d190198409e667f6b6644e0a009a217",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "laravel/framework": "^10.0",
+                "laravel/framework": "^10.0||^11.0",
                 "laravel/scout": "^9.0 || ^10.0",
                 "orchid/blade-icons": "^4.0",
                 "tabuna/breadcrumbs": "^4.0",
@@ -4022,11 +4022,11 @@
             "require-dev": {
                 "doctrine/dbal": "^2.10 || ^3.0",
                 "fakerphp/faker": "^1.9.1",
-                "laravel/pint": "^1.2",
-                "orchestra/testbench-core": "^8.0",
-                "orchestra/testbench-dusk": "^8.0",
-                "phpunit/php-code-coverage": "^10.0",
-                "phpunit/phpunit": "^10.0",
+                "laravel/pint": "^1.14",
+                "orchestra/testbench-core": "^8.0 || ^9.0",
+                "orchestra/testbench-dusk": "^8.0 || ^9.0",
+                "phpunit/php-code-coverage": "^10.0 || ^11.0",
+                "phpunit/phpunit": "^10.0 || ^11.0",
                 "vimeo/psalm": "^5.0"
             },
             "suggest": {
@@ -4097,7 +4097,7 @@
                     "type": "opencollective"
                 }
             ],
-            "time": "2024-02-25T23:57:25+00:00"
+            "time": "2024-03-24T23:36:22+00:00"
         },
         {
             "name": "org_heigl/hyphenator",
@@ -12855,5 +12855,5 @@
         "ext-dom": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }
