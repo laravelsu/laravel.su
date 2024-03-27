@@ -98,7 +98,7 @@
         transition: all 340ms ease;
         text-decoration: none;
         &:hover {
-            opacity: 1!important;
+            opacity: 1 !important;
         }
         &:before {
             content: '# ';
