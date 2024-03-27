@@ -25,5 +25,7 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
-        \App\Services\TelegramBot::notificationToTelegram($exceptions);
+        $exceptions->report(function (Throwable $e) {
+            \App\Services\TelegramBot::notificationToTelegram($e);
+        });
     })->create();

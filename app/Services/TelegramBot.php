@@ -107,9 +107,9 @@ class TelegramBot
     /**
      * Send notification to Telegram.
      */
-    public static function notificationToTelegram($exception): void
+    public static function notificationToTelegram(\Throwable $exception): void
     {
-        if (Arr::has(['local', 'testing'], config('app.env'))) {
+        if (config('app.env') !== 'production') {
             return;
         }
 
