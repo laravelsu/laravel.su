@@ -11,6 +11,14 @@
 
                     <main class="post" data-controller="prism">
 
+                        @if(!$position->isApproved())
+                            <div class="alert alert-warning text-center mb-4 lh-sm" role="alert">
+                                Вакансия находится на модерации.
+                                <small class="opacity-75 d-block">После проверки она будет опубликована.</small>
+                            </div>
+                        @endif
+
+
                         <div class="row mb-4 mb-xl-5">
                             <div class="col-12 col-lg-8">
                                 <h1 class="mb-0">{{ $position->title }}</h1>
