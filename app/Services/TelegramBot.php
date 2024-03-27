@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use Illuminate\Http\Client\Response;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
@@ -108,7 +109,7 @@ class TelegramBot
      */
     public static function notificationToTelegram($exception): void
     {
-        if (config('app.env') == 'local') {
+        if (Arr::has(['local', 'testing'], config('app.env'))) {
             return;
         }
 
