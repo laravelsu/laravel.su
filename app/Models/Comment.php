@@ -89,19 +89,6 @@ class Comment extends Model
     }
 
     /**
-     * Convert URLs in text to HTML links.
-     *
-     * @param string|null $text
-     *
-     * @return string
-     */
-    protected function urlFromTextToHtmlUrl(?string $text = null): string
-    {
-        return Str::of($text)
-            ->replaceMatches('/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/u', fn ($url) => "<a href='$url[0]' target='_blank'>$url[0]</a> ");
-    }
-
-    /**
      * Convert mentioned usernames to HTML links.
      *
      * @param string|null $text
@@ -112,7 +99,7 @@ class Comment extends Model
     {
         return Str::of($text)
             ->replaceMatches('/\@([a-zA-Z0-9_]+)/u', function ($mention) {
-                $href = route('user.show', $mention[1]); // над наверное заменить на route('profile', $mention[1])
+                $href = route('profile', $mention[1]);
                 $name = Str::of($mention[0])->trim();
 
                 return "<a href='$href' class='text-decoration-none'>$name</a>";
@@ -140,10 +127,9 @@ class Comment extends Model
     {
         $safe = htmlspecialchars($this->content ?? '', ENT_NOQUOTES, 'UTF-8');
 
-        $withLinks = $this->urlFromTextToHtmlUrl($safe);
-        $withMention = $this->mentionedUserToHtmlUrl($withLinks);
+        $withMention = $this->mentionedUserToHtmlUrl($safe);
 
-        return $this->nl2br($withMention);
+        return Str::of($this->nl2br($withMention))->inlineMarkdown();
     }
 
     /**
