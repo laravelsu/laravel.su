@@ -53,18 +53,30 @@
 
 .anchors {
     ul {
+        @extend .d-flex;
+        @extend .flex-column;
+        gap: 0.65rem;
         list-style: none;
         padding: 0;
         li {
             margin: 0;
             padding: 0;
 
+            &.anchor-h2 {
+                a {
+                    @extend .fw-bold;
+                }
+            }
+
             &.anchor-h3 {
                 margin-left: 1.5em;
                 //list-style: inside;
 
                 a {
-                    opacity: 0.5;
+                    opacity: 0.75;
+                    &:before {
+                        filter: contrast(0.5);
+                    }
                 }
             }
 
@@ -75,12 +87,18 @@
         }
     }
     a {
+        text-wrap: balance;
+        @extend .d-flex;
+        @extend .gap-2;
         opacity: 0.75;
+        line-height: 1.3rem;
+        letter-spacing: -0.005rem;
+        font-size: $font-size-sm;
         @extend .link-body-emphasis;
         transition: all 340ms ease;
         text-decoration: none;
         &:hover {
-            opacity: 1;
+            opacity: 1!important;
         }
         &:before {
             content: '# ';
@@ -119,6 +137,9 @@ main div {
     h3 {
         margin-top: 1.5em;
         margin-bottom: 15px;
+        a {
+            display: block;
+        }
     }
 
     h4,
