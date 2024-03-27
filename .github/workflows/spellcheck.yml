@@ -1,6 +1,7 @@
 name: Spell check
 
 on:
+  pull_request:
   push: # (or pull requests)
     paths:
       - '.github/workflows/**'

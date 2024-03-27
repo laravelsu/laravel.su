@@ -1,6 +1,7 @@
 name: Check for Type Errors
 
 on:
+  pull_request:
   push: # (or pull requests)
     paths:
       - '.github/workflows/**'
