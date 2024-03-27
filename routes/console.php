@@ -4,9 +4,9 @@ use App\Docs;
 use App\Jobs\UpdateStatusPackages;
 use App\Models\CodeSnippet;
 use App\Models\Package;
-use Illuminate\Support\Facades;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Process;
 use Illuminate\Support\Facades\Storage;
@@ -43,7 +43,6 @@ Artisan::command('app:update-packages', function () {
         $packages->each(fn ($package) => UpdateStatusPackages::dispatch($package));
     });
 })->purpose('Update information about users packages');
-
 
 /*
 |--------------------------------------------------------------------------

@@ -106,7 +106,7 @@ class TelegramBot
     /**
      * Send notification to Telegram.
      */
-    static function notificationToTelegram($exception): void
+    public static function notificationToTelegram($exception): void
     {
         if (config('app.env') == 'local') {
             return;
