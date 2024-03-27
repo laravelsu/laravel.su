@@ -51,6 +51,7 @@ Route::view('/editor-guide', 'pages.editor-guide')->name('editor-guide');
 Route::view('/library/clear-code', 'library.clear-code')->name('library.clear-code');
 Route::view('/library/upgrade', 'library.upgrade')->name('library.upgrade');
 Route::view('/library/security', 'library.security')->name('library.security');
+Route::view('/library/how-to-ask', 'library.how-to-ask')->name('library.how-to-ask');
 
 /*
 |--------------------------------------------------------------------------
