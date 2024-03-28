@@ -80,27 +80,27 @@
             </div>
             <div class="px-0 px-md-2 px-xl-3 col-md-10 col-lg-8 col-xl-8 col-xxl-6 order-md-1 order-first">
 
-                <div class="bg-body-tertiary px-4 px-xl-5 rounded">
-                    <main class="p-4 p-xl-5 documentations position-relative" data-controller="prism">
-                    <h1 class="display-6 fw-bold text-body-emphasis">{{ $docs->title() }}</h1>
-                    @if ($docs->isOlderVersion())
-                        <blockquote class="docs-blockquote-note position-relative  mt-4" role="alert">
-                            <a href="{{ route('library.upgrade') }}" class="text-decoration-none link-body-emphasis stretched-link icon-link-hover p-4 text-balance">
-                                <div>
-                                    <div class="mb-1 d-block fw-bold">Осторожно! Вы просматриваете документ для прошлой версии.</div>
-                                    <div class="mb-0 d-block opacity-75">Рассмотрите возможность обновления вашего проекта до актуальной версии <code>{{ \App\Docs::DEFAULT_VERSION }}</code>.
-                                        <span class="text-decoration-underline">Почему это важно?</span>
+                <div class="bg-body-tertiary p-4 p-xl-5 rounded">
+                    <main class="px-md-4 px-xl-5 documentations position-relative" data-controller="prism">
+                        <h1 class="display-6 fw-bold text-body-emphasis">{{ $docs->title() }}</h1>
+                        @if ($docs->isOlderVersion())
+                            <blockquote class="docs-blockquote-note position-relative  mt-4" role="alert">
+                                <a href="{{ route('library.upgrade') }}" class="text-decoration-none link-body-emphasis stretched-link icon-link-hover p-4 text-balance">
+                                    <div>
+                                        <div class="mb-1 d-block fw-bold">Осторожно! Вы просматриваете документ для прошлой версии.</div>
+                                        <div class="mb-0 d-block opacity-75">Рассмотрите возможность обновления вашего проекта до актуальной версии <code>{{ \App\Docs::DEFAULT_VERSION }}</code>.
+                                            <span class="text-decoration-underline">Почему это важно?</span>
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
-                        </blockquote>
-                    @endif
+                                </a>
+                            </blockquote>
+                        @endif
 
-                    <div class="d-block d-xxl-none mt-3">
-                        <x-docs.anchors :content="$content"/>
-                    </div>
-                    <x-docs.content :content="$content"/>
-                </main>
+                        <div class="d-block d-xxl-none mt-3">
+                            <x-docs.anchors :content="$content"/>
+                        </div>
+                        <x-docs.content :content="$content"/>
+                    </main>
                 </div>
             </div>
             <div class="col-3 col-xl-2 order-last position-sticky top-0 py-md-3 z-1 d-none d-xxl-block doc-navigation">
