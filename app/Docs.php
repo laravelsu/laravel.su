@@ -25,6 +25,7 @@ class Docs
      * Array of supported versions
      */
     public const SUPPORT_VERSIONS = [
+        '11.x',
         '10.x',
         '8.x',
         '5.4',
