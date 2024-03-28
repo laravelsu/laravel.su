@@ -80,6 +80,20 @@
                                     </div>
                                 </div>
 
+                                <div class="mb-4">
+                                    <label for="telegram_connect" class="form-label">Телеграм <small class="opacity-50">Не подключён</small></label>
+
+                                    <div class="d-flex align-items-center">
+                                        <a href="{{ $user->linkNotificationForTelegram() }}" id="telegram_connect" class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">Связать аккаунт</a>
+
+                                        <a href="{{ $user->linkNotificationForTelegram() }}" id="telegram_connect" class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">Отвязать</a>
+                                    </div>
+
+                                    <div class="form-text mt-2">
+                                        Свяжите свой профиль с вашим аккаунтов в Телеграм и вы будете полностью исключены из спам фильтров, а так же
+                                        будете получать уведомления о новых сообщениях или упоминаниях.
+                                    </div>
+                                </div>
 
                                 <div class="mb-4 d-block d-md-none">
                                     <label for="theme-checker-auto" class="form-label d-block">Оформление</label>
@@ -111,7 +125,7 @@
                                         адаптировался автоматически в соответствии с вашей системой.
                                     </div>
                                 </div>
-                                <div class="mb-4 "
+                                <div class="mb-4"
                                      data-controller="webpush"
                                      data-webpush-error-supported-value="Push-сообщения не поддерживаются на этом устройстве"
                                      data-webpush-error-permission-value="Доступ запрещён">
