@@ -125,6 +125,7 @@
                                    data-action="input->search-docs#search"
                                    name="text"
                                    autocomplete="false"
+                                   autofocus
                                    data-search-docs-target="text"
                                    type="search"
                                    placeholder="Введите термин или фразу ..."
