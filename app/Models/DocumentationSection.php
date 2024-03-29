@@ -23,25 +23,17 @@ class DocumentationSection extends Model
     protected $fillable = [
         'id',
         'title',
+        'title_page',
         'slug',
         'version',
         'file',
         'content',
+        'level',
     ];
 
-    protected function shortContent(): Attribute
-    {
-
-        return Attribute::make(
-            get: fn (mixed $value, array $attributes) =>
-
-            Str::limit(
-                nl2br(strip_tags($attributes['content'])),
-                90
-            ),
-        );
-    }
-
+    /**
+     * @return \Illuminate\Database\Eloquent\Casts\Attribute
+     */
     protected function fileForUrl(): Attribute
     {
         return Attribute::make(
@@ -49,11 +41,15 @@ class DocumentationSection extends Model
         );
     }
 
+    /**
+     * @return array
+     */
     public function toSearchableArray()
     {
         return [
             'title'   => $this->title,
             'content' => $this->content,
+            'level'   => $this->level,
         ];
     }
 }

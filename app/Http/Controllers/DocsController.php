@@ -61,15 +61,23 @@ class DocsController extends Controller
         ]);
     }
 
+    /**
+     * @param string                   $versionOfDocs
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \HotwiredLaravel\TurboLaravel\Http\MultiplePendingTurboStreamResponse|\HotwiredLaravel\TurboLaravel\Http\PendingTurboStreamResponse
+     */
     public function search(string $versionOfDocs, Request $request)
     {
+        $searchOffers = [];
 
-        if (empty($request->text)) {
-            return turbo_stream()->replace('found_candidates', view('docs._search_lines', [
-                'searchOffer' => [],
-            ]));
+        if ($request->filled('text')) {
+            $searchOffers = DocumentationSection::search($request->text)
+                ->where('version', $versionOfDocs)
+                ->orderBy('level')
+                ->get()
+                ->take(6);
         }
-        $searchOffers = DocumentationSection::search($request->text)->where('version', $versionOfDocs)->get();
 
         return turbo_stream()->replace('found_candidates', view('docs._search_lines', [
             'searchOffer' => $searchOffers,

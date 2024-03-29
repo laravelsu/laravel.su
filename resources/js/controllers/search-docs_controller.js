@@ -1,14 +1,30 @@
-import { Controller } from '@hotwired/stimulus';
+import {Controller} from '@hotwired/stimulus';
 
 export default class extends Controller {
-    static targets = [ "text", "spinner"]
-    /**
-     * Port for laravel.com
-     */
-    connect() {}
-    search(event) {
-        this.spinnerTarget.classList.remove('d-none');
-        event.target.form.requestSubmit();
-        setTimeout(() =>  this.spinnerTarget.classList.add('d-none'), 500)
+    static targets = ['text'];
+
+    initialize() {
+        this.intersectionObserver = new IntersectionObserver((entries) => this.processIntersectionEntries(entries));
+    }
+
+    connect() {
+        this.intersectionObserver.observe(this.element);
+    }
+
+    disconnect() {
+        this.intersectionObserver.unobserve(this.element);
+    }
+
+    processIntersectionEntries(entries) {
+        entries.forEach((entry) => {
+            this.textTarget.focus();
+        });
+    }
+
+    search() {
+        clearTimeout(this.timeout)
+        this.timeout = setTimeout(() => {
+            this.textTarget.form.requestSubmit();
+        }, 340)
     }
 }

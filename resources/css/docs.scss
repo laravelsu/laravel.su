@@ -399,3 +399,14 @@ main,
     max-width: 1680px;
     margin: 0 auto;
 }
+
+
+.docs-result-item {
+    max-height: 300px;
+
+    .main {
+        blockquote {
+            display: none !important;
+        }
+    }
+}

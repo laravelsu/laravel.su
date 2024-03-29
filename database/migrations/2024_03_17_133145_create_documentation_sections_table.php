@@ -16,6 +16,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->string('title_page')->comment('Заголовок всей страницы');
             $table->string('title');
+            $table->integer('level')->nullable()->comment('Уровень заголовка');
             $table->string('slug');
             $table->string('version');
             $table->string('file');
