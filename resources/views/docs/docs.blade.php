@@ -6,13 +6,12 @@
     <div class="container container-docs my-4 my-xxl-5 mx-auto">
         <div class="row gap-2 justify-content-center align-items-start position-relative mb-5">
             <div class="col-3 col-xl-3 col-xxl-2 order-md-first order-last position-sticky top-0 py-md-3 z-1 d-none d-lg-block doc-navigation">
-
                 <div class="mb-md-4 ms-md-4 d-flex align-items-stretch flex-column offcanvas-md offcanvas-start" id="docs-menu">
 
-                    {{--
-                    <input class="form-control form-control-lg" type="text" placeholder="Поиск по документации..."
-                        aria-label=".form-control-lg example">
---}}
+                    <div class="position-relative mb-3">
+                        <input class="form-control" type="text" placeholder="Поиск...">
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#docs-search-modal" class="stretched-link"></a>
+                    </div>
 
                     <div class="d-flex align-items-center p-4 p-sm-0">
                         <select class="form-select form-select-sm rounded-3" onchange="Turbo.visit(this.value);">
@@ -108,6 +107,33 @@
                     <main>
                         <x-docs.anchors :content="$content"/>
                     </main>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal modal-sheet fade" tabindex="-1" role="dialog" id="docs-search-modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content rounded-4 shadow">
+                <div class="modal-body p-5">
+                    <p class="h4 fw-bold mb-4 text-balance">Поиск по документации</p>
+
+                    <div data-controller="search-docs">
+                        <form action="{{ route('docs.search', ['versionOfDocs' => $docs->version]) }}" method="post">
+                            @csrf
+                            <input class="form-control form-control-md"
+                                   data-action="input->search-docs#search"
+                                   name="text"
+                                   autocomplete="false"
+                                   data-search-docs-target="text"
+                                   type="search"
+                                   placeholder="Введите термин или фразу ..."
+                            >
+                        </form>
+
+                        @include('docs._search_lines', ['searchOffer' => []])
+                    </div>
+
                 </div>
             </div>
         </div>
