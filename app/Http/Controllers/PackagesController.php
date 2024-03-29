@@ -112,9 +112,10 @@ class PackagesController extends Controller
     public function latest()
     {
         $packages = Package::approved()
-            ->whereDate('created_at', '>=', now()->subMonth())
+            ->whereDate('created_at', '>=', now()->subYear())
             ->inRandomOrder()
-            ->limit(3)->get();
+            ->limit(3)
+            ->get();
 
         return view('packages.latest', [
             'packages' => $packages,
