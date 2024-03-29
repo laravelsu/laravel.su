@@ -385,6 +385,7 @@ class Docs
 
             $sectionContent = $content->after($tag);
 
+            // Если есть следующий заголовок - обрезаем контент до него
             if (isset($matches[$index + 1])) {
                 $sectionContent = $sectionContent->before($matches[$index + 1][0]);
             }
