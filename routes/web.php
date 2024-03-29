@@ -380,7 +380,6 @@ Route::get('/docs/{version?}/{page?}', [DocsController::class, 'show'])
 Route::post('/docs/{versionOfDocs}/search', [DocsController::class, 'search'])->name('docs.search');
 Route::get('/docs/{page}', fn (string $page) => redirect()->route('docs', ['version' => Docs::DEFAULT_VERSION, 'page' => $page]));
 
-
 Route::get('nav/docs/{version?}', [DocsController::class, 'navigation'])
     ->whereIn('version', Docs::SUPPORT_VERSIONS)
     ->name('nav.docs');

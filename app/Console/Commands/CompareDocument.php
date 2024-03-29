@@ -42,7 +42,7 @@ class CompareDocument extends Command
     {
         Docs::every($version)->each(function (Docs $docs) {
             try {
-                dispatch(fn() => $docs->update());
+                dispatch(fn () => $docs->update());
             } catch (\Exception $exception) {
                 // Log a warning if an error occurs during update
                 $this->warn("Failed to update document: {$exception->getMessage()} {$exception->getFile()} {$exception->getLine()}");

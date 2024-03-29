@@ -1,4 +1,4 @@
-import {Controller} from '@hotwired/stimulus';
+import { Controller } from '@hotwired/stimulus';
 
 export default class extends Controller {
     static targets = ['text'];
@@ -22,9 +22,9 @@ export default class extends Controller {
     }
 
     search() {
-        clearTimeout(this.timeout)
+        clearTimeout(this.timeout);
         this.timeout = setTimeout(() => {
             this.textTarget.form.requestSubmit();
-        }, 340)
+        }, 340);
     }
 }
