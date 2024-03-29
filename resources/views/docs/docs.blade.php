@@ -119,7 +119,7 @@
                     <p class="h4 fw-bold mb-4 text-balance">Поиск по документации</p>
 
                     <div data-controller="search-docs">
-                        <form action="{{ route('docs.search', ['versionOfDocs' => $docs->version]) }}" method="post">
+                        <form action="{{ route('docs.search', ['version' => $docs->version]) }}" method="post">
                             @csrf
                             <input class="form-control form-control-md"
                                    data-action="input->search-docs#search"
