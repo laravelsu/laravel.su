@@ -62,18 +62,18 @@ class DocsController extends Controller
     }
 
     /**
-     * @param string                   $versionOfDocs
+     * @param string                   $version
      * @param \Illuminate\Http\Request $request
      *
      * @return \HotwiredLaravel\TurboLaravel\Http\MultiplePendingTurboStreamResponse|\HotwiredLaravel\TurboLaravel\Http\PendingTurboStreamResponse
      */
-    public function search(string $versionOfDocs, Request $request)
+    public function search(string $version, Request $request)
     {
         $searchOffers = [];
 
         if ($request->filled('text')) {
             $searchOffers = DocumentationSection::search($request->text)
-                ->where('version', $versionOfDocs)
+                ->where('version', $version)
                 ->orderBy('level')
                 ->get()
                 ->take(6);
