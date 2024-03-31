@@ -124,7 +124,7 @@
                             <input class="form-control form-control-md"
                                    data-action="input->search-docs#search"
                                    name="text"
-                                   autocomplete="false"
+                                   autocomplete="off"
                                    autofocus
                                    data-search-docs-target="text"
                                    type="search"
