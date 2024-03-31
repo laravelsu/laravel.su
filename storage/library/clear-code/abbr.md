@@ -53,8 +53,10 @@ class UsrCtrl extends Controller {
 
 ```php
 // Хорошо ✅
-class ProfileController extends Controller {
-    public function get() {
+class ProfileController extends Controller
+{
+    public function get()
+    {
         // ...
     }
 }
