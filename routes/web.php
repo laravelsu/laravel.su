@@ -40,9 +40,11 @@ Route::view('/donate/frame', 'pages.donate-frame')->name('donate.frame');
 Route::view('/courses', 'pages.courses')->name('courses');
 Route::view('/assets', 'pages.assets')->name('assets');
 Route::view('/boilerplate', 'pages.boilerplate')->name('boilerplate');
+Route::view('/consultants', 'pages.consultants')->name('consultants');
 
 Route::view('nav', 'pages.navigation')->name('nav');
 Route::view('/admin', 'errors.admin');
+
 
 Route::get('/achievements', [AchievementsController::class, 'index'])->name('achievements');
 Route::view('/hangman', 'pages.hangman')->name('hangman');
