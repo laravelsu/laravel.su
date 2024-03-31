@@ -45,7 +45,6 @@ Route::view('/consultants', 'pages.consultants')->name('consultants');
 Route::view('nav', 'pages.navigation')->name('nav');
 Route::view('/admin', 'errors.admin');
 
-
 Route::get('/achievements', [AchievementsController::class, 'index'])->name('achievements');
 Route::view('/hangman', 'pages.hangman')->name('hangman');
 Route::view('/editor-guide', 'pages.editor-guide')->name('editor-guide');
