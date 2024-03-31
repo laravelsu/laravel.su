@@ -8,7 +8,7 @@ description: "Чем меньше вложенности, тем легче по
 Давайте рассмотрим метод, который определяет, имеет ли доступ пользователь:
 
 ```php
-// Плохо
+// Плохо ❌
 public function isUserAllowedToAccess(User $user): bool {
     if (!$user->isBanned()) {
         if ($user->isAdmin()) {
@@ -35,7 +35,9 @@ public function isUserAllowedToAccess(User $user): bool {
 Использование `else` увеличивает глубину вложенности и делает код сложнее для понимания. Чтобы сделать код более простым и понятным, лучше использовать подход с ранним возвратом результата:
 
 ```php
-public function isUserAllowedToAccess(User $user): bool {
+// Хорошо ✅
+public function isUserAllowedToAccess(User $user): bool
+{
     if ($user->isBanned()) {
         // Пользователь заблокирован
         return false;
