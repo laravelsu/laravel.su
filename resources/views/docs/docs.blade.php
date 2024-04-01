@@ -8,40 +8,9 @@
             <div class="col-3 col-xl-3 col-xxl-2 order-md-first order-last position-sticky top-0 py-md-3 z-1 d-none d-lg-block doc-navigation">
                 <div class="mb-md-4 ms-md-4 d-flex align-items-stretch flex-column offcanvas-md offcanvas-start" id="docs-menu">
 
-                    <div class="position-relative mb-3">
+                    <div class="position-relative">
                         <input class="form-control" type="text" placeholder="Поиск...">
                         <a href="#" data-bs-toggle="modal" data-bs-target="#docs-search-modal" class="stretched-link"></a>
-                    </div>
-
-                    <div class="d-flex align-items-center p-4 p-sm-0">
-                        <select class="form-select form-select-sm rounded-3" onchange="Turbo.visit(this.value);">
-                            <optgroup label="Версия">
-                                @foreach (\App\Docs::SUPPORT_VERSIONS as $version)
-                                    <option
-                                        value="{{ route('docs', ['version' => $version]) }}"
-                                        @selected(active(route('docs', ['version' => $version]).'*'))>{{ $version }}</option>
-                                @endforeach
-                            </optgroup>
-                        </select>
-
-                        @if($docs->behind() === null)
-                            <a href="{{ route('status', $docs->version) }}#{{ $docs->file }}" class="mx-3 text-decoration-none text-secondary" title="Перевод не имеет метки">
-                                ●
-                            </a>
-                        @elseif ($docs->behind() > 0)
-                            <a href="{{ route('status', $docs->version) }}#{{ $docs->file }}" class="mx-3 text-decoration-none text-primary" title="Отстаёт на {{ $docs->behind() }} изменения">
-                                ●
-                            </a>
-                        @else
-                            <a href="{{ route('status', $docs->version) }}#{{ $docs->file }}" class="mx-3 text-decoration-none text-success" title="Перевод актуален">
-                                ●
-                            </a>
-                        @endif
-
-                        <a href="{{ $docs->getOriginalUrl() }}" title="Посмотреть оригинал" target="_blank"
-                           class="link-body-emphasis text-decoration-none d-none d-md-block">
-                            <x-icon path="i.translation" />
-                        </a>
                     </div>
 
                     <ul class="list-unstyled p-4 px-md-0">
@@ -72,6 +41,38 @@
                             </li>
                         @endforeach
                     </ul>
+
+
+                    <div class="d-flex align-items-center p-4 p-sm-0 mb-3">
+                        <select class="form-select form-select-sm rounded-3" onchange="Turbo.visit(this.value);">
+                            <optgroup label="Версия">
+                                @foreach (\App\Docs::SUPPORT_VERSIONS as $version)
+                                    <option
+                                        value="{{ route('docs', ['version' => $version]) }}"
+                                        @selected(active(route('docs', ['version' => $version]).'*'))>{{ $version }}</option>
+                                @endforeach
+                            </optgroup>
+                        </select>
+
+                        @if($docs->behind() === null)
+                            <a href="{{ route('status', $docs->version) }}#{{ $docs->file }}" class="mx-3 text-decoration-none text-secondary" title="Перевод не имеет метки">
+                                ●
+                            </a>
+                        @elseif ($docs->behind() > 0)
+                            <a href="{{ route('status', $docs->version) }}#{{ $docs->file }}" class="mx-3 text-decoration-none text-primary" title="Отстаёт на {{ $docs->behind() }} изменения">
+                                ●
+                            </a>
+                        @else
+                            <a href="{{ route('status', $docs->version) }}#{{ $docs->file }}" class="mx-3 text-decoration-none text-success" title="Перевод актуален">
+                                ●
+                            </a>
+                        @endif
+
+                        <a href="{{ $docs->getOriginalUrl() }}" title="Посмотреть оригинал" target="_blank"
+                           class="link-body-emphasis text-decoration-none d-none d-md-block">
+                            <x-icon path="i.translation" />
+                        </a>
+                    </div>
 
                     <x-docs.banner />
 
