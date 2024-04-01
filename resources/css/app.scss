@@ -126,8 +126,14 @@ $utilities: (
     max-width: 100%;
     min-width: 40px;
     object-fit: cover;
-    background-color: $white;
+    background-color: rgba($secondary-bg-subtle, 0.7);
 }
+@include color-mode(dark) {
+    .avatar-img {
+        background-color: rgba($secondary-bg-subtle, 0.5);
+    }
+}
+
 
 .company-usage img {
     filter: grayscale(100%) contrast(0.5);
