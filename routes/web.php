@@ -48,6 +48,7 @@ Route::get('/achievements', [AchievementsController::class, 'index'])->name('ach
 Route::view('/hangman', 'pages.hangman')->name('hangman');
 Route::view('/editor-guide', 'pages.editor-guide')->name('editor-guide');
 
+Route::view('/library', 'library.index')->name('library');
 Route::view('/library/clear-code', 'library.clear-code')->name('library.clear-code');
 Route::view('/library/upgrade', 'library.upgrade')->name('library.upgrade');
 Route::view('/library/security', 'library.security')->name('library.security');
