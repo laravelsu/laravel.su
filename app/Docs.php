@@ -337,7 +337,7 @@ class Docs
     /**
      * @return bool
      */
-    public function isOlderVersion():bool
+    public function isOlderVersion(): bool
     {
         return version_compare($this->version, static::DEFAULT_VERSION) < 0;
     }
