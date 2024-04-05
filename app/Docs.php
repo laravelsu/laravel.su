@@ -335,11 +335,11 @@ class Docs
     }
 
     /**
-     * @return string
+     * @return bool
      */
-    public function isOlderVersion()
+    public function isOlderVersion():bool
     {
-        return $this->version !== static::DEFAULT_VERSION;
+        return version_compare($this->version, static::DEFAULT_VERSION) < 0;
     }
 
     /**
