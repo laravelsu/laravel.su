@@ -1,4 +1,8 @@
-@if(auth()->user()?->id === $user->id)
+@php
+    $user = $user ?? auth()->user();
+@endphp
+
+@if($user !== null)
     <div {{ $attributes->merge(['class' => 'bg-body-tertiary rounded overflow-hidden my-5 px-4 px-md-5 py-4 position-relative'])->except(['user', 'link']) }}>
         <div class="row align-items-center">
             <div class="col-auto col">
@@ -14,7 +18,7 @@
             </div>
 
             <div class="col-xxl-auto col-8 col-sm-6 ms-auto text-end">
-                <a href="{{ $link }}" class="btn btn-outline-primary stretched-link">Новая запись</a>
+                <a href="{{ $link }}" class="btn btn-outline-primary stretched-link">Опубликовать</a>
             </div>
         </div>
     </div>
