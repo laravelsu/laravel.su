@@ -156,6 +156,29 @@
                             </div>
                         </blockquote>
 
+
+                        <h2>Обои сообщества</h2>
+
+                        <p>Многие наши участники очень сильно увлечены сообществом, что сделали особенные изображения на рабочий стол:</p>
+
+                        <div class="row">
+                            <div class="col">
+                                <a href="/img/assets/background/version-1.png" download
+                                   class="bg-black rounded d-block">
+                                    <img src="/img/assets/background/version-1.png" width="400">
+                                </a>
+                            </div>
+
+
+                            <div class="col">
+                                <a href="/img/assets/background/version-2.png" download
+                                   class="bg-black rounded d-block">
+                                    <img src="/img/assets/background/version-2.png" width="400">
+                                </a>
+                            </div>
+                        </div>
+
+
                         <h2>Наше наследие</h2>
 
                         <p>
