@@ -76,7 +76,6 @@ class MeetController extends Controller
                 'meet.online'   => 'Онлайн',
             ]);
 
-
         $meet->fill($request->get('meet'));
 
         $request->user()->meets()->save($meet);
