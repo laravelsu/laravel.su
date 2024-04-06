@@ -76,12 +76,10 @@ class MeetController extends Controller
                 'meet.online'   => 'Онлайн',
             ]);
 
-        $meet->fill(array_merge($request->get('meet'), [
-            'online'  => $request->boolean('meet.online'),
-            'user_id' => $request->user()->id,
 
-        ]))
-            ->save();
+        $meet->fill($request->get('meet'));
+
+        $request->user()->meets()->save($meet);
 
         if ($meet->approved) {
             Toast::success('Изменения успешно сохранены.')->disableAutoHide();
