@@ -150,7 +150,9 @@ main div {
 
     @include media-breakpoint-up(md) {
         h2 {
-            margin-left: -2rem;
+            a {
+                margin-left: -2rem;
+            }
         }
     }
 
