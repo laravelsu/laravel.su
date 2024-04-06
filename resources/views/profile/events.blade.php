@@ -2,9 +2,6 @@
 
 @section('tab')
     <div class="col-xl-8 col-md-12 mx-auto">
-        <x-new-item :user="$user" :link="route('meets.create')"/>
-    </div>
-    <div class="col-xl-8 col-md-12 mx-auto">
         @if($meets->isEmpty())
             <div class="bg-body-tertiary rounded p-md-5 rounded">
                 <div class="p-4 p-md-5">
