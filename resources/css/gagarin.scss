@@ -18,13 +18,15 @@
 }
 
 @keyframes tail-fade {
-    0%, 50% {
+    0%,
+    50% {
         visibility: visible;
         width: var(--star-tail-length);
         opacity: 1;
     }
 
-    70%, 80% {
+    70%,
+    80% {
         visibility: visible;
         width: 0;
         opacity: 0.4;
@@ -47,32 +49,32 @@
 @font-face {
     font-family: 'Fyodor-Bold';
     src: url('/fonts/Fyodor-Bold.eot');
-    src: url('/fonts/Fyodor-Bold.eot?#iefix') format('embedded-opentype'),
-    url('/fonts/Fyodor-Bold.woff2') format('woff2'),
-    url('/fonts/Fyodor-Bold.woff') format('woff');
+    src:
+        url('/fonts/Fyodor-Bold.eot?#iefix') format('embedded-opentype'),
+        url('/fonts/Fyodor-Bold.woff2') format('woff2'),
+        url('/fonts/Fyodor-Bold.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
 
 .gagarin {
-
     background-color: #e5ddbc;
     //background: url(/img/gagarin/space.jpg);
     background-size: cover;
     overflow: hidden;
-    font-family: "Fyodor-Bold", serif!important;
+    font-family: 'Fyodor-Bold', serif !important;
     position: relative;
     @extend .rounded;
 
-
     svg {
         display: block;
-        background-image: url('/img/gagarin/space.jpg') ;
+        background-image: url('/img/gagarin/space.jpg');
         border-radius: 0.5rem;
         background-size: cover;
     }
 
-    #ship, #comet {
+    #ship,
+    #comet {
         border-radius: 8px;
     }
 
@@ -87,12 +89,12 @@
 
     .stats {
         margin: 1rem;
-        color:     rgba(255, 255, 255, 0.5);
+        color: rgba(255, 255, 255, 0.5);
         font-size: 2rem;
     }
 
     #message {
-        border-radius: 0.5rem 0.5rem 0 0 ;
+        border-radius: 0.5rem 0.5rem 0 0;
         color: #e5ddbc;
         font-size: 4rem;
         text-align: center;
@@ -104,7 +106,7 @@
         color: #e5ddbc;
         border-radius: 0.35rem;
         padding: 1rem 1rem 0 1rem;
-        z-index: 2
+        z-index: 2;
     }
 
     .stars {
@@ -137,7 +139,9 @@
         filter: drop-shadow(0 0 6px currentColor);
         transform: translate3d(104em, 0, 0);
         visibility: hidden;
-        animation: fall var(--fall-duration) var(--fall-delay) linear infinite, tail-fade var(--tail-fade-duration) var(--fall-delay) ease-out infinite;
+        animation:
+            fall var(--fall-duration) var(--fall-delay) linear infinite,
+            tail-fade var(--tail-fade-duration) var(--fall-delay) ease-out infinite;
 
         @include sp-layout {
             // For mobile performance, tail-fade animation will be removed QAQ
@@ -153,7 +157,8 @@
             }
         }
 
-        &::before, &::after {
+        &::before,
+        &::after {
             position: absolute;
             content: '';
             top: 0;
@@ -173,6 +178,4 @@
             transform: rotate(-45deg);
         }
     }
-
-
 }
