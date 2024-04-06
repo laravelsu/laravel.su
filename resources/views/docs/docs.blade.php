@@ -84,16 +84,18 @@
                     <main class="px-md-4 px-xl-5 documentations position-relative" data-controller="prism">
                         <h1 class="display-6 fw-bold text-body-emphasis">{{ $docs->title() }}</h1>
                         @if ($docs->isOlderVersion())
-                            <blockquote class="docs-blockquote-note position-relative  mt-4" role="alert">
-                                <a href="{{ route('library.upgrade') }}" class="text-decoration-none link-body-emphasis stretched-link icon-link-hover p-4 text-balance">
-                                    <div>
-                                        <div class="mb-1 d-block fw-bold">Осторожно! Вы просматриваете документ для прошлой версии.</div>
-                                        <div class="mb-0 d-block opacity-75">Рассмотрите возможность обновления вашего проекта до актуальной версии <code>{{ \App\Docs::DEFAULT_VERSION }}</code>.
-                                            <span class="text-decoration-underline">Почему это важно?</span>
-                                        </div>
+                            <div class="d-flex flex-md-row flex-column px-4 px-xl-5 py-3 py-xl-4 bg-body-secondary rounded position-relative align-items-md-center my-4">
+                                <div class="vr bg-primary position-absolute start-0 opacity-100" style="top: 1.5em; bottom: 1.5em;"></div>
+                                <div class="my-3 my-md-0 col-md-10">
+                                    <div class="d-flex align-items-center mb-3 mb-md-0">
+                                        <div class="mb-1 d-block fw-bold text-balance">Вы просматриваете документ для прошлой версии.</div>
                                     </div>
-                                </a>
-                            </blockquote>
+                                    <div class="mb-0 d-block opacity-75 text-balance">
+                                        Рассмотрите возможность обновления вашего проекта до актуальной версии <code>{{ \App\Docs::DEFAULT_VERSION }}</code>.
+                                        <a href="{{ route('library.upgrade') }}" class="link-body-emphasis stretched-link link-underline-opacity-25 d-block">Почему это важно?</a>
+                                    </div>
+                                </div>
+                            </div>
                         @endif
 
                         <div class="d-block d-xxl-none mt-3">
