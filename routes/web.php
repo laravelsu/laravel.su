@@ -53,6 +53,7 @@ Route::view('/library/clear-code', 'library.clear-code')->name('library.clear-co
 Route::view('/library/upgrade', 'library.upgrade')->name('library.upgrade');
 Route::view('/library/security', 'library.security')->name('library.security');
 Route::view('/library/how-to-ask', 'library.how-to-ask')->name('library.how-to-ask');
+Route::view('/library/collection', 'library.collection')->name('library.collection');
 
 /*
 |--------------------------------------------------------------------------
