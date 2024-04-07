@@ -24,7 +24,7 @@
 
 
     <x-container>
-        <div class="row g-4 g-xxl-5 g-lg-4 g-md-3">
+        <div class="row g-4 g-lg-4 g-md-3">
 
             <div class="col-12 col-lg-8">
                 <div class="bg-primary bg-opacity-10 p-4 p-xl-5 rounded position-relative h-100 overflow-hidden">
