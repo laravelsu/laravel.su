@@ -85,7 +85,7 @@ class UserPresenter extends Presenter implements Personable, Searchable
     /**
      * @return string
      */
-    public function about():string
+    public function about(): string
     {
         return $this->entity->about
             ?? $this->entity->github_bio
