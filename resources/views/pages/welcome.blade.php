@@ -15,8 +15,8 @@
             </x-slot>
 
             <x-slot:actions>
-                <a href="{{ route('docs') }}" class="btn btn-primary btn-lg px-4">Начать читать!</a>
-                <a href="{{ route('courses') }}" class="btn btn-outline-primary btn-lg px-4">Учиться по видео</a>
+                <a href="{{ route('why-laravel') }}" class="btn btn-primary btn-lg px-4">Почему Laravel</a>
+                <a href="{{ route('feature') }}" class="btn btn-outline-primary btn-lg px-4">Возможности</a>
             </x-slot>
     </x-header>
 
