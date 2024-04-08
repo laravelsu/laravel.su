@@ -197,6 +197,6 @@ class Post extends Model
      */
     public function getDescriptionAttribute()
     {
-        return Str::of($this->content)->stripTags()->words(20);
+        return Str::of($this->content)->words(30)->markdown()->stripTags();
     }
 }
