@@ -18,6 +18,7 @@
     @php
         $sections = collect([
             'basics',
+            'consistency',
             'foreach',
             'thinking-in-steps',
             'dont-primitives',

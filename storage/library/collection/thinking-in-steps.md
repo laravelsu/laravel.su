@@ -1,41 +1,34 @@
 ---
-title: "Думай об изменениях"
-description: "Как это будет работать завтра?"
+title: "Цепочка методов для обработки данных"
+description: "Думай об изменениях. Как это будет работать завтра?"
 ---
 
 В программировании часто возникают задачи, требующие доработки или внесения изменения в уже существующий код.
-Давайте рассмотрим, как мы можем использовать методы коллекций и сравним их с использованием массивов.
+Давайте рассмотрим, как мы можем использовать методы коллекций и сравним их с использованием методов обработки массивов.
 
-Давайте снова вернёмся к примеру с фильтрацией активных пользователей:
+Простой пример: у нас есть набор пользователей и мы хотим отфильтровать только активных пользователей:
 
 ```php
 // Плохо ❌
-$activeUsers = [];
-
-foreach ($users as $user) {
-    if ($user->isActive()) {
-        $activeUsers[] = $user;
-    }
-}
+$activeUsers = array_filter($activeUsers, function (User $user) {
+    return $user->isActive();
+});
 ```
 
-Теперь нам нужно добавить ещё один шаг: убрать администраторов из списка активных пользователей и мы не хотим
-использовать массивы:
+Теперь нам нужно добавить ещё один шаг: убрать администраторов из списка активных пользователей:
 
 ```php
-// Лучше, но не идеально ❌
+// Плохо ❌
 $activeUsers = array_filter($activeUsers, function (User $user) {
     return $user->isActive();
 });
  
-$activeUsers = array_filter($activeUsers, function (User $user) {
+$activeRegularUsers = array_filter($activeUsers, function (User $user) {
     return !$user->isAdmin();
 });
 ```
 
-Нам пришлось объявить переменную `$activeUsers` дважды, но это не самое худшее. 
-
-При использовании коллекции каждый вызов метода, это отдельный шаг, который можно легко прочитать и понять:
+При использовании коллекции каждый вызов метода, это отдельный шаг цепочки, который можно легко прочитать и понять:
 
 ```php
 // Хорошо ✅
@@ -52,16 +45,16 @@ $activeUsers = $users
 Теперь введём ещё одно условие, нам нужно отсортировать пользователей по дате регистрации:
 
 ```php
-// Лучше, но не идеально ❌
+// Плохо ❌
 $activeUsers = array_filter($activeUsers, function (User $user) {
     return $user->isActive();
 });
  
-$activeUsers = array_filter($activeUsers, function (User $user) {
+$activeRegularUsers = array_filter($activeUsers, function (User $user) {
     return !$user->isAdmin();
 });
 
-usort($activeUsers, function (User $a, User $b) {
+usort($activeRegularUsers, function (User $a, User $b) {
     return $a->created_at <=> $b->created_at;
 });
 ```
