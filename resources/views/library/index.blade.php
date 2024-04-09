@@ -57,12 +57,12 @@
 
                     <div class="bg-secondary bg-opacity-10 rounded p-5 h-100 position-relative overflow-hidden">
                         <div class="d-flex flex-column position-relative h-100">
-                            <h3 class="mb-3 fw-bold">Документация</h3>
+                            <h3 class="mb-3 fw-bold">Коллекции</h3>
                             <p class="mb-auto fw-light">
-                                Это ключ к полному пониманию, даже если применение еще не ясно.
+                                Перестаньте использовать громоздкие примитивные массивы и начните использовать коллекции.
                             </p>
 
-                            <a href="{{ route('docs') }}"
+                            <a href="{{ route('library.collection') }}"
                                class="link-body-emphasis text-decoration-none icon-link icon-link-hover stretched-link mt-4">
                                 Начать читать
                                 <x-icon path="i.arrow-right" class="bi" />
