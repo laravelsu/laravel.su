@@ -4,7 +4,7 @@
     <x-header image="/img/ui/crane-h.svg">
         <x-slot:sup>Среда разработки</x-slot>
             <x-slot:title>
-                Laravel Idea
+                Laravel Idea для PhpStorm
             </x-slot>
 
             <x-slot:description>
