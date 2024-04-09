@@ -4,7 +4,7 @@
             class="bg-body-tertiary rounded p-4 p-xl-5 position-relative">
             <div class="row d-md-flex align-items-center justify-content-between position-relative">
 
-                <div class="col-md-3 mt-2 mt-md-0">
+                <div class="col-md-3 mt-2 mt-md-0 text-balance">
                     <a href="{{route('position.show', $position)}}"
                        class="h5 link-body-emphasis text-decoration-none">{{$position->title}}</a>
                     <div class="opacity-50 mt-md-2"> {{$position->organization}}</div>
