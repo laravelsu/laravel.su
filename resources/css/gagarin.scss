@@ -1,5 +1,3 @@
-
-
 @keyframes rotation-space {
     0% {
         transform: rotate(0deg);
@@ -31,10 +29,12 @@
         display: block;
         animation: rotation-space-item 3s infinite linear;
         overflow: visible;
-        svg{
-             path, circle, rect {
-                 -webkit-transform-origin: center center;
-             }
+        svg {
+            path,
+            circle,
+            rect {
+                -webkit-transform-origin: center center;
+            }
             transform-origin: 50% 50%;
             -webkit-transform-origin: center center;
             animation: rotation-space-item 130ms infinite linear;
