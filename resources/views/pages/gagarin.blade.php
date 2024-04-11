@@ -168,49 +168,25 @@
                             <div class="d-flex flex-column h-100">
 
                                 <div class="mb-auto">
-                                    <p class="h2 mb-3">Как это было</p>
+                                    <p class="h2 mb-3 text-balance">Как это было:</p>
 
                                     <p>
-                                        "Поехали" вместе: как это было. Хроника дня 12 апреля 1961 года в событиях и лицах
+                                        На орбите Гагарин беспрерывно сообщал о состоянии оборудования и самочувствии, фиксировал все наблюдения.
                                     </p>
 
                                     <p>
-                                        Lorem ipsum dolor sit amet consectetur. Consequat sed ac in nullam facilisis hac
-                                        at orci.Lorem ipsum dolor sit amet consectetur. Consequat sed ac in nullam
-                                        facilisis hac at orci.Lorem ipsum dolor sit amet consectetur. Consequat sed ac
-                                        in nullam facilisis hac at orci.
+                                        Родная планета предстала перед первопроходцем в
+                                        совершенно ином виде, который заворожил пилота.
+                                        В восторге от видения Земли из космоса, он запечатлел свои впечатления на
+                                        бортовом магнитофоне:
                                     </p>
-                                </div>
 
-
-                                <div class="mt-auto">
-
-                                    <p class="opacity-50 mb-2 small">Некоторые компоненты:</p>
-
-                                    <a href="{{ asset('https://orchid.software/ru/docs/field') }}"
-                                       class="d-inline-flex link-body-emphasis text-decoration-none mb-1 icon-link icon-link-hover me-3">
-                                        Элементы форм
-                                        <x-icon path="i.arrow-right" class="bi" />
-                                    </a>
-
-                                    <a href="{{ asset('https://orchid.software/ru/docs/table') }}"
-                                       class="d-inline-flex link-body-emphasis text-decoration-none mb-1 icon-link icon-link-hover me-3">
-                                        Таблицы
-                                        <x-icon path="i.arrow-right" class="bi" />
-                                    </a>
-
-                                    <a href="{{ asset('https://orchid.software/ru/docs/charts') }}"
-                                       class="d-inline-flex link-body-emphasis text-decoration-none mb-1 icon-link icon-link-hover me-3">
-                                        Графики
-                                        <x-icon path="i.arrow-right" class="bi" />
-                                    </a>
-
-                                    <a href="{{ asset('https://orchid.software/ru/docs/modals') }}"
-                                       class="d-inline-flex link-body-emphasis text-decoration-none mb-1 icon-link icon-link-hover me-3">
-                                        Модальные окна
-                                        <x-icon path="i.arrow-right" class="bi" />
-                                    </a>
-
+                                    <audio class="mb-3" controls="controls" controllist="nodownload"
+                                           preload="metadata" data-description="" data-source="">
+                                        <source
+                                            src="https://cdnstatic.rg.ru/uploads/attachments/2024/03/07/rech-pered-startom_21e.mp3"
+                                            type="audio/mp3">
+                                    </audio>
                                 </div>
                             </div>
                         </div>
@@ -230,12 +206,15 @@
                     <div class="d-flex flex-column h-100">
 
                         <div class="mb-auto">
-                            <p class="h2 mb-3">Первый полет в космос</p>
 
-                            <p>
-                                Был совершен 12 апреля 1961 года, корабль «Восток-1» стартовал с
-                                космодрома Байконур в 09:07 по московскому времени.
-                            </p>
+                            <p class="opacity-50 mb-2 small">Что почитать?</p>
+                            <p class="h5 mb-3">Специальный проект "РГ" к 90-летию со дня рождения первого космонавта.</p>
+
+                            <a href="{{ asset('https://rg.ru/articles/gagarin/') }}"
+                               rel="noreferrer noopener"
+                               target="_blank"
+                               class="stretched-link">
+                            </a>
                         </div>
 
 
