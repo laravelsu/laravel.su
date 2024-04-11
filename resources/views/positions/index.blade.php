@@ -26,7 +26,6 @@
     </x-header>
 
     <x-container>
-        <div class="col-xl-8 col-md-12 mx-auto hotwire-frame">
         <turbo-frame id="positions-frame"
                      target="_top"
                      class="row g-4"
@@ -36,6 +35,7 @@
             @include('positions.list')
         </turbo-frame>
 
+        <div class="row g-4">
             @include('positions.pagination')
         </div>
     </x-container>
