@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title', 'Админ панель | Самое важное вместе с Orchid')
+@section('title', 'Тяга к знаниям двигает нас к звёздам')
 
 @section('content')
 
@@ -15,29 +15,35 @@
 
     <x-container>
 
+        <div class="mt-5 position-relative overflow-visible">
+        <figure class="position-absolute top-50 start-0 translate-middle z-n1 ms-4 mt-5">
+            <img src="/img/ui/vostok/satellite.svg" width="240" height="240">
+        </figure>
+
         <div class="gagarin col-xl-8 col-md-12 mx-auto">
 
             <div class="bg-body-tertiary mb-4 p-4 p-xl-5 rounded">
 
-
-
-                    <div id="message">Преодолей препятствия и получи доступ к знаниям! Поехали!</div>
+                    <div id="message" class="h2 text-center mb-4 mb-xl-5">Преодолей препятствия и получи доступ к знаниям!</div>
 
                     <div class="position-relative overflow-hidden p-4 rounded d-flex align-items-center justify-content-center">
 
-                        <div style="    background-image: url(/img/gagarin/space.jpg);background-size: cover; animation: rotation-space 60s infinite linear; position: absolute; bottom: -50%; top: -50%; left: -50%; right: -50%"></div>
+                        <div style="background-image: url(/img/gagarin/space.jpg);background-size: cover; animation: rotation-space 300s infinite linear; position: absolute; bottom: -50%; top: -50%; left: -50%; right: -50%"></div>
 
                         <svg id="gameSVG" width="600" height="600"></svg>
                         <div id="start-placeholder"
                              class="position-absolute top-0 bottom-0 start-0 end-0 d-flex align-items-center justify-content-center bg-dark bg-opacity-50 rounded">
-                            <button class="btn btn-link" type="button" onclick="start()">Старт</button>
+                            <button class="btn btn-primary" type="button" onclick="start()">Поехали!</button>
                         </div>
                     </div>
 
-                    <div class="stats">Очки: <strong id="timer" data-timer="0">0.0</strong></div>
+                    <div class="stats d-flex align-items-baseline gap-3 mt-2 mt-xl-3 h3 mb-0">
+                        <small class="opacity-50">Очки:</small>
+                        <strong id="timer" data-timer="0">0</strong>
+                    </div>
 
 
-                <div class="assets">
+                <div class="d-none">
                     <svg xmlns="http://www.w3.org/2000/svg" id="ship" style="background-color: blue"
                          xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px"
                          viewBox="0 0 100 125" enable-background="new 0 0 100 100" xml:space="preserve">
@@ -121,6 +127,126 @@
             </div>
         </div>
 
+        </div>
+
+
+
+    </x-container>
+
+
+
+    <x-container>
+
+        <section class="mb-4 marketing">
+            <div class="row align-items-center">
+                <div class="col-lg-5 ms-auto my-5">
+                    <blockquote class="display-6 fw-semibold mb-4 text-balance">
+                        Космос — это наша судьба, наша мечта, наша надежда и наше будущее.
+                    </blockquote>
+
+                    <div class="lh-1 fw-normal text-balance">
+                        <div class="fw-bolder mb-1">Юрий Гагарин</div>
+                        <small class="opacity-50">Первый космонавт</small>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <img src="/img/ui/vostok/gagarin.svg" class="img-fluid d-none d-lg-block mx-auto">
+                </div>
+            </div>
+        </section>
+
+        <div class="row g-4 g-lg-4 g-md-3">
+
+            <div class="col-12 col-lg-8">
+                <div class="bg-primary bg-opacity-10 p-4 p-xl-5 rounded position-relative h-100 overflow-hidden">
+
+
+                    <div class="row h-100">
+
+                        <div class="col-12 col-md-8 col-lg-6 col-xl-6">
+                            <div class="d-flex flex-column h-100">
+
+                                <div class="mb-auto">
+                                    <p class="h2 mb-3">Как это было</p>
+
+                                    <p>
+                                        "Поехали" вместе: как это было. Хроника дня 12 апреля 1961 года в событиях и лицах
+                                    </p>
+
+                                    <p>
+                                        Lorem ipsum dolor sit amet consectetur. Consequat sed ac in nullam facilisis hac
+                                        at orci.Lorem ipsum dolor sit amet consectetur. Consequat sed ac in nullam
+                                        facilisis hac at orci.Lorem ipsum dolor sit amet consectetur. Consequat sed ac
+                                        in nullam facilisis hac at orci.
+                                    </p>
+                                </div>
+
+
+                                <div class="mt-auto">
+
+                                    <p class="opacity-50 mb-2 small">Некоторые компоненты:</p>
+
+                                    <a href="{{ asset('https://orchid.software/ru/docs/field') }}"
+                                       class="d-inline-flex link-body-emphasis text-decoration-none mb-1 icon-link icon-link-hover me-3">
+                                        Элементы форм
+                                        <x-icon path="i.arrow-right" class="bi" />
+                                    </a>
+
+                                    <a href="{{ asset('https://orchid.software/ru/docs/table') }}"
+                                       class="d-inline-flex link-body-emphasis text-decoration-none mb-1 icon-link icon-link-hover me-3">
+                                        Таблицы
+                                        <x-icon path="i.arrow-right" class="bi" />
+                                    </a>
+
+                                    <a href="{{ asset('https://orchid.software/ru/docs/charts') }}"
+                                       class="d-inline-flex link-body-emphasis text-decoration-none mb-1 icon-link icon-link-hover me-3">
+                                        Графики
+                                        <x-icon path="i.arrow-right" class="bi" />
+                                    </a>
+
+                                    <a href="{{ asset('https://orchid.software/ru/docs/modals') }}"
+                                       class="d-inline-flex link-body-emphasis text-decoration-none mb-1 icon-link icon-link-hover me-3">
+                                        Модальные окна
+                                        <x-icon path="i.arrow-right" class="bi" />
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-none d-md-block col-md-4 col-lg-6 col-xl-6">
+                            <img src="/img/ui/vostok/earth.svg" class="img-fluid">
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="bg-secondary bg-opacity-10 p-4 p-xl-5 rounded position-relative h-100">
+
+                    <div class="d-flex flex-column h-100">
+
+                        <div class="mb-auto">
+                            <p class="h2 mb-3">Первый полет в космос</p>
+
+                            <p>
+                                Был совершен 12 апреля 1961 года, корабль «Восток-1» стартовал с
+                                космодрома Байконур в 09:07 по московскому времени.
+                            </p>
+                        </div>
+
+
+                        <div class="mt-auto d-flex flex-column align-items-center justify-content-between">
+                            <img src="/img/ui/vostok/rocket.svg" class="img-fluid package-cover mb-2">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </x-container>
 
 

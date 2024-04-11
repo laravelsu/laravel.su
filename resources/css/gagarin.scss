@@ -1,21 +1,4 @@
-@mixin sp-layout {
-    @media screen and (max-width: 750px) {
-        @content;
-    }
-}
 
-@function random_range($min, $max) {
-    $rand: random();
-    $random_range: $min + floor($rand * (($max - $min) + 1));
-    @return $random_range;
-}
-
-@keyframes fall {
-    to {
-        visibility: visible;
-        transform: translate3d(-30em, 0, 0);
-    }
-}
 
 @keyframes rotation-space {
     0% {
@@ -38,68 +21,20 @@
     }
 }
 
-@keyframes tail-fade {
-    0%,
-    50% {
-        visibility: visible;
-        width: var(--star-tail-length);
-        opacity: 1;
-    }
-
-    70%,
-    80% {
-        visibility: visible;
-        width: 0;
-        opacity: 0.4;
-    }
-
-    100% {
-        visibility: visible;
-        width: 0;
-        opacity: 0;
-    }
-}
-
-@keyframes blink {
-    50% {
-        visibility: visible;
-        opacity: 0.6;
-    }
-}
-
-@font-face {
-    font-family: 'Fyodor-Bold';
-    src: url('/fonts/Fyodor-Bold.eot');
-    src:
-        url('/fonts/Fyodor-Bold.eot?#iefix') format('embedded-opentype'),
-        url('/fonts/Fyodor-Bold.woff2') format('woff2'),
-        url('/fonts/Fyodor-Bold.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
 .gagarin {
-    //background-color: #e5ddbc;
-    //background: url(/img/gagarin/space.jpg);
     background-size: cover;
     overflow: hidden;
-    //font-family: 'Fyodor-Bold', serif !important;
     position: relative;
     @extend .rounded;
 
     svg {
         display: block;
-        //background-image: url('/img/gagarin/space.jpg');
-        //border-radius: 0.5rem;
-        //background-size: cover;
         animation: rotation-space-item 3s infinite linear;
         overflow: visible;
-        svg {
-            path,
-            circle,
-            rect {
-                -webkit-transform-origin: center center;
-            }
+        svg{
+             path, circle, rect {
+                 -webkit-transform-origin: center center;
+             }
             transform-origin: 50% 50%;
             -webkit-transform-origin: center center;
             animation: rotation-space-item 130ms infinite linear;
@@ -109,90 +44,5 @@
     #ship,
     #comet {
         border-radius: 8px;
-    }
-
-    .assets {
-        display: none;
-    }
-
-    #timer {
-        color: #fff;
-        font-size: 2rem;
-    }
-
-    .stats {
-        margin: 1rem;
-        color: rgba(255, 255, 255, 0.5);
-        font-size: 2rem;
-    }
-
-    .stars {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 120%;
-        transform: rotate(-45deg);
-        z-index: 1;
-    }
-
-    .star {
-        $star-count: 50;
-        --star-color: var(--primary-color);
-        --star-tail-length: 6em;
-        --star-tail-height: 2px;
-        --star-width: calc(var(--star-tail-length) / 6);
-        --fall-duration: 9s;
-        --tail-fade-duration: var(--fall-duration);
-
-        position: absolute;
-        top: var(--top-offset);
-        left: 0;
-        width: var(--star-tail-length);
-        height: var(--star-tail-height);
-        color: var(--star-color);
-        background: linear-gradient(45deg, #6c7a9a, transparent);
-        border-radius: 50%;
-        filter: drop-shadow(0 0 6px currentColor);
-        transform: translate3d(104em, 0, 0);
-        visibility: hidden;
-        animation:
-            fall var(--fall-duration) var(--fall-delay) linear infinite,
-            tail-fade var(--tail-fade-duration) var(--fall-delay) ease-out infinite;
-
-        @include sp-layout {
-            // For mobile performance, tail-fade animation will be removed QAQ
-            animation: fall var(--fall-duration) var(--fall-delay) linear infinite;
-        }
-
-        @for $i from 1 through $star-count {
-            &:nth-child(#{$i}) {
-                --star-tail-length: #{max(600, random(750)) / 100}em;
-                --top-offset: #{random(10000) / 100}vh;
-                --fall-duration: #{max(6000, random(12000)) / 1000}s;
-                --fall-delay: #{random(10000) / 1000}s;
-            }
-        }
-
-        &::before,
-        &::after {
-            position: absolute;
-            content: '';
-            top: 0;
-            left: calc(var(--star-width) / -2);
-            width: var(--star-width);
-            height: 100%;
-            background: linear-gradient(45deg, transparent, currentColor, transparent);
-            border-radius: inherit;
-            animation: blink 2s linear infinite;
-        }
-
-        &::before {
-            transform: rotate(45deg);
-        }
-
-        &::after {
-            transform: rotate(-45deg);
-        }
     }
 }
