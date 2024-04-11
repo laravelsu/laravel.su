@@ -17,6 +17,27 @@
     }
 }
 
+@keyframes rotation-space {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rotation-space-item {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(-2deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
 @keyframes tail-fade {
     0%,
     50% {
@@ -58,19 +79,29 @@
 }
 
 .gagarin {
-    background-color: #e5ddbc;
+    //background-color: #e5ddbc;
     //background: url(/img/gagarin/space.jpg);
     background-size: cover;
     overflow: hidden;
-    font-family: 'Fyodor-Bold', serif !important;
+    //font-family: 'Fyodor-Bold', serif !important;
     position: relative;
     @extend .rounded;
 
     svg {
         display: block;
-        background-image: url('/img/gagarin/space.jpg');
-        border-radius: 0.5rem;
-        background-size: cover;
+        //background-image: url('/img/gagarin/space.jpg');
+        //border-radius: 0.5rem;
+        //background-size: cover;
+        animation: rotation-space-item 3s infinite linear;
+        overflow: visible;
+        svg{
+             path, circle, rect {
+                 -webkit-transform-origin: center center;
+             }
+            transform-origin: 50% 50%;
+            -webkit-transform-origin: center center;
+            animation: rotation-space-item 130ms infinite linear;
+        }
     }
 
     #ship,
@@ -93,21 +124,6 @@
         font-size: 2rem;
     }
 
-    #message {
-        border-radius: 0.5rem 0.5rem 0 0;
-        color: #e5ddbc;
-        font-size: 4rem;
-        text-align: center;
-        background: #c44b43;
-    }
-
-    .wrapper {
-        background: #c44b43;
-        color: #e5ddbc;
-        border-radius: 0.35rem;
-        padding: 1rem 1rem 0 1rem;
-        z-index: 2;
-    }
 
     .stars {
         position: fixed;
@@ -118,6 +134,7 @@
         transform: rotate(-45deg);
         z-index: 1;
     }
+
 
     .star {
         $star-count: 50;

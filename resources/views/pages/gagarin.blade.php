@@ -1,67 +1,46 @@
-@extends('html')
-@section('title', 'Поехали')
+@extends('layout')
+@section('title', 'Админ панель | Самое важное вместе с Orchid')
 
-@section('body')
+@section('content')
 
-    <div class="gagarin" data-bs-theme="light">
+    <x-header image="/img/ui/vostok/vostok2.svg">
+        <x-slot:sup>Тяга к знаниям двигает нас к звёздам</x-slot>
+        <x-slot:title>С Днём Космонавтики!</x-slot>
+
+        <x-slot:description>
+            Пусть эта дата вдохновляет нас на новые открытия и смелые шаги в неизведанные просторы Вселенной.
+        </x-slot>
+    </x-header>
 
 
-        <div class="container">
+    <x-container>
+
+        <div class="gagarin col-xl-8 col-md-12 mx-auto">
+
+            <div class="bg-body-tertiary mb-4 p-4 p-xl-5 rounded">
 
 
-            <div class="row align-items-center g-lg-5 py-5">
-                <div class="col-lg-7 text-center text-lg-start">
-                    <h1 class="display-4 fw-bold lh-1 text-dark mb-3">С днём космонавтики</h1>
-                    <p class="col-lg-10 fs-4">Каждый День Космонавтики напоминает нам о том, что человечество всегда
-                                              стремилось к звёздам и неуклонно движется вперёд, преодолевая границы
-                                              исследований и познания. Пусть эта дата вдохновляет нас на новые открытия
-                                              и смелые шаги в неизведанные просторы Вселенной.</p>
-                </div>
-                <div class="col-md-10 mx-auto col-lg-5">
-                    <div class="position-relative mb-5 marketing">
 
-                        <div class="text-balance bg-body-secondary rounded p-4 p-xl-5 position-relative">
-                            <blockquote><span class="display-3">Космос — это наша судьба, наша мечта, наша надежда и наше будущее.</span></blockquote>
+                    <div id="message">Преодолей препятствия и получи доступ к знаниям! Поехали!</div>
 
-                            <div class="d-flex align-items-center">
-                                <div class="lh-1 display-3">
-                                    <div class="fw-bolder mb-1">Юрий Гагарин</div>
-                                    <small class="opacity-50">Первый космонавт</small>
-                                </div>
-                            </div>
+                    <div class="position-relative overflow-hidden p-4 rounded d-flex align-items-center justify-content-center">
+
+                        <div style="    background-image: url(/img/gagarin/space.jpg);background-size: cover; animation: rotation-space 60s infinite linear; position: absolute; bottom: -50%; top: -50%; left: -50%; right: -50%"></div>
+
+                        <svg id="gameSVG" width="600" height="600"></svg>
+                        <div id="start-placeholder"
+                             class="position-absolute top-0 bottom-0 start-0 end-0 d-flex align-items-center justify-content-center bg-dark bg-opacity-50 rounded">
+                            <button class="btn btn-link" type="button" onclick="start()">Старт</button>
                         </div>
                     </div>
-                </div>
-            </div>
-
-            {{--
-            <div class="stars">
-                <div class="star"></div>
-                <div class="star"></div>
-                <div class="star"></div>
-                <div class="star"></div>
-            </div>
-    --}}
-
-            <div class="d-flex align-items-center align-content-center">
-                <div class="wrapper mx-auto">
-
-                    <div id="message">Поехали!</div>
-
-                    <svg id="gameSVG" width="800" height="600"></svg>
 
                     <div class="stats">Очки: <strong id="timer" data-timer="0">0.0</strong></div>
-                </div>
-            </div>
 
 
-            <p>С пожеланиями о великих открытиях и бесконечном стремлении к небесам,<br>Ваше имя</p>
-
-
-            <div class="assets">
-                <svg xmlns="http://www.w3.org/2000/svg" id="ship" style="background-color: blue"
-                     xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px"
-                     viewBox="0 0 100 125" enable-background="new 0 0 100 100" xml:space="preserve">
+                <div class="assets">
+                    <svg xmlns="http://www.w3.org/2000/svg" id="ship" style="background-color: blue"
+                         xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px"
+                         viewBox="0 0 100 125" enable-background="new 0 0 100 100" xml:space="preserve">
   <defs>
       <clipPath id="shipClipPath">
           <path fill="#fff"
@@ -79,12 +58,12 @@
           <stop offset="100%" style="stop-color:rgba(255,150,113,0.8)"/>
       </radialGradient>
   </defs>
-                    <circle cx="50%" cy="50%" r="50%" fill="url(#grad)"/>
-                    <rect width="100" height="100" fill="#FFFFFF" clip-path="url(#shipClipPath)"></rect>
+                        <circle cx="50%" cy="50%" r="50%" fill="url(#grad)"/>
+                        <rect width="100" height="100" fill="#FFFFFF" clip-path="url(#shipClipPath)"></rect>
 </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" id="comet" style="background-color: blue"
-                     xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px"
-                     viewBox="0 0 100 125" enable-background="new 0 0 100 100" xml:space="preserve">
+                    <svg xmlns="http://www.w3.org/2000/svg" id="comet" style="background-color: blue"
+                         xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px"
+                         viewBox="0 0 100 125" enable-background="new 0 0 100 100" xml:space="preserve">
 
       <defs>
           <radialGradient id="grad" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
@@ -133,14 +112,18 @@
 
           </clipPath>
       </defs>
-                    <circle cx="50%" cy="50%" r="50%" fill="url(#grad)"/>
-                    <rect width="100" height="100" fill="#FFFFFF" clip-path="url(#cometClipPath)"></rect>
+                        <circle cx="50%" cy="50%" r="50%" fill="url(#grad)"/>
+                        <rect width="100" height="100" fill="#FFFFFF" clip-path="url(#cometClipPath)"></rect>
 </svg>
+                </div>
+
+
             </div>
-
-
         </div>
-    </div>
+
+    </x-container>
+
+
 
     <script>
         const svg = document.getElementById("gameSVG");
@@ -216,12 +199,37 @@
 
         function moveComets() {
             comets.forEach(comet => {
+
                 comet.y += cometSpeed;
                 comet.x = comet.element.getAttribute('x');
                 comet.x -= cometSpeed;
 
-                comet.element.setAttribute("y", comet.y);
+                //comet.element.setAttribute("y", comet.y);
+                //comet.element.setAttribute("x", comet.x);
+
+
+                // Рассчитываем вектор движения от кометы к космическому кораблю
+                const dx = shipX - comet.x;
+                const dy = shipY - comet.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+
+                // Нормализуем вектор
+                const vx = dx / distance;
+                const vy = dy / distance;
+
+
+                if(distance > 100){
+                    // Обновляем позицию кометы с учетом скорости
+                    comet.x += vx;
+                    comet.y += vy;
+                }
+
+                // Обновляем атрибуты элемента SVG
                 comet.element.setAttribute("x", comet.x);
+                comet.element.setAttribute("y", comet.y);
+
+
+
                 if (comet.y > svg.height.baseVal.value) {
                     svg.removeChild(comet.element);
                     comets.splice(comets.indexOf(comet), 1);
@@ -230,11 +238,21 @@
         }
 
         function createComet() {
-            const x = Math.random() * svg.width.baseVal.value + (svg.width.baseVal.value * 0.5);
+
+            console.log(shipX, shipY);
+
+            let x = Math.random() * svg.width.baseVal.value + (svg.width.baseVal.value * 0.5);
+
+            if (shipX > svg.width.baseVal.value / 3) {
+                x += (shipX * 0.5);
+            }
+
             const y = 0;
             const cometElement = createCometElement(x, y);
             comets.push({element: cometElement, y: y});
         }
+
+
 
 
         function collisionDetection(fuzziness) {
@@ -278,8 +296,45 @@
             cometSpeed = baseCometSpeed + value * 0.1;
         }
 
+        let intervalComent = null;
+        let intervalGame = null;
 
-        let intervalComent = setInterval(createComet, cometInterval);
-        let intervalGame = setInterval(draw, 10);
+        function start() {
+             intervalComent = setInterval(createComet, cometInterval);
+             intervalGame = setInterval(draw, 10);
+
+             document.getElementById('start-placeholder').style.visibility = 'hidden';
+        }
+
     </script>
+
+
+
+    {{--
+    <div class="row align-items-center g-lg-5 py-5">
+        <div class="col-lg-7 text-center text-lg-start">
+            <h1 class="display-4 fw-bold lh-1 text-dark mb-3">С днём космонавтики</h1>
+            <p class="col-lg-10 fs-4">Каждый День Космонавтики напоминает нам о том, что человечество всегда
+                                      стремилось к звёздам и неуклонно движется вперёд, преодолевая границы
+                                      исследований и познания. Пусть эта дата вдохновляет нас на новые открытия
+                                      и смелые шаги в неизведанные просторы Вселенной.</p>
+        </div>
+        <div class="col-md-10 mx-auto col-lg-5">
+            <div class="position-relative mb-5 marketing">
+
+                <div class="text-balance bg-body-secondary rounded p-4 p-xl-5 position-relative">
+                    <blockquote><span class="display-3">Космос — это наша судьба, наша мечта, наша надежда и наше будущее.</span></blockquote>
+
+                    <div class="d-flex align-items-center">
+                        <div class="lh-1 display-3">
+                            <div class="fw-bolder mb-1">Юрий Гагарин</div>
+                            <small class="opacity-50">Первый космонавт</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+--}}
+
 @endsection
