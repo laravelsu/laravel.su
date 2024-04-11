@@ -46,7 +46,7 @@ Route::view('/admin', 'errors.admin');
 
 Route::get('/achievements', [AchievementsController::class, 'index'])->name('achievements');
 Route::view('/hangman', 'pages.hangman')->name('hangman');
-Route::view('/gagarin', 'pages.gagarin')->name('gagarin');
+Route::view('/vostok', 'pages.vostok')->name('vostok');
 Route::view('/editor-guide', 'pages.editor-guide')->name('editor-guide');
 
 Route::view('/library', 'library.index')->name('library');

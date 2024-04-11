@@ -8,17 +8,17 @@ export default class extends Controller {
     }
 
     toggle() {
-        this.toggleButtons();
-
         const audios = document.querySelectorAll('audio');
         audios.forEach((audio) => {
             audio.muted = !audio.muted;
         });
+
+        this.toggleButtons();
     }
 
     toggleButtons() {
-        this.muteButtonTarget.classList.toggle('d-none', this.isMuted);
-        this.unmuteButtonTarget.classList.toggle('d-none', !this.isMuted);
+        this.muteButtonTarget.classList.toggle('d-none', !this.isMuted);
+        this.unmuteButtonTarget.classList.toggle('d-none', this.isMuted);
     }
 
     get isMuted() {

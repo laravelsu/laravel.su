@@ -25,6 +25,17 @@
     position: relative;
     @extend .rounded;
 
+    .space {
+        background-image: url(/img/ui/vostok/space.jpg);
+        background-size: cover;
+        animation: rotation-space 300s infinite linear;
+        position: absolute;
+        bottom: -50%;
+        top: -50%;
+        left: -50%;
+        right: -50%
+    }
+
     svg {
         display: block;
         animation: rotation-space-item 3s infinite linear;

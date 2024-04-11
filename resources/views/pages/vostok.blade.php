@@ -20,31 +20,66 @@
             <img src="/img/ui/vostok/satellite.svg" width="240" height="240">
         </figure>
 
-        <div class="gagarin col-xl-8 col-md-12 mx-auto">
+        <div class="gagarin col-xl-8 col-md-12 mx-auto" data-controller="vostok">
+
+            <audio data-vostok-target="audioBackground" class="d-none" loop="loop">
+                <source src="/sound/vostok/background.mp3" type="audio/mp3">
+            </audio>
 
             <div class="bg-body-tertiary mb-4 p-4 p-xl-5 rounded">
 
-                    <div id="message" class="h2 text-center mb-4 mb-xl-5">Преодолей препятствия и получи доступ к знаниям!</div>
+                    <div id="message" data-vostok-target="message" class="h2 text-center mb-4 mb-xl-5">Преодолей препятствия и получи доступ к знаниям!</div>
 
                     <div class="position-relative overflow-hidden p-4 rounded d-flex align-items-center justify-content-center">
 
-                        <div style="background-image: url(/img/gagarin/space.jpg);background-size: cover; animation: rotation-space 300s infinite linear; position: absolute; bottom: -50%; top: -50%; left: -50%; right: -50%"></div>
+                        <div class="space"></div>
 
-                        <svg id="gameSVG" width="600" height="600"></svg>
-                        <div id="start-placeholder"
+                        <svg id="gameSVG" width="600" height="600" data-vostok-target="game"></svg>
+                        <div data-vostok-target="startPlaceholder"
                              class="position-absolute top-0 bottom-0 start-0 end-0 d-flex align-items-center justify-content-center bg-dark bg-opacity-50 rounded">
-                            <button class="btn btn-primary" type="button" onclick="start()">Поехали!</button>
+                            <button class="btn btn-primary" type="button" data-action="click->vostok#start">Поехали!</button>
+                        </div>
+
+                        <div data-vostok-target="endPlaceholder"
+                             class="position-absolute top-0 bottom-0 start-0 end-0 d-flex flex-column align-items-center justify-content-center bg-dark bg-opacity-50 rounded visually-hidden">
+
+                            <div class="col-md-6 mx-auto text-balance">
+                                <strong class="d-block">Поздравляем!</strong>
+                                <p>Вы успешно преодолели препятствия и получили доступ к знаниям которые помогут вам в Laravel и профессиональной разработке.</p>
+
+                                <div class="d-flex align-items-center gap-3">
+                                    <a class="btn btn-primary" href="{{ route('library') }}">В библиотеку</a>
+                                    <button class="btn btn-link" type="button" data-action="click->vostok#start">
+                                        Сыграть ещё
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
+                <div class="d-flex align-items-end">
                     <div class="stats d-flex align-items-baseline gap-3 mt-2 mt-xl-3 h3 mb-0">
                         <small class="opacity-50">Очки:</small>
-                        <strong id="timer" data-timer="0">0</strong>
+                        <strong id="timer" data-timer="0" data-vostok-target="timer">0</strong>
                     </div>
+
+                    <div class="d-flex align-items-center ms-auto" data-controller="sound-toggle">
+                        <button class="btn btn-link text-primary text-decoration-none p-0"
+                                data-sound-toggle-target="muteButton" data-action="click->sound-toggle#toggle">
+                            <x-icon path="bs.volume-mute-fill" width="2rem" height="2rem"/>
+                        </button>
+
+                        <button class="btn btn-link text-primary text-decoration-none p-0"
+                                data-sound-toggle-target="unmuteButton" data-action="click->sound-toggle#toggle"
+                                id="unmuteButton">
+                            <x-icon path="bs.volume-up-fill" width="2rem" height="2rem"/>
+                        </button>
+                    </div>
+                </div>
 
 
                 <div class="d-none">
-                    <svg xmlns="http://www.w3.org/2000/svg" id="ship" style="background-color: blue"
+                    <svg xmlns="http://www.w3.org/2000/svg" id="ship" data-vostok-target="ship" style="background-color: blue"
                          xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px"
                          viewBox="0 0 100 125" enable-background="new 0 0 100 100" xml:space="preserve">
   <defs>
@@ -67,7 +102,7 @@
                         <circle cx="50%" cy="50%" r="50%" fill="url(#grad)"/>
                         <rect width="100" height="100" fill="#FFFFFF" clip-path="url(#shipClipPath)"></rect>
 </svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" id="comet" style="background-color: blue"
+                    <svg xmlns="http://www.w3.org/2000/svg" id="comet" data-vostok-target="comet" style="background-color: blue"
                          xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px"
                          viewBox="0 0 100 125" enable-background="new 0 0 100 100" xml:space="preserve">
 
@@ -219,7 +254,7 @@
 
 
                         <div class="mt-auto d-flex flex-column align-items-center justify-content-between">
-                            <img src="/img/ui/vostok/rocket.svg" class="img-fluid package-cover mb-2">
+                            <img src="/img/ui/vostok/rocket.svg" class="img-fluid w-100 mb-2">
                         </div>
                     </div>
                 </div>
@@ -231,185 +266,7 @@
 
 
     <script>
-        const svg = document.getElementById("gameSVG");
 
-        const shipWidth = 100;
-        const shipHeight = 100;
-        const shipSpeed = 5;
-        const baseCometSpeed = 3
-        let cometSpeed = baseCometSpeed;
-        const cometWidth = 60;
-        const cometHeight = 60;
-        const cometInterval = 1000 // интервал в миллисекундах между кометами
-
-        let shipX = (svg.width.baseVal.value - shipWidth) / 2;
-        const shipY = svg.height.baseVal.value - shipHeight - 10;
-
-        let leftPressed = false;
-        let rightPressed = false;
-
-        let comets = [];
-
-        document.addEventListener("keydown", keyDownHandler);
-        document.addEventListener("keyup", keyUpHandler);
-
-        function keyDownHandler(event) {
-            if (event.key === "ArrowLeft") {
-                leftPressed = true;
-            } else if (event.key === "ArrowRight") {
-                rightPressed = true;
-            }
-        }
-
-        function keyUpHandler(event) {
-            if (event.key === "ArrowLeft") {
-                leftPressed = false;
-            } else if (event.key === "ArrowRight") {
-                rightPressed = false;
-            }
-        }
-
-        function createShipElement() {
-            const shipElement = document.getElementById('ship').cloneNode(true);
-            shipElement.setAttribute("x", shipX);
-            shipElement.setAttribute("y", shipY);
-            shipElement.setAttribute("width", shipWidth);
-            shipElement.setAttribute("height", shipHeight);
-            shipElement.setAttribute("fill", "#FFFFFF");
-            svg.appendChild(shipElement);
-            return shipElement;
-        }
-
-        const shipElement = createShipElement();
-
-        function moveShip() {
-            if (leftPressed && shipX > 0) {
-                shipX -= shipSpeed;
-            } else if (rightPressed && shipX < svg.width.baseVal.value - shipWidth) {
-                shipX += shipSpeed;
-            }
-            shipElement.setAttribute("x", shipX);
-        }
-
-        function createCometElement(x, y) {
-            const cometElement = document.getElementById('comet').cloneNode(true);
-            cometElement.setAttribute("x", x);
-            cometElement.setAttribute("y", y);
-            cometElement.setAttribute("width", cometWidth);
-            cometElement.setAttribute("height", cometHeight);
-            cometElement.setAttribute("fill", "#FF0000");
-            svg.appendChild(cometElement);
-            return cometElement;
-        }
-
-        function moveComets() {
-            comets.forEach(comet => {
-
-                comet.y += cometSpeed;
-                comet.x = comet.element.getAttribute('x');
-                comet.x -= cometSpeed;
-
-                //comet.element.setAttribute("y", comet.y);
-                //comet.element.setAttribute("x", comet.x);
-
-
-                // Рассчитываем вектор движения от кометы к космическому кораблю
-                const dx = shipX - comet.x;
-                const dy = shipY - comet.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-
-                // Нормализуем вектор
-                const vx = dx / distance;
-                const vy = dy / distance;
-
-
-                if(distance > 100){
-                    // Обновляем позицию кометы с учетом скорости
-                    comet.x += vx;
-                    comet.y += vy;
-                }
-
-                // Обновляем атрибуты элемента SVG
-                comet.element.setAttribute("x", comet.x);
-                comet.element.setAttribute("y", comet.y);
-
-
-
-                if (comet.y > svg.height.baseVal.value) {
-                    svg.removeChild(comet.element);
-                    comets.splice(comets.indexOf(comet), 1);
-                }
-            });
-        }
-
-        function createComet() {
-
-            console.log(shipX, shipY);
-
-            let x = Math.random() * svg.width.baseVal.value + (svg.width.baseVal.value * 0.5);
-
-            if (shipX > svg.width.baseVal.value / 3) {
-                x += (shipX * 0.5);
-            }
-
-            const y = 0;
-            const cometElement = createCometElement(x, y);
-            comets.push({element: cometElement, y: y});
-        }
-
-
-
-
-        function collisionDetection(fuzziness) {
-            const shipRect = shipElement.getBoundingClientRect();
-            comets.forEach(comet => {
-                const cometRect = comet.element.getBoundingClientRect();
-                const fuzzinessFactor = fuzziness * Math.min(shipRect.width, shipRect.height, cometRect.width, cometRect.height);
-                if (
-                    shipRect.left + fuzzinessFactor < cometRect.right &&
-                    shipRect.right - fuzzinessFactor > cometRect.left &&
-                    shipRect.top + fuzzinessFactor < cometRect.bottom &&
-                    shipRect.bottom - fuzzinessFactor > cometRect.top
-                ) {
-                    clearInterval(intervalComent);
-                    clearInterval(intervalGame);
-
-                    document.getElementById('message').innerText = 'Игра окончена';
-                    //alert("Game Over");
-                    //document.location.reload();
-                }
-            });
-        }
-
-        function draw() {
-            moveShip();
-            moveComets();
-            collisionDetection(0.4);  // Погрешность 40%
-            stats()
-        }
-
-        function stats(){
-            // 6480
-
-            document.getElementById('timer').dataset.timer = parseFloat(document.getElementById('timer').dataset.timer) + 0.5;
-
-            let value = Math.ceil(parseFloat(document.getElementById('timer').dataset.timer) / 100);
-
-            document.getElementById('timer').innerText = value;
-
-            // ускорим кометы
-            cometSpeed = baseCometSpeed + value * 0.1;
-        }
-
-        let intervalComent = null;
-        let intervalGame = null;
-
-        function start() {
-             intervalComent = setInterval(createComet, cometInterval);
-             intervalGame = setInterval(draw, 10);
-
-             document.getElementById('start-placeholder').style.visibility = 'hidden';
-        }
 
     </script>
 
