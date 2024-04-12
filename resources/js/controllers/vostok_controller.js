@@ -24,6 +24,7 @@ export default class extends Controller {
         document.addEventListener('keydown', this.keyDownHandler.bind(this));
         document.addEventListener('keyup', this.keyUpHandler.bind(this));
         this.audioBackgroundTarget.loop = true;
+        this.fanny = false;
     }
 
     disconnect() {
@@ -156,7 +157,7 @@ export default class extends Controller {
         this.timerTarget.innerText = value;
         this.cometSpeed = this.baseCometSpeed + value * 0.1;
 
-        if (value > 20) {
+        if (value > 20 && !this.fanny) {
             clearInterval(this.intervalComet);
             clearInterval(this.intervalGame);
 
@@ -184,5 +185,14 @@ export default class extends Controller {
 
         this.startPlaceholderTarget.style.visibility = 'hidden';
         this.endPlaceholderTarget.classList.add('visually-hidden');
+    }
+
+
+    continue() {
+        this.fanny = true;
+
+        this.endPlaceholderTarget.classList.add('visually-hidden');
+        this.intervalComet = setInterval(this.createComet.bind(this), this.cometInterval);
+        this.intervalGame = setInterval(this.draw.bind(this), 10);
     }
 }

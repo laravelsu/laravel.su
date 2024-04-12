@@ -10,6 +10,10 @@ export default class extends Controller {
     toggle() {
         const audios = document.querySelectorAll('audio');
         audios.forEach((audio) => {
+            if (audio.controls === true) {
+                return;
+            }
+
             audio.muted = !audio.muted;
         });
 

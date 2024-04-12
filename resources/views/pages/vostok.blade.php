@@ -1,5 +1,6 @@
 @extends('layout')
 @section('title', 'Тяга к знаниям двигает нас к звёздам')
+@section('description', 'Пусть эта дата вдохновляет нас на новые открытия и смелые шаги в неизведанные просторы Вселенной.')
 
 @section('content')
 
@@ -49,8 +50,8 @@
 
                                 <div class="d-flex align-items-center gap-3">
                                     <a class="btn btn-primary" href="{{ route('library') }}">В библиотеку</a>
-                                    <button class="btn btn-link" type="button" data-action="click->vostok#start">
-                                        Сыграть ещё
+                                    <button class="btn btn-link" type="button" data-action="click->vostok#continue">
+                                        Продолжить
                                     </button>
                                 </div>
                             </div>
@@ -216,8 +217,10 @@
                                         бортовом магнитофоне:
                                     </p>
 
-                                    <audio class="mb-3" controls="controls" controllist="nodownload"
-                                           preload="metadata" data-description="" data-source="">
+                                    <audio class="mb-3"
+                                           data-ignore-mute="true"
+                                           controls="controls"
+                                           controllist="nodownload">
                                         <source
                                             src="https://cdnstatic.rg.ru/uploads/attachments/2024/03/07/rech-pered-startom_21e.mp3"
                                             type="audio/mp3">
