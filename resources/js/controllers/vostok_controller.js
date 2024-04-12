@@ -187,7 +187,6 @@ export default class extends Controller {
         this.endPlaceholderTarget.classList.add('visually-hidden');
     }
 
-
     continue() {
         this.fanny = true;
 
