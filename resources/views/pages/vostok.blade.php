@@ -175,9 +175,9 @@
 
         <section class="mb-4 marketing">
             <div class="row align-items-center">
-                <div class="col-lg-5 ms-auto my-5">
+                <div class="col-lg-6 ms-auto my-5">
                     <blockquote class="display-6 fw-semibold mb-4 text-balance">
-                        Космос — это наша судьба, наша мечта, наша надежда и наше будущее.
+                        Хорошо работается, когда любишь свою профессию, с увлечением занимаешься ею.
                     </blockquote>
 
                     <div class="lh-1 fw-normal text-balance">
