@@ -35,7 +35,7 @@
 
                         <div class="space"></div>
 
-                        <svg id="gameSVG" width="600" height="600" data-vostok-target="game"></svg>
+                        <svg id="vostok-game" width="600" height="600" data-vostok-target="game"></svg>
                         <div data-vostok-target="startPlaceholder"
                              class="position-absolute top-0 bottom-0 start-0 end-0 d-flex align-items-center justify-content-center bg-dark bg-opacity-50 rounded">
                             <button class="btn btn-primary" type="button" data-action="click->vostok#start">Поехали!</button>
@@ -44,7 +44,7 @@
                         <div data-vostok-target="endPlaceholder"
                              class="position-absolute top-0 bottom-0 start-0 end-0 d-flex flex-column align-items-center justify-content-center bg-dark bg-opacity-50 rounded visually-hidden">
 
-                            <div class="col-md-6 mx-auto text-balance">
+                            <div class="col-md-6 mx-auto text-balance text-white">
                                 <strong class="d-block">Поздравляем!</strong>
                                 <p>Вы успешно преодолели препятствия и получили доступ к знаниям которые помогут вам в Laravel и профессиональной разработке.</p>
 

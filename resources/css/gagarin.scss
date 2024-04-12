@@ -36,19 +36,21 @@
         right: -50%;
     }
 
-    svg {
+    #vostok-game{
         display: block;
         animation: rotation-space-item 3s infinite linear;
         overflow: visible;
+
         svg {
-            path,
-            circle,
-            rect {
-                -webkit-transform-origin: center center;
+            display: block;
+            animation: rotation-space-item 300ms infinite linear;
+            overflow: hidden;
+        }
+
+        @supports (-moz-appearance:none) {
+            svg {
+                animation: none;
             }
-            transform-origin: 50% 50%;
-            -webkit-transform-origin: center center;
-            animation: rotation-space-item 130ms infinite linear;
         }
     }
 
