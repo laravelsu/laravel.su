@@ -36,7 +36,7 @@
         right: -50%;
     }
 
-    #vostok-game{
+    #vostok-game {
         display: block;
         animation: rotation-space-item 3s infinite linear;
         overflow: visible;
@@ -47,7 +47,7 @@
             overflow: hidden;
         }
 
-        @supports (-moz-appearance:none) {
+        @supports (-moz-appearance: none) {
             svg {
                 animation: none;
             }
