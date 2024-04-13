@@ -73,7 +73,7 @@ class Docs
     /**
      * @return string
      */
-    public function raw():string
+    public function raw(): string
     {
         return once(function () {
             $raw = Storage::disk('docs')->get($this->path);
@@ -189,7 +189,7 @@ class Docs
 
         $firstParagraph = collect($crawler->filter('p'))
             ->take(5)
-            ->filter(fn(\DOMElement $paragraph) => !empty($paragraph->textContent))
+            ->filter(fn (\DOMElement $paragraph) => ! empty($paragraph->textContent))
             ->first();
 
         return $firstParagraph !== null
