@@ -1,5 +1,6 @@
-@section('title', "Трибуна")
 @extends('layout')
+@section('title', "Трибуна")
+@section('description', "Интересные статьи и общение на важные для Laravel темы и PHP")
 
 @section('content')
 
