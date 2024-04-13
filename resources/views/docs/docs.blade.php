@@ -1,5 +1,6 @@
 @extends('layout')
 @section('title', $docs->title(). " Laravel ". $docs->version)
+@section('description', $docs->description())
 
 @section('content')
 

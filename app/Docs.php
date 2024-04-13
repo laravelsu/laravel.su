@@ -71,9 +71,9 @@ class Docs
     }
 
     /**
-     * @return string|null
+     * @return string
      */
-    public function raw()
+    public function raw():string
     {
         return once(function () {
             $raw = Storage::disk('docs')->get($this->path);
@@ -177,6 +177,24 @@ class Docs
         $title = $crawler->filterXPath('//h1');
 
         return count($title) ? $title->text() : null;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function description(): ?string
+    {
+        $crawler = new Crawler();
+        $crawler->addHtmlContent($this->content());
+
+        $firstParagraph = collect($crawler->filter('p'))
+            ->take(5)
+            ->filter(fn(\DOMElement $paragraph) => !empty($paragraph->textContent))
+            ->first();
+
+        return $firstParagraph !== null
+            ? Str::of($firstParagraph->textContent)->words()->toString()
+            : null;
     }
 
     /**

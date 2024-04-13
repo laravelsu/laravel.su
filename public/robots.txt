@@ -1,2 +1,6 @@
 User-agent: *
 Disallow:
+
+
+User-agent: Yandex
+Clean-param: type&sort&q /packages
