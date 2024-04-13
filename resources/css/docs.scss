@@ -412,7 +412,6 @@ main,
     }
 }
 
-
 .code-container {
     margin-bottom: 2em;
 
@@ -421,40 +420,39 @@ main,
         margin-bottom: 0;
         border-radius: 0.8rem;
         code {
-            white-space: pre-wrap!important;
+            white-space: pre-wrap !important;
         }
     }
 }
-
 
 .tabbed-code {
     margin-top: 1.25rem;
     margin-bottom: 1.25rem;
     overflow: hidden;
-    border-radius: .375rem;
+    border-radius: 0.375rem;
     background-color: rgb(57, 64, 86);
 
     .tabbed-code-nav {
         display: flex;
-        padding-left: .5rem;
-        padding-right: .5rem;
-        padding-top: .5rem;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+        padding-top: 0.5rem;
 
         .tabbed-code-nav-button {
-            border-top-left-radius: .25rem;
-            border-top-right-radius: .25rem;
-            padding: .625rem .75rem;
-            font-size: .875rem;
+            border-top-left-radius: 0.25rem;
+            border-top-right-radius: 0.25rem;
+            padding: 0.625rem 0.75rem;
+            font-size: 0.875rem;
             line-height: 1.25rem;
             color: rgb(215, 215, 220);
             border: 0;
             background: transparent;
 
-            &[data-tab="Pest"],
-            &[data-tab="PHPUnit"] {
+            &[data-tab='Pest'],
+            &[data-tab='PHPUnit'] {
                 background-size: 1rem;
                 background-repeat: no-repeat;
-                background-position: .75rem center;
+                background-position: 0.75rem center;
             }
 
             &.active {
