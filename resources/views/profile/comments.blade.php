@@ -1,4 +1,5 @@
 @extends('profile.base')
+@section('title', "Комментарии: ". $user->name)
 
 @section('tab')
     <div class="col-xl-8 col-md-12 mx-auto mb-3">
@@ -18,7 +19,7 @@
             </div>
         @else
             @foreach($comments as $comment)
-                <div class="bg-body-tertiary overflow-hidden px-4 px-md-5 py-3 rounded mb-4">
+                <div class="bg-body-tertiary overflow-hidden px-4 px-md-5 py-4 rounded mb-4 comments-wrapper">
                     @include('comments.show')
                 </div>
             @endforeach

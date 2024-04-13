@@ -1,15 +1,17 @@
 @extends('layout')
 @section('title', 'Laravel Idea')
+@section('description', 'Полезные дополнения для IDE, включая генерацию кода, автодополнение Eloquent, правил валидации и многое другое.')
+
 @section('content')
     <x-header image="/img/ui/crane-h.svg">
         <x-slot:sup>Среда разработки</x-slot>
             <x-slot:title>
-                Laravel Idea
+                Laravel Idea для PhpStorm
             </x-slot>
 
             <x-slot:description>
-                    Полезные дополнения для IDE, включая генерацию кода, автодополнение синтаксиса
-                    Eloquent, автодополнение правил валидации и многое другое.
+                Полезные дополнения для IDE, включая генерацию кода, автодополнение
+                Eloquent, правил валидации и многое другое.
             </x-slot>
 
             <x-slot:actions>

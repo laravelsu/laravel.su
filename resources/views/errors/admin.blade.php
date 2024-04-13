@@ -1,5 +1,6 @@
 @extends('html')
-@section('title', 'Страница не найдена')
+@section('title', 'Страница администратора?')
+@section('description', 'Доступ к этой странице ограничен.')
 
 @section('body')
     <x-header image="/img/sign.svg">

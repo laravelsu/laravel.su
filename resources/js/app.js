@@ -15,3 +15,4 @@ application.register('textarea-autogrow', TextareaAutogrow);
 
 import './initializers/service-worker';
 import './initializers/yandex-metrika.js';
+import './initializers/modals.js';

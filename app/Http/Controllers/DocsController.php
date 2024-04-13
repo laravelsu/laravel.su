@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Docs;
 use App\Models\Document;
+use App\Models\DocumentationSection;
+use Illuminate\Http\Request;
 
 class DocsController extends Controller
 {
@@ -57,5 +59,28 @@ class DocsController extends Controller
             'current'   => $version,
             'documents' => $documents,
         ]);
+    }
+
+    /**
+     * @param string                   $version
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \HotwiredLaravel\TurboLaravel\Http\MultiplePendingTurboStreamResponse|\HotwiredLaravel\TurboLaravel\Http\PendingTurboStreamResponse
+     */
+    public function search(string $version, Request $request)
+    {
+        $searchOffers = [];
+
+        if ($request->filled('text')) {
+            $searchOffers = DocumentationSection::search($request->text)
+                ->where('version', $version)
+                ->orderBy('level')
+                ->get()
+                ->take(6);
+        }
+
+        return turbo_stream()->replace('found_candidates', view('docs._search_lines', [
+            'searchOffer' => $searchOffers,
+        ]));
     }
 }

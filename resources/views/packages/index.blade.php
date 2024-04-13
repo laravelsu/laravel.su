@@ -1,5 +1,6 @@
 @extends('layout')
 @section('title', $currentCategory ?  'Пакеты '. $currentCategory->text()  : 'Пакеты сообщества')
+@section('description', 'Наша цель — помочь русскоязычному сообществу найти новые и полезные пакеты Laravel в одном месте.')
 
 @section('content')
 
@@ -21,7 +22,7 @@
     </x-header>
 
     <x-container>
-        <x-turbo-frame id="packages" refresh="morph">
+        <x-turbo::frame id="packages" refresh="morph">
             <div class="row g-4 g-md-5 justify-content-center align-items-start position-relative mb-xl-5 mb-3">
                 <div class="col-md-4 col-xl-3 d-none d-md-block">
                     <span class="display-6 fw-bold text-body-emphasis mb-4 text-balance">Категории</span>
@@ -132,7 +133,7 @@
 
                 </div>
             </div>
-        </x-turbo-frame>
+        </x-turbo::frame>
     </x-container>
 
 @endsection

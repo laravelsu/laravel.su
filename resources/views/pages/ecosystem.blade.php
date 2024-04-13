@@ -1,5 +1,6 @@
 @extends('layout')
 @section('title', 'Экосистема')
+@section('description', 'Обширная экосистема тщательно поддерживаемых пакетов гарантирует вашу готовность ко всему.')
 
 @section('content')
 
@@ -32,7 +33,7 @@
                         <div class="p-4 bg-gradient d-flex align-items-center" style="background: {{ $ecosystemItem['color'] ?? '' }}">
                             <img src="/img/ecosystem/{{ $ecosystemItemId }}.min.svg" alt="{{ $ecosystemItem['image-alt'] }}" width="48" height="48" class="relative">
                         </div>
-                        <div class="p-4">
+                        <div class="p-4 text-balance">
                             <h5 class="mb-2 fw-bolder">{{ $ecosystemItem['name'] }}</h5>
                             <div class="small opacity-75">{{ $ecosystemItem['description'] }}</div>
                         </div>

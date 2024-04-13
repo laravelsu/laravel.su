@@ -1,5 +1,6 @@
 @extends('html')
 @section('title', 'Ваш аккаунт заблокирован')
+@section('description', 'Ваш аккаунт был заблокирован в связи с нарушениями правил ресурса.')
 
 @section('body')
     <x-header image="/img/sign.svg">

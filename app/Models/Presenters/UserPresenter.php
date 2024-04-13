@@ -81,4 +81,14 @@ class UserPresenter extends Presenter implements Personable, Searchable
     {
         return $this->entity->search($query);
     }
+
+    /**
+     * @return string
+     */
+    public function about(): string
+    {
+        return $this->entity->about
+            ?? $this->entity->github_bio
+            ?? 'Если вы видите это, значит, я еще не придумал, что написать.';
+    }
 }

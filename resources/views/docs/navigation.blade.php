@@ -1,4 +1,6 @@
 @extends('html')
+@section('title', 'Навигация по сайту laravel.su')
+@section('description', 'Навигация по сайту laravel.su')
 
 @section('body')
 

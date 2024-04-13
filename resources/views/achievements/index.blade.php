@@ -1,5 +1,6 @@
 @extends('layout')
 @section('title', 'Награды')
+@section('description', 'Делайте публикации, оставляйте комментарии и получайте награды')
 
 @section('content')
 

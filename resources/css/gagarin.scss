@@ -1,0 +1,61 @@
+@keyframes rotation-space {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rotation-space-item {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(-2deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.gagarin {
+    background-size: cover;
+    overflow: hidden;
+    position: relative;
+    @extend .rounded;
+
+    .space {
+        background-image: url(/img/ui/vostok/space.jpg);
+        background-size: cover;
+        animation: rotation-space 300s infinite linear;
+        position: absolute;
+        bottom: -50%;
+        top: -50%;
+        left: -50%;
+        right: -50%;
+    }
+
+    #vostok-game {
+        display: block;
+        animation: rotation-space-item 3s infinite linear;
+        overflow: visible;
+
+        svg {
+            display: block;
+            animation: rotation-space-item 300ms infinite linear;
+            overflow: hidden;
+        }
+
+        @supports (-moz-appearance: none) {
+            svg {
+                animation: none;
+            }
+        }
+    }
+
+    #ship,
+    #comet {
+        border-radius: 8px;
+    }
+}

@@ -8,7 +8,7 @@
                             <span class="badge bg-secondary rounded-pill">{{$position->schedule->text()}}</span>
                         </div>
 
-                        <div class="mt-2 mb-auto">
+                        <div class="mt-2 mb-auto text-balance">
                             <a href="{{route('position.show', $position)}}"
                                class="h5 link-body-emphasis stretched-link text-decoration-none">{{$position->title}}</a>
                         </div>

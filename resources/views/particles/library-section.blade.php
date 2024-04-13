@@ -11,11 +11,11 @@
                     <a href="#{{ $section->slug() }}" class="link-body-emphasis text-decoration-none">{{ $section->title() }}</a>
                 </h5>
                 <p class="mb-0">
-                    {{ $section->description() }}
+                    {!! $section->description() !!}
                 </p>
             </div>
             <div class="col-xl-8 position-sticky top-0">
-                <main class="bg-body-tertiary p-xl-5 p-4 rounded shadow">
+                <main class="bg-body-tertiary p-xl-5 p-4 rounded shadow" data-controller="prism">
                     <x-docs.content :content="$section->content()" />
                 </main>
             </div>

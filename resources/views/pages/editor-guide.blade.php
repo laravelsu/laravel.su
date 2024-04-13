@@ -1,5 +1,6 @@
 @extends('layout')
 @section('title', 'Использование редактора')
+@section('description', 'Мы сделали для вас краткую инструкцию по работе с редактором')
 
 @section('content')
 
@@ -7,9 +8,9 @@
         <x-slot:sup>Рекомендации</x-slot>
             <x-slot:title>Использование редактора</x-slot>
 
-                <x-slot:description>
-                    Мы написалали для вас краткую инструкцию по работе с редактором
-                    </x-slot>
+            <x-slot:description>
+                Мы сделали для вас краткую инструкцию по работе с редактором
+            </x-slot>
     </x-header>
 
     <x-container>

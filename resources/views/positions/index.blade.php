@@ -1,6 +1,7 @@
 @extends('layout')
 @section('type', "Работа")
 @section('title', 'Поиск работы')
+@section('description', ' Передайте проект на аутсорсинг или привлеките экспертов Laravel в свою существующую команду.')
 
 @section('content')
 

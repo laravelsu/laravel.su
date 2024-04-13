@@ -53,18 +53,30 @@
 
 .anchors {
     ul {
+        @extend .d-flex;
+        @extend .flex-column;
+        gap: 0.65rem;
         list-style: none;
         padding: 0;
         li {
             margin: 0;
             padding: 0;
 
+            &.anchor-h2 {
+                a {
+                    @extend .fw-bold;
+                }
+            }
+
             &.anchor-h3 {
                 margin-left: 1.5em;
                 //list-style: inside;
 
                 a {
-                    opacity: 0.5;
+                    opacity: 0.75;
+                    &:before {
+                        filter: contrast(0.5);
+                    }
                 }
             }
 
@@ -75,12 +87,18 @@
         }
     }
     a {
+        text-wrap: balance;
+        @extend .d-flex;
+        @extend .gap-2;
         opacity: 0.75;
+        line-height: 1.3rem;
+        letter-spacing: -0.005rem;
+        font-size: $font-size-sm;
         @extend .link-body-emphasis;
         transition: all 340ms ease;
         text-decoration: none;
         &:hover {
-            opacity: 1;
+            opacity: 1 !important;
         }
         &:before {
             content: '# ';
@@ -119,6 +137,9 @@ main div {
     h3 {
         margin-top: 1.5em;
         margin-bottom: 15px;
+        a {
+            display: block;
+        }
     }
 
     h4,
@@ -129,7 +150,9 @@ main div {
 
     @include media-breakpoint-up(md) {
         h2 {
-            margin-left: -2rem;
+            a {
+                margin-left: -2rem;
+            }
         }
     }
 
@@ -379,18 +402,37 @@ main,
     margin: 0 auto;
 }
 
+.docs-result-item {
+    max-height: 300px;
+
+    .main {
+        blockquote {
+            display: none !important;
+        }
+    }
+}
+
+
+.code-container {
+    margin-bottom: 2em;
+
+    pre {
+        margin-top: 0;
+        margin-bottom: 0;
+        border-radius: 0.8rem;
+        code {
+            white-space: pre-wrap!important;
+        }
+    }
+}
+
+
 .tabbed-code {
     margin-top: 1.25rem;
     margin-bottom: 1.25rem;
     overflow: hidden;
     border-radius: .375rem;
     background-color: rgb(57, 64, 86);
-
-    pre {
-        margin-top: 0;
-        margin-bottom: 0;
-        border-radius: 0 0 0.8rem 0.8rem;
-    }
 
     .tabbed-code-nav {
         display: flex;

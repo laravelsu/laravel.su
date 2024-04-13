@@ -17,6 +17,6 @@
                 @endif
             </a>
         </h6>
-        <p class="mb-0 small line-clamp line-clamp-1 opacity-75">{{ $user->about ?? $user->github_bio ?? 'Скрытый лист' }}</p>
+        <p class="mb-0 small line-clamp line-clamp-1 opacity-75">{{ $user->presenter()->about() }}</p>
     </div>
 </div>

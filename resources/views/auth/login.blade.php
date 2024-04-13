@@ -1,5 +1,6 @@
 @extends('layout')
-@section('title', 'Вход')
+@section('title', 'Войдите в учетную запись')
+@section('description', 'Чтобы участвовать в сообществе, войдите в учетную запись.')
 
 @section('content')
 

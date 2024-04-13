@@ -1,5 +1,6 @@
 @extends('layout')
 @section('title', 'Главные принципы сообщества')
+@section('description', 'Следующие правила должны соблюдаться в любое время и в любом месте, относящемуся к сообществу.')
 
 @section('content')
     <x-header image="/img/sign.svg">

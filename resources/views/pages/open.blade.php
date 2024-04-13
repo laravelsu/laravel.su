@@ -1,5 +1,6 @@
 @extends('html')
 @section('title', 'Раскрой секреты своего ремесла')
+@section('description', 'Игровое событие на открытие сайта Laravel.su')
 
 @section('body')
 

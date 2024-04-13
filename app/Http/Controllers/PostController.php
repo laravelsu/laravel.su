@@ -11,7 +11,7 @@ use Orchid\Support\Facades\Toast;
 class PostController extends Controller
 {
     /**
-     * @return \Illuminate\Contracts\View\View|\Tonysm\TurboLaravel\Http\MultiplePendingTurboStreamResponse|\Tonysm\TurboLaravel\Http\PendingTurboStreamResponse|null
+     * @return \Illuminate\Contracts\View\View|\HotwiredLaravel\\Http\MultiplePendingTurboStreamResponse|\HotwiredLaravel\\Http\PendingTurboStreamResponse|null
      */
     public function feed()
     {
@@ -71,13 +71,13 @@ class PostController extends Controller
     /**
      * @param \Illuminate\Http\Request $request
      *
-     * @return \Tonysm\TurboLaravel\Http\MultiplePendingTurboStreamResponse|\Tonysm\TurboLaravel\Http\PendingTurboStreamResponse
+     * @return \HotwiredLaravel\\Http\MultiplePendingTurboStreamResponse|\HotwiredLaravel\\Http\PendingTurboStreamResponse
      */
     public function preview(Request $request)
     {
         return turbo_stream()->replace('post-preview', view('post.preview', [
-            'title'   => $request->input('title', 'Заголовок'),
-            'content' => $request->input('content', 'Текст публикации'),
+            'title'   => $request->input('title') ?? 'Заголовок',
+            'content' => $request->input('content') ?? 'Текст публикации',
         ]));
     }
 

@@ -241,7 +241,7 @@
                     <div class="position-relative mb-5">
 
                         <div class="text-balance bg-body-secondary rounded p-4 p-xl-5 position-relative">
-                            <blockquote>Laravel - элегантность PHP</blockquote>
+                            <blockquote class="lead">Laravel - элегантность PHP</blockquote>
 
                             <div class="d-flex align-items-center">
                                 <img alt="image" height="50" class="rounded-circle" src="/img/community/afanasyev.jpg">
@@ -256,7 +256,7 @@
                     <div class="position-relative mb-5">
 
                         <div class="text-balance bg-body-secondary rounded p-4 p-xl-5 position-relative">
-                            <blockquote>
+                            <blockquote class="lead">
                                 Laravel — это истинное удовольствие. Позволяет создавать любые вещи, которые захочу.
                             </blockquote>
 
@@ -276,7 +276,7 @@
                 <div class="position-relative mb-5">
 
                     <div class="text-balance bg-body-secondary rounded p-4 p-xl-5 position-relative">
-                        <blockquote>
+                        <blockquote class="lead">
                             Laravel - мой верный спутник уже много лет. Этот фреймворк идеально подходит для широкого
                             спектра задач. Моя практика включает множество успешных проектов на Laravel, благодаря его
                             стабильной работе, поддержке и разнообразию дополнительных инструментов.
@@ -295,7 +295,7 @@
                 <div class="position-relative mb-5">
 
                     <div class="text-balance bg-body-secondary rounded p-4 p-xl-5 position-relative">
-                        <blockquote>
+                        <blockquote class="lead">
                             Laravel даёт свободу творить, упрощая сложное и вдохновляя на новое!
                         </blockquote>
 

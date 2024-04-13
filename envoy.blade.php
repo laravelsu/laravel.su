@@ -1,7 +1,6 @@
-@servers(['web' => ['root@84.38.181.107']])
+@servers(['web' => ['deployer@84.38.181.107']])
 
 @task('deploy', ['on' => ['web']])
-    su deployer
     cd /home/deployer/laravel.su/current
     php artisan down --refresh=15
     git pull
@@ -16,6 +15,5 @@
     php artisan migrate --force
     php artisan optimize
     php artisan up
-    php artisan view:cache
     php artisan storage:link
 @endtask

@@ -68,6 +68,8 @@ $input-padding-x: 1rem;
 
 $badge-font-weight: normal;
 
+$modal-backdrop-opacity: 0.675;
+
 $utilities: (
     'line-clamp': (
         property: -webkit-line-clamp,
@@ -101,6 +103,7 @@ $utilities: (
 @import 'thread';
 @import 'marketing';
 @import 'post';
+@import 'gagarin';
 
 .avatar {
     border-radius: 10em;
@@ -124,7 +127,12 @@ $utilities: (
     max-width: 100%;
     min-width: 40px;
     object-fit: cover;
-    background-color: $white;
+    background-color: rgba($secondary-bg-subtle, 0.7);
+}
+@include color-mode(dark) {
+    .avatar-img {
+        background-color: rgba($secondary-bg-subtle, 0.5);
+    }
 }
 
 .company-usage img {

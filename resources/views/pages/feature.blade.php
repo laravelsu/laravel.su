@@ -1,5 +1,6 @@
 @extends('layout')
 @section('title', "Возможности")
+@section('description', '«Из коробки» Laravel предлагает элегантные решения для множества функций, необходимых всем современным приложениям. Пришло время создавать их!')
 
 @section('content')
     <x-header image="/img/sign.svg">

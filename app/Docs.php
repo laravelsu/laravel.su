@@ -72,9 +72,9 @@ class Docs
     }
 
     /**
-     * @return string|null
+     * @return string
      */
-    public function raw()
+    public function raw(): string
     {
         return once(function () {
             $raw = Storage::disk('docs')->get($this->path);
@@ -178,6 +178,24 @@ class Docs
         $title = $crawler->filterXPath('//h1');
 
         return count($title) ? $title->text() : null;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function description(): ?string
+    {
+        $crawler = new Crawler();
+        $crawler->addHtmlContent($this->content());
+
+        $firstParagraph = collect($crawler->filter('p'))
+            ->take(5)
+            ->filter(fn (\DOMElement $paragraph) => ! empty($paragraph->textContent))
+            ->first();
+
+        return $firstParagraph !== null
+            ? Str::of($firstParagraph->textContent)->words()->toString()
+            : null;
     }
 
     /**
@@ -336,11 +354,11 @@ class Docs
     }
 
     /**
-     * @return string
+     * @return bool
      */
-    public function isOlderVersion()
+    public function isOlderVersion(): bool
     {
-        return $this->version !== static::DEFAULT_VERSION;
+        return version_compare($this->version, static::DEFAULT_VERSION) < 0;
     }
 
     /**
@@ -350,14 +368,13 @@ class Docs
      */
     public function update()
     {
-
         $this->getModel()->fill([
             'behind'         => $this->fetchBehind(),
             'last_commit'    => $this->fetchLastCommit(),
             'current_commit' => $this->variables('git'),
         ])->save();
 
-        // $this->updateSections();
+        $this->updateSections();
     }
 
     /**
@@ -367,44 +384,61 @@ class Docs
      */
     public function getSections(): Collection
     {
+        $content = Str::of($this->content());
+
         // Разбиваем HTML содержимое на разделы по заголовкам
-        preg_match_all('/<h(\d)>(.+)<\/h\d>(.*)/sU', $this->content(), $matches, PREG_SET_ORDER);
+        preg_match_all('/<h(\d)>(.+)<\/h\d>(.*)/sU', $content->toString(), $matches, PREG_SET_ORDER);
 
         // Массив для хранения разделов
         $sections = collect();
-        $prevEnd = 0;
+        $titlePage = $this->title();
 
         foreach ($matches as $index => $match) {
+            $tag = $match[0];
+            $level = (int) $match[1];
             $sectionTitle = $match[2];
 
-            // Получаем начальную и конечную позицию текущего заголовка в тексте
-            $startPos = strpos($this->content(), $match[0], $prevEnd);
+            if ($level === 1) {
+                $titlePage = $sectionTitle;
+            }
 
-            // Получаем текст между текущим и предыдущим заголовком
-            if ($index > 0) {
-                $prevMatch = $matches[$index - 1];
-                $prevEnd = strpos($this->content(), $prevMatch[0]) + strlen($prevMatch[0]);
-                $sectionContent = substr($this->content(), $prevEnd, $startPos - $prevEnd);
-            } else {
-                $sectionContent = substr($this->content(), 0, $startPos);
+            $sectionContent = $content->after($tag);
+
+            // Если есть следующий заголовок - обрезаем контент до него
+            if (isset($matches[$index + 1])) {
+                $sectionContent = $sectionContent->before($matches[$index + 1][0]);
             }
 
             $sections->push([
-                'title'   => $sectionTitle,
-                'slug'    => Str::of($sectionTitle)->slug()->toString(),
-                'content' => $sectionContent,
-                'file'    => $this->file,
-                'version' => $this->version,
-                'id'      => Str::uuid(),
+                'title_page' => $titlePage,
+                'title'      => $sectionTitle,
+                'slug'       => Str::of($sectionTitle)->slug()->toString(),
+                'content'    => $sectionContent,
+                'file'       => $this->file,
+                'version'    => $this->version,
+                'id'         => Str::uuid(),
+                'level'      => $level,
+                'created_at' => now(),
+                'updated_at' => now(),
             ]);
         }
 
         return $sections;
     }
 
+    /**
+     * @return void
+     */
     public function updateSections()
     {
-        // DocumentationSection::where('file', $this->file)->where('version', $this->version)->delete();
-        // DocumentationSection::insert($this->getSections()->toArray());
+        if ($this->file === 'documentation.md') {
+            return;
+        }
+
+        DocumentationSection::where('file', $this->file)
+            ->where('version', $this->version)
+            ->delete();
+
+        DocumentationSection::insert($this->getSections()->toArray());
     }
 }

@@ -124,6 +124,13 @@ class Ecosystem
                 'href'        => '/docs/'.Docs::DEFAULT_VERSION.'/prompts',
                 'color'       => '#4ade80',
             ],
+            'pulse' => [
+                'name'        => 'Pulse',
+                'image-alt'   => 'Логотип Laravel Pulse',
+                'description' => 'Быстрые и наглядные исследования производительности и использования вашего приложения.',
+                'href'        => 'https://pulse.laravel.com',
+                'color'       => '#7c2fc7',
+            ],
             'reverb' => [
                 'name'        => 'Reverb',
                 'image-alt'   => 'Логотип Laravel Reverb',
@@ -176,7 +183,7 @@ class Ecosystem
             'vapor' => [
                 'name'        => 'Vapor',
                 'image-alt'   => 'Логотип Laravel Vapor',
-                'description' => 'Laravel Vapor - это платформа для бессерверного развертывания для Laravel, работающая на AWS.',
+                'description' => 'Платформа для бессерверного развертывания для Laravel, работающая на AWS.',
                 'href'        => 'https://vapor.laravel.com',
                 'color'       => '#25c4f2',
             ],
