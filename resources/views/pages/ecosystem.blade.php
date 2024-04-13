@@ -1,5 +1,6 @@
 @extends('layout')
 @section('title', 'Экосистема')
+@section('description', 'Обширная экосистема тщательно поддерживаемых пакетов гарантирует вашу готовность ко всему.')
 
 @section('content')
 

@@ -1,5 +1,7 @@
 @extends('layout')
 @section('title', 'Политика конфиденциальности')
+@section('description', 'Краткое изложение того, что мы собираем и почему, когда мы получаем доступ к вашей информации и вашим правам.')
+
 
 @section('content')
     <x-header image="/img/sign.svg">

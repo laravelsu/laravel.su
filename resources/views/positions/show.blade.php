@@ -1,6 +1,7 @@
 @extends('layout')
 @section('type', "Работа")
 @section('title', $position->title)
+@section('description', 'Вакансия на поиск сотрудника связанной с Laravel. '. $position->title)
 
 
 @section('content')

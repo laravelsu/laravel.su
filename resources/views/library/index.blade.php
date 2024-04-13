@@ -1,5 +1,6 @@
 @extends('layout')
 @section('title', 'Библиотека знаний')
+@section('description', 'Здесь собраны разнообразные материалы, которые помогут вам стать любимым коллективом.')
 
 @section('content')
 

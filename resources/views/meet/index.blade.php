@@ -1,8 +1,8 @@
 @extends('layout')
 @section('title', 'Встречи')
+@section('description', 'Ни одна PHP встреча не обходится без упоминания Laravel. Это самый популярный фреймворк в мире PHP.')
 
 @section('content')
-
 
     @if($past->currentPage() === 1)
         <x-header>

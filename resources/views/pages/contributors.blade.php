@@ -1,5 +1,6 @@
 @extends('layout')
 @section('title', 'Участники')
+@section('description', 'Основные и легендарные участники сообщества Laravel Russia')
 
 @section('content')
 

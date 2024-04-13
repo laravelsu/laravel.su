@@ -1,5 +1,7 @@
 @extends('layout')
 @section('title', 'Laravel Idea')
+@section('description', 'Полезные дополнения для IDE, включая генерацию кода, автодополнение Eloquent, правил валидации и многое другое.')
+
 @section('content')
     <x-header image="/img/ui/crane-h.svg">
         <x-slot:sup>Среда разработки</x-slot>

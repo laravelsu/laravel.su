@@ -1,5 +1,6 @@
 @extends('layout')
 @section('title', $currentCategory ?  'Пакеты '. $currentCategory->text()  : 'Пакеты сообщества')
+@section('description', 'Наша цель — помочь русскоязычному сообществу найти новые и полезные пакеты Laravel в одном месте.')
 
 @section('content')
 
