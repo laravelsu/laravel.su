@@ -34,6 +34,7 @@
         "laravel/socialite": "^5.9",
         "laravel/telescope": "^5.0",
         "laravel/tinker": "^2.8",
+        "laravel/unfenced": "dev-main",
         "orchid/platform": "^14.17",
         "overtrue/laravel-like": "^5.2",
         "spatie/laravel-activitylog": "^4.7",
@@ -54,6 +55,12 @@
         "spatie/laravel-ignition": "^2.0",
         "vimeo/psalm": "^5.23"
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:laravel-labs/unfenced.git"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "App\\": "app/",

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Markdown\GithubFlavoredMarkdownConverter;
 use App\Models\Document;
 use App\Models\DocumentationSection;
 use Exception;
@@ -19,7 +20,7 @@ class Docs
     /**
      * Default version of Laravel documentation
      */
-    public const DEFAULT_VERSION = '10.x';
+    public const DEFAULT_VERSION = '11.x';
 
     /**
      * Array of supported versions
@@ -115,11 +116,11 @@ class Docs
     public function content(): ?string
     {
         return once(function () {
-            return Str::of($this->raw())
+            return (new GithubFlavoredMarkdownConverter())->convert(Str::of($this->raw())
                 ->replace('{{version}}', $this->version)
                 ->after('---')
                 ->after('---')
-                ->markdown();
+            );
         });
     }
 
