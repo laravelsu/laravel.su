@@ -61,7 +61,7 @@
                 </div>
 
 
-                <div class="">
+                <div class="text-balance">
                     <div class="d-none" data-tabs-target="panel">
                         <div class="row">
                             <div class="col-lg-6">
@@ -364,7 +364,7 @@ class UserController
                                управления
                                профилями пользователей для аутентификации в стиле Tailwind.</p>
 
-                            <ul>
+                            <ul class="d-flex flex-column gap-1">
                                 <li>Регистрация пользователя и вход в систему</li>
                                 <li>Сброс пароля</li>
                                 <li>Подтверждение адреса электронной почты</li>
