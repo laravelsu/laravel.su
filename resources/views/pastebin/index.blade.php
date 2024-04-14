@@ -1,6 +1,6 @@
 @extends('layout')
 @section('title', 'Pastebin')
-@section('content', 'Делитесь вашим кодом онлайн с кем угодно на земле.')
+@section('description', 'Делитесь вашим кодом онлайн с кем угодно на земле.')
 
 @section('content')
 
