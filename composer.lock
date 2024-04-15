@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8735cc3ccb9d3f7ad7fb5869cf12c836",
+    "content-hash": "f350ab876ec65097ee711170c91f7b28",
     "packages": [
         {
             "name": "assisted-mindfulness/naive-bayes",
@@ -3695,16 +3695,16 @@
         },
         {
             "name": "orchid/platform",
-            "version": "14.21.1",
+            "version": "14.22.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/orchidsoftware/platform.git",
-                "reference": "b83f1c933d190198409e667f6b6644e0a009a217"
+                "reference": "b96639798d36af8ab12cf8daa10dc21917060b69"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orchidsoftware/platform/zipball/b83f1c933d190198409e667f6b6644e0a009a217",
-                "reference": "b83f1c933d190198409e667f6b6644e0a009a217",
+                "url": "https://api.github.com/repos/orchidsoftware/platform/zipball/b96639798d36af8ab12cf8daa10dc21917060b69",
+                "reference": "b96639798d36af8ab12cf8daa10dc21917060b69",
                 "shasum": ""
             },
             "require": {
@@ -3798,7 +3798,7 @@
                     "type": "opencollective"
                 }
             ],
-            "time": "2024-03-24T23:36:22+00:00"
+            "time": "2024-04-14T02:06:20+00:00"
         },
         {
             "name": "org_heigl/hyphenator",
@@ -12563,8 +12563,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "laravel/unfenced": 20,
-        "hotwired-laravel/turbo-laravel": 10
+        "hotwired-laravel/turbo-laravel": 10,
+        "laravel/unfenced": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
@@ -12573,5 +12573,5 @@
         "ext-dom": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }
