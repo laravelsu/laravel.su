@@ -34,7 +34,7 @@
     <x-meta
             title="{!! View::getSection('title') ?  strip_tags(View::getSection('title')) . ' | '. config('site.name') : config('site.name') !!}"
             description="{!!  View::getSection('description', config('site.description'))  !!}"
-         image="{!! route('cover', ['text' => View::getSection('title', config('site.description'))]) !!}"
+         image="{!! route('cover', ['text' => View::getSection('cover') ?? View::getSection('title', config('site.description'))]) !!}"
         {{-- csp="*.laravel.su *.gravatar.com *.githubusercontent.com" --}} />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">

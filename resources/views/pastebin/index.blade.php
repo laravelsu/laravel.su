@@ -1,5 +1,6 @@
 @extends('layout')
-@section('title', 'Pastebin')
+@section('title', empty($content) ? 'Pastebin' : \Illuminate\Support\Str::of($content)->limit(30). ' | '. 'Pastebin')
+@section('cover', 'Поделитесь своим кодом с кем угодно')
 @section('description', 'Делитесь вашим кодом онлайн с кем угодно на земле.')
 
 @section('content')
