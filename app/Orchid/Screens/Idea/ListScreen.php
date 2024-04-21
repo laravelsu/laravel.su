@@ -129,14 +129,14 @@ class ListScreen extends Screen
                     }),
 
                 TD::make('created_at', __('Created'))
-                    ->width(100)
+                    ->width(120)
                     ->usingComponent(DateTimeSplit::class)
                     ->align(TD::ALIGN_RIGHT)
                     ->defaultHidden()
                     ->sort(),
 
                 TD::make('updated_at', 'Последнее обновление')
-                    ->width(100)
+                    ->width(120)
                     ->usingComponent(DateTimeSplit::class)
                     ->defaultHidden()
                     ->align(TD::ALIGN_RIGHT)
