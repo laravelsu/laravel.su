@@ -15,7 +15,7 @@
                 <img src="/img/gusli.svg" class="img-fluid">
             </div>
             --}}
-            <div class="position-relative">
+            <div class="position-relative" data-controller="prism">
 
                 <!-- Svg decoration -->
                 {{--

@@ -69,7 +69,7 @@
                                             <div class="col-10">
                                                 <span class="d-block">Мероприятия</span>
                                                 <small class="opacity-50 line-clamp line-clamp-2">
-                                                    Ни одна встреча не обходится без Laravel.
+                                                    Ни одна встреча не обходится без Laravel
                                                 </small>
                                             </div>
                                         </a>
@@ -83,13 +83,22 @@
                                             </div>
                                         </a>
                                     </li>
+                                    <li>
+                                        <a href="{{ route('courses') }}" class="link-body-emphasis text-decoration-none rounded-2 d-flex align-items-start gap-3 lh-sm text-start">
+                                            <x-icon path="i.maintenance" height="2rem" width="2rem"  class="text-primary"/>
+                                            <div class="col-10">
+                                                <span class="d-block">Курсы</span>
+                                                <small class="opacity-50 line-clamp line-clamp-2">Получайте новые знания в формате видеороликов</small>
+                                            </div>
+                                        </a>
+                                    </li>
                                 </ul>
                                 <ul class="list-unstyled d-flex flex-column gap-4" style="width: 15rem;">
                                     <li>
-                                        <a href="{{ route('courses') }}" class="link-body-emphasis text-decoration-none rounded-2 d-flex align-items-start gap-3 lh-sm text-start">
+                                        <a href="{{ route('library') }}" class="link-body-emphasis text-decoration-none rounded-2 d-flex align-items-start gap-3 lh-sm text-start">
                                             <x-icon path="i.docs" height="2rem" width="2rem"  class="text-primary"/>
                                             <div class="col-10">
-                                                <span class="d-block">Курсы</span>
+                                                <span class="d-block">Библиотека</span>
                                                 <small class="opacity-50 line-clamp line-clamp-2">Учебные материалы для улучшения навыков</small>
                                             </div>
                                         </a>
