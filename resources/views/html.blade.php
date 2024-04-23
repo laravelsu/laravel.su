@@ -31,6 +31,8 @@
 
     <link rel="alternate" type="application/atom+xml" title="Новости" href="/rss/feed">
 
+    @stack('head')
+
     <x-meta
             title="{!! View::getSection('title') ?  strip_tags(View::getSection('title')) . ' | '. config('site.name') : config('site.name') !!}"
             description="{!!  View::getSection('description', config('site.description'))  !!}"

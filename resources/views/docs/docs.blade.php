@@ -2,6 +2,10 @@
 @section('title', $docs->title(). " Laravel ". $docs->version)
 @section('description', $docs->description())
 
+@push('head')
+    <link rel="canonical" href="{{ route('docs', ['version'=> \App\Docs::DEFAULT_VERSION, 'page'=> $docs->name]) }}">
+@endpush
+
 @section('content')
 
     <div class="container container-docs my-4 my-xxl-5 mx-auto">

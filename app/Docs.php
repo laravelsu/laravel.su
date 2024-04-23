@@ -59,14 +59,20 @@ class Docs
     protected $model;
 
     /**
+     * @var string The link name.
+     */
+    public string $name;
+
+    /**
      * Create a new Docs instance.
      *
      * @param string $version The version of the Laravel documentation.
-     * @param string $file    The file name.
+     * @param string $name    The link name.
      */
-    public function __construct(string $version, string $file)
+    public function __construct(string $version, string $name)
     {
-        $this->file = $file.'.md';
+        $this->name = $name;
+        $this->file = $name.'.md';
         $this->version = $version;
         $this->path = "/$version/$this->file";
     }
