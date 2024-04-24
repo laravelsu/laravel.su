@@ -171,7 +171,6 @@ Route::middleware(['auth', RedirectToBanPage::class])
             ->name('position.delete');
     });
 
-
 /*
 |--------------------------------------------------------------------------
 | Consultants
