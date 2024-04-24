@@ -19,7 +19,7 @@
         <x-slot:actions>
             <a href="{{ route('docs') }}" class="btn btn-primary btn-lg px-4">Справлюсь сам</a>
 
-            <a href="#"
+            <a href="{{ route('library') }}"
                class="d-none d-md-inline-flex link-body-emphasis text-decoration-none icon-link icon-link-hover">
                Хорошие практики <x-icon path="i.arrow-right" class="bi" />
             </a>
@@ -96,92 +96,6 @@
                 </div>
             </div>
         </div>
-
-
-        {{--
-            <div class="row g-4 row-cols-md-2 row-cols-xxl-3">
-                <div class="col">
-                    <div class="h-100 d-flex flex-md-row flex-column px-4 py-3 py-xl-5 bg-body-secondary rounded position-relative align-items-md-center align-items-xxl-baseline">
-                        <div>
-                            <p class="fs-4">Застряли на ошибке?</p>
-
-                            <p class="text-body-secondary mb-0">Специалисты предлагают свежий взгляд, который поможет вам разобраться.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="h-100 d-flex flex-md-row flex-column px-4 py-3 py-xl-5 bg-body-secondary rounded position-relative align-items-md-center align-items-xxl-baseline">
-                        <div>
-                            <p class="fs-4">Обзор вашего кода</p>
-
-                            <p class="text-body-secondary mb-0">Давайте вместе рассмотрим ваш код, чтобы убедиться, что он максимально хорош.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="h-100 d-flex flex-md-row flex-column px-4 py-3 py-xl-5 bg-body-secondary rounded position-relative align-items-md-center align-items-xxl-baseline">
-                        <div>
-                            <p class="fs-4">Разбор архитектуры</p>
-
-                            <p class="text-body-secondary mb-0">Мы обсудим, как правильно структурировать ваше приложение для достижения успеха.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="h-100 d-flex flex-md-row flex-column px-4 py-3 py-xl-5 bg-body-secondary rounded position-relative align-items-md-center align-items-xxl-baseline">
-                        <div>
-                            <p class="fs-4">Оптимизация кода</p>
-
-                            <p class="text-body-secondary mb-0">Я покажу вам, как заставить ваш код работать быстрее и плавнее.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="h-100 d-flex flex-md-row flex-column px-4 py-3 py-xl-5 bg-body-secondary rounded position-relative align-items-md-center align-items-xxl-baseline">
-                        <div>
-                            <p class="fs-4">Рекомендации по инструментам и пакетам</p>
-
-                            <p class="text-body-secondary mb-0">Я могу порекомендовать инструменты и пакеты для более быстрого достижения ваших целей.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="h-100 d-flex flex-md-row flex-column px-4 py-3 py-xl-5 bg-body-secondary rounded position-relative align-items-md-center align-items-xxl-baseline">
-                        <div>
-                            <p class="fs-4">Обсуждение лучших практик</p>
-
-                            <p class="text-body-secondary mb-0">Мы поговорим о новейших передовых практиках, которые помогут вашему проекту не сбиться с пути.</p>
-                        </div>
-                    </div>
-                </div>
-
-                {{--
-                <div class="col">
-                    <div class="h-100 d-flex flex-md-row flex-column px-4 py-3 py-xl-5 bg-body-secondary rounded position-relative align-items-md-center">
-                        <div class="vr bg-primary position-absolute start-0 opacity-100" style="top: 1.5em; bottom: 1.5em;"></div>
-                        <div>
-                            <div class="d-flex align-items-center mb-3">
-                                <p class="fs-4 mb-0">Веб приложение</p>
-                            </div>
-
-                            <img src="/img/ui/api.svg" class="img-fluid d-block mx-auto">
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="h-100 d-flex flex-md-row flex-column px-4 py-3 py-xl-5 bg-body-secondary rounded position-relative align-items-md-center">
-                        <div class="vr bg-primary position-absolute start-0 opacity-100" style="top: 1.5em; bottom: 1.5em;"></div>
-                        <div>
-                            <div class="d-flex align-items-center mb-3">
-                                <p class="fs-4 mb-0">Веб приложение</p>
-                            </div>
-                            <img src="/img/ui/console.svg" class="img-fluid d-block mx-auto">
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        --}}
     </x-container>
 
     <x-container>
