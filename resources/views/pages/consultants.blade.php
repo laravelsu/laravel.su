@@ -1,6 +1,6 @@
 @extends('layout')
-@section('title', 'Консультанты Laravel')
-@section('description', 'Передайте проект на аутсорсинг или привлеките экспертов Laravel в свою существующую команду.')
+@section('title', 'Консультации Laravel')
+@section('description', 'Каждое изменение должно приносить результат. Консультации помогут вам определить, как это достичь.')
 
 @section('content')
     <x-header image="/img/bird.svg">
@@ -16,6 +16,15 @@
             Каждое изменение должно приносить результат. Консультации помогут вам определить, как это достичь.
         </x-slot>
 
+
+        <x-slot:actions>
+            <a href="{{ route('docs') }}" class="btn btn-primary btn-lg px-4">Справлюсь сам</a>
+
+            <a href="#"
+               class="d-none d-md-inline-flex link-body-emphasis text-decoration-none icon-link icon-link-hover">
+               Хорошие практики <x-icon path="i.arrow-right" class="bi" />
+            </a>
+        </x-slot>
 
         {{--
         <x-slot name="actions">
@@ -198,6 +207,86 @@
         </div>
 --}}
 
+        {{--
+  <div class="row g-0 row-cols-md-2 mb-5 text-balance">
+      <div class="col">
+          <div class="p-4 p-xl-5 bg-body-secondary rounded-3 position-relative mb-4 h-100 overflow-hidden">
+              <div class="p-5 bg-primary bg-opacity-50 rounded-circle position-absolute top-0 start-0" style="    width: 10rem;
+height: 10rem;
+left: -2rem !important;
+top: -2rem !important;">
+                  <div class="d-none d-sm-flex">
+                      <x-icon path="i.code" class="img-fluid d-block mx-auto" width="4rem"
+                              height="4rem"/>
+                  </div>
+              </div>
+
+
+              <div class="col-md-7 mx-auto">
+                  <div class="d-flex flex-column g-4 g-md-5">
+                      <div class="d-flex mb-4 align-items-center gap-5">
+                          <h3 class="display-6 fw-semibold mb-0 text-balance">Застряли на проблеме?</h3>
+                      </div>
+                      <p>
+                          Специалисты предлагают свежий взгляд, который поможет вам разобраться.
+                      </p>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="col">
+          <div class="p-4 p-xl-5 bg-body-secondary rounded-3 position-relative mb-4 h-100">
+              <div class="d-flex flex-column g-4 g-md-5">
+                  <div class="d-flex mb-4 align-items-center gap-5">
+                      <h3 class="display-6 fw-semibold mb-0 text-balance">Погружение в код</h3>
+                      <div class="d-none d-sm-flex">
+                          <x-icon path="i.code" class="img-fluid d-block mx-auto text-primary" width="4rem"
+                                  height="4rem"/>
+                      </div>
+                  </div>
+                  <p class="col-md-10">
+                      Давайте вместе рассмотрим ваш код, чтобы убедиться, что он максимально хорош.
+                  </p>
+              </div>
+          </div>
+      </div>
+      <div class="col">
+          <div class="p-4 p-xl-5 bg-body-secondary rounded-3 position-relative mb-4 h-100">
+
+              <div class="d-flex flex-column g-4 g-md-5">
+
+                  <div class="d-flex mb-4 align-items-center gap-5">
+                      <h3 class="display-6 fw-semibold mb-0 text-balance">Разбор архитектуры</h3>
+                      <div class="d-none d-sm-flex">
+                          <x-icon path="i.ui" class="img-fluid d-block mx-auto text-primary" width="4rem"
+                                  height="4rem"/>
+                      </div>
+                  </div>
+                  <p class="col-md-10">
+                      Мы обсудим, как правильно структурировать ваше приложение для достижения успеха.
+                  </p>
+              </div>
+          </div>
+      </div>
+      <div class="col">
+          <div class="p-4 p-xl-5 bg-body-secondary rounded-3 position-relative mb-4 h-100">
+              <div class="d-flex flex-column g-4 g-md-5">
+
+                  <div class="d-flex mb-4 align-items-center gap-5">
+                      <h3 class="display-6 fw-semibold mb-0 text-balance">Лучшие практики</h3>
+                      <div class="d-none d-sm-flex">
+                          <x-icon path="i.utilities" class="img-fluid d-block mx-auto text-primary" width="4rem"
+                                  height="4rem"/>
+                      </div>
+                  </div>
+                  <p class="col-md-10">
+                      Мы поговорим о новейших передовых практиках, которые помогут вашему проекту не сбиться с пути.
+                  </p>
+              </div>
+          </div>
+      </div>
+  </div>
+  --}}
         <div class="row g-4 row-cols-md-2 mb-5 text-balance">
             <div class="col">
                 <div class="p-4 p-xl-5 bg-body-secondary rounded-3 position-relative mb-4 h-100">
@@ -231,7 +320,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="col">
                 <div class="p-4 p-xl-5 bg-body-secondary rounded-3 position-relative mb-4 h-100">
 
@@ -250,7 +338,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="col">
                 <div class="p-4 p-xl-5 bg-body-secondary rounded-3 position-relative mb-4 h-100">
                     <div class="d-flex flex-column g-4 g-md-5">
@@ -359,9 +446,6 @@
 
 
     <x-container>
-
-
-        <!--Hire jamstack start-->
         <section class="p-4 p-xl-5 bg-body-secondary rounded position-relative">
             <figure class="position-absolute top-0 start-0 translate-middle z-n1 ms-4">
                 <x-icon path="l.cube" width="46" height="53" fill="none"/>
@@ -405,38 +489,44 @@
                             </div>
                             <div class="col-lg-6 col-12 order-lg-2">
                                 <div class="bg-body-tertiary p-4 p-xxl-5 shadow-sm rounded">
-                                        <form class="row needs-validation g-3" novalidate>
+                                        <form class="row needs-validation g-3"
+                                              method="post"
+                                              action="{{ route('consultant.store') }}">
                                             <div class="col-12">
-                                                <label for="ScheduleFirstnameInput" class="form-label">
+                                                <label for="name" class="form-label">
                                                     Как вас зовут?
-                                                    <span class="text-danger">*</span>
                                                 </label>
                                                 <input type="text"
                                                        placeholder="По имени всегда приятно"
-                                                       class="form-control"
-                                                       id="ScheduleFirstnameInput"
+                                                       class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}"
+                                                       name="name"
+                                                       id="name"
                                                        required />
+                                                <x-error field="name" class="invalid-feedback my-3"/>
                                             </div>
                                             <div class="col-md-12">
-                                                <label for="scheduleEmailInput"
+                                                <label for="contact"
                                                        class="form-label">
                                                     Как связаться?
-                                                    <span
-                                                        class="text-danger">*</span>
                                                 </label>
                                                 <input type="text"
                                                        placeholder="Телеграм или email для связи"
-                                                       class="form-control"
-                                                       id="scheduleEmailInput"
+                                                       class="form-control {{ $errors->has('contact') ? 'is-invalid' : '' }}"
+                                                       name="contact"
+                                                       id="contact"
                                                        required />
+                                                <x-error field="contact" class="invalid-feedback my-3"/>
                                             </div>
                                             <div class="col-md-12">
-                                                <label for="scheduleTextarea"
+                                                <label for="message"
                                                        class="form-label">Тема</label>
-                                                <textarea class="form-control"
-                                                          id="scheduleTextarea"
+                                                <textarea class="form-control {{ $errors->has('message') ? 'is-invalid' : '' }}"
+                                                          id="message"
+                                                          name="message"
+                                                          minlength="10"
                                                           placeholder="Расскажите какую проблему вы хотели бы решить, так мы сможем подобрать лучшего специалиста."
                                                           rows="8" required></textarea>
+                                                <x-error field="message" class="invalid-feedback my-3"/>
                                             </div>
                                             <div class="d-grid">
                                                 <button class="btn btn-primary"
@@ -449,10 +539,9 @@
                     </div>
                 </div>
         </section>
-        <!--Hire jamstack end-->
-
     </x-container>
 
+     {{--
     <x-container>
         <div class="row g-4 g-md-5 justify-content-center align-items-end mb-5">
             <div class="col-lg-8 me-auto">
@@ -461,6 +550,27 @@
             </div>
         </div>
 
+
+
+        <div class="col-xl-8 col-md-12 mx-auto hotwire-frame">
+            @foreach(range(0, 3) as $key)
+                <div class="row g-0 rounded bg-body-tertiary mb-5">
+                        <div class="col-lg-5 order-lg-first">
+                            <x-hero image="/img/community/chernayev.jpeg" text="от 4000 ₽" class="rounded-start"/>
+                        </div>
+                        <div class="col-lg-7">
+                            <div class="p-4 p-xl-5">
+                                <h5><strong>Александр Черняев</strong></h5>
+                                <p class="opacity-50 small">
+                                    Vivamus sit amet eros facilisis, suscipit libero eget, elementum diam. Praesent quam.
+                                </p>
+
+                                <p>Могу помочь: </p>
+                            </div>
+                        </div>
+                    </div>
+            @endforeach
+        </div>
 
         <div class="row g-4 g-md-5 row-cols-3 row-cols-lg-2 justify-content-center">
             @foreach(range(0, 3) as $key)
@@ -508,13 +618,13 @@
                                 </p>
 
 
-                                {{--
+
                                 <x-icon path="i.star-fill" class="me-2 text-warning"/>
 
                                 <p class="small opacity-50">
                                     <mark class="rounded-1">от 4000 ₽</mark>
                                 </p>
-                                --}}
+
                             </div>
                         </div>
                     </div>
@@ -536,4 +646,5 @@
             Найти работу в хорошей кампаниии работать удаленно из любого места?
         </x-slot>
     </x-call-to-action>
+    --}}
 @endsection
