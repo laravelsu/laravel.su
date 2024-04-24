@@ -170,6 +170,22 @@ Route::middleware(['auth', RedirectToBanPage::class])
             ->can('delete', 'position')
             ->name('position.delete');
     });
+
+/*
+|--------------------------------------------------------------------------
+| Consultants
+|--------------------------------------------------------------------------
+|
+| ...
+|
+*/
+
+Route::get('/consultants', [\App\Http\Controllers\ConsultantController::class, 'index'])
+    ->name('consultants');
+
+Route::post('/consultants/store', [\App\Http\Controllers\ConsultantController::class, 'store'])
+    ->name('consultant.store');
+
 /*
 |--------------------------------------------------------------------------
 | Comments Routes
