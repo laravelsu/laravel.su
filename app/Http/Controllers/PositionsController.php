@@ -19,7 +19,7 @@ class PositionsController extends Controller
     {
         $positions = Position::approved()
             ->with(['author'])
-            ->whereDate('created_at', '>=', now()->subMonth())
+            ->whereDate('created_at', '>=', now()->subMonths(2))
             ->orderBy('id', 'desc')
             ->cursorPaginate(3);
 
@@ -122,7 +122,7 @@ class PositionsController extends Controller
     public function list(Request $request)
     {
         $positions = Position::with(['author'])
-            ->whereDate('created_at', '>=', now()->subMonth())
+            ->whereDate('created_at', '>=', now()->subMonths(2))
             ->orderBy('id', 'desc')
             ->cursorPaginate(3);
 
@@ -151,7 +151,7 @@ class PositionsController extends Controller
     {
         $positions = Position::approved()
             ->with(['author'])
-            ->whereDate('created_at', '>=', now()->subMonth())
+            ->whereDate('created_at', '>=', now()->subMonths(2))
             ->orderBy('id', 'desc')
             ->limit(3)
             ->get();
