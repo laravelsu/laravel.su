@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use NotificationChannels\Telegram\TelegramMessage;
 use Orchid\Support\Facades\Toast;
-use Illuminate\Http\RedirectResponse;
 
 class ConsultantController extends Controller
 {
