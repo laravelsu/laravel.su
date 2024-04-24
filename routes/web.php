@@ -40,7 +40,6 @@ Route::view('/donate/frame', 'pages.donate-frame')->name('donate.frame');
 Route::view('/courses', 'pages.courses')->name('courses');
 Route::view('/assets', 'pages.assets')->name('assets');
 Route::view('/boilerplate', 'pages.boilerplate')->name('boilerplate');
-Route::view('/consultants', 'pages.consultants')->name('consultants');
 
 Route::view('nav', 'pages.navigation')->name('nav');
 Route::view('/admin', 'errors.admin');
@@ -168,6 +167,23 @@ Route::middleware(['auth', RedirectToBanPage::class])
             ->can('delete', 'position')
             ->name('position.delete');
     });
+
+
+/*
+|--------------------------------------------------------------------------
+| Consultants
+|--------------------------------------------------------------------------
+|
+| ...
+|
+*/
+
+Route::get('/consultants', [\App\Http\Controllers\ConsultantController::class, 'index'])
+    ->name('consultants');
+
+Route::post('/consultants/store', [\App\Http\Controllers\ConsultantController::class, 'store'])
+    ->name('consultant.store');
+
 /*
 |--------------------------------------------------------------------------
 | Comments Routes
