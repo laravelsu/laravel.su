@@ -7,7 +7,7 @@
         <x-slot name="sup">Ааа, помогите, ничего не работает</x-slot>
         <x-slot name="title">Как задавать вопросы?</x-slot>
         <x-slot name="description">
-            Правильно заданный вопрос содержит половину ответа
+            Правильно заданный вопрос содержит половину ответа.
         </x-slot>
         <x-slot name="content">
             <figure class="d-none d-md-block">

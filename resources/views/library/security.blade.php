@@ -7,7 +7,7 @@
         <x-slot name="sup">Разработчикам</x-slot>
         <x-slot name="title">Советы по безопасности</x-slot>
         <x-slot name="description">
-            Распространенные ошибки в коде, приводящие к уязвимостям безопасности в приложениях на Laravel
+            Распространенные ошибки в коде, приводящие к уязвимостям безопасности в приложениях на Laravel.
         </x-slot>
         <x-slot name="content">
             <figure class="d-none d-md-block">
