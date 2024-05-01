@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 20 20">
+  <path class="cls-2" d="m17,7H3c-1.65,0-3-1.35-3-3S1.35,1,3,1h14c1.65,0,3,1.35,3,3s-1.35,3-3,3ZM3,3c-.55,0-1,.45-1,1s.45,1,1,1h14c.55,0,1-.45,1-1s-.45-1-1-1H3Z"/>
+  <path class="cls-2" d="m15.78,19H4.22c-1.77,0-3.22-1.44-3.22-3.22V6c0-.55.45-1,1-1h16c.55,0,1,.45,1,1v9.78c0,1.77-1.44,3.22-3.22,3.22ZM3,7v8.78c0,.67.55,1.22,1.22,1.22h11.56c.67,0,1.22-.55,1.22-1.22V7H3Z"/>
+  <circle class="cls-2" cx="6" cy="10" r="1"/>
+  <circle class="cls-2" cx="10" cy="10" r="1"/>
+  <circle class="cls-2" cx="14" cy="10" r="1"/>
+  <circle class="cls-2" cx="6" cy="14" r="1"/>
+  <circle class="cls-2" cx="10" cy="14" r="1"/>
+  <circle class="cls-2" cx="14" cy="14" r="1"/>
+</svg>
