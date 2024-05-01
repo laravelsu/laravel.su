@@ -239,20 +239,4 @@ class User extends Authenticatable
             },
         );
     }
-
-    /**
-     * Link notifications for the Telegram channel.
-     *
-     * @throws \Exception
-     *
-     * @return int
-     */
-    public function linkNotificationForTelegram()
-    {
-        $hash = hash('crc32b', $this->id.config('app.key'));
-
-        cache(['telegram_'.$hash => $this->id], 3600);
-
-        return 'https://t.me/'.config('services.telegram-bot-api.bot_name').'?start='.$hash;
-    }
 }
