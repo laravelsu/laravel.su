@@ -54,7 +54,7 @@
                                     </li>
                                     <li>
                                         <a href="{{ route('idea.index') }}" class="link-body-emphasis text-decoration-none rounded-2 d-flex align-items-start gap-3 lh-sm text-start">
-                                            <x-icon path="i.idea1" height="2rem" width="2rem" class="text-primary" />
+                                            <x-icon path="i.menu-idea" height="2rem" width="2rem" class="text-primary" />
                                             <div class="col-10">
                                                 <span class="d-block">Laravel Idea</span>
                                                 <small class="opacity-50 line-clamp line-clamp-2">
@@ -65,7 +65,7 @@
                                     </li>
                                     <li>
                                         <a href="{{ route('meets') }}" class="link-body-emphasis text-decoration-none rounded-2 d-flex align-items-start gap-3 lh-sm text-start">
-                                            <x-icon path="i.previous_meetings" height="2rem" width="2rem" class="text-primary" />
+                                            <x-icon path="i.menu-events" height="2rem" width="2rem" class="text-primary" />
                                             <div class="col-10">
                                                 <span class="d-block">Мероприятия</span>
                                                 <small class="opacity-50 line-clamp line-clamp-2">
@@ -76,7 +76,7 @@
                                     </li>
                                     <li>
                                         <a href="{{ route('ecosystem') }}" class="link-body-emphasis text-decoration-none rounded-2 d-flex align-items-start gap-3 lh-sm text-start">
-                                            <x-icon path="i.internet-market" height="2rem" width="2rem" class="text-primary"/>
+                                            <x-icon path="i.menu-ecosystem" height="2rem" width="2rem" class="text-primary"/>
                                             <div class="col-10">
                                                 <span class="d-block">Экосистема</span>
                                                 <small class="opacity-50 line-clamp line-clamp-2">Без корпоративной сложности</small>
@@ -96,7 +96,7 @@
                                 <ul class="list-unstyled d-flex flex-column gap-4" style="width: 15rem;">
                                     <li>
                                         <a href="{{ route('library') }}" class="link-body-emphasis text-decoration-none rounded-2 d-flex align-items-start gap-3 lh-sm text-start">
-                                            <x-icon path="i.docs" height="2rem" width="2rem"  class="text-primary"/>
+                                            <x-icon path="i.menu-library" height="2rem" width="2rem"  class="text-primary"/>
                                             <div class="col-10">
                                                 <span class="d-block">Библиотека</span>
                                                 <small class="opacity-50 line-clamp line-clamp-2">Учебные материалы для улучшения навыков</small>
@@ -129,6 +129,16 @@
                                             <div class="col-10">
                                                 <span class="d-block">Pastebin</span>
                                                 <small class="opacity-50 line-clamp line-clamp-2">Делитесь своим кодом правильно</small>
+                                            </div>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="{{ route('consultants') }}" class="link-body-emphasis text-decoration-none rounded-2 d-flex align-items-start gap-3 lh-sm text-start">
+                                            <x-icon path="i.help" height="2rem" width="2rem" class="text-primary"/>
+                                            <div class="col-10">
+                                                <span class="d-block">Помощь</span>
+                                                <small class="opacity-50 line-clamp line-clamp-2">Каждое изменение должно приносить результат</small>
                                             </div>
                                         </a>
                                     </li>
@@ -280,7 +290,7 @@
                                 <a href="{{ route('contributors') }}" class="nav-link p-0">Участники</a>
                             </li>
                             <li class="nav-item mb-2">
-                                <a href="{{ route('pastebin') }}" class="nav-link p-0">Кодоран</a>
+                                <a href="{{ route('achievements') }}" class="nav-link p-0">Достижения</a>
                             </li>
                         </ul>
                     </div>

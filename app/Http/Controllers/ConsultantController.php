@@ -45,6 +45,6 @@ class ConsultantController extends Controller
         Toast::success('Отлично! Постараемся подобрать лучшего специалиста который свяжется как можно быстрее.')
             ->disableAutoHide();
 
-        return redirect()->route('consultants');
+        return redirect()->route('home');
     }
 }

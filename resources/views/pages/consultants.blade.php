@@ -34,7 +34,7 @@
                         <div class="d-flex mb-4 align-items-center gap-5">
                             <h3 class="display-6 fw-semibold mb-0 text-balance">Застряли на проблеме?</h3>
                             <div class="d-none d-sm-flex">
-                                <x-icon path="i.code" class="img-fluid d-block mx-auto text-primary" width="4rem"
+                                <x-icon path="i.help" class="img-fluid d-block mx-auto text-primary" width="4rem"
                                         height="4rem"/>
                             </div>
                         </div>
