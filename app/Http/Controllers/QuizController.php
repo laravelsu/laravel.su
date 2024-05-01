@@ -14,105 +14,86 @@ class QuizController extends Controller
      */
     public QuizState $quiz;
 
-    public Question $currentQuestion;
-
     /**
-     * @param \Illuminate\Http\Request $request
+     * Display the welcome page.
+     *
+     * @throws \Exception
      */
-    public function startQuiz(Request $request)
+    public function index()
     {
-        $this->quiz = new QuizState();
-        $this->quiz->countQuestions = $this->questions()->count();
-        $this->quiz->start = true;
-        $this->quiz->lastQuestion--;
-
-        return $this->next($request);
+        return view('quiz.index');
     }
 
+    /**
+     * Set collection of questions and start the quiz.
+     *
+     * @throws \Exception
+     *
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     */
+    public function start()
+    {
+        $this->quiz = new QuizState($this->questions());
+
+        return $this->show();
+    }
+
+    /**
+     * Move to the next question.
+     *
+     * @param \Illuminate\Http\Request $request
+     *
+     * @throws \Exception
+     *
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     */
     public function next(Request $request)
     {
         $this->quiz ??= unserialize($request->session()->get('quiz'));
 
-        $this->quiz->isIncorrect = false;
-        $this->quiz->currentAnswers = [];
-        $this->quiz->displayInfo = false;
-        $this->quiz->userAnswer = '';
-        $this->quiz->lastQuestion++;
-        $this->quiz->stepProgressBar = $this->quiz->lastQuestion;
+        $this->quiz->next();
 
-        if (! $this->questions()->has($this->quiz->lastQuestion)) {
-            $this->quiz->finish = true;
-            $this->currentQuestion = Question::recovery($this->quiz->currentQuestion);
-
-            return turbo_stream_view($this->show($request));
-        }
-
-        $this->currentQuestion = $this->questions()->get($this->quiz->lastQuestion);
-        $this->quiz->currentQuestion = $this->currentQuestion->toArray();
-
-        return turbo_stream_view($this->show($request));
+        return $this->show();
     }
 
     /**
+     * Process user's answer.
+     *
      * @param Request $request
      *
      * @throws \Exception
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|void
      */
-    public function setAnswer(Request $request)
+    public function answer(Request $request)
     {
         $userAnswer = $request->get('answer');
         $this->quiz = unserialize($request->session()->get('quiz'));
 
-        $this->quiz->countAttempts++;
-        $this->quiz->userAnswer = $userAnswer;
-        $this->currentQuestion = Question::recovery($this->quiz->currentQuestion);
+        $this->quiz->applyAnswer($userAnswer);
 
-        if (! $this->currentQuestion->isCorrect($userAnswer)) {
-            $this->quiz->countIncorrect++;
-            $this->quiz->currentAnswers[] = $userAnswer;
-            $this->quiz->live--;
-            $this->quiz->isIncorrect = true;
-
-            if ($this->quiz->live < 1) {
-                $this->quiz->gameOver = true;
-            }
-
-            return turbo_stream_view($this->show($request));
-        }
-        $this->quiz->isIncorrect = false;
-        $this->quiz->displayInfo = true;
-        $this->quiz->countCorrects++;
-        $this->quiz->stepProgressBar++;
-
-        return turbo_stream_view($this->show($request));
+        return $this->show();
     }
 
     /**
+     * Display the quiz page.
+     *
      * @throws \Exception
      */
-    public function show(Request $request)
+    protected function show()
     {
-        $request->session()->put('quiz', serialize($this->quiz));
+        session()->put('quiz', serialize($this->quiz));
 
-        return view('quiz.quiz', [
+        return turbo_stream_view(view('quiz.quiz', [
             'quiz'               => $this->quiz,
-            'currentQuestion'    => $this->currentQuestion ?? $this->questions()->get($this->quiz->lastQuestion),
-            'currentStepPercent' => $this->currentStepPercent($this->quiz->stepProgressBar),
-        ]);
+            'currentQuestion'    => $this->quiz->question(),
+        ]));
     }
 
     /**
-     * @throws \Exception
-     */
-    public function index(Request $request)
-    {
-        return view('quiz.index');
-    }
-
-    /**
-     * Для каждой эмоции у нас есть две ситуации, cчайным образом выбираем одну
+     * Generate questions for the quiz.
+     *
+     * Randomly choose one situation for each emotion.
      *
      * @throws \Exception
      *
@@ -121,9 +102,16 @@ class QuizController extends Controller
     public function questions(): Collection
     {
         return collect([
-            Question::make(['Какова основная цель фреймворка Laravel?', 'Какой фреймворк акцентирует внимание на элегантном синтаксисе и призван делать процесс разработки приятным?'])
-                ->answers(['Symfony', 'Django', 'Rails', 'Express', 'Laravel'])
-                ->setCorrectAnswer('Laravel'),
+            Question::make(['### MVC Overview
+
+- **Model**: Represents the data and the business rules concerning the data. This includes data persistence, validation, business logic, and authentication.
+
+- **View**: Presents data to the user in a specific format. The view receives data from the model and user interactions from the controller.
+
+- **Controller**: Acts as an intermediary between models and views. It processes user input, interacts with the model, and selects the view to display.
+'])
+                ->answers(['**Controller**: Acts as an intermediary between models and views. It processes user input, interacts with the model, and selects the view to display.', 'Django', 'Rails', 'Express', 'Laravel'])
+                ->setCorrectAnswer('**Controller**: Acts as an intermediary between models and views. It processes user input, interacts with the model, and selects the view to display.'),
 
             Question::make(['Какой компонент Laravel позволяет управлять операциями с базой данных упрощенным способом?', 'Какая функция в Laravel упрощает взаимодействие с базой данных?'])
                 ->answers(['Eloquent ORM', 'Lumen', 'Blade', 'Artisan', 'Eloquent'])
@@ -141,16 +129,5 @@ class QuizController extends Controller
                 ->answers(['Routing', 'Middleware', 'Blade', 'Controllers', 'Middleware'])
                 ->setCorrectAnswer('Middleware'),
         ]);
-    }
-
-    public function currentStepPercent($stepProgressBar)
-    {
-        $currentStep = $stepProgressBar;
-
-        if ($currentStep === 0) {
-            return 0;
-        }
-
-        return $currentStep / $this->questions()->count() * 100;
     }
 }

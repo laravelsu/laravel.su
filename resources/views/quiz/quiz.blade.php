@@ -1,4 +1,4 @@
-@if ($quiz->finish)
+@if ($quiz->isFinish())
     <turbo-stream target="quiz" action="update">
         <template>
             <div class="d-flex p-0">
@@ -21,47 +21,52 @@
         </template>
     </turbo-stream>
 
-@elseif($quiz->gameOver)
+@elseif($quiz->isDead())
     <turbo-stream target="quiz" action="update">
         <template>
             <div class="d-flex p-0">
                 <img src="{{ asset('/img/ui/items.svg') }}" class="w-100 img-fluid">
             </div>
             <div class="card-body px-sm-4 pt-0">
-                <div class="d-flex align-items-center mb-2">
+                <div class="my-3">
                     <h1 class="">
-                        Игра окончена. Ты проиграл.
+                        Провал.
                     </h1>
+
+                    <p>
+                        Пожалуйста, примите это сообщение как возможность для улучшения. Мы рекомендуем вам ознакомиться
+                        с материалами на нашем сайте, чтобы подготовиться к повторному тестированию.
+                    </p>
                 </div>
                 <a href="{{route('stream.quiz.start')}}"
                    data-turbo-method="post"
                    class="btn btn-primary d-flex align-items-center">
                     <x-icon path="et.reset" class="ms-auto me-2"/>
-                    <span class="me-auto">Попробывать снова</span>
+                    <span class="me-auto">Попробовать снова</span>
                 </a>
             </div>
         </template>
     </turbo-stream>
 @else
-
     <turbo-stream target="quiz" action="update">
         <template>
             <div class="card-body px-sm-4 pt-sm-3">
                 <div>
                     @if(!$quiz->displayInfo)
                         <div class="d-flex align-items-baseline">
-                            <h5 class="mb-3 me-2">
-                                {{ __($currentQuestion->getTitle()) }}
-                            </h5>
+                            <div class="mb-3 me-2 d-flex flex-column">
+                                <h5>
+                                    {!! $currentQuestion->getTitle() !!}
+                                </h5>
+                            </div>
 
-                            <button type="button"
-                                    class="ms-auto btn btn-close px-2"
-                                    data-bs-target="#closeQuiz"
-                                    data-bs-toggle="modal">
-                            </button>
+                            <a href="{{route('quiz')}}"
+                               data-turbo-action="replace"
+                               title="Попробовать снова"
+                               class="ms-auto btn btn-close px-2">
+                            </a>
                         </div>
-                        <div class="{{ $quiz->displayInfo ? 'visually-hidden' : ''}}">
-
+                        <div>
                             @if($quiz->isIncorrect)
                                 <p class="text-center text-muted">
                                     Неверно, попробуйте еще раз.
@@ -69,20 +74,19 @@
                             @endif
 
                             @foreach($currentQuestion->getAnswers() as $answer)
-                                <a href="{{route('stream.quiz.set-answer',['answer'=> $answer ])}}"
+                                <a href="{{ route('stream.quiz.set-answer', ['answer'=> $answer]) }}"
                                    data-turbo-method="post"
-                                   class="btn btn-secondary d-flex w-100 mb-3
+                                   class="btn btn-secondary w-100 mb-3
+                                   d-block text-start fw-normal
                                     {{ $currentQuestion->isCorrect($quiz->userAnswer) && $answer === $quiz->userAnswer ? 'btn-success' : '' }}
-                                   {{ in_array($answer, $quiz->currentAnswers, true) ? 'btn-danger' : '' }}"
-                                    {{ in_array($answer, $quiz->currentAnswers, true) ? "disabled" : '' }}
+                                    {{ $quiz->hasIncorrectAnswer($answer) ? 'btn-danger disabled' : '' }}"
                                 >
-                                    {{ __($answer) }}
+                                    {!! \Illuminate\Support\Str::of($answer)->inlineMarkdown() !!}
                                 </a>
                             @endforeach
                         </div>
                     @else
-                        <div class="{{ !$quiz->displayInfo ? 'visually-hidden' : ''}}">
-
+                        <div>
                             <h5 class="text-center mb-3">Верно!</h5>
 
                             <div class="alert alert-success mb-3 py-2" role="alert">
@@ -98,36 +102,31 @@
                     @endif
                 </div>
 
-                <div class="row align-items-center mb-3">
-                    <div class="col-auto text-danger opacity-75">
-                        @foreach([1,2,3] as $value)
+                <div class="row align-items-center mb-3 opacity-75">
+                    <div class="col-auto text-primary">
+                        @foreach(range(1, \App\Quiz\QuizState::LIVE) as $value)
                             <span class="position-relative">
-                            <x-icon path="{{ $quiz->live >= $value ? 'et.heart-fill' : 'et.heart-empty' }}"/>
-
-                            @if($quiz->isIncorrect && $quiz->live +1 == $value)
-                                    <span class="quiz-broken-heart"
-                                          data-controller="lottie"
-                                          data-lottie-loop-value="false"
-                                          data-lottie-path-value="/animation/broken-heart"></span>
-                                @endif
+                                <x-icon path="{{ $quiz->live >= $value ? 'bs.heart-fill' : 'bs.heartbreak' }}"
+                                        class="{{ $quiz->live >= $value ? '' : 'text-secondary opacity-50' }}"/>
                             </span>
                         @endforeach
                     </div>
-                    <div class="col d-flex align-items-center ">
+                    <div class="col d-flex align-items-center">
                         <div class="col px-2">
-                            <div class="progress progress-bg-absolute">
+                            <div class="progress border border-pro progress-bg-absolute">
                                 <div class="progress-bar bg-index" role="progressbar"
-                                     style="width:{{ $currentStepPercent }}%">
+                                     style="width:{{ $quiz->currentStepPercent() }}%">
                                 </div>
                             </div>
                         </div>
                         <div class="col-auto d-flex align-items-center px-2">
-                            <small class="text-muted"> {{ $quiz->stepProgressBar }}
-                                /{{ $quiz->countQuestions }}</small>
+                            <small class="text-muted"> {{ $quiz->step + 1 }}/{{ count($quiz->questions) }}</small>
                         </div>
                     </div>
                 </div>
-                @if($quiz->stepProgressBar == $quiz->countQuestions)
+
+
+                @if($quiz->step == count($quiz->questions))
                     <div class="">
                         <a href="{{route('stream.quiz.next')}}"
                            {{ !empty($quiz->userAnswer) ? '' : 'disabled'  }}
@@ -140,7 +139,6 @@
                     <div class="">
                         <a href="{{route('stream.quiz.next')}}"
                            data-turbo-method="post"
-                           {{ !empty($quiz->userAnswer) ? '' : 'disabled'  }}
                            class="btn btn-primary w-100" aria-current="true">
                             Продолжить
                         </a>

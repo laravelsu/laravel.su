@@ -458,6 +458,24 @@ Route::get('/@{user:nickname}/awards', [\App\Http\Controllers\ProfileController:
 Route::get('/@{user:nickname}/meets', [\App\Http\Controllers\ProfileController::class, 'meets'])
     ->name('profile.meets');
 
+
+
+/*
+|--------------------------------------------------------------------------
+| Pastebin
+|--------------------------------------------------------------------------
+*/
+
+Route::any('/test2/start', [\App\Http\Controllers\QuizController::class, 'start'])->name('stream.quiz.start');
+Route::post('/test2/next', [\App\Http\Controllers\QuizController::class, 'next'])->name('stream.quiz.next');
+Route::post('/test2/answer', [\App\Http\Controllers\QuizController::class, 'answer'])->name('stream.quiz.set-answer');
+
+
+Route::get('/quiz', [\App\Http\Controllers\QuizController::class, 'index'])->name('quiz');
+Route::get('/test', [\App\Http\Controllers\QuizController::class, 'index'])->name('quiz2.index');
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Pastebin

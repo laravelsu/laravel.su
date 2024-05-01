@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Quiz;
 
+use Illuminate\Support\Str;
+
 class Question
 {
     /**
@@ -97,7 +99,7 @@ class Question
 
     public function getTitle()
     {
-        return $this->title;
+        return Str::of($this->title)->markdown();
     }
 
     public function getAnswers()
