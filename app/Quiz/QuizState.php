@@ -142,7 +142,7 @@ class QuizState implements \JsonSerializable
      */
     public function isFinish(): bool
     {
-        return !$this->questions->has($this->step);
+        return ! $this->questions->has($this->step);
     }
 
     /**
@@ -156,7 +156,7 @@ class QuizState implements \JsonSerializable
     {
         $this->userAnswer = $answer;
 
-        if (!$this->question()->isCorrect($answer)) {
+        if (! $this->question()->isCorrect($answer)) {
             $this->incorrectAnswers[] = $answer;
             $this->live--;
             $this->isIncorrect = true;
@@ -182,11 +182,11 @@ class QuizState implements \JsonSerializable
      * Check if the given answer is in the list of incorrect answers.
      *
      * @param string $answer The answer to check.
+     *
      * @return bool True if the answer is incorrect, false otherwise.
      */
     public function hasIncorrectAnswer(string $answer): bool
     {
         return in_array($answer, $this->incorrectAnswers, true);
     }
-
 }
