@@ -464,7 +464,6 @@ Route::get('/@{user:nickname}/meets', [\App\Http\Controllers\ProfileController::
 |--------------------------------------------------------------------------
 */
 
-
 Route::middleware(['auth'])
     ->group(function () {
         Route::post('/review/start', [\App\Http\Controllers\ReviewController::class, 'start'])->name('stream.review.start');
