@@ -460,6 +460,17 @@ Route::get('/@{user:nickname}/meets', [\App\Http\Controllers\ProfileController::
 
 /*
 |--------------------------------------------------------------------------
+| Review
+|--------------------------------------------------------------------------
+*/
+
+Route::post('/review/start', [\App\Http\Controllers\ReviewController::class, 'start'])->name('stream.review.start');
+Route::post('/review/next', [\App\Http\Controllers\ReviewController::class, 'next'])->name('stream.review.next');
+Route::post('/review/answer', [\App\Http\Controllers\ReviewController::class, 'answer'])->name('stream.review.set-answer');
+Route::get('/review', [\App\Http\Controllers\ReviewController::class, 'index'])->name('review');
+
+/*
+|--------------------------------------------------------------------------
 | Pastebin
 |--------------------------------------------------------------------------
 */

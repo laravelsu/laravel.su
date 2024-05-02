@@ -80,7 +80,6 @@
                                     </div>
                                 </div>
 
-
                                 <div class="mb-4 d-block d-md-none">
                                     <label for="theme-checker-auto" class="form-label d-block">Оформление</label>
 
@@ -111,7 +110,7 @@
                                         адаптировался автоматически в соответствии с вашей системой.
                                     </div>
                                 </div>
-                                <div class="mb-4 "
+                                <div class="mb-4"
                                      data-controller="webpush"
                                      data-webpush-error-supported-value="Push-сообщения не поддерживаются на этом устройстве"
                                      data-webpush-error-permission-value="Доступ запрещён">

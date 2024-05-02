@@ -249,3 +249,13 @@ $utilities: (
     height: 100%;
     z-index: 1;
 }
+
+.answer {
+    @extend .d-flex;
+    @extend .flex-column;
+    @extend .gy-3;
+
+    p {
+        margin: 0 !important;
+    }
+}

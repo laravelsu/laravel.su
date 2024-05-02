@@ -54,6 +54,12 @@ return [
             'throw'  => false,
         ],
 
+        'review' => [
+            'driver' => 'local',
+            'root'   => storage_path('review'),
+            'throw'  => false,
+        ],
+
         'public' => [
             'driver'     => 'local',
             'root'       => storage_path('app/public'),
