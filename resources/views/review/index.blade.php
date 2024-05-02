@@ -1,10 +1,10 @@
 @extends('html')
-@section('title', __('quiz.page.title'))
-@section('description', __('quiz.page.description'))
+@section('title', 'Тестирование')
+@section('description', 'Интерактивные тесты, которые помогут оценить ваш прогресс в изучении Laravel')
 
 @section('body')
 
-    <div class="container vh-100 d-flex align-content-center align-items-center">
+    <div class="container min-vh-100 d-flex align-content-center align-items-center">
         <div class="col-lg-6 mx-auto">
             <div id="quiz" class="p-4 p-xl-5 bg-body-secondary rounded position-relative">
 
@@ -20,9 +20,11 @@
                     <div class="d-flex align-items-center mb-3">
                         <div class="col">
                             <p class="fw-normal mb-0">
-                                Получите награду войдя первым в обновлённое сообщество. Событие ограничено временем - не упустите шанс, начните прямо сейчас!
+                                Повседневная практика показывает, что реализация намеченных плановых заданий
+                                требуют от нас анализа существенных финансовых и административных условий. Товарищи!
+                                консультация с широким активом играет важную роль в формировании модели развития.
                             </p>
-                            <a href="{{route('stream.quiz.start')}}"
+                            <a href="{{route('stream.review.start')}}"
                                data-turbo-method="post"
                                class="btn btn-primary m-auto d-flex align-items-center justify-content-center w-100 mt-4">
                                 Начать викторину

@@ -460,16 +460,14 @@ Route::get('/@{user:nickname}/meets', [\App\Http\Controllers\ProfileController::
 
 /*
 |--------------------------------------------------------------------------
-| Pastebin
+| Review
 |--------------------------------------------------------------------------
 */
 
-Route::any('/test2/start', [\App\Http\Controllers\QuizController::class, 'start'])->name('stream.quiz.start');
-Route::post('/test2/next', [\App\Http\Controllers\QuizController::class, 'next'])->name('stream.quiz.next');
-Route::post('/test2/answer', [\App\Http\Controllers\QuizController::class, 'answer'])->name('stream.quiz.set-answer');
-
-Route::get('/quiz', [\App\Http\Controllers\QuizController::class, 'index'])->name('quiz');
-Route::get('/test', [\App\Http\Controllers\QuizController::class, 'index'])->name('quiz2.index');
+Route::post('/review/start', [\App\Http\Controllers\ReviewController::class, 'start'])->name('stream.review.start');
+Route::post('/review/next', [\App\Http\Controllers\ReviewController::class, 'next'])->name('stream.review.next');
+Route::post('/review/answer', [\App\Http\Controllers\ReviewController::class, 'answer'])->name('stream.review.set-answer');
+Route::get('/review', [\App\Http\Controllers\ReviewController::class, 'index'])->name('review');
 
 /*
 |--------------------------------------------------------------------------

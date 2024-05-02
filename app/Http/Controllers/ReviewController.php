@@ -6,8 +6,10 @@ use App\Quiz\Question;
 use App\Quiz\QuizState;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
-class QuizController extends Controller
+class ReviewController extends Controller
 {
     /**
      * @var QuizState
@@ -21,7 +23,7 @@ class QuizController extends Controller
      */
     public function index()
     {
-        return view('quiz.index');
+        return view('review.index');
     }
 
     /**
@@ -49,7 +51,7 @@ class QuizController extends Controller
      */
     public function next(Request $request)
     {
-        $this->quiz ??= unserialize($request->session()->get('quiz'));
+        $this->quiz ??= unserialize($request->session()->get('review'));
 
         $this->quiz->next();
 
@@ -68,7 +70,7 @@ class QuizController extends Controller
     public function answer(Request $request)
     {
         $userAnswer = $request->get('answer');
-        $this->quiz = unserialize($request->session()->get('quiz'));
+        $this->quiz = unserialize($request->session()->get('review'));
 
         $this->quiz->applyAnswer($userAnswer);
 
@@ -82,9 +84,9 @@ class QuizController extends Controller
      */
     protected function show()
     {
-        session()->put('quiz', serialize($this->quiz));
+        session()->put('review', serialize($this->quiz));
 
-        return turbo_stream_view(view('quiz.quiz', [
+        return turbo_stream_view(view('review.quiz', [
             'quiz'               => $this->quiz,
             'currentQuestion'    => $this->quiz->question(),
         ]));
@@ -101,18 +103,33 @@ class QuizController extends Controller
      */
     public function questions(): Collection
     {
-        return collect([
-            Question::make(['### MVC Overview
+        $storage = Storage::disk('review');
 
-- **Model**: Represents the data and the business rules concerning the data. This includes data persistence, validation, business logic, and authentication.
+        return collect($storage->allFiles('beginning'))
+            ->map(fn ($path) => $storage->get($path))
+            ->map(function ($content) {
+                $question = Str::of($content)
+                    ->between('<question>', '</question>')
+                    ->trim()
+                    ->toString();
 
-- **View**: Presents data to the user in a specific format. The view receives data from the model and user interactions from the controller.
+                $answers = Str::of($content)
+                    ->matchAll("/<answer>(.*?)<\/answer>/s")
+                    ->map(fn ($answer) => trim($answer));
 
-- **Controller**: Acts as an intermediary between models and views. It processes user input, interacts with the model, and selects the view to display.
-'])
-                ->answers(['**Controller**: Acts as an intermediary between models and views. It processes user input, interacts with the model, and selects the view to display.', 'Django', 'Rails', 'Express', 'Laravel'])
-                ->setCorrectAnswer('**Controller**: Acts as an intermediary between models and views. It processes user input, interacts with the model, and selects the view to display.'),
+                $correct = Str::of($content)
+                    ->between('<correct>', '</correct>')
+                    ->trim()
+                    ->toString();
 
+                return Question::make($question)
+                    ->answers($answers->push($correct)->toArray())
+                    ->setCorrectAnswer($correct);
+            });
+
+        /*
+         * Example of questions for the quiz.
+        $example = [
             Question::make(['Какой компонент Laravel позволяет управлять операциями с базой данных упрощенным способом?', 'Какая функция в Laravel упрощает взаимодействие с базой данных?'])
                 ->answers(['Eloquent ORM', 'Lumen', 'Blade', 'Artisan', 'Eloquent'])
                 ->setCorrectAnswer('Eloquent ORM'),
@@ -128,6 +145,7 @@ class QuizController extends Controller
             Question::make(['Какая функция Laravel позволяет разработчикам создавать модульный, многократно используемый код?', 'Какое понятие Laravel способствует повторному использованию кода и его поддержке?'])
                 ->answers(['Routing', 'Middleware', 'Blade', 'Controllers', 'Middleware'])
                 ->setCorrectAnswer('Middleware'),
-        ]);
+        ];
+        */
     }
 }

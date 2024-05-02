@@ -2,14 +2,24 @@
     <turbo-stream target="quiz" action="update">
         <template>
             <div class="d-flex p-0">
-                <img src="{{ asset('/img/quiz/win.svg') }}" class="w-100 img-fluid">
+                <img src="{{ asset('/img/ui/certificate.svg') }}" class="w-100 img-fluid">
             </div>
             <div class="card-body px-sm-4 pt-0">
                 <div class="d-flex align-items-center mb-2">
                     <div class="col">
-                        <p class="fw-normal">
-                            {{ __('quiz.thanks') }}
+                        <p>
+                            Разнообразный и богатый опыт постоянное информационно-пропагандистское обеспечение нашей
+                            деятельности требуют определения и уточнения модели развития. Не следует, однако забывать,
+                            что реализация намеченных плановых заданий в значительной степени обуславливает создание
+                            форм развития.
                         </p>
+
+                        <p>
+                            Повседневная практика показывает, что реализация намеченных плановых заданий
+                            требуют от нас анализа существенных финансовых и административных условий. Товарищи!
+                            консультация с широким активом играет важную роль в формировании модели развития.
+                        </p>
+
 
                         <a href="{{route('home')}}" data-turbo-action="replace"
                            class="btn btn-primary m-auto d-flex align-items-center justify-content-center w-100">
@@ -38,7 +48,7 @@
                         с материалами на нашем сайте, чтобы подготовиться к повторному тестированию.
                     </p>
                 </div>
-                <a href="{{route('stream.quiz.start')}}"
+                <a href="{{route('stream.review.start')}}"
                    data-turbo-method="post"
                    class="btn btn-primary d-flex align-items-center">
                     <x-icon path="et.reset" class="ms-auto me-2"/>
@@ -55,18 +65,16 @@
                     @if(!$quiz->displayInfo)
                         <div class="d-flex align-items-baseline">
                             <div class="mb-3 me-2 d-flex flex-column">
-                                <h5>
-                                    {!! $currentQuestion->getTitle() !!}
-                                </h5>
+                                {!! $currentQuestion->getTitle() !!}
                             </div>
 
-                            <a href="{{route('quiz')}}"
+                            <a href="{{route('review')}}"
                                data-turbo-action="replace"
                                title="Попробовать снова"
                                class="ms-auto btn btn-close px-2">
                             </a>
                         </div>
-                        <div>
+                        <div data-controller="prism">
                             @if($quiz->isIncorrect)
                                 <p class="text-center text-muted">
                                     Неверно, попробуйте еще раз.
@@ -74,14 +82,15 @@
                             @endif
 
                             @foreach($currentQuestion->getAnswers() as $answer)
-                                <a href="{{ route('stream.quiz.set-answer', ['answer'=> $answer]) }}"
+                                <a href="{{ route('stream.review.set-answer', ['answer'=> $answer]) }}"
                                    data-turbo-method="post"
                                    class="btn btn-secondary w-100 mb-3
                                    d-block text-start fw-normal
+                                   answer
                                     {{ $currentQuestion->isCorrect($quiz->userAnswer) && $answer === $quiz->userAnswer ? 'btn-success' : '' }}
                                     {{ $quiz->hasIncorrectAnswer($answer) ? 'btn-danger disabled' : '' }}"
                                 >
-                                    {!! \Illuminate\Support\Str::of($answer)->inlineMarkdown() !!}
+                                    {!! \Illuminate\Support\Str::of($answer)->markdown() !!}
                                 </a>
                             @endforeach
                         </div>
@@ -94,9 +103,10 @@
                             </div>
 
                             <p class="text-muted">
-                                Ты ответил правльно! Поздравляю! Вот что я могу тебе рассказать:
-                                Ты ответил правльно! Поздравляю! Вот что я могу тебе рассказать:
-                                Ты ответил правльно! Поздравляю! Вот что я могу тебе рассказать:
+                                Ты ответил правльно! Поздравляю! Вот что я могу тебе рассказать:<br>
+                                Повседневная практика показывает, что реализация намеченных плановых заданий
+                                требуют от нас анализа существенных финансовых и административных условий. Товарищи!
+                                консультация с широким активом играет важную роль в формировании модели развития.
                             </p>
                         </div>
                     @endif
@@ -128,7 +138,7 @@
 
                 @if($quiz->step == count($quiz->questions))
                     <div class="">
-                        <a href="{{route('stream.quiz.next')}}"
+                        <a href="{{route('stream.review.next')}}"
                            {{ !empty($quiz->userAnswer) ? '' : 'disabled'  }}
                            data-turbo-method="post"
                            class="btn btn-primary w-100" aria-current="true">
@@ -137,7 +147,7 @@
                     </div>
                 @elseif($quiz->displayInfo)
                     <div class="">
-                        <a href="{{route('stream.quiz.next')}}"
+                        <a href="{{route('stream.review.next')}}"
                            data-turbo-method="post"
                            class="btn btn-primary w-100" aria-current="true">
                             Продолжить
