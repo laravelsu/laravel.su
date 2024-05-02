@@ -26,8 +26,9 @@
                             </p>
                             <a href="{{route('stream.review.start')}}"
                                data-turbo-method="post"
+                               rel="nofollow noopener noreferrer"
                                class="btn btn-primary m-auto d-flex align-items-center justify-content-center w-100 mt-4">
-                                Начать викторину
+                                {{ Auth::check() ? 'Начать викторину' : 'Войдите, чтобы начать' }}
                             </a>
                         </div>
                     </div>
