@@ -339,6 +339,74 @@
             </div>
         </div>
 
+        <!-- Author: Danil Shutsky -->
+        <div class="row g-0 rounded bg-body-tertiary mb-5">
+            <div class="col-lg-4 order-lg-last">
+                <div class="position-relative overflow-hidden h-100 rounded-end">
+                    <img src="/img/community/danil-shutsky.png" class="w-100 h-100 object-fit-cover">
+
+                    <div class="position-absolute hero-image top-0 bottom-0 start-0 end-0 text-white p-5 d-flex align-items-end">
+                        <div>
+                            <small class="d-block opacity-50 small mb-1">Ваш учитель:</small>
+                            <p class="fs-4 lh-1 text-balance mb-0">Данил Щуцкий (CutCode)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="p-4 py-xl-0 px-xl-5 my-xl-5">
+                    <div
+                        class="row justify-content-between row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-2 g-4 g-xl-5 text-start">
+                        <div class="col">
+                            <div class="d-grid gap-4 d-flex justify-content-md-start position-relative">
+                                <img src="/img/ui/courses/relationship.svg" height="80">
+                                <a href="https://www.youtube.com/playlist?list=PLTucyHptHtTmEUKZhY40SrXPhUuPdp1bD"
+                                   class="link-body-emphasis stretched-link text-decoration-none text-balance">
+                                    <h5 class="mb-2">Отношения в Laravel</h5>
+                                    <p class="opacity-75 line-clamp line-clamp-3 small">Гайд по основам применения различных типов отношений</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="d-grid gap-4 d-flex justify-content-md-start position-relative">
+                                <img src="/img/ui/courses/chest.svg" height="80">
+                                <a href="https://www.youtube.com/playlist?list=PLTucyHptHtTnkmEwK0Yxxl-L9Z_8XOK6c"
+                                   class="link-body-emphasis stretched-link text-decoration-none text-balance">
+                                    <h5 class="mb-2">"Под капотом" Laravel</h5>
+                                    <p class="opacity-75 line-clamp line-clamp-3 small">Как устроен Laravel в деталях</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="d-grid gap-4 d-flex justify-content-md-start position-relative">
+                                <img src="/img/ui/courses/laravel.svg" height="80">
+                                <a href="https://www.youtube.com/playlist?list=PLTucyHptHtTkUbXaikXEmCWL8GradRx9I"
+                                   class="link-body-emphasis stretched-link text-decoration-none text-balance">
+                                    <h5 class="mb-2">Laravel с нуля</h5>
+                                    <p class="opacity-75 line-clamp line-clamp-3 small">
+                                        Быстро войти в курс дела
+                                    </p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="d-grid gap-4 d-flex justify-content-md-start position-relative">
+                                <img src="/img/ui/courses/moonshine.svg" height="80">
+                                <a href="https://www.youtube.com/playlist?list=PLTucyHptHtTnFB4pLj1FpqEMwu7qv3xbG"
+                                   class="link-body-emphasis stretched-link text-decoration-none text-balance">
+                                    <h5 class="mb-2">MoonShine 2</h5>
+                                    <p class="opacity-75 line-clamp line-clamp-3 small">Видео-гайды для раскрытия возможностей админ-панели</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 small text-balance">
+                        <p class="mb-0">Laravel-комьюнити со своей экосистемой во главе с Данилом Щуцким: сайт, канал на YouTube, чат в Telegram и open-source админ-панель для Laravel - MoonShine. Бесплатный образовательный контент и курсы по Laravel и не только.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="row g-0 rounded bg-body-tertiary mb-5">
 
             <div class="col-lg-4 order-lg-last">
