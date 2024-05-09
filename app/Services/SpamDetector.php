@@ -79,7 +79,7 @@ class SpamDetector
             return Str::of($string)
                 ->lower()
                 ->matchAll('/[[:alpha:]]+/u')
-                ->filter(fn(string $word) => Str::length($word) > 3)
+                ->filter(fn (string $word) => Str::length($word) > 3)
                 ->toArray();
         });
 
