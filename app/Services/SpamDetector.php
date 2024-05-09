@@ -75,6 +75,14 @@ class SpamDetector
     {
         $classifier = new Classifier();
 
+        $classifier->setTokenizer(function (string $string) {
+            return Str::of($string)
+                ->lower()
+                ->matchAll('/[[:alpha:]]+/u')
+                ->filter(fn(string $word) => Str::length($word) > 3)
+                ->toArray();
+        });
+
         // Train the classifier with spam and ham messages
         $this
             ->trainClassifier($classifier, 'spam.json', static::SPAM)
