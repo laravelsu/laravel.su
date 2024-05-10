@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use AssistedMindfulness\NaiveBayes\Classifier;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -73,20 +74,17 @@ class SpamDetector
      */
     public function checkByClassifier(): bool
     {
-        $classifier = new Classifier();
+        $classifier = Cache::remember('spam-classifier', now()->addDays(7), function () {
+            $classifier = new Classifier();
 
-        $classifier->setTokenizer(function (string $string) {
-            return Str::of($string)
-                ->lower()
-                ->matchAll('/[[:alpha:]]+/u')
-                ->filter(fn (string $word) => Str::length($word) > 3)
-                ->toArray();
+            $classifier->uneven();
+
+            $this
+                ->trainClassifier($classifier, 'spam.json', static::SPAM)
+                ->trainClassifier($classifier, 'ham.json', static::HAM);
+
+            return $classifier;
         });
-
-        // Train the classifier with spam and ham messages
-        $this
-            ->trainClassifier($classifier, 'spam.json', static::SPAM)
-            ->trainClassifier($classifier, 'ham.json', static::HAM);
 
         return $classifier->most($this->message) === static::SPAM;
     }

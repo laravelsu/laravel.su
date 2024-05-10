@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d798ab69bdbc9e9d86cc0d14b9bfdf91",
+    "content-hash": "ccc345e0896e437c653ecd420c6a3344",
     "packages": [
         {
             "name": "assisted-mindfulness/naive-bayes",
-            "version": "0.0.6",
+            "version": "0.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Assisted-Mindfulness/naive-bayes.git",
-                "reference": "2f2edfea17cd8d2a64b41d97d29cc232e37df870"
+                "reference": "2456825550a6f64336fba38a485b78a0e935165a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Assisted-Mindfulness/naive-bayes/zipball/2f2edfea17cd8d2a64b41d97d29cc232e37df870",
-                "reference": "2f2edfea17cd8d2a64b41d97d29cc232e37df870",
+                "url": "https://api.github.com/repos/Assisted-Mindfulness/naive-bayes/zipball/2456825550a6f64336fba38a485b78a0e935165a",
+                "reference": "2456825550a6f64336fba38a485b78a0e935165a",
                 "shasum": ""
             },
             "require": {
@@ -49,9 +49,9 @@
             "description": "Naive Bayes classifier algorithm",
             "support": {
                 "issues": "https://github.com/Assisted-Mindfulness/naive-bayes/issues",
-                "source": "https://github.com/Assisted-Mindfulness/naive-bayes/tree/0.0.6"
+                "source": "https://github.com/Assisted-Mindfulness/naive-bayes/tree/0.0.7"
             },
-            "time": "2024-05-07T02:38:17+00:00"
+            "time": "2024-05-10T23:18:23+00:00"
         },
         {
             "name": "brick/math",
@@ -4633,20 +4633,20 @@
         },
         {
             "name": "psr/http-factory",
-            "version": "1.0.2",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/http-factory.git",
-                "reference": "e616d01114759c4c489f93b099585439f795fe35"
+                "reference": "2b4765fddfe3b508ac62f829e852b1501d3f6e8a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/http-factory/zipball/e616d01114759c4c489f93b099585439f795fe35",
-                "reference": "e616d01114759c4c489f93b099585439f795fe35",
+                "url": "https://api.github.com/repos/php-fig/http-factory/zipball/2b4765fddfe3b508ac62f829e852b1501d3f6e8a",
+                "reference": "2b4765fddfe3b508ac62f829e852b1501d3f6e8a",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.0.0",
+                "php": ">=7.1",
                 "psr/http-message": "^1.0 || ^2.0"
             },
             "type": "library",
@@ -4670,7 +4670,7 @@
                     "homepage": "https://www.php-fig.org/"
                 }
             ],
-            "description": "Common interfaces for PSR-7 HTTP message factories",
+            "description": "PSR-17: Common interfaces for PSR-7 HTTP message factories",
             "keywords": [
                 "factory",
                 "http",
@@ -4682,9 +4682,9 @@
                 "response"
             ],
             "support": {
-                "source": "https://github.com/php-fig/http-factory/tree/1.0.2"
+                "source": "https://github.com/php-fig/http-factory"
             },
-            "time": "2023-04-10T20:10:41+00:00"
+            "time": "2024-04-15T12:06:14+00:00"
         },
         {
             "name": "psr/http-message",

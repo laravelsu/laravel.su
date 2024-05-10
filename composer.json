@@ -19,7 +19,7 @@
     "require": {
         "php": "^8.2",
         "ext-dom": "*",
-        "assisted-mindfulness/naive-bayes": "0.0.6",
+        "assisted-mindfulness/naive-bayes": "0.0.7",
         "cagilo/cagilo": "^3.3",
         "esplora/spire": "0.0.2",
         "guzzlehttp/guzzle": "^7.2",
