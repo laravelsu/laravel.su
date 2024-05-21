@@ -136,4 +136,7 @@
         </x-turbo::frame>
     </x-container>
 
+
+    @include('particles.sponsors')
+
 @endsection
