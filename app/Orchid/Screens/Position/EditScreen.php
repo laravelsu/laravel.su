@@ -19,7 +19,6 @@ use Orchid\Screen\Fields\Select;
 use Orchid\Screen\Fields\SimpleMDE;
 use Orchid\Screen\Fields\Switcher;
 use Orchid\Screen\Screen;
-use Orchid\Support\Color;
 use Orchid\Support\Facades\Layout;
 use Orchid\Support\Facades\Toast;
 
@@ -87,7 +86,7 @@ class EditScreen extends Screen
 
             Button::make(__('Сохранить изменения'))
                 ->icon('bs.check-circle')
-                ->method('update')
+                ->method('update'),
         ];
     }
 
@@ -143,7 +142,7 @@ class EditScreen extends Screen
                         ->title('Статус')
                         ->placeholder('Одобренный')
                         ->help('Одобренные вакансии будут видны на сайте'),
-                ])
+                ]),
             ])->ratio('60/40'),
         ];
     }
