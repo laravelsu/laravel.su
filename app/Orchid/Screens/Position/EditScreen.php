@@ -13,6 +13,7 @@ use Illuminate\Validation\Rule;
 use Orchid\Screen\Action;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\Link;
+use Orchid\Screen\Fields\Group;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Select;
 use Orchid\Screen\Fields\SimpleMDE;
@@ -74,14 +75,19 @@ class EditScreen extends Screen
     public function commandBar(): iterable
     {
         return [
-            Link::make('Посмотреть')
-                ->href(route('position.show', $this->position))
-                ->target('_blank')
-                ->icon('bs.eye'),
             Button::make(__('Remove'))
                 ->icon('bs.trash3')
                 ->confirm('Удаление вакансии будет окончательным и необратимым действием.')
                 ->method('remove'),
+
+            Link::make('Посмотреть')
+                ->href(route('position.show', $this->position))
+                ->target('_blank')
+                ->icon('bs.eye'),
+
+            Button::make(__('Сохранить изменения'))
+                ->icon('bs.check-circle')
+                ->method('update')
         ];
     }
 
@@ -91,15 +97,19 @@ class EditScreen extends Screen
     public function layout(): iterable
     {
         return [
-            Layout::block(
+
+            Layout::split([
                 Layout::rows([
                     Input::make('position.title')
+                        ->required()
                         ->title('Заголовок'),
 
                     SimpleMDE::make('position.description')
                         ->title('Текст')
-                        ->placeholder('Содержимое статьи'),
-
+                        ->required()
+                        ->placeholder('Содержимое вакансии'),
+                ]),
+                Layout::rows([
                     Input::make('position.organization')
                         ->title('Организация'),
 
@@ -111,35 +121,30 @@ class EditScreen extends Screen
                         ->title('Формат'),
 
                     Input::make('position.contact')
+                        ->required()
                         ->title('Контакты'),
 
-                    Input::make('position.salary_min')
-                        ->type('number')
-                        ->min(0)
-                        ->step(1000)
-                        ->title('От'),
+                    Group::make([
+                        Input::make('position.salary_min')
+                            ->type('number')
+                            ->min(0)
+                            ->step(1000)
+                            ->title('Зарплата. От'),
 
-                    Input::make('position.salary_max')
-                        ->type('number')
-                        ->min(0)
-                        ->step(1000)
-                        ->title('До'),
+                        Input::make('position.salary_max')
+                            ->type('number')
+                            ->min(0)
+                            ->step(1000)
+                            ->title('До'),
+                    ]),
 
                     Switcher::make('position.approved')
                         ->sendTrueOrFalse()
                         ->title('Статус')
                         ->placeholder('Одобренный')
                         ->help('Одобренные вакансии будут видны на сайте'),
-
-                ]))
-                ->title(__('Вакансия'))
-                ->description('')
-                ->commands(
-                    Button::make(__('Сохранить изменения'))
-                        ->type(Color::SUCCESS)
-                        ->icon('bs.check-circle')
-                        ->method('update')
-                ),
+                ])
+            ])->ratio('60/40'),
         ];
     }
 

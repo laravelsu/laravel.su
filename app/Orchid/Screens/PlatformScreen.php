@@ -6,6 +6,7 @@ namespace App\Orchid\Screens;
 
 use App\Models\CodeSnippet;
 use App\Models\Comment;
+use App\Models\Document;
 use App\Models\IdeaKey;
 use App\Models\IdeaRequest;
 use App\Models\Meet;
@@ -15,7 +16,9 @@ use App\Models\Post;
 use App\Models\User;
 use App\Orchid\Layouts\BasicIndicators;
 use Carbon\Carbon;
+use Illuminate\Support\Str;
 use Orchid\Screen\Screen;
+use Orchid\Support\Facades\Layout;
 
 class PlatformScreen extends Screen
 {
@@ -30,21 +33,25 @@ class PlatformScreen extends Screen
         $end = Carbon::now();
 
         return [
-            'basicIndicators'                => [
+            'basicIndicators' => [
                 User::countByDays($start, $end)->toChart('Пользователи'),
                 Comment::countByDays($start, $end)->toChart('Комментарии'),
                 CodeSnippet::countByDays($start, $end)->toChart('Pastebin'),
             ],
-            'content'                => [
+            'content'         => [
                 Post::countByDays($start, $end)->toChart('Посты'),
                 Meet::countByDays($start, $end)->toChart('Мероприятия'),
                 Package::countByDays($start, $end)->toChart('Пакеты'),
                 Position::countByDays($start, $end)->toChart('Вакансии'),
             ],
-            'idea' => [
+            'idea'            => [
                 IdeaRequest::countByDays($start, $end)->toChart('Запросы ключей'),
                 IdeaKey::where('activated', 1)->countByDays($start, $end, 'updated_at')->toChart('Выданные ключи'),
             ],
+            'docs'            => Document::selectRaw('version, SUM(behind) as behind')
+                ->groupBy('version')
+                ->pluck('behind', 'version')
+                ->mapWithKeys(fn ($value, $key) => [Str::of($key)->replace('.', '')->toString() => $value.' изменений']),
         ];
     }
 
@@ -82,9 +89,14 @@ class PlatformScreen extends Screen
     public function layout(): iterable
     {
         return [
+            Layout::metrics([
+                'Документация 10.x отстаёт' => 'docs.10x',
+                'Документация 11.x отстаёт' => 'docs.11x',
+            ]),
+
             BasicIndicators::make('basicIndicators')
                 ->description('График отображает количество зарегистрированных пользователей и оставленных комментариев по дням')
-                ->title('Пользователи'),
+                ->title('Вовлеченность пользователей'),
 
             BasicIndicators::make('content')
                 ->title('Контент')
@@ -93,7 +105,6 @@ class PlatformScreen extends Screen
             BasicIndicators::make('idea')
                 ->description('Количество запросов и выданных ключей Laravel Idea по дням')
                 ->title('Idea'),
-
         ];
     }
 }
