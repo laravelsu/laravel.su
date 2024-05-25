@@ -40,8 +40,8 @@
             @endif
         </div>
 
-        <p class="fs-4 fw-bolder mb-2">
-            {{ $package->name }}
+        <p class="fs-4 fw-bolder mb-2 text-balance">
+            {!! $package->presenter()->name() !!}
         </p>
 
         <hr class="w-25">

@@ -13,7 +13,7 @@
 
                         <div class="mt-2 mb-auto">
                             <a href="{{ $package->website }}" class="h5 link-body-emphasis stretched-link text-decoration-none mb-2 d-block">
-                                {{ $package->name }}
+                                {!!  $package->presenter()->name !!}
                             </a>
 
                             <p class="line-clamp opacity-50 line-clamp-4 small text-balance">
