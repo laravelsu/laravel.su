@@ -57,7 +57,7 @@ class Ecosystem
             'herd' => [
                 'name'        => 'Herd',
                 'image-alt'   => 'Логотип Herd',
-                'description' => 'Самый быстрый опыт разработки на Laravel локально - исключительно для macOS.',
+                'description' => 'Самый быстрый опыт разработки на Laravel локально — для macOS и Windows.',
                 'href'        => 'https://herd.laravel.com',
                 'color'       => '#dc2626',
             ],
