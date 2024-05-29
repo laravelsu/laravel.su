@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ccc345e0896e437c653ecd420c6a3344",
+    "content-hash": "6254fc50de0b7482a0d17bb421b73366",
     "packages": [
         {
             "name": "assisted-mindfulness/naive-bayes",
@@ -1288,16 +1288,16 @@
         },
         {
             "name": "hotwired-laravel/turbo-laravel",
-            "version": "2.0.0-beta4",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hotwired-laravel/turbo-laravel.git",
-                "reference": "4b1180e0de1ec4550606af6a29db3461a062c763"
+                "reference": "fa6b03b9a3cc8b1c9e6fc65820e5487d0a1beb60"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hotwired-laravel/turbo-laravel/zipball/4b1180e0de1ec4550606af6a29db3461a062c763",
-                "reference": "4b1180e0de1ec4550606af6a29db3461a062c763",
+                "url": "https://api.github.com/repos/hotwired-laravel/turbo-laravel/zipball/fa6b03b9a3cc8b1c9e6fc65820e5487d0a1beb60",
+                "reference": "fa6b03b9a3cc8b1c9e6fc65820e5487d0a1beb60",
                 "shasum": ""
             },
             "require": {
@@ -1353,9 +1353,9 @@
             ],
             "support": {
                 "issues": "https://github.com/hotwired-laravel/turbo-laravel/issues",
-                "source": "https://github.com/hotwired-laravel/turbo-laravel/tree/2.0.0-beta4"
+                "source": "https://github.com/hotwired-laravel/turbo-laravel/tree/2.0.0"
             },
-            "time": "2024-03-07T01:02:22+00:00"
+            "time": "2024-05-08T00:41:18+00:00"
         },
         {
             "name": "intervention/gif",
@@ -12736,7 +12736,6 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "hotwired-laravel/turbo-laravel": 10,
         "laravel/unfenced": 20
     },
     "prefer-stable": true,
