@@ -25,9 +25,6 @@
         <x-turbo::frame id="packages"
                         refresh="morph"
                         data-turbo-action="advance"
-                        autoscroll="true"
-                        data-autoscroll-block="nearest"
-                        data-autoscroll-behavior="smooth"
         >
             <div class="row g-4 g-md-5 justify-content-center align-items-start position-relative mb-xl-5 mb-3">
                 <div class="col-md-4 col-xl-3 d-none d-md-block">
