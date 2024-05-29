@@ -83,7 +83,7 @@
                 </div>
 
             </div>
-            <div class="row g-4 g-md-5 justify-content-center align-items-start position-relative mb-5">
+            <div class="row g-4 g-md-5 position-relative mb-5">
                 <div class="col-md-4 col-xl-3 position-sticky top-0 d-none d-md-block">
                     @foreach(\App\Models\Enums\PackageTypeEnum::cases() as $type)
                         <div class="mb-4 position-relative">
@@ -123,11 +123,14 @@
                         </div>
                     @else
 
-                        <div class="row row-cols-lg-2 row-cols-1 g-4">
+                        <div class="d-flex flex-column gap-4 h-100">
+                            <div class="row row-cols-lg-2 row-cols-1 g-4 mb-auto">
+                                @foreach($packages as $package)
+                                    @include('particles.package')
+                                @endforeach
+                            </div>
 
-                            @foreach($packages as $package)
-                                @include('particles.package')
-                            @endforeach
+                            {{ $packages->withQueryString()->links() }}
                         </div>
                     @endif
 
