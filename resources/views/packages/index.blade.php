@@ -22,7 +22,13 @@
     </x-header>
 
     <x-container>
-        <x-turbo::frame id="packages" refresh="morph">
+        <x-turbo::frame id="packages"
+                        refresh="morph"
+                        data-turbo-action="advance"
+                        autoscroll="true"
+                        data-autoscroll-block="nearest"
+                        data-autoscroll-behavior="smooth"
+        >
             <div class="row g-4 g-md-5 justify-content-center align-items-start position-relative mb-xl-5 mb-3">
                 <div class="col-md-4 col-xl-3 d-none d-md-block">
                     <span class="display-6 fw-bold text-body-emphasis mb-4 text-balance">Категории</span>
