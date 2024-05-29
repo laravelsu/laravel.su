@@ -70,7 +70,7 @@
                                         name="sort"
                                         onchange="this.form.requestSubmit()">
                                     @foreach(\App\Models\Enums\SortEnum::cases() as $sort)
-                                        <option value="{{$sort->value}}" @selected($currentSort == $sort->value)>
+                                        <option value="{{$sort->value}}" @selected($currentSort == $sort)>
                                             {{$sort->text()}}
                                         </option>
                                     @endforeach
