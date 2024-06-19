@@ -339,6 +339,52 @@
             </div>
         </div>
 
+        <!-- Author: Mikhail Protasevich (AreaWeb) -->
+        <div class="row g-0 rounded bg-body-tertiary mb-5">
+            <div class="col-lg-4 order-lg-last">
+                <x-hero image="/img/community/protasevich.png" text="Михаил Протасевич" class="rounded-end"/>
+            </div>
+            <div class="col-lg-8">
+                <div class="p-4 p-xl-5 my-xl-5">
+                    <div
+                            class="row justify-content-between row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-2 g-4 g-xl-5 text-start">
+                        <div class="col">
+                            <div class="d-grid gap-4 d-flex justify-content-md-start position-relative">
+                                <img src="/img/ui/courses/reverb.svg" height="80">
+                                <a href="https://www.youtube.com/playlist?list=PLiOhsP3M5j5wJmOW-pd85abUB3iqpaiZy"
+                                   class="link-body-emphasis stretched-link text-decoration-none text-balance">
+                                    <h5 class="mb-2">Laravel Reverb</h5>
+                                    <p class="opacity-75 line-clamp line-clamp-3 small">Современный подход к реализации веб-сокетов на Laravel</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="d-grid gap-4 d-flex justify-content-md-start position-relative">
+                                <img src="/img/ui/courses/chest.svg" height="80">
+                                <a href="https://www.youtube.com/playlist?list=PLiOhsP3M5j5x_NCEhb09gnH_RCj-Vflxs"
+                                   class="link-body-emphasis stretched-link text-decoration-none text-balance">
+                                    <h5 class="mb-2">Разработка пакета под Laravel</h5>
+                                    <p class="opacity-75 line-clamp line-clamp-3 small">Особенности и нюансы</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="d-grid gap-4 d-flex justify-content-md-start position-relative">
+                                <img src="/img/ui/courses/laravel.svg" height="80">
+                                <a href="https://www.youtube.com/playlist?list=PLiOhsP3M5j5wz0OoYum7LkXTEjKF_Ywb_"
+                                   class="link-body-emphasis stretched-link text-decoration-none text-balance">
+                                    <h5 class="mb-2">Laravel и его друзья</h5>
+                                    <p class="opacity-75 line-clamp line-clamp-3 small">
+                                        Полезные пакеты, решения и новости
+                                    </p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Author: Danil Shutsky -->
         <div class="row g-0 rounded bg-body-tertiary mb-5">
             <div class="col-lg-4">
