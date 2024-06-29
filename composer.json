@@ -41,7 +41,6 @@
         "spatie/laravel-backup": "^8.6",
         "symfony/dom-crawler": "^7.0",
         "symfony/yaml": "^7.0",
-        "tonysm/importmap-laravel": "^2.3",
         "twbs/bootstrap-icons": "^1.11",
         "watson/active": "^7.0"
     },

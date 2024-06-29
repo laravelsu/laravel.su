@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7de9c98906723280b013be65d7748d76",
+    "content-hash": "6254fc50de0b7482a0d17bb421b73366",
     "packages": [
         {
             "name": "assisted-mindfulness/naive-bayes",
@@ -8480,85 +8480,6 @@
                 "source": "https://github.com/tijsverkoyen/CssToInlineStyles/tree/v2.2.7"
             },
             "time": "2023-12-08T13:03:43+00:00"
-        },
-        {
-            "name": "tonysm/importmap-laravel",
-            "version": "2.3.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/tonysm/importmap-laravel.git",
-                "reference": "56153414dd273722bae2880401fecfab4bd7a16b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/tonysm/importmap-laravel/zipball/56153414dd273722bae2880401fecfab4bd7a16b",
-                "reference": "56153414dd273722bae2880401fecfab4bd7a16b",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/contracts": "^10.0|^11.0",
-                "illuminate/support": "^10.0|^11.0",
-                "php": "^8.1|^8.2",
-                "spatie/laravel-package-tools": "^1.9"
-            },
-            "require-dev": {
-                "guzzlehttp/guzzle": "^7.4",
-                "laravel/pint": "^1.10",
-                "nunomaduro/collision": "^6.0|^8.1",
-                "orchestra/testbench": "^7.17|^8.0",
-                "phpstan/extension-installer": "^1.1",
-                "phpstan/phpstan-deprecation-rules": "^1.0",
-                "phpstan/phpstan-phpunit": "^1.0",
-                "phpunit/phpunit": "^10.5"
-            },
-            "bin": [
-                "bin/importmap"
-            ],
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Tonysm\\ImportmapLaravel\\ImportmapLaravelServiceProvider"
-                    ],
-                    "aliases": {
-                        "Importmap": "Tonysm\\ImportmapLaravel\\Facades\\Importmap"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Tonysm\\ImportmapLaravel\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Tony Messias",
-                    "email": "tonysm@hey.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Use ESM with importmap to manage modern JavaScript in Laravel without transpiling or bundling.",
-            "homepage": "https://github.com/tonysm/importmap-laravel",
-            "keywords": [
-                "importmap-laravel",
-                "laravel",
-                "tonysm"
-            ],
-            "support": {
-                "issues": "https://github.com/tonysm/importmap-laravel/issues",
-                "source": "https://github.com/tonysm/importmap-laravel/tree/2.3.2"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/tonysm",
-                    "type": "github"
-                }
-            ],
-            "time": "2024-03-13T01:41:12+00:00"
         },
         {
             "name": "twbs/bootstrap-icons",
