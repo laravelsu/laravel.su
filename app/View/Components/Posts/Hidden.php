@@ -10,9 +10,7 @@ class Hidden extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(public string $text)
-    {
-    }
+    public function __construct(public string $text) {}
 
     /**
      * Get the view / contents that represent the component.

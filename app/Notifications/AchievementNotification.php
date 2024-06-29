@@ -18,10 +18,7 @@ class AchievementNotification extends Notification implements ShouldQueue
     /**
      * @param \App\Models\Achievement $achievement
      */
-    public function __construct(private Achievement $achievement)
-    {
-
-    }
+    public function __construct(private Achievement $achievement) {}
 
     /**
      * Get the notification's delivery channels.

@@ -11,9 +11,7 @@ class Hero extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(public string $image, public string $text = '')
-    {
-    }
+    public function __construct(public string $image, public string $text = '') {}
 
     /**
      * Get the view / contents that represent the component.

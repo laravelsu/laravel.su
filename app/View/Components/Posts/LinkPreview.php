@@ -15,9 +15,7 @@ class LinkPreview extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(public string $link)
-    {
-    }
+    public function __construct(public string $link) {}
 
     /**
      * Get the view / contents that represent the component.

@@ -53,9 +53,7 @@ class SpamDetector
      *
      * @param string $message The message to analyze
      */
-    public function __construct(private string $message)
-    {
-    }
+    public function __construct(private string $message) {}
 
     /**
      * Check if the message contains any stop words.
