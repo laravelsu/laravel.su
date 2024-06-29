@@ -50,7 +50,7 @@
     @vite(['resources/js/app.js', 'resources/css/app.scss'])
 </head>
 
-<body class="overflow-x-hidden">
+<body>
     @yield('body')
 </body>
 
