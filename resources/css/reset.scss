@@ -1,5 +1,6 @@
 @include media-breakpoint-down(md) {
-    body, html {
+    body,
+    html {
         max-width: 100vw;
         overflow-x: hidden;
     }
