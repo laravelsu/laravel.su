@@ -105,7 +105,7 @@ class ReviewController extends Controller
     {
         $storage = Storage::disk('review');
 
-        return collect($storage->allFiles('beginning'))
+        return collect($storage->allFiles('orchid'))
             ->map(fn ($path) => $storage->get($path))
             ->map(function ($content) {
                 $question = Str::of($content)
@@ -122,7 +122,12 @@ class ReviewController extends Controller
                     ->trim()
                     ->toString();
 
-                return Question::make($question)
+                $description = Str::of($content)
+                    ->between('<description>', '</description>')
+                    ->trim()
+                    ->toString();
+
+                return Question::make($question, $description)
                     ->answers($answers->push($correct)->toArray())
                     ->setCorrectAnswer($correct);
             });

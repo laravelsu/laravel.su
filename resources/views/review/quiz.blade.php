@@ -60,57 +60,95 @@
 @else
     <turbo-stream target="quiz" action="update">
         <template>
-            <div class="card-body px-sm-4 pt-sm-3">
-                <div>
-                    @if(!$quiz->displayInfo)
-                        <div class="d-flex align-items-baseline">
-                            <div class="mb-3 me-2 d-flex flex-column">
-                                {!! $currentQuestion->getTitle() !!}
-                            </div>
-
-                            <a href="{{route('review')}}"
-                               data-turbo-action="replace"
-                               title="Попробовать снова"
-                               class="ms-auto btn btn-close px-2">
-                            </a>
+            <div class="card-body px-sm-4 pt-sm-3" data-controller="prism">
+                @if(!$quiz->displayInfo)
+                    <div class="d-flex align-items-baseline">
+                        <div class="mb-3 me-2 d-flex flex-column w-100">
+                            {!! $currentQuestion->getTitle() !!}
                         </div>
-                        <div data-controller="prism">
-                            @if($quiz->isIncorrect)
-                                <p class="text-center text-muted">
-                                    Неверно, попробуйте еще раз.
-                                </p>
-                            @endif
 
-                            @foreach($currentQuestion->getAnswers() as $answer)
-                                <a href="{{ route('stream.review.set-answer', ['answer'=> $answer]) }}"
-                                   data-turbo-method="post"
-                                   class="btn btn-secondary w-100 mb-3
+                        <a href="{{route('review')}}"
+                           data-turbo-action="replace"
+                           title="Попробовать снова"
+                           class="ms-auto btn btn-close px-2">
+                        </a>
+                    </div>
+                    <div>
+                        @if($quiz->isIncorrect)
+                            <p class="text-center text-muted">
+                                Неверно, попробуйте еще раз.
+                            </p>
+                        @endif
+
+                        @foreach($currentQuestion->getAnswers() as $answer)
+                            <a href="{{ route('stream.review.set-answer', ['answer'=> $answer]) }}"
+                               data-turbo-method="post"
+                               class="btn btn-secondary w-100 mb-3
                                    d-block text-start fw-normal
                                    answer
                                     {{ $currentQuestion->isCorrect($quiz->userAnswer) && $answer === $quiz->userAnswer ? 'btn-success' : '' }}
                                     {{ $quiz->hasIncorrectAnswer($answer) ? 'btn-danger disabled' : '' }}"
-                                >
-                                    {!! \Illuminate\Support\Str::of($answer)->markdown() !!}
-                                </a>
-                            @endforeach
-                        </div>
-                    @else
-                        <div>
-                            <h5 class="text-center mb-3">Верно!</h5>
+                            >
+                                {!! \Illuminate\Support\Str::of($answer)->markdown() !!}
+                            </a>
+                        @endforeach
+                    </div>
+                @else
+                    <h5 class="text-center mb-3 d-flex align-items-center gap-3">
+                        {{ collect([
+"Верно!",
+"Молодец",
+"Так держать",
+"Отлично!",
+"Прекрасно!",
+"Правильно!",
+"Отличный ответ!",
+"Браво!",
+"В точку!",
+"Полный балл!",
+"Замечательно!",
+"Отличный результат!",
+"Идеально!",
+"Поздравляю!",
+"Превосходно!",
+"Вы молодец!",
+"У вас всё получается!",
+"Вы на верном пути!",
+"Очень хорошо!",
+"Вы справились!",
+"Превосходный результат!",
+"Вы отлично справились!",
+"Отличный выбор!",
+"Вы на верном пути к успеху!",
+"Это то, что надо!",
+"Фантастически!",
+"Великолепно!",
+"Вы профессионал!",
+"Замечательная работа!",
+"Брависсимо!",
+"Полный успех!",
+"Молодец, продолжайте в том же духе!",
+"Вы настоящий эксперт!",
+"Идеальный ответ!",
+"Отлично сработано!",
+"Прекрасный результат!",
+"Вы великолепно справились!",
+"Умница!",
+"Отличный подход!",
+"Вы на правильном пути!",
+"Вы точно знаете, что делаете!",
+"Это отлично работает!",
+"Блестяще!",
+"Красиво!",
+"Всё идёт как надо!",
+"Вы просто мастер!"])->random() }}
+                    </h5>
 
-                            <div class="alert alert-success mb-3 py-2" role="alert">
-                                <strong>{{ __($quiz->userAnswer) }}</strong>
-                            </div>
+                    <main class="my-4" data-controller="prism">
+                        {!! $currentQuestion->getDescription() !!}
+                    </main>
+                @endif
 
-                            <p class="text-muted">
-                                Ты ответил правльно! Поздравляю! Вот что я могу тебе рассказать:<br>
-                                Повседневная практика показывает, что реализация намеченных плановых заданий
-                                требуют от нас анализа существенных финансовых и административных условий. Товарищи!
-                                консультация с широким активом играет важную роль в формировании модели развития.
-                            </p>
-                        </div>
-                    @endif
-                </div>
 
                 <div class="row align-items-center mb-3 opacity-75">
                     <div class="col-auto text-primary">

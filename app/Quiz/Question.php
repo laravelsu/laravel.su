@@ -23,11 +23,17 @@ class Question
     public string $correctAnswer;
 
     /**
+     * @var string
+     */
+    public string $description = '';
+
+    /**
      * @param string $title
      */
-    public function __construct(string $title)
+    public function __construct(string $title, string $description = '')
     {
         $this->title = $title;
+        $this->description = $description;
     }
 
     /**
@@ -35,16 +41,16 @@ class Question
      *
      * @return \App\Quiz\Question
      */
-    public static function make(mixed $title): Question
+    public static function make(mixed $title, string $description = ''): Question
     {
         // если передан массив вопросов(ситуаций) - нужно выбрать один вопрос
         if (is_array($title)) {
             $key = array_rand($title, 1);
 
-            return new self($title[$key]);
+            return new self($title[$key], $description);
         }
 
-        return new self($title);
+        return new self($title, $description);
     }
 
     /**
@@ -100,6 +106,11 @@ class Question
     public function getTitle()
     {
         return Str::of($this->title)->markdown();
+    }
+
+    public function getDescription()
+    {
+        return Str::of($this->description)->markdown();
     }
 
     public function getAnswers()
