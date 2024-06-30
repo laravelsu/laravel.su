@@ -342,7 +342,7 @@
         <!-- Author: Mikhail Protasevich (AreaWeb) -->
         <div class="row g-0 rounded bg-body-tertiary mb-5">
             <div class="col-lg-4 order-lg-last">
-                <x-hero image="/img/community/protasevich.png" text="Михаил Протасевич" class="rounded-end"/>
+                <x-hero image="/img/community/protasevich.jpg" text="Михаил Протасевич" class="rounded-end"/>
             </div>
             <div class="col-lg-8">
                 <div class="p-4 p-xl-5 my-xl-5">
