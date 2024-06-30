@@ -364,7 +364,7 @@
                                 <a href="https://www.youtube.com/playlist?list=PLiOhsP3M5j5x_NCEhb09gnH_RCj-Vflxs"
                                    class="link-body-emphasis stretched-link text-decoration-none text-balance">
                                     <h5 class="mb-2">Разработка пакета под Laravel</h5>
-                                    <p class="opacity-75 line-clamp line-clamp-3 small">Особенности и нюансы</p>
+                                    <p class="opacity-75 line-clamp line-clamp-3 small">От инициализации и тестирования до управления ресурсами</p>
                                 </a>
                             </div>
                         </div>
