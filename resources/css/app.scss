@@ -1,7 +1,7 @@
 @import 'bootstrap/scss/functions';
 
-$variable-prefix:             bs- !default; // Deprecated in v5.2.0 for the shorter `$prefix`
-$prefix:                      $variable-prefix !default;
+$variable-prefix: bs- !default; // Deprecated in v5.2.0 for the shorter `$prefix`
+$prefix: $variable-prefix !default;
 
 // scss-docs-start theme-color-variables
 $primary: #f9322c;
