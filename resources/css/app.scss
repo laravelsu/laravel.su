@@ -1,5 +1,8 @@
 @import 'bootstrap/scss/functions';
 
+$variable-prefix:             bs- !default; // Deprecated in v5.2.0 for the shorter `$prefix`
+$prefix:                      $variable-prefix !default;
+
 // scss-docs-start theme-color-variables
 $primary: #f9322c;
 $dark: #212529;
@@ -19,7 +22,7 @@ $body-bg-dark: #161822; //#171923;
 $body-color: #222;
 
 $headings-color: #272531;
-$headings-color-dark: #dee2e6;
+$headings-color-dark: #f2f2f2;
 
 $body-emphasis-color-dark: #dee2e6;
 

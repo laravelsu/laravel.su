@@ -219,9 +219,10 @@ main,
     h5,
     h6 {
         a {
-            @extend .link-body-emphasis;
+            color: var(--#{$prefix}heading-color) !important;
             text-decoration: none;
             position: relative;
+            font-weight: 550;
         }
     }
 
