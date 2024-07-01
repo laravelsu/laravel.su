@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6254fc50de0b7482a0d17bb421b73366",
+    "content-hash": "90cb7af03033057f2a9977956cb2042b",
     "packages": [
         {
             "name": "assisted-mindfulness/naive-bayes",
@@ -1288,16 +1288,16 @@
         },
         {
             "name": "hotwired-laravel/turbo-laravel",
-            "version": "2.0.0",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hotwired-laravel/turbo-laravel.git",
-                "reference": "fa6b03b9a3cc8b1c9e6fc65820e5487d0a1beb60"
+                "reference": "d470a80116e2cc99bf30fae88030db1df35fa6a4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hotwired-laravel/turbo-laravel/zipball/fa6b03b9a3cc8b1c9e6fc65820e5487d0a1beb60",
-                "reference": "fa6b03b9a3cc8b1c9e6fc65820e5487d0a1beb60",
+                "url": "https://api.github.com/repos/hotwired-laravel/turbo-laravel/zipball/d470a80116e2cc99bf30fae88030db1df35fa6a4",
+                "reference": "d470a80116e2cc99bf30fae88030db1df35fa6a4",
                 "shasum": ""
             },
             "require": {
@@ -1353,9 +1353,9 @@
             ],
             "support": {
                 "issues": "https://github.com/hotwired-laravel/turbo-laravel/issues",
-                "source": "https://github.com/hotwired-laravel/turbo-laravel/tree/2.0.0"
+                "source": "https://github.com/hotwired-laravel/turbo-laravel/tree/2.0.1"
             },
-            "time": "2024-05-08T00:41:18+00:00"
+            "time": "2024-06-14T20:43:38+00:00"
         },
         {
             "name": "intervention/gif",
