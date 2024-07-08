@@ -129,7 +129,7 @@ class Comment extends Model
 
         $withMention = $this->mentionedUserToHtmlUrl($safe);
 
-        return Str::of($this->nl2br($withMention))->inlineMarkdown();
+        return Str::of($this->nl2br($withMention))->markdown();
     }
 
     /**
