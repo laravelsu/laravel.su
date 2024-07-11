@@ -194,6 +194,14 @@ $utilities: (
     }
 }
 
+@include color-mode(dark) {
+    .sponsors {
+        img {
+            filter: grayscale(5%) contrast(0.5);
+        }
+    }
+}
+
 .profile-cover {
     height: 150px;
     background-image: url('$image/ui/background-profile.svg');
