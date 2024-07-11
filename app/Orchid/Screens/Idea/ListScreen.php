@@ -147,7 +147,7 @@ class ListScreen extends Screen
                 Layout::rows([
                     Input::make('file')
                         ->type('file')
-                        ->accept('*.txt')
+                        ->accept('.txt')
                         ->required()
                         ->title('Выберите файл с ключами Laravel Idea')
                         ->help('Пожалуйста, выберите файл формата .txt, содержащий ключи для Laravel Idea. Каждый ключ должен быть на новой строке.'),
