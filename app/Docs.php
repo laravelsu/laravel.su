@@ -2,7 +2,6 @@
 
 namespace App;
 
-use App\Markdown\GithubFlavoredMarkdownConverter;
 use App\Models\Document;
 use App\Models\DocumentationSection;
 use Exception;
@@ -12,6 +11,7 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Laravel\Unfenced\UnfencedExtension;
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\Yaml\Yaml;
 
@@ -122,11 +122,14 @@ class Docs
     public function content(): ?string
     {
         return once(function () {
-            return (new GithubFlavoredMarkdownConverter())->convert(Str::of($this->raw())
+            return Str::of($this->raw())
                 ->replace('{{version}}', $this->version)
                 ->after('---')
                 ->after('---')
-            );
+                ->markdown(extensions: [
+                    new UnfencedExtension(),
+                ])
+                ->toString();
         });
     }
 
