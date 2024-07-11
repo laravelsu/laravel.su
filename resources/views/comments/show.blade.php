@@ -1,6 +1,6 @@
 <x-comment :comment="$comment">
     <x-slot:content>
-        <p class="my-3 text-wrap text-break message">{!! $comment->prettyComment() !!}</p>
+        <div class="message" data-controller="prism">{!! $comment->prettyComment() !!}</div>
     </x-slot:content>
 </x-comment>
 

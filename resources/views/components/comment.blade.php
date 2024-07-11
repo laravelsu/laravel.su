@@ -1,19 +1,18 @@
-<div id="comment_{{ $comment->getKey() }}" class="comment mt-4">
+<div id="comment_{{ $comment->getKey() }}" class="comment mt-4 d-flex position-relative overflow-hidden gap-3">
 
     @if($comment->trashed())
-        <div class="d-flex position-relative overflow-hidden align-items-center mb-xl-5 mb-3">
-            <div class="avatar avatar-sm me-3">
-                <img class="avatar-img rounded-circle"
-                     src="/img/ui/avatar.png" alt="Комментарий был удалён">
-            </div>
+        <div class="avatar avatar-sm me-3">
+            <img class="avatar-img rounded-circle"
+                 src="/img/ui/avatar.png" alt="Комментарий был удалён">
+        </div>
 
-            <div class="w-100 opacity-50">
-                <p class="mb-0">Сообщение было удалено за нарушение <a href="{{ route('rules') }}" class="link-body-emphasis">правил</a>.</p>
-            </div>
+        <div class="d-flex flex-column gap-3 w-100 opacity-50 bg-body rounded p-3 bg-opacity-75" style="min-width: 0">
+            <p class="mb-0">Сообщение было удалено за нарушение <a href="{{ route('rules') }}"
+                                                                   class="link-body-emphasis">правил</a>.</p>
         </div>
     @else
-        <div class="d-flex position-relative overflow-hidden">
-            <div class="avatar avatar-sm me-3">
+
+            <div class="avatar avatar-sm">
                 <a href="{{  route('profile', $comment->author) }}">
                     <img class="avatar-img rounded-circle"
                          loading="lazy"
@@ -21,9 +20,9 @@
                 </a>
             </div>
 
-            <div class="w-100">
+            <div class="d-flex flex-column gap-3 w-100" style="min-width: 0">
 
-                <div class="mb-3 mt-1">
+                <div class="">
                     <div class="d-flex justify-content-start">
                         <h6 class="m-0 me-2">{{ $comment->author->name }}</h6>
                         @if(!is_null($comment->author->milestone))
@@ -82,6 +81,6 @@
                     {!! $reply !!}
                 @endif
             </div>
-        </div>
+
     @endif
 </div>
