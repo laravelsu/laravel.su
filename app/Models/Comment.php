@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
+use League\CommonMark\Extension\Mention\MentionExtension;
 use Orchid\Metrics\Chartable;
 use Overtrue\LaravelLike\Traits\Likeable;
 
@@ -107,29 +108,27 @@ class Comment extends Model
     }
 
     /**
-     * Convert newlines to HTML line breaks.
-     *
-     * @param string|null $text
-     *
-     * @return string
-     */
-    protected function nl2br(?string $text = null)
-    {
-        return nl2br($text);
-    }
-
-    /**
      * Get the pretty formatted comment content.
      *
      * @return string
      */
     public function prettyComment(): string
     {
-        $safe = htmlspecialchars($this->content ?? '', ENT_NOQUOTES, 'UTF-8');
-
-        $withMention = $this->mentionedUserToHtmlUrl($safe);
-
-        return Str::of($this->nl2br($withMention))->markdown();
+        return Str::of($this->content ?? '')->markdown(
+            [
+                'html_input' => 'escape',
+                'mentions'   => [
+                    'github_handle' => [
+                        'prefix'    => '@',
+                        'pattern'   => '[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}(?!\w)',
+                        'generator' => route('profile', '%s'),
+                    ],
+                ],
+            ],
+            [
+                new MentionExtension(),
+            ]
+        );
     }
 
     /**
