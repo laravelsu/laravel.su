@@ -35,9 +35,10 @@ class SpamDetectorTest extends TestCase
             ['Прuвет', true],
         ];
     }
-    public function testUnicodeRules():void
+
+    public function testUnicodeRules(): void
     {
-        //Long unicode characters in center of the message/words
+        // Long unicode characters in center of the message/words
         $spamDetector = new SpamDetector('Прuвет всем, хoчу предлoжuть реaльный дoпoлнuтельный зaрaбoтoк!
 - От 50$ в/зa день гaрaнтuрoвaнo
 - Чaс в день твoегo временu
