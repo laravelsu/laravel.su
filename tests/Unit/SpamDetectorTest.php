@@ -29,6 +29,26 @@ class SpamDetectorTest extends TestCase
             ['Стабильный доход от 100$ Нужен только телефон', true],
             ['блокчейн в ЛС', true],
             ['Крипто инвестиции', true],
+            ['18+', true],
+            ['hamsterkombat', true],
+            ['hamster', true],
+            ['Прuвет', true],
         ];
+    }
+    public function testUnicodeRules():void
+    {
+        //Long unicode characters in center of the message/words
+        $spamDetector = new SpamDetector('Прuвет всем, хoчу предлoжuть реaльный дoпoлнuтельный зaрaбoтoк!
+- От 50$ в/зa день гaрaнтuрoвaнo
+- Чaс в день твoегo временu
+- Честнo u легaльнo, НЕ НАРКОТИКИ!!
+
+Еслu ты действuтельнo зauнтересoвaн в быстрoм u честнoм зaрaбoтке , пuшu + в ЛС!!!!');
+
+        $this->assertTrue($spamDetector->hasExcessiveUnicodeCharacters());
+
+        // Long unicode characters at the end of the message/words
+        $spamDetector = new SpamDetector('🍕 Прикольно, что ты тут делаешь? 🍣🍰');
+        $this->assertFalse($spamDetector->hasExcessiveUnicodeCharacters());
     }
 }

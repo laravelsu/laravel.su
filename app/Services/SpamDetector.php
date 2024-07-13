@@ -66,6 +66,36 @@ class SpamDetector
     }
 
     /**
+     * Checks if the message contains an excessive amount of special characters.
+     * For example, the proportion of special characters should not exceed a given threshold (default is 2%).
+     *
+     * @param float $threshold
+     *
+     * @return bool
+     */
+    public function hasExcessiveUnicodeCharacters(float $threshold = 0.02): bool
+    {
+        // Length of the message including special characters
+        $withUnicode = Str::of($this->message)
+            ->replaceMatches('/^[^\p{L}\p{N}\p{Z}\p{P}]+|[^\p{L}\p{N}\p{Z}\p{P}]+$/u', '') // without start and end special characters (emoji, etc.)
+            ->length();
+
+        // Length of the message without special characters
+        $withOutUnicode = Str::of($this->message)
+            ->replaceMatches('/[^\p{L}\p{N}\p{Z}\p{P}]/u', '')
+            ->length();
+
+        // Difference in length
+        $unicodeLength = $withUnicode - $withOutUnicode;
+
+        // Proportion of special characters in the message
+        $unicodePercentage = $unicodeLength / $withUnicode;
+
+        // Check if the proportion of special characters exceeds the given threshold
+        return $unicodePercentage > $threshold;
+    }
+
+    /**
      * Check if the message is spam using a Naive Bayes classifier.
      *
      * @return bool True if classified as spam, otherwise false
@@ -114,6 +144,10 @@ class SpamDetector
      */
     public function isSpam()
     {
+        if ($this->hasExcessiveUnicodeCharacters()) {
+            return true;
+        }
+
         if ($this->containsStopWords()) {
             return true;
         }
