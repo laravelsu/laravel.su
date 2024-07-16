@@ -13,7 +13,7 @@ use Orchid\Support\Facades\Toast;
 class PositionsController extends Controller
 {
     /**
-     * @return \Illuminate\Contracts\View\View|\HotwiredLaravel\\Http\MultiplePendingTurboStreamResponse|\HotwiredLaravel\\Http\PendingTurboStreamResponse|null
+     * @return \Illuminate\Contracts\View\View|\HotwiredLaravel\TurboLaravel\Http\MultiplePendingTurboStreamResponse|\HotwiredLaravel\TurboLaravel\Http\PendingTurboStreamResponse|null
      */
     public function jobs()
     {
@@ -145,7 +145,7 @@ class PositionsController extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\View\View|\HotwiredLaravel\\Http\MultiplePendingTurboStreamResponse|\HotwiredLaravel\\Http\PendingTurboStreamResponse|null
+     * @return \Illuminate\Contracts\View\View|\HotwiredLaravel\TurboLaravel\Http\MultiplePendingTurboStreamResponse|\HotwiredLaravel\TurboLaravel\Http\PendingTurboStreamResponse|null
      */
     public function latest()
     {
