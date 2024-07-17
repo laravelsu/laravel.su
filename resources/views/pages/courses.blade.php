@@ -343,7 +343,7 @@
 
             <div class="row g-0 rounded bg-body-tertiary mb-5">
                 <div class="col-lg-4 {{ $key % 2 === 0 ? 'order-lg-last' : '' }}">
-                    <x-hero image="{{ $teacher->image }}" text="{{ $teacher->name }}" class="rounded-end"/>
+                    <x-hero image="{{ $teacher->image }}" text="{{ $teacher->name }}" class="{{ $key % 2 === 0 ? 'rounded-end' : 'rounded-start' }}"/>
                 </div>
                 <div class="col-lg-8">
                     <div class="p-4 p-xl-5 my-xl-5">
