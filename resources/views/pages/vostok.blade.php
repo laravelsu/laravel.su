@@ -266,40 +266,4 @@
         </div>
     </x-container>
 
-
-
-    <script>
-
-
-    </script>
-
-
-
-    {{--
-    <div class="row align-items-center g-lg-5 py-5">
-        <div class="col-lg-7 text-center text-lg-start">
-            <h1 class="display-4 fw-bold lh-1 text-dark mb-3">С днём космонавтики</h1>
-            <p class="col-lg-10 fs-4">Каждый День Космонавтики напоминает нам о том, что человечество всегда
-                                      стремилось к звёздам и неуклонно движется вперёд, преодолевая границы
-                                      исследований и познания. Пусть эта дата вдохновляет нас на новые открытия
-                                      и смелые шаги в неизведанные просторы Вселенной.</p>
-        </div>
-        <div class="col-md-10 mx-auto col-lg-5">
-            <div class="position-relative mb-5 marketing">
-
-                <div class="text-balance bg-body-secondary rounded p-4 p-xl-5 position-relative">
-                    <blockquote><span class="display-3">Космос — это наша судьба, наша мечта, наша надежда и наше будущее.</span></blockquote>
-
-                    <div class="d-flex align-items-center">
-                        <div class="lh-1 display-3">
-                            <div class="fw-bolder mb-1">Юрий Гагарин</div>
-                            <small class="opacity-50">Первый космонавт</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
---}}
-
 @endsection
