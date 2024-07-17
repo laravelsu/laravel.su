@@ -37,7 +37,7 @@ Route::view('/orchid-admin', 'pages.orchid')->name('orchid');
 Route::view('/donate', 'pages.donate')->name('donate');
 Route::view('/donate/frame', 'pages.donate-frame')->name('donate.frame');
 
-Route::view('/courses', 'pages.courses', ['teachers' => \App\School\Courses::items()])->name('courses');
+Route::view('/courses', 'pages.courses')->name('courses');
 Route::view('/assets', 'pages.assets')->name('assets');
 Route::view('/boilerplate', 'pages.boilerplate')->name('boilerplate');
 

@@ -2,16 +2,18 @@
 
 namespace App\School;
 
+use Illuminate\Support\Collection;
+
 class Courses
 {
     /**
-     * Get the courses items.
+     * Get the teachers items.
      *
      * @return array
      */
-    public static function items(): array
+    public static function teachers(): Collection
     {
-        return [
+        return collect([
             Teacher::make('Михаил Протасевич', '/img/community/protasevich.jpg', [
                 new Course(
                     'Laravel Reverb',
@@ -113,6 +115,18 @@ class Courses
                     'https://www.youtube.com/playlist?list=PLoonZ8wII66hKbEvIVAZnp1h4CE-4Mtk4'
                 ),
             ]),
-        ];
+        ]);
+    }
+
+    /**
+     * Get the courses items.
+     *
+     * @return array
+     */
+    public static function items(): Collection
+    {
+        return static::teachers()
+            ->map(fn(Teacher $teacher) => $teacher->courses)
+            ->flatten();
     }
 }

@@ -384,6 +384,29 @@ background: #1A1319!important;">
 
     @include('particles.sponsors')
 
+    <x-container class="mt-5 py-5">
+        <div class="slider rounded">
+            <div class="slide-track">
+                @foreach(\App\School\Courses::items()->shuffle() as $key => $course)
+                    <div class="col-12 col-md-6 col-lg-4 col-sm-2 mx-3 slide">
+                        <div
+                            class="d-grid gap-4 d-flex align-items-center position-relative  rounded bg-body-tertiary h-100 p-3">
+                            <img src="{{ $course->image }}" height="80">
+                            <a href="{{ $course->link }}" rel="nofollow"
+                               target="_blank"
+                               class="link-body-emphasis stretched-link text-decoration-none text-balance">
+                                <p class="h6 mb-2">{{ $course->name }}</p>
+                                <p class="opacity-75 line-clamp line-clamp-3 small">
+                                    {{ $course->description }}
+                                </p>
+                            </a>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </x-container>
+
     <div class="container mt-5 py-5">
         <div class="row g-4 g-md-5 align-items-center justify-content-between">
             <div class="col-xl-7 col-md-6 order-2 order-md-1">
@@ -526,7 +549,6 @@ background: #1A1319!important;">
             </div>
         </div> <!-- Row END -->
     </div>
-
 
 
 

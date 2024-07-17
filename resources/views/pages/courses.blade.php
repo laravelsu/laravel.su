@@ -339,7 +339,7 @@
             </div>
         </div>
 
-        @foreach($teachers as $key => $teacher)
+        @foreach(\App\School\Courses::teachers() as $key => $teacher)
 
             <div class="row g-0 rounded bg-body-tertiary mb-5">
                 <div class="col-lg-4 {{ $key % 2 === 0 ? 'order-lg-last' : '' }}">
