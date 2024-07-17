@@ -395,7 +395,7 @@ background: #1A1319!important;">
                             <a href="{{ $course->link }}" rel="nofollow"
                                target="_blank"
                                class="link-body-emphasis stretched-link text-decoration-none text-balance">
-                                <p class="h6 mb-2">{{ $course->name }}</p>
+                                <p class="h6 mb-1">{{ $course->name }}</p>
                                 <p class="opacity-75 line-clamp line-clamp-3 small">
                                     {{ $course->description }}
                                 </p>
