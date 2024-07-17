@@ -9,7 +9,5 @@ class Course
         public string $description,
         public string $image,
         public string $link
-    )
-    {
-    }
+    ) {}
 }

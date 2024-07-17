@@ -17,9 +17,10 @@ class Teacher
     }
 
     /**
-     * @param string $name
-     * @param string $image
+     * @param string   $name
+     * @param string   $image
      * @param iterable $courses
+     *
      * @return self
      */
     public static function make(string $name, string $image, iterable $courses = []): Teacher
