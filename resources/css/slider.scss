@@ -2,22 +2,25 @@ $animationSliderSpeed: 40s;
 
 // Animation
 @keyframes scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(calc(-250px * 7))}
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-250px * 7));
+    }
 }
-
 
 // Styling
 .slider {
     margin: auto;
-    overflow:hidden;
+    overflow: hidden;
     position: relative;
     width: 100%;
 
     &::before,
     &::after {
-        background: linear-gradient(to right,  var(--bs-body-bg) 0%,rgba(255,255,255,0) 100%);
-        content: "";
+        background: linear-gradient(to right, var(--bs-body-bg) 0%, rgba(255, 255, 255, 0) 100%);
+        content: '';
         height: 100%;
         position: absolute;
         width: 200px;

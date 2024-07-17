@@ -126,7 +126,7 @@ class Courses
     public static function items(): Collection
     {
         return static::teachers()
-            ->map(fn(Teacher $teacher) => $teacher->courses)
+            ->map(fn (Teacher $teacher) => $teacher->courses)
             ->flatten();
     }
 }
