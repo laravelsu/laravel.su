@@ -109,6 +109,22 @@
                         </div>
                     @endforeach
 
+                        <div class="mb-4 position-relative">
+                            <div class="d-flex align-items-center">
+                                <div class="feature-icon-small d-inline-flex align-items-center justify-content-center fs-4 rounded-3 bg-body-secondary text-primary">
+                                    <x-icon path="heart-fill"/>
+                                </div>
+                                <div class="ms-3 w-75">
+                                    <a href="{{ route('boilerplate') }}" class="d-block lh-sm small fw-medium m-0 stretched-link link-body-emphasis text-decoration-none"
+                                    target="_top">
+                                        Лучший пакет
+                                    </a>
+                                    <p class="small opacity-50 fw-normal m-0">
+                                        Тот, что сделал сам
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                 </div>
 
                 <div class="col-md-8 col-xl-9">
