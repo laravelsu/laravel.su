@@ -339,238 +339,36 @@
             </div>
         </div>
 
-        <!-- Author: Mikhail Protasevich (AreaWeb) -->
-        <div class="row g-0 rounded bg-body-tertiary mb-5">
-            <div class="col-lg-4 order-lg-last">
-                <x-hero image="/img/community/protasevich.jpg" text="Михаил Протасевич" class="rounded-end"/>
-            </div>
-            <div class="col-lg-8">
-                <div class="p-4 p-xl-5 my-xl-5">
-                    <div
-                            class="row justify-content-between row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-2 g-4 g-xl-5 text-start">
-                        <div class="col">
-                            <div class="d-grid gap-4 d-flex justify-content-md-start position-relative">
-                                <img src="/img/ui/courses/reverb.svg" height="80">
-                                <a href="https://www.youtube.com/playlist?list=PLiOhsP3M5j5wJmOW-pd85abUB3iqpaiZy"
-                                   class="link-body-emphasis stretched-link text-decoration-none text-balance">
-                                    <h5 class="mb-2">Laravel Reverb</h5>
-                                    <p class="opacity-75 line-clamp line-clamp-3 small">Современный подход к реализации веб-сокетов на Laravel</p>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="d-grid gap-4 d-flex justify-content-md-start position-relative">
-                                <img src="/img/ui/courses/chest.svg" height="80">
-                                <a href="https://www.youtube.com/playlist?list=PLiOhsP3M5j5x_NCEhb09gnH_RCj-Vflxs"
-                                   class="link-body-emphasis stretched-link text-decoration-none text-balance">
-                                    <h5 class="mb-2">Разработка пакета под Laravel</h5>
-                                    <p class="opacity-75 line-clamp line-clamp-3 small">От инициализации и тестирования до управления ресурсами</p>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="d-grid gap-4 d-flex justify-content-md-start position-relative">
-                                <img src="/img/ui/courses/laravel.svg" height="80">
-                                <a href="https://www.youtube.com/playlist?list=PLiOhsP3M5j5wz0OoYum7LkXTEjKF_Ywb_"
-                                   class="link-body-emphasis stretched-link text-decoration-none text-balance">
-                                    <h5 class="mb-2">Laravel и его друзья</h5>
-                                    <p class="opacity-75 line-clamp line-clamp-3 small">
-                                        Полезные пакеты, решения и новости
-                                    </p>
-                                </a>
-                            </div>
+        @foreach(\App\School\Courses::teachers() as $key => $teacher)
+
+            <div class="row g-0 rounded bg-body-tertiary mb-5">
+                <div class="col-lg-4 {{ $key % 2 === 0 ? 'order-lg-last' : '' }}">
+                    <x-hero image="{{ $teacher->image }}" text="{{ $teacher->name }}" class="rounded-end"/>
+                </div>
+                <div class="col-lg-8">
+                    <div class="p-4 p-xl-5 my-xl-5">
+                        <div class="row justify-content-between row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-2 g-4 g-xl-5 text-start">
+
+                            @foreach($teacher->courses as $course)
+                                <div class="col">
+                                    <div class="d-grid gap-4 d-flex justify-content-md-start position-relative">
+                                        <img src="{{ $course->image }}" height="80">
+                                        <a href="{{ $course->link }}"
+                                           class="link-body-emphasis stretched-link text-decoration-none text-balance">
+                                            <h5 class="mb-2">{{ $course->name }}</h5>
+                                            <p class="opacity-75 line-clamp line-clamp-3 small">
+                                                {{ $course->description }}
+                                            </p>
+                                        </a>
+                                    </div>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Author: Danil Shutsky -->
-        <div class="row g-0 rounded bg-body-tertiary mb-5">
-            <div class="col-lg-4">
-                <x-hero image="/img/community/danil-shutsky.jpg" text="Данил Щуцкий" class="rounded-start"/>
-            </div>
-            <div class="col-lg-8">
-                <div class="p-4 p-xl-5 my-xl-5">
-                    <div
-                        class="row justify-content-between row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-2 g-4 g-xl-5 text-start">
-                        <div class="col">
-                            <div class="d-grid gap-4 d-flex justify-content-md-start position-relative">
-                                <img src="/img/ui/courses/relationship.svg" height="80">
-                                <a href="https://www.youtube.com/playlist?list=PLTucyHptHtTmEUKZhY40SrXPhUuPdp1bD"
-                                   class="link-body-emphasis stretched-link text-decoration-none text-balance">
-                                    <h5 class="mb-2">Отношения в Eloquent</h5>
-                                    <p class="opacity-75 line-clamp line-clamp-3 small">Основы применения различных связей </p>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="d-grid gap-4 d-flex justify-content-md-start position-relative">
-                                <img src="/img/ui/courses/chest.svg" height="80">
-                                <a href="https://www.youtube.com/playlist?list=PLTucyHptHtTnkmEwK0Yxxl-L9Z_8XOK6c"
-                                   class="link-body-emphasis stretched-link text-decoration-none text-balance">
-                                    <h5 class="mb-2">Под капотом</h5>
-                                    <p class="opacity-75 line-clamp line-clamp-3 small">Как это работает? Давайте погрузимся во внутренности фреймворка</p>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="d-grid gap-4 d-flex justify-content-md-start position-relative">
-                                <img src="/img/ui/courses/laravel.svg" height="80">
-                                <a href="https://www.youtube.com/playlist?list=PLTucyHptHtTkUbXaikXEmCWL8GradRx9I"
-                                   class="link-body-emphasis stretched-link text-decoration-none text-balance">
-                                    <h5 class="mb-2">Laravel с нуля</h5>
-                                    <p class="opacity-75 line-clamp line-clamp-3 small">
-                                        Воплотите свои идеи после руководство для абсолютных новичков
-                                    </p>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="d-grid gap-4 d-flex justify-content-md-start position-relative">
-                                <img src="/img/ui/courses/moonshine.svg" height="80">
-                                <a href="https://www.youtube.com/playlist?list=PLTucyHptHtTnFB4pLj1FpqEMwu7qv3xbG"
-                                   class="link-body-emphasis stretched-link text-decoration-none text-balance">
-                                    <h5 class="mb-2">MoonShine 2</h5>
-                                    <p class="opacity-75 line-clamp line-clamp-3 small">
-                                        Установка и применение админ-панели по шагам наглядно и понятно
-                                    </p>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row g-0 rounded bg-body-tertiary mb-5">
-
-            <div class="col-lg-4 order-lg-last">
-                <x-hero image="/img/community/orlov.jpg" text="Максим Орлов" class="rounded-end"/>
-            </div>
-            <div class="col-lg-8">
-                <div class="p-4 p-xl-5 my-xl-5">
-                    <div class="row justify-content-between row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-2 g-4 g-xl-5 text-start">
-                        <div class="col">
-                            <div class="d-grid gap-4 d-flex justify-content-md-start position-relative">
-                                <img src="/img/ui/courses/deploy.svg" height="80">
-                                <a href="https://www.youtube.com/playlist?list=PLXCVm4GFpx5BNlRCGZqVFK1IMUampm3Q_"
-                                   class="link-body-emphasis stretched-link text-decoration-none text-balance">
-                                    <h5 class="mb-2">Деплой</h5>
-                                    <p class="opacity-75 line-clamp line-clamp-3 small">
-                                        Деплой (CI/CD) Laravel на хостинг автоматически (3 способа)
-                                    </p>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="d-grid gap-4 d-flex justify-content-md-start position-relative">
-                                <img src="/img/ui/courses/laravel.svg" height="80">
-                                <a href="https://www.youtube.com/playlist?list=PLXCVm4GFpx5CZf4X5ppNJTPsaGwSlBXLX"
-                                   class="link-body-emphasis stretched-link text-decoration-none text-balance">
-                                    <h5 class="mb-2">Laravel</h5>
-                                    <p class="opacity-75 line-clamp line-clamp-3 small">
-                                        Рассмотрим все возможности фреймворка на 2023 год.
-                                    </p>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="d-grid gap-4 d-flex justify-content-md-start position-relative">
-                                <img src="/img/ui/courses/helpers.svg" height="80">
-                                <a href="https://www.youtube.com/playlist?list=PLXCVm4GFpx5DMQeuzyQwZW8QtslxsUxFy"
-                                   class="link-body-emphasis stretched-link text-decoration-none">
-                                    <h5 class="mb-2">Laravel Helpers</h5>
-                                    <p class="opacity-75 line-clamp line-clamp-3 small">
-                                        Мои функции хелперы с которыми я работаю ежедневно.
-                                    </p>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <div class="d-grid gap-4 d-flex justify-content-md-start position-relative">
-                                <img src="/img/ui/courses/tailwind.svg" height="80">
-                                <a href="https://www.youtube.com/playlist?list=PLXCVm4GFpx5AjF_3jMD6tsDI6eS-yc92U"
-                                   class="link-body-emphasis stretched-link text-decoration-none">
-                                    <h5 class="mb-2">Tailwind</h5>
-                                    <p class="opacity-75 line-clamp line-clamp-3 small">
-                                        Верстаем ВКонтакте с помощью инструмента Tailwind
-                                    </p>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
-
-        <div class="row g-0 rounded bg-body-tertiary mb-5">
-            <div class="col-lg-4">
-                <x-hero image="/img/community/afanasyev.jpg" text="Дмитрий Афанасьев" class="rounded-start"/>
-            </div>
-
-            <div class="col-lg-8">
-                <div class="p-4 p-xl-5 my-xl-5">
-                    <div class="row justify-content-between row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-2 g-4 g-xl-5 text-start">
-                        <div class="col">
-                            <div class="d-grid gap-4 d-flex justify-content-md-start position-relative">
-                                <img src="/img/ui/courses/git.svg" height="80">
-                                    <a href="https://www.youtube.com/playlist?list=PLoonZ8wII66iUm84o7nadL-oqINzBLk5g"
-                                       class="link-body-emphasis stretched-link text-decoration-none text-balance">
-                                        <h5 class="mb-2">Git</h5>
-                                        <p class="opacity-75 line-clamp line-clamp-3 small">
-                                           Обязательно знать и уметь применять систему контроля версий
-                                        </p>
-                                    </a>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="d-grid gap-4 d-flex justify-content-md-start position-relative">
-                                <img src="/img/ui/courses/php.svg" height="80">
-                                <a href="https://www.youtube.com/playlist?list=PLoonZ8wII66iZSicLNXhE4bxUYaKhIc-L"
-                                   class="link-body-emphasis stretched-link text-decoration-none text-balance">
-                                    <h5 class="mb-2">Эксперт PHP</h5>
-                                    <p class="opacity-75 line-clamp line-clamp-3 small">
-                                        В курсе будут рассмотрены наиболее популярные функции и механики языка PHP.
-                                    </p>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="d-grid gap-4 d-flex justify-content-md-start position-relative">
-                                <img src="/img/ui/courses/laravel.svg" height="80">
-                                <a href="https://www.youtube.com/playlist?list=PLoonZ8wII66iP0fJPHhkLXa3k7CMef9ak"
-                                   class="link-body-emphasis stretched-link text-decoration-none">
-                                    <h5 class="mb-2">Основы Laravel</h5>
-                                    <p class="opacity-75 line-clamp line-clamp-3 small">
-                                        Пошаговый видеокурс по фреймворку Laravel.
-                                        Версии фреймворка используемые в курсе: 5.7.2 - 8.*
-                                    </p>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <div class="d-grid gap-4 d-flex justify-content-md-start position-relative">
-                                <img src="/img/ui/courses/template.svg" height="80">
-                                <a href="https://www.youtube.com/playlist?list=PLoonZ8wII66hKbEvIVAZnp1h4CE-4Mtk4"
-                                   class="link-body-emphasis stretched-link text-decoration-none">
-                                    <h5 class="mb-2">Шаблоны проектирования</h5>
-                                    <p class="opacity-75 line-clamp line-clamp-3 small">
-                                       Рассмотрены и реализуйте паттерны на языке PHP.
-                                    </p>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @endforeach
     </x-container>
-
 
 
     <x-container>
