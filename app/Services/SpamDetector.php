@@ -85,6 +85,11 @@ class SpamDetector
             ->replaceMatches('/[^\p{L}\p{N}\p{Z}\p{P}]/u', '')
             ->length();
 
+        // Message contains only emoji
+        if ($withOutUnicode < 1) {
+            return false;
+        }
+
         // Difference in length
         $unicodeLength = $withUnicode - $withOutUnicode;
 
