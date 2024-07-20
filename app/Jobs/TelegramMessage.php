@@ -58,6 +58,7 @@ class TelegramMessage implements ShouldQueue
 
             // Mute the sender of the spam message in the group chat.
             $telegramBot->muteUserInGroup($this->chatId, $this->from);
+
             return;
         }
 

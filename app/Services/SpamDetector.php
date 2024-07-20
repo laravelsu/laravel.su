@@ -90,7 +90,7 @@ class SpamDetector
             return false;
         }
 
-        if($withUnicode === $withOutUnicode){
+        if ($withUnicode === $withOutUnicode) {
             return false;
         }
 
