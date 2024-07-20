@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Models\AntiSpamRecord;
 use App\Services\TelegramBot;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -35,6 +36,10 @@ class TelegramMessage implements ShouldQueue
      */
     public function handle(TelegramBot $telegramBot): void
     {
+        if (AntiSpamRecord::where('telegram_id', $this->from)->where('message_count', '>', 9)->exists()) {
+            return;
+        }
+
         // If the message is a reply to another message, it's likely not spam.
         // Let's not disrupt the conversation and ignore it.
         if ($this->message->has('reply_to_message')) {
@@ -53,6 +58,11 @@ class TelegramMessage implements ShouldQueue
 
             // Mute the sender of the spam message in the group chat.
             $telegramBot->muteUserInGroup($this->chatId, $this->from);
+            return;
         }
+
+        AntiSpamRecord::where('telegram_id', $this->from)->firstOrCreate([
+            'telegram_id' => $this->from,
+        ])->increment('message_count');
     }
 }

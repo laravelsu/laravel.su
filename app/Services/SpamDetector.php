@@ -73,7 +73,7 @@ class SpamDetector
      *
      * @return bool
      */
-    public function hasExcessiveUnicodeCharacters(float $threshold = 0.02): bool
+    public function hasExcessiveUnicodeCharacters(float $threshold = 0.4): bool
     {
         // Length of the message including special characters
         $withUnicode = Str::of($this->message)
@@ -87,6 +87,10 @@ class SpamDetector
 
         // Message contains only emoji
         if ($withOutUnicode < 1) {
+            return false;
+        }
+
+        if($withUnicode === $withOutUnicode){
             return false;
         }
 
