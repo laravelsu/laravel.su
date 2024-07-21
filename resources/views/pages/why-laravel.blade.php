@@ -225,15 +225,54 @@
 
 
 
-    <x-header image="/img/bird.svg">
-        <x-slot:sup>По всему миру</x-slot>
-        <x-slot:title>Его любят тысячи разработчиков.</x-slot>
+    <div class="overflow-hidden">
+        <x-header image="/img/bird.svg">
+            <x-slot:sup>По всему миру</x-slot>
+            <x-slot:title>Его любят тысячи разработчиков.</x-slot>
 
-        <x-slot:description>
-            Их предпочтения это неслучайность – фреймворк отличается надежностью, гибкостью и простотой использования
-        </x-slot>
-    </x-header>
+            <x-slot:description>
+                Их предпочтения это неслучайность – фреймворк отличается надежностью, гибкостью и простотой использования
+            </x-slot>
+
+            <x-slot name="actions">
+                <div class="gap-3 d-block d-md-flex justify-content-center justify-content-md-start align-items-baseline">
+                    <a href="{{ auth()->check() ? route('feed') : route('login') }}" class="d-block d-md-inline-block btn btn-outline-primary btn-lg px-4 mt-3">Присоединиться</a>
+
+                    <a href="{{ route('meets') }}"
+                       class="link-body-emphasis fw-semibold text-decoration-none icon-link icon-link-hover d-none d-xxl-block">
+                        Ближайшие встречи
+                        <x-icon path="i.arrow-right" class="bi" /></a>
+                </div>
+            </x-slot>
+
+            <x-slot:content>
+                <div class="d-none d-lg-block">
+                    <div class="d-flex flex-column gap-3 text-decoration-none">
+
+                        @foreach($users as $key => $row)
+
+                            <div @class([
+    'd-flex gap-3',
+    'ms-5 ps-5' => $key === 0 || $key === 4,
+    'ms-4 ps-4' => $key === 1 || $key === 3,
+])>
+                                @foreach($row as $user)
+                                    <img src="{{ $user->presenter()->image() }}" width="75x" height="75x"
+                                         class="rounded-circle avatar border-light" loading="lazy">
+                                @endforeach
+                            </div>
+                        @endforeach
+
+                    </div>
+                </div>
+            </x-slot:content>
+
+        </x-header>
+    </div>
+
+
     <x-container>
+
 
         <div class="row marketing">
             <div class="col-12 col-md-6">
