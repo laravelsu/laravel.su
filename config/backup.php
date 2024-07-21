@@ -190,7 +190,6 @@ return [
         'retry_delay'         => 0,
     ],
 
-
     /*
      * Here you can specify which backups should be monitored.
      * If a backup does not meet the specified requirements the
