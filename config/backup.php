@@ -103,6 +103,14 @@ return [
         'database_dump_file_timestamp_format' => null,
 
         /*
+         * The base of the dump filename, either 'database' or 'connection'
+         *
+         * If 'database' (default), the dumped filename will contain the database name.
+         * If 'connection', the dumped filename will contain the connection name.
+         */
+        'database_dump_filename_base' => 'database',
+
+        /*
          * The file extension used for the database dump files.
          *
          * If not specified, the file extension will be .archive for MongoDB and .sql for all other databases
@@ -182,60 +190,6 @@ return [
         'retry_delay'         => 0,
     ],
 
-    /*
-     * You can get notified when specific events occur. Out of the box you can use 'mail' and 'slack'.
-     * For Slack you need to install laravel/slack-notification-channel.
-     *
-     * You can also use your own notification classes, just make sure the class is named after one of
-     * the `Spatie\Backup\Notifications\Notifications` classes.
-     */
-    'notifications'   => [
-
-        'notifications' => [
-            // \Spatie\Backup\Notifications\Notifications\BackupHasFailedNotification::class => ['mail'],
-            // \Spatie\Backup\Notifications\Notifications\UnhealthyBackupWasFoundNotification::class => ['mail'],
-            // \Spatie\Backup\Notifications\Notifications\CleanupHasFailedNotification::class => ['mail'],
-            // \Spatie\Backup\Notifications\Notifications\BackupWasSuccessfulNotification::class => ['mail'],
-            // \Spatie\Backup\Notifications\Notifications\HealthyBackupWasFoundNotification::class => ['mail'],
-            // \Spatie\Backup\Notifications\Notifications\CleanupWasSuccessfulNotification::class => ['mail'],
-        ],
-
-        /*
-         * Here you can specify the notifiable to which the notifications should be sent. The default
-         * notifiable will use the variables specified in this config file.
-         */
-        'notifiable'    => \Spatie\Backup\Notifications\Notifiable::class,
-
-        'mail' => null,
-
-        'slack' => [
-            'webhook_url' => '',
-
-            /*
-             * If this is set to null the default channel of the webhook will be used.
-             */
-            'channel'     => null,
-
-            'username' => null,
-
-            'icon' => null,
-
-        ],
-
-        'discord' => [
-            'webhook_url' => '',
-
-            /*
-             * If this is an empty string, the name field on the webhook will be used.
-             */
-            'username'    => '',
-
-            /*
-             * If this is an empty string, the avatar on the webhook will be used.
-             */
-            'avatar_url'  => '',
-        ],
-    ],
 
     /*
      * Here you can specify which backups should be monitored.
