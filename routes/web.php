@@ -30,7 +30,7 @@ Route::view('/feature', 'pages.feature')->name('feature');
 Route::view('/advertising', 'pages.advertising')->name('advertising');
 
 Route::get('why-laravel/', function () {
-    return view("pages.why-laravel", [
+    return view('pages.why-laravel', [
         'users' => \App\Models\User::inRandomOrder()->limit(5 * 12)->get()->chunk(12),
     ]);
 })->name('why-laravel');
