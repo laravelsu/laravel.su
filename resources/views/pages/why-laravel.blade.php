@@ -257,8 +257,8 @@
     'ms-4 ps-4' => $key === 1 || $key === 3,
 ])>
                                 @foreach($row as $user)
-                                    <img src="{{ $user->presenter()->image() }}" width="75x" height="75x"
-                                         class="rounded-circle avatar border-light" loading="lazy">
+                                    <img src="{{ $user->presenter()->image() }}" width="70x" height="70x"
+                                         class="bg-body-tertiary rounded-circle border-light" loading="lazy">
                                 @endforeach
                             </div>
                         @endforeach
