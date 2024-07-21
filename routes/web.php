@@ -28,8 +28,13 @@ use Illuminate\Support\Facades\Route;
 Route::view('/', 'pages.welcome')->name('home');
 Route::view('/feature', 'pages.feature')->name('feature');
 Route::view('/advertising', 'pages.advertising')->name('advertising');
-Route::view('/why-laravel', 'pages.why-laravel', ['users' => \App\Models\User::inRandomOrder()->limit(4 * 12)->get()->chunk(12)])
-    ->name('why-laravel');
+
+Route::get('why-laravel/', function () {
+    return view("pages.why-laravel", [
+        'users' => \App\Models\User::inRandomOrder()->limit(4 * 12)->get()->chunk(12),
+    ]);
+})->name('why-laravel');
+
 Route::view('/ecosystem', 'pages.ecosystem')->name('ecosystem');
 Route::view('/contributors', 'pages.contributors')->name('contributors');
 Route::view('/rules', 'pages.rules')->name('rules');
