@@ -36,10 +36,6 @@ class TelegramMessage implements ShouldQueue
      */
     public function handle(TelegramBot $telegramBot): void
     {
-        if (AntiSpamRecord::where('telegram_id', $this->from)->where('message_count', '>', 9)->exists()) {
-            return;
-        }
-
         // If the message is a reply to another message, it's likely not spam.
         // Let's not disrupt the conversation and ignore it.
         if ($this->message->has('reply_to_message')) {
@@ -49,6 +45,10 @@ class TelegramMessage implements ShouldQueue
         $existEntities = collect($this->message->get('entities'))->whereIn('type', ['url', 'pre'])->isNotEmpty();
 
         if ($existEntities) {
+            return;
+        }
+
+        if (AntiSpamRecord::where('telegram_id', $this->from)->where('message_count', '>', 9)->exists()) {
             return;
         }
 
