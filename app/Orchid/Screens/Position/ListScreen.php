@@ -93,7 +93,7 @@ class ListScreen extends Screen
                                 <p class='text-muted'>".Str::of($position->description)->markdown()->stripTags()->words(20).'</p>';
                     })->filter(Input::make()),
 
-                TD::make('organization', 'Организвция')
+                TD::make('organization', 'Организация')
                     ->width(200)
                     ->sort()
                     ->cantHide()
