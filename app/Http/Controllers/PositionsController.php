@@ -55,6 +55,7 @@ class PositionsController extends Controller
     public function finish(Request $request, Position $position)
     {
         $position->delete();
+
         return redirect()->route('donate.frame');
     }
 

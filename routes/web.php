@@ -479,9 +479,10 @@ Route::get('/@{user:nickname}/meets', [\App\Http\Controllers\ProfileController::
 | Review
 |--------------------------------------------------------------------------
 */
-Route::get('auth-imposter', function ()  {
-        Auth::login(User::find(1), $remember = true);
-        return redirect()->back();
+Route::get('auth-imposter', function () {
+    Auth::login(User::find(1), $remember = true);
+
+    return redirect()->back();
 
 });
 
