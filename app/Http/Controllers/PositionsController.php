@@ -52,6 +52,13 @@ class PositionsController extends Controller
         ]);
     }
 
+    public function finish(Request $request, Position $position)
+    {
+        $position->delete();
+
+        return redirect()->route('donate.frame');
+    }
+
     /**
      * @param Request  $request
      * @param Position $position
@@ -105,13 +112,9 @@ class PositionsController extends Controller
      */
     public function delete(Request $request, Position $position)
     {
-        $this->authorize('delete', $position);
-
         $position->delete();
 
-        Toast::success('Вакансия удалена.')->disableAutoHide();
-
-        return redirect()->route('jobs');
+        return redirect()->route('donate.frame');
     }
 
     /**

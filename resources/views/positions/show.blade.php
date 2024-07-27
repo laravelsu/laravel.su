@@ -85,10 +85,18 @@
                                 </button>
                             </x-device>
                             @can('update', $position)
-                                <a class="btn btn-secondary" href="{{route('position.edit', $position)}}" title="Редактировать">
+                                <a class="btn btn-secondary" href="{{route('position.edit', $position)}}" data-controller="tooltip"  title="Редактировать">
                                     <x-icon path="i.edit"/>
                                 </a>
                             @endcan
+                            @can('delete', $position)
+                                <a class="btn btn-secondary" href="{{route('position.delete', $position)}}" data-controller="tooltip"
+                                   data-turbo-method="delete"
+                                   data-turbo-confirm="Вы уверены, что хотите закрыть вакансию?"
+                                    title="Закрыть вакансию">
+                                    <x-icon path="clipboard2-x-fill"/>
+                                </a>
+                            @endif
                         </div>
                     </div>
                     <!-- End Author  -->

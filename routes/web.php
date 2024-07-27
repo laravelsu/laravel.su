@@ -11,6 +11,7 @@ use App\Http\Controllers\MeetController;
 use App\Http\Controllers\PackagesController;
 use App\Http\Controllers\PostController;
 use App\Http\Middleware\RedirectToBanPage;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -469,7 +470,6 @@ Route::get('/@{user:nickname}/meets', [\App\Http\Controllers\ProfileController::
 | Review
 |--------------------------------------------------------------------------
 */
-
 Route::middleware(['auth'])
     ->group(function () {
         Route::post('/review/start', [\App\Http\Controllers\ReviewController::class, 'start'])->name('stream.review.start');
