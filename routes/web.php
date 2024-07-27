@@ -162,10 +162,6 @@ Route::middleware(['auth', RedirectToBanPage::class])
             ->can('create', 'App\Models\Position')
             ->name('position.create');
 
-        Route::delete('/positions/{position}/finish', [\App\Http\Controllers\PositionsController::class, 'finish'])
-            ->can('finish', 'position')
-            ->name('position.finish');
-
         Route::post('/positions', [\App\Http\Controllers\PositionsController::class, 'update'])
             ->can('create', 'App\Models\Position')
             ->name('position.store');
