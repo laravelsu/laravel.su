@@ -13,7 +13,6 @@ use App\Http\Controllers\PostController;
 use App\Http\Middleware\RedirectToBanPage;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
