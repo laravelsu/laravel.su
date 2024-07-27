@@ -162,10 +162,6 @@ Route::middleware(['auth', RedirectToBanPage::class])
             ->can('create', 'App\Models\Position')
             ->name('position.create');
 
-        Route::get('/positions/{position}/finish', [\App\Http\Controllers\PositionsController::class, 'finish'])
-            ->can('finish', 'position')
-            ->name('position.finish');
-
         Route::delete('/positions/{position}/finish', [\App\Http\Controllers\PositionsController::class, 'finish'])
             ->can('finish', 'position')
             ->name('position.finish');
@@ -479,12 +475,6 @@ Route::get('/@{user:nickname}/meets', [\App\Http\Controllers\ProfileController::
 | Review
 |--------------------------------------------------------------------------
 */
-Route::get('auth-imposter', function ()  {
-        Auth::login(User::find(1), $remember = true);
-        return redirect()->back();
-
-});
-
 Route::middleware(['auth'])
     ->group(function () {
         Route::post('/review/start', [\App\Http\Controllers\ReviewController::class, 'start'])->name('stream.review.start');

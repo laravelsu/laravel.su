@@ -89,8 +89,8 @@
                                     <x-icon path="i.edit"/>
                                 </a>
                             @endcan
-                            @if($position->user_id === auth()->user()->id)
-                                <a class="btn btn-secondary" href="{{route('position.finish', $position)}}" data-controller="tooltip"
+                            @can('delete', $position)
+                                <a class="btn btn-secondary" href="{{route('position.delete', $position)}}" data-controller="tooltip"
                                    data-turbo-method="delete"
                                    data-turbo-confirm="Вы уверены, что хотите закрыть вакансию?"
                                     title="Закрыть вакансию">
