@@ -46,10 +46,10 @@ class SpamDetectorTest extends TestCase
 
 Еслu ты действuтельнo зauнтересoвaн в быстрoм u честнoм зaрaбoтке , пuшu + в ЛС!!!!');
 
-        $this->assertTrue($spamDetector->hasExcessiveUnicodeCharacters());
+        $this->assertTrue($spamDetector->hasExcessiveUnicodeCharacters(0.025));
 
         // Long unicode characters at the end of the message/words
         $spamDetector = new SpamDetector('🍕 Прикольно, что ты тут делаешь? 🍣🍰');
-        $this->assertFalse($spamDetector->hasExcessiveUnicodeCharacters());
+        $this->assertFalse($spamDetector->hasExcessiveUnicodeCharacters(0.025));
     }
 }
