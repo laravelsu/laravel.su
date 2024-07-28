@@ -19,7 +19,6 @@ trait Approvable
         return $query->where('approved', $approved);
     }
 
-
     /**
      * Scope a query to only include approved or owner items.
      *
