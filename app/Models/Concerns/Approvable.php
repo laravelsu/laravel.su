@@ -16,7 +16,8 @@ trait Approvable
      */
     public function scopeApproved(Builder $query, bool $approved = true): Builder
     {
-        return $query->where('approved', $approved);
+        return $query->where('approved', $approved)
+            ->orWhere('user_id', auth()->id());
     }
 
     /**
