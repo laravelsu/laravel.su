@@ -16,8 +16,21 @@ trait Approvable
      */
     public function scopeApproved(Builder $query, bool $approved = true): Builder
     {
-        return $query->where('approved', $approved)
-            ->orWhere('user_id', auth()->id());
+        return $query->where('approved', $approved);
+    }
+
+
+    /**
+     * Scope a query to only include approved or owner items.
+     *
+     * @param Builder $query
+     * @param bool    $approved
+     *
+     * @return Builder
+     */
+    public function scopeApprovedOrOwner(Builder $query, bool $approved = true): Builder
+    {
+        return $query->approved($approved)->orWhere('user_id', auth()->id());
     }
 
     /**

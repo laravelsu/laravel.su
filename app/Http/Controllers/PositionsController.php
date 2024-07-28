@@ -17,7 +17,7 @@ class PositionsController extends Controller
      */
     public function jobs()
     {
-        $positions = Position::approved()
+        $positions = Position::approvedOrOwner()
             ->with(['author'])
             ->whereDate('created_at', '>=', now()->subMonths(2))
             ->orderBy('id', 'desc')
