@@ -46,7 +46,7 @@ class SimpleMessageNotification extends Notification implements ShouldQueue
      */
     public function toSite(User $user)
     {
-        return (new SiteMessage())
+        return (new SiteMessage)
             ->title($this->message)
             ->img(asset('/img/avatars/avatar2.svg'));
     }

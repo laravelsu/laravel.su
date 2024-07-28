@@ -46,7 +46,7 @@ class AchievementNotification extends Notification implements ShouldQueue
     {
         $url = route('achievements');
 
-        return (new SiteMessage())
+        return (new SiteMessage)
             ->title('Вы получили достижение "'.$this->achievement->presenter()->name().'".')
             ->img($this->achievement->presenter()->image())
             ->action($url, 'Посмотреть');

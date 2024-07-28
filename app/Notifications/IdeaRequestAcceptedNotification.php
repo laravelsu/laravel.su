@@ -54,7 +54,7 @@ class IdeaRequestAcceptedNotification extends Notification implements ShouldQueu
      */
     public function toSite(User $user)
     {
-        return (new SiteMessage())
+        return (new SiteMessage)
             ->title('Бесплатный ключ Laravel IDEA доступен')
             ->action(route('idea.key', $this->ideaKey), 'по ссылке');
     }

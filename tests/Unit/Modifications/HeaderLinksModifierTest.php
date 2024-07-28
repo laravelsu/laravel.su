@@ -9,7 +9,7 @@ class HeaderLinksModifierTest extends TestCase
 {
     public function testItAddsAnchorLinksToHeadersAndMovesLinksOutOfParagraphs(): void
     {
-        $modifier = new HeaderLinksModifier();
+        $modifier = new HeaderLinksModifier;
 
         $html = '
             <h2>Header 1</h2>

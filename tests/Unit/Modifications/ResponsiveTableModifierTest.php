@@ -9,7 +9,7 @@ class ResponsiveTableModifierTest extends TestCase
 {
     public function testItWrapsTableTagsInResponsiveDiv(): void
     {
-        $modifier = new ResponsiveTableModifier();
+        $modifier = new ResponsiveTableModifier;
 
         $html = '<table><tr><td>Cell 1</td><td>Cell 2</td></tr></table>';
 

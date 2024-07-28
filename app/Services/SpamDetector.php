@@ -112,7 +112,7 @@ class SpamDetector
     public function checkByClassifier(): bool
     {
         $classifier = Cache::remember('spam-classifier', now()->addDays(7), function () {
-            $classifier = new Classifier();
+            $classifier = new Classifier;
 
             $classifier->uneven();
 

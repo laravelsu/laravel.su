@@ -9,7 +9,7 @@ class RemoveFirstHeaderModifierTest extends TestCase
 {
     public function testItRemovesFirstHeaderFromHtmlContent(): void
     {
-        $modifier = new RemoveFirstHeaderModifier();
+        $modifier = new RemoveFirstHeaderModifier;
 
         $html = '<h1>First Header</h1><p>This is some text.</p>';
 

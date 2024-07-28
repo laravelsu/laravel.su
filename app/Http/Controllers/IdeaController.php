@@ -33,7 +33,7 @@ class IdeaController extends Controller
             'accepted'   => 'accepted',
         ]);
 
-        $ideaRequest = new IdeaRequest();
+        $ideaRequest = new IdeaRequest;
 
         $ideaRequest->fill($request->all())->forceFill([
             'user_id' => $request->user()->id,

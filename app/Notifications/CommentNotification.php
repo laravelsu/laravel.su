@@ -55,7 +55,7 @@ class CommentNotification extends Notification implements ShouldQueue
     {
         $url = route('post.show', $this->comment->post).'#'.dom_id($this->comment);
 
-        return (new SiteMessage())
+        return (new SiteMessage)
             ->title('оставил комментарий к вашей публикации')
             ->setCommentAuthor($this->comment->author->name)
             ->img($this->comment->author->avatar)

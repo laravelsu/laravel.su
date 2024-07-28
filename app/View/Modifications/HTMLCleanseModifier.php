@@ -14,7 +14,7 @@ class HTMLCleanseModifier extends HTMLModifier
      */
     public function handle(string $content, \Closure $next)
     {
-        $crawler = new Crawler();
+        $crawler = new Crawler;
         $crawler->addHtmlContent(mb_convert_encoding($content, 'UTF-8'));
         $content = $crawler->filterXpath('//body')->first()->html();
 

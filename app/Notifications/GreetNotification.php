@@ -41,7 +41,7 @@ class GreetNotification extends Notification
      */
     public function toSite(User $user)
     {
-        return (new SiteMessage())
+        return (new SiteMessage)
             ->title('Присоединяйтесь к нашему Telegram-каналу прямо сейчас для актуальных новостей и эксклюзивных анонсов.')
             ->action(config('services.telegram.channel_url'), 'Подписаться');
     }

@@ -126,7 +126,7 @@ class Comment extends Model
                 ],
             ],
             [
-                new MentionExtension(),
+                new MentionExtension,
             ]
         );
     }

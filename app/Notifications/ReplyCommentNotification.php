@@ -54,7 +54,7 @@ class ReplyCommentNotification extends Notification implements ShouldQueue
     {
         $url = route('post.show', $this->reply->post).'#'.dom_id($this->reply);
 
-        return (new SiteMessage())
+        return (new SiteMessage)
             ->title('ответил на ваш комментарий')
             ->setCommentAuthor($this->reply->author->name)
             ->img($this->reply->author->avatar)

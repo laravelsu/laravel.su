@@ -97,7 +97,7 @@ class User extends Authenticatable
     protected static function booted(): void
     {
         static::created(function (User $user) {
-            Notification::send($user, new GreetNotification());
+            Notification::send($user, new GreetNotification);
         });
     }
 

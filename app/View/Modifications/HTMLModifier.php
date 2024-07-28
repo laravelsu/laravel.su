@@ -13,7 +13,7 @@ abstract class HTMLModifier
      */
     public function crawler($content)
     {
-        $crawler = new Crawler();
+        $crawler = new Crawler;
 
         $crawler->addHtmlContent(mb_convert_encoding($content, 'UTF-8'));
 

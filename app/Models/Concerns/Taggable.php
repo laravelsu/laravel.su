@@ -71,7 +71,7 @@ trait Taggable
      */
     public static function allTags()
     {
-        $instance = new static();
+        $instance = new static;
 
         return $instance->createTagsModel()->whereNamespace(
             $instance->getEntityClassName()
@@ -87,7 +87,7 @@ trait Taggable
      */
     public static function scopeWhereTag(Builder $query, $tags, $type = 'slug')
     {
-        $tags = (new static())->prepareTags($tags);
+        $tags = (new static)->prepareTags($tags);
 
         foreach ($tags as $tag) {
             $query->whereHas('tags', function ($query) use ($type, $tag) {
@@ -107,7 +107,7 @@ trait Taggable
      */
     public static function scopeWithTag(Builder $query, $tags, $type = 'slug')
     {
-        $tags = (new static())->prepareTags($tags);
+        $tags = (new static)->prepareTags($tags);
 
         return $query->whereHas('tags', function ($query) use ($type, $tags) {
             $query->whereIn($type, $tags);
@@ -123,7 +123,7 @@ trait Taggable
      */
     public static function scopeWithoutTag(Builder $query, $tags, $type = 'slug')
     {
-        $tags = (new static())->prepareTags($tags);
+        $tags = (new static)->prepareTags($tags);
 
         return $query->whereDoesntHave('tags', function ($query) use ($type, $tags) {
             $query->whereIn($type, $tags);
@@ -270,7 +270,7 @@ trait Taggable
      */
     public static function createTagsModel()
     {
-        return new static::$tagsModel();
+        return new static::$tagsModel;
     }
 
     /**

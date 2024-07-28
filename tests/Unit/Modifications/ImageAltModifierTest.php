@@ -9,7 +9,7 @@ class ImageAltModifierTest extends TestCase
 {
     public function testItAddsAltAttributeToImageTagsWithEmptyAlt(): void
     {
-        $modifier = new ImageAltModifier();
+        $modifier = new ImageAltModifier;
 
         $html = '<img src="image.jpg">';
 
@@ -24,7 +24,7 @@ class ImageAltModifierTest extends TestCase
 
     public function testItDoesNotChangeImageTagsWithNonEmptyAlt(): void
     {
-        $modifier = new ImageAltModifier();
+        $modifier = new ImageAltModifier;
 
         $html = '<img src="image.jpg" alt="Example alt text">';
 

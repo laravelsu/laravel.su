@@ -71,7 +71,7 @@ class QuizState implements \JsonSerializable
     {
         $data = json_decode($json, true);
 
-        $quizState = new self();
+        $quizState = new self;
 
         // Iterate through the decoded data and set properties of the object.
         foreach ($data as $key => $value) {

@@ -72,7 +72,7 @@ class ChallengesController extends Controller
                 'string',
                 'required',
                 'regex:/^[a-z0-9_\-]+\/[a-z0-9_\-]+$/i',
-                new GitHubRepositoryExists(),
+                new GitHubRepositoryExists,
                 Rule::unique('challenge_applications')->where('challenge_id', $challenge->id)->where('user_id', $request->user()->id),
                 Rule::unique('challenge_applications')->where('challenge_id', $challenge->id)->where('github_repository', $request->input('github_repository')),
             ],

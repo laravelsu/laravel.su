@@ -9,7 +9,7 @@ class BlockquoteModifierTest extends TestCase
 {
     public function testItAddsCssClassesToBlockquoteTags(): void
     {
-        $modifier = new BlockquoteModifier();
+        $modifier = new BlockquoteModifier;
 
         $html = '
             <blockquote>{note} This is a note.</blockquote>
@@ -42,7 +42,7 @@ class BlockquoteModifierTest extends TestCase
 
     public function testItPreservesBrTagsInBlockquotes(): void
     {
-        $modifier = new BlockquoteModifier();
+        $modifier = new BlockquoteModifier;
 
         $html = '
             <blockquote>

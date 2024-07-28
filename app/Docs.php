@@ -127,7 +127,7 @@ class Docs
                 ->after('---')
                 ->after('---')
                 ->markdown(extensions: [
-                    new UnfencedExtension(),
+                    new UnfencedExtension,
                 ])
                 ->toString();
         });
@@ -181,7 +181,7 @@ class Docs
      */
     public function title(): ?string
     {
-        $crawler = new Crawler();
+        $crawler = new Crawler;
         $crawler->addHtmlContent($this->content());
 
         $title = $crawler->filterXPath('//h1');
@@ -194,7 +194,7 @@ class Docs
      */
     public function description(): ?string
     {
-        $crawler = new Crawler();
+        $crawler = new Crawler;
         $crawler->addHtmlContent($this->content());
 
         $firstParagraph = collect($crawler->filter('p'))
@@ -216,7 +216,7 @@ class Docs
      */
     public function docsToArray(string $html): array
     {
-        $crawler = new Crawler();
+        $crawler = new Crawler;
         $crawler->addContent($html);
 
         $crawler = new Crawler($html);
