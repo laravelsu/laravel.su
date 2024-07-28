@@ -13,7 +13,12 @@
     php artisan view:clear
     php artisan sqlite:optimize
     php artisan migrate --force
+
+    echo "" | sudo -S service php8.3-fpm reload
+
     php artisan optimize
     php artisan up
     php artisan storage:link
+
+    echo "🚀 Application deployed!"
 @endtask
