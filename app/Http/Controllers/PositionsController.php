@@ -47,16 +47,8 @@ class PositionsController extends Controller
         $this->authorize('update', $position);
 
         return view('positions.edit', [
-
             'position' => $position,
         ]);
-    }
-
-    public function finish(Request $request, Position $position)
-    {
-        $position->delete();
-
-        return redirect()->route('donate.frame');
     }
 
     /**
@@ -113,6 +105,9 @@ class PositionsController extends Controller
     public function delete(Request $request, Position $position)
     {
         $position->delete();
+
+        Toast::success('Вакансия закрыта. Если нашли подходящего специалиста, рассмотрите возможность пожертвования для поддержки сообщества.')
+            ->disableAutoHide();
 
         return redirect()->route('donate.frame');
     }

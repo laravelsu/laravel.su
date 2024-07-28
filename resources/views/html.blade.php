@@ -52,6 +52,8 @@
 
 <body>
     @yield('body')
+
+    @include('particles.toast')
 </body>
 
 </html>

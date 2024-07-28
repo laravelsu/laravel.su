@@ -328,7 +328,6 @@
     </div>
 
 
-    @include('particles.toast')
     {{-- @include('particles.mobile-menu') --}}
     @include('particles.back-to-top')
 @endsection
