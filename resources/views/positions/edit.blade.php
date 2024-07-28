@@ -170,10 +170,10 @@
                             @if($position->exists)
                                 <a class="justify-content-center justify-content-md-start btn btn-link ms-md-auto icon-link text-decoration-none"
                                    data-turbo-method="delete"
-                                   data-turbo-confirm="Вы уверены, что хотите удалить вакансию?"
+                                   data-turbo-confirm="Вы уверены, что хотите закрыть вакансию?"
                                    href="{{route('position.delete', $position)}}">
                                     <x-icon path="i.delete"/>
-                                    Удалить
+                                    Закрыть вакансию
                                 </a>
                             @endif
                         </div>
