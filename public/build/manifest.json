@@ -3,16 +3,20 @@
     "file": "assets/background-profile-C9TOZ9gt.svg",
     "src": "public/img/ui/background-profile.svg"
   },
-  "public/img/ui/info.svg": {
-    "file": "assets/info-CTMrUrFB.svg",
-    "src": "public/img/ui/info.svg"
+  "public/img/ui/blockquote/default.svg": {
+    "file": "assets/default-oNrv4Rfh.svg",
+    "src": "public/img/ui/blockquote/default.svg"
   },
-  "public/img/ui/warning.svg": {
+  "public/img/ui/blockquote/info.svg": {
+    "file": "assets/info-Dr88BOtQ.svg",
+    "src": "public/img/ui/blockquote/info.svg"
+  },
+  "public/img/ui/blockquote/warning.svg": {
     "file": "assets/warning-Bnq9FH37.svg",
-    "src": "public/img/ui/warning.svg"
+    "src": "public/img/ui/blockquote/warning.svg"
   },
   "resources/css/app.scss": {
-    "file": "assets/app-BEZ5dSej.css",
+    "file": "assets/app-DOZPCi8l.css",
     "src": "resources/css/app.scss",
     "isEntry": true
   },

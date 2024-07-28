@@ -317,7 +317,7 @@ main,
         &:before {
             //background-color: transparentize($info, 0.65);
             background-color: #8df1a4;
-            background-image: url('$image/ui/info.svg');
+            background-image: url('$image/ui/blockquote/info.svg');
             content: '';
         }
     }
@@ -328,7 +328,7 @@ main,
         &:before {
             //background-color: transparentize($danger, 0.65);
             background-color: #f1a58d;
-            background-image: url('$image/ui/warning.svg');
+            background-image: url('$image/ui/blockquote/warning.svg');
             content: '';
         }
     }
@@ -355,7 +355,8 @@ main,
             background-position: center;
             background-size: contain;
             background-repeat: no-repeat;
-            border: solid 2.5rem #0000;
+            border: inset 1em transparent;
+            background-image: url('$image/ui/blockquote/default.svg');
             background-color: $gray-500;
             color: #fff;
             content: ' ';
@@ -363,7 +364,9 @@ main,
             text-align: center;
             font-weight: 600;
             font-size: 1.5em;
-            min-height: 5em;
+            min-height: 3em;
+            min-width: 3em;
+            aspect-ratio: 3 / 1;
         }
 
         @include media-breakpoint-down(md) {
