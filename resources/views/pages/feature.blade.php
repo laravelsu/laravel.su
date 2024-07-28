@@ -565,9 +565,9 @@ class UserController
 
                     <div class="bg-body-tertiary p-4 p-xl-5 rounded d-flex flex-column gap-4">
                         <h4 class="fw-bold">Eloquent ORM</h4>
-                        <p class="mb-0">Не бойтесь работать с базами данных! ORM (Object-Relational Mapping) в Laravel - Eloquent
-                           ORM, позволяет легко взаимодействовать с данными вашего приложения. Создание моделей,
-                           миграций и отношений между ними происходит в несколько простых шагов:</p>
+                        <p class="mb-0">Не бойтесь работать с базами данных! Laravel позволяет легко
+                                        взаимодействовать с данными вашего приложения. Создавайте модели, миграции и
+                                        связи между ними в несколько простых шагов:</p>
 
                         <pre><code language="text">php artisan make:model Invoice --migration</code></pre>
 
@@ -634,8 +634,9 @@ $table->timestamps();
 
                     <div class="bg-body-tertiary p-4 p-xl-5 rounded d-flex flex-column gap-4">
                         <h4 class="fw-bold">Job Queues</h4>
-                        <p class="mb-0">Очереди работ (Job Queues) в Laravel позволяют вам перенести медленные задачи в фоновую
-                           очередь, что помогает поддерживать отзывчивость веб-запросов. Пример использования:</p>
+                        <p class="mb-0">Очереди задач (Job Queues) в Laravel позволяют вам перенести медленные задачи в
+                                        фоновый режим, сохраняя отзывчивость веб-запросов. Пример
+                                        использования:</p>
 
                         <pre><code language="php">
 $podcast = Podcast::create(/* ... */);
@@ -644,8 +645,7 @@ ProcessPodcast::dispatch($podcast)
     ->onQueue('podcasts');
         </code></pre>
 
-                        <p class="mb-0">Вы можете запускать столько рабочих процессов очередей, сколько необходимо, чтобы обработать
-                           вашу нагрузку:</p>
+                        <p class="mb-0">Вы можете запускать столько процессов очередей, сколько нужно для обработки вашей нагрузки:</p>
 
                         <pre><code language="bash">
 php artisan queue:work redis --queue=podcasts
@@ -656,14 +656,14 @@ php artisan queue:work redis --queue=podcasts
                     <img src="/img/ui/crane.svg" class="img-fluid img-fluid d-none d-lg-block mx-auto">
 
                     <div class="bg-body-tertiary rounded">
-                        <img src="/img/ecosystem/horizon.png" class="img-fluid rounded-top">
+                        <img src="/img/ecosystem/horizon.png" class="img-fluid rounded-top mb-3">
 
                         <div class="d-flex flex-column gap-4 px-5 pb-5 pt-3">
                             <h4 class="fw-bold">Horizon</h4>
                             <p>
-                               Для более удобного контроля и отслеживания очередей в Laravel существует Laravel Horizon.
-                               Horizon предоставляет красивую панель управления и конфигурацию через код для ваших очередей,
-                               работающих на Redis.
+                                Для удобного контроля и отслеживания очередей используйте Laravel Horizon.
+                                Horizon предоставляет красивую панель управления и конфигурацию через код для ваших
+                                очередей, работающих на Redis.
                             </p>
                         </div>
                     </div>
