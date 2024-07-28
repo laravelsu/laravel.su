@@ -37,15 +37,16 @@ class Question
     }
 
     /**
-     * @param string $title
+     * @param string|iterable $title
+     * @param string          $description
      *
      * @return \App\Quiz\Question
      */
-    public static function make(mixed $title, string $description = ''): Question
+    public static function make(string|iterable $title, string $description = ''): Question
     {
         // если передан массив вопросов(ситуаций) - нужно выбрать один вопрос
         if (is_array($title)) {
-            $key = array_rand($title, 1);
+            $key = array_rand($title);
 
             return new self($title[$key], $description);
         }

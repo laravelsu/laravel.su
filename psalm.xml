@@ -9,6 +9,9 @@
     xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
     cacheDirectory="vendor/.cache.psalm"
 >
+    <issueHandlers>
+        <MissingTemplateParam errorLevel="suppress"/>
+    </issueHandlers>
     <projectFiles>
         <directory name="app" />
         <ignoreFiles>
