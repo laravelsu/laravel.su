@@ -139,6 +139,92 @@
                 </div>
             </div>
         </div>
-
     </x-container>
+
+
+    <x-container class="mt-lg-5 pt-lg-5">
+        <span class="text-primary mb-3 d-block text-uppercase fw-semibold ls-xl">Разработчики говорят:</span>
+
+        <div class="row marketing">
+            <div class="col-12 col-md-6">
+                <div class="d-flex flex-column align-items-md-baseline">
+                    <div class="position-relative mb-5">
+
+                        <div class="text-balance bg-body-secondary rounded p-4 p-xl-5 position-relative">
+                            <blockquote class="lead">
+                                С помощью плагина Laravel Idea вы можете легко создавать представления Blade в PhpStorm.
+                                Очень удобно! 👍
+                            </blockquote>
+
+                            <div class="d-flex align-items-center">
+                                <img alt="image" height="50" class="rounded-circle" src="https://avatars.githubusercontent.com/freekmurze?v4">
+                                <div class="ms-3 lh-1">
+                                    <div class="fw-bolder mb-1">Freek Van der Herten</div>
+                                    <small class="opacity-50">@freekmurze</small>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="position-relative mb-5">
+
+                        <div class="text-balance bg-body-secondary rounded p-4 p-xl-5 position-relative">
+                            <blockquote class="lead">
+                                Laravel Idea — это необходимый плагин для PhpStorm! Примите участие в розыгрыше — или
+                                просто подарите Аделю заслуженные деньги ❤️
+                            </blockquote>
+
+                            <div class="d-flex align-items-center">
+                                <img alt="image" height="50" class="rounded-circle" src="https://avatars.githubusercontent.com/mpociot?v4">
+                                <div class="ms-3 lh-1">
+                                    <div class="fw-bolder mb-1">Marcel Pociot</div>
+                                    <small class="opacity-50">@marcelpociot</small>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="position-relative mb-5">
+
+                    <div class="text-balance bg-body-secondary rounded p-4 p-xl-5 position-relative">
+                        <blockquote class="lead">
+                            Сегодня два благодарственных сообщения! Первое — Аделю, создателю Laravel Idea. Он снова
+                            помог мне с лицензией. Лучший плагин для PHPStorm и Laravel. Стоит каждой копейки!
+                            Купите его и поддержите его отличную работу для сообщества!
+                        </blockquote>
+
+                        <div class="d-flex align-items-center">
+                            <img alt="image" height="50" class="rounded-circle" src="https://avatars.githubusercontent.com/stefanbauer?v4">
+                            <div class="ms-3 lh-1">
+                                <div class="fw-bolder mb-1">Stefan Bauer</div>
+                                <small class="opacity-50">@stefanbauerme</small>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="position-relative mb-5">
+
+                    <div class="text-balance bg-body-secondary rounded p-4 p-xl-5 position-relative">
+                        <blockquote class="lead">
+                            Серьезно, плагин Laravel Idea — один из лучших для PhpStorm 🪄
+                        </blockquote>
+
+                        <div class="d-flex align-items-center">
+                            <img alt="image" height="50" class="rounded-circle" src="https://avatars.githubusercontent.com/jbrooksuk?v4">
+                            <div class="ms-3 lh-1">
+                                <div class="fw-bolder mb-1">James Brooks</div>
+                                <small class="opacity-50">@jbrooksuk</small>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </x-container>
+
 @endsection
