@@ -40,7 +40,7 @@
             <div class="p-4 p-xl-5 bg-body-tertiary rounded d-flex flex-column h-100 position-relative">
                 <img src="/img/sponsors/soidet.svg" class="d-block mb-4 me-auto" height="64">
                 <p class="fw-normal">
-                    Подкаст c зажигательными эпизоды, которые заставят
+                    Подкасты c зажигательными эпизодами, которые заставят
                     задуматься и приведут к новым перспективам.
                 </p>
                 <a class="icon-link icon-link-hover stretched-link link-body-emphasis text-decoration-none small mt-auto"
