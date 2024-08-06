@@ -3,7 +3,7 @@
         <form method="POST"
               action="{{ route('comments.update', $comment->getKey()) }}"
               class="mb-3 d-flex flex-column position-relative me-2"
-                data-controller="comment"
+              data-controller="comment"
         >
             @method('PUT')
             <textarea
@@ -19,7 +19,8 @@
                       rows="3">{{ $comment->content }}</textarea>
             <div
                 class="d-grid gap-3 d-md-flex justify-content-md-start position-absolute bottom-0 end-0 my-2 my-sm-3 mx-3 mx-sm-5">
-                <button type="submit" class="btn btn-primary fade"
+                <button type="submit"
+                        class="btn btn-primary fade"
                         data-comment-target="button">Обновить</button>
             </div>
         </form>

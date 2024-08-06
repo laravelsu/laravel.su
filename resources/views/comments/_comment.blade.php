@@ -21,7 +21,8 @@ if (!isset($indentationLevel)) {
         @endforeach
     </div>
 @else
-    <div id="thread_comment_{{ $comment->getKey() }}" class="thread {{ $indentationLevel <= 3 ? 'ps-xl-5 ps-4 comment-reply' : 'position-relative overflow-hidden' }}">
+    <div id="thread_comment_{{ $comment->getKey() }}"
+         class="thread {{ $indentationLevel <= 3 ? 'ps-xl-5 ps-4 comment-reply' : 'position-relative overflow-hidden' }}">
     </div>
 @endif
 
