@@ -14,7 +14,7 @@ use Orchid\Screen\AsSource;
 
 class Challenge extends Model
 {
-    use AsSource, Chartable, Filterable, HasFactory, LogsActivityFillable;
+    use AsSource, Chartable, Filterable, LogsActivityFillable;
 
     /**
      * The attributes that are mass assignable.

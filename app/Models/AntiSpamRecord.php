@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class AntiSpamRecord extends Model
 {
-    use HasFactory, HasUuids;
+    use HasUuids;
 
     protected $fillable = [
         'telegram_id',

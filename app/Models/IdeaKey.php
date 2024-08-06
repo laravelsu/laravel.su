@@ -11,7 +11,7 @@ use Orchid\Metrics\Chartable;
 
 class IdeaKey extends Model
 {
-    use Chartable, HasAuthor, HasFactory, HasUuids;
+    use Chartable, HasAuthor, HasUuids;
 
     /**
      * Get the idea request associated with the idea key.

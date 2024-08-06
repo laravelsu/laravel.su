@@ -16,7 +16,7 @@ use Orchid\Screen\AsSource;
 
 class Package extends Model
 {
-    use Approvable, AsSource, Chartable, Filterable, HasAuthor, HasFactory, LogsActivityFillable;
+    use Approvable, AsSource, Chartable, Filterable, HasAuthor, LogsActivityFillable;
 
     /**
      * The attributes that are mass assignable.

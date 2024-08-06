@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Document extends Model
 {
-    use HasFactory, HasUuids;
+    use HasUuids;
 
     /**
      * The attributes that are mass assignable.

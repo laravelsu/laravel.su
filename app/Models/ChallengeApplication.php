@@ -13,7 +13,7 @@ use Orchid\Screen\AsSource;
 
 class ChallengeApplication extends Model
 {
-    use AsSource, Chartable, Filterable, HasFactory, HasUuids;
+    use AsSource, Chartable, Filterable, HasUuids;
 
     /**
      * The attributes that are mass assignable.

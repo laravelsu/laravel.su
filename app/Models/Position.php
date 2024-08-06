@@ -18,7 +18,7 @@ use Orchid\Screen\AsSource;
 
 class Position extends Model
 {
-    use Approvable, AsSource, Chartable, Filterable, HasAuthor, HasFactory, LogsActivityFillable, SoftDeletes;
+    use Approvable, AsSource, Chartable, Filterable, HasAuthor, LogsActivityFillable, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.

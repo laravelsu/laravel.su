@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Notification;
 
 class Achievement extends Model
 {
-    use HasFactory, HasUuids;
+    use HasUuids;
 
     /**
      * The attributes that are mass assignable.

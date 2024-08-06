@@ -16,7 +16,7 @@ use Overtrue\LaravelLike\Traits\Likeable;
 
 class Comment extends Model
 {
-    use Approvable, Chartable, HasAuthor, HasFactory, Likeable, SoftDeletes;
+    use Approvable, Chartable, HasAuthor, Likeable, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.

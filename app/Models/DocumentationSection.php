@@ -10,7 +10,7 @@ use Laravel\Scout\Searchable;
 
 class DocumentationSection extends Model
 {
-    use HasFactory, HasUuids, Searchable;
+    use HasUuids, Searchable;
 
     /**
      * The attributes that are mass assignable.
