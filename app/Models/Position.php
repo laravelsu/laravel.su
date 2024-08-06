@@ -7,7 +7,6 @@ use App\Models\Concerns\HasAuthor;
 use App\Models\Concerns\LogsActivityFillable;
 use App\Models\Enums\ScheduleEnum;
 use App\Models\Presenters\PositionPresenter;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;

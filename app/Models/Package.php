@@ -7,7 +7,6 @@ use App\Models\Concerns\HasAuthor;
 use App\Models\Concerns\LogsActivityFillable;
 use App\Models\Enums\PackageTypeEnum;
 use App\Models\Presenters\PackagePresenter;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Orchid\Filters\Filterable;
 use Orchid\Filters\Types\Like;

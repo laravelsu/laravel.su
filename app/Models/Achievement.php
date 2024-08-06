@@ -5,7 +5,6 @@ namespace App\Models;
 use App\Models\Presenters\AchievementPresenter;
 use App\Notifications\AchievementNotification;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Notification;
 
