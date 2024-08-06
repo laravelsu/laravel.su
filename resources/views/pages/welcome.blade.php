@@ -30,7 +30,7 @@
                 <span class="text-primary mb-3 d-block text-uppercase fw-semibold ls-xl">Вы ограничены только
                     фантазией</span>
 
-                <h2 class="display-5 fw-semibold mb-5">Реализуйте потрясающие проекты.</h2>
+                <h2 class="display-5 fw-semibold mb-5 mb-0">Реализуйте потрясающие проекты.</h2>
             </div>
 
             {{--
@@ -40,68 +40,291 @@
             --}}
         </div>
 
-        <div class="p-4 p-xl-5 bg-body-secondary rounded-3 position-relative mb-4">
-            <div class="row g-4 g-md-5 align-items-center">
-                <div class="col-md-7">
-                    <h3 class="display-6 fw-semibold mb-4 text-balance">Веб</h3>
-                    <p class="">
-                        Интуитивно понятный синтаксис и множество готовых компонентов, что
-                        сокращает время разработки. Мощные инструменты управляют базами данных, маршрутизацией,
-                        аутентификации и кэшированием,
-                        повышая производительность и масштабируемость приложения.
-                    </p>
 
-                    <a href="{{ route('feature') }}"
-                       class="link-body-emphasis fw-semibold text-decoration-none icon-link icon-link-hover">
-                        Основные возможности
-                        <x-icon path="i.arrow-right" class="bi" /></a>
+        <div class="row justify-content-between my-xl-5 gx-5 gy-5">
+            <div class="col-12 col-lg-4">
+                <div class="position-relative d-flex flex-lg-column gap-4">
+
+                    <div class="col-5 col-lg-12">
+                    <div class="ratio ratio-16x9">
+                        <img src="/img/ui/web.svg" class="img-fluid d-block me-auto" style="
+    object-fit: contain;
+    object-position: left;">
+                    </div>
+                    </div>
+
+                    <div>
+                        <p class="h3 fw-semibold text-balance mb-4">Веб-приложения</p>
+
+                        <p class="">
+                            Стройте высококачественные проекты с минимальными усилиями, используя инструментарий и удобную архитектуру.
+                        </p>
+                    </div>
                 </div>
-                <div class="d-none d-sm-flex col">
-                    <img src="/img/ui/web.svg" class="img-fluid d-block mx-auto">
+            </div>
+            <div class="col-12 col-lg-4">
+                <div class="position-relative d-flex flex-lg-column gap-4">
+
+
+                    <div class="col-5 col-lg-12">
+                        <div class="ratio ratio-16x9">
+                            <img src="/img/ui/api.svg" class="img-fluid d-block me-auto" style="
+    object-fit: contain;
+    object-position: left;">
+                        </div>
+                    </div>
+
+
+                    <div>
+                    <p class="h3 fw-semibold text-balance mb-4">API</p>
+
+                    <p class="">
+                        Создавайте надежные API для мобильных приложений и сервисов, обеспечивая консистентность и масштабируемость.
+                    </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-4">
+                <div class="position-relative d-flex flex-lg-column gap-4">
+
+
+                    <div class="col-5 col-lg-12">
+                        <div class="ratio ratio-16x9">
+                            <img src="/img/ui/console.svg" class="img-fluid d-block mx-auto" style="
+    object-fit: contain;
+    object-position: left;">
+                        </div>
+                    </div>
+
+
+                    <div>
+                    <p class="h3 fw-semibold text-balance mb-4">Консоль</p>
+
+                    <p class="">
+                        Автоматизируйте задачи и управляйте процессами с гибкостью и простотой, улучшая продуктивность команды.
+                    </p>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="p-4 p-xl-5 bg-body-secondary rounded-3 position-relative mb-4">
-            <div class="row g-4 g-md-5 align-items-center">
-                <div class="col-md-7">
-                    <h3 class="display-6 fw-semibold mb-4 text-balance">API</h3>
-                    <p class="">
-                        Простое и понятное создание и управление ресурсами. Поддержка различных форматов ответов,
-                        включая JSON, делает его идеальным для RESTful API. Удобная валидация данных, обработка ошибок и
-                        прочие функции создают надежное и безопасное API.
-                    </p>
-                    <a href="{{ route('feature') }}"
-                       class="link-body-emphasis fw-semibold text-decoration-none icon-link icon-link-hover">
-                        Основные возможности
-                        <x-icon path="i.arrow-right" class="bi" /></a>
-                </div>
-                <div class="d-none d-sm-flex col">
-                    <img src="/img/ui/api.svg" class="img-fluid d-block mx-auto">
-                </div>
-            </div>
-        </div>
 
-        <div class="p-4 p-xl-5 bg-body-secondary rounded-3 position-relative mb-4">
-            <div class="row g-4 g-md-5 align-items-center">
-                <div class="col-md-7 ">
-                    <h3 class="display-6 fw-semibold mb-4 text-balance mb-xl-5">Консоль</h3>
-                    <p class="">
-                        Обеспечивает удобный доступ к вашим приложениям через командную
-                        строку, что позволяет быстро взаимодействовать с приложением.
-                        Автоматизируйте рутинные задачи, создавая пользовательские команды и выполняйте их!
-                    </p>
-                    <a href="{{ route('feature') }}"
-                       class="link-body-emphasis fw-semibold text-decoration-none icon-link icon-link-hover">
-                        Основные возможности
+    </x-container>
+
+
+
+
+
+    <div class="container mt-5 py-5">
+        <div class="row g-4 g-md-5 align-items-center justify-content-between">
+            <div class="col-xl-7 col-md-6 order-2 order-md-1">
+                <div class="row mt-0 mt-xl-5 mb-xl-4">
+                    <!-- Review -->
+                    <div class="col-xl-6 position-relative mb-0 mt-0 mt-md-5 d-none d-xl-block">
+                        <!-- SVG -->
+                        <figure class="text-primary position-absolute top-0 start-0 translate-middle mb-3">
+                            <img src="/img/bird.svg" class="z-n1 user-select-none d-none d-xxl-block">
+                        </figure>
+
+                        <div class="bg-body-tertiary text-center p-4 rounded position-relative mb-5 mb-md-0">
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xl mb-3">
+                                <img class="avatar-img rounded-circle" loading="lazy"
+                                     src="https://avatars.githubusercontent.com/SerafimArts?v=4" alt="avatar">
+                            </div>
+                            <!-- Content -->
+                            <blockquote class="px-3">
+                                <p class="text-balance mb-0">
+                                    «Laravel - лучшее решение для <span class="text-primary">быстрого запуска</span> PHP приложений! 🚀»
+                                </p>
+                            </blockquote>
+
+                            <!-- Info -->
+                            <p class="mb-0 fw-semibold">Кирилл Несмеянов</p>
+                        </div>
+                    </div>
+
+                    <!-- Mentor list -->
+                    <div class="col-12 col-xl-6 mt-5 mt-md-0 d-none d-md-block">
+                        <div class="bg-body-tertiary p-4 rounded d-inline-block position-relative">
+                            <!-- Icon -->
+                            <div
+                                class="icon-lg bg-warning rounded-circle position-absolute top-0 start-100 translate-middle">
+                                <i class="bi bi-shield-fill-check text-dark"></i>
+                            </div>
+                            <!-- Title -->
+                            <h6 class="mb-4"><span class="text-primary">150+</span> профессионалов в Laravel разработке</h6>
+
+
+                            <!-- Mentor Item -->
+                            <div class="d-flex align-items-center mb-4">
+                                <!-- Avatar -->
+                                <div class="avatar avatar-sm">
+                                    <img class="avatar-img rounded-circle"
+                                         loading="lazy"
+                                         src="https://avatars.githubusercontent.com/Butochnikov?v=4" alt="avatar">
+                                </div>
+                                <!-- Info -->
+                                <div class="ms-2">
+                                    <h6 class="mb-0">Алексей Буточников</h6>
+                                    <p class="mb-0 small">Лидер сообщества</p>
+                                </div>
+                            </div>
+
+                            <!-- Mentor Item -->
+                            <div class="d-flex align-items-center mb-4">
+                                <!-- Avatar -->
+                                <div class="avatar avatar-sm">
+                                    <img class="avatar-img rounded-circle"
+                                         loading="lazy"
+                                         src="https://avatars.githubusercontent.com/tabuna?v=4" alt="avatar">
+                                </div>
+                                <!-- Info -->
+                                <div class="ms-2">
+                                    <h6 class="mb-0">Александр Черняев</h6>
+                                    <p class="mb-0 small">Автор популярных пакетов</p>
+                                </div>
+                            </div>
+
+                            <!-- Mentor Item -->
+                            <div class="d-flex align-items-center">
+                                <!-- Avatar -->
+                                <div class="avatar avatar-sm">
+                                    <img class="avatar-img rounded-circle"
+                                         loading="lazy"
+                                         src="https://avatars.githubusercontent.com/dmitriy-afanasyev?v=4" alt="avatar">
+                                </div>
+                                <!-- Info -->
+                                <div class="ms-2">
+                                    <h6 class="mb-0">Дмитрий Афанасьев</h6>
+                                    <p class="mb-0 small">Автор курсов по разработке</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div> <!-- Row END -->
+
+                <div class="row mt-5 mt-xl-0 d-none d-xl-flex">
+                    <!-- Rating -->
+                    <div class="col-4 mt-0 mt-xl-5 text-end position-relative z-index-1 d-none d-md-block">
+                        <x-icon path="l.cube" width="46" height="53" fill="none"/>
+                    </div>
+
+                    <!-- Review -->
+                    <div class="col-md-7 mt-n6 mb-0 mb-md-5">
+                        <div class="bg-body-tertiary text-center p-5 rounded">
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xl mb-3">
+                                <img class="avatar-img rounded-circle"
+                                     loading="lazy"
+                                     src="https://avatars.githubusercontent.com/adelf?v=4" alt="avatar">
+                            </div>
+                            <!-- Content -->
+                            <blockquote>
+                                <p class="text-balance mb-0">
+                                    «Laravel - это <span class="text-primary">лучшее</span>, что произошло в моей карьере! 🤙»
+                                </p>
+                            </blockquote>
+
+                            <!-- Info -->
+                            <p class="mb-0 fw-semibold">Адель Файзрахманов</p>
+                        </div>
+                    </div>
+                </div> <!-- Row END -->
+            </div>
+            <div class="col-xl-5 col-md-6 order-1 pe-xl-0">
+                <!-- Title -->
+
+                <span class="text-primary mb-3 d-block text-uppercase fw-semibold ls-xl ">Не только знания и ресурсы</span>
+                <h2 class="display-5 fw-semibold mb-4 ">Живое общение, новые знакомства</h2>
+                <p>
+                    Laravel предназначен для всех — независимо от того, занимаетесь ли вы программированием 20 лет или
+                    20 минут. Астронавтов-архитекторов и хакеров выходного дня.
+                    Для тех, у кого есть высшее образование, и для тех, кто бросил учебу ради своей мечты.
+                    Вместе мы создаем удивительные вещи.
+                </p>
+
+                <div class="gap-3 d-block d-md-flex justify-content-center justify-content-md-start align-items-baseline">
+                    <a href="{{ auth()->check() ? route('feed') : route('login') }}" class="d-block d-md-inline-block btn btn-outline-primary btn-lg px-4 mt-3">Присоединиться</a>
+
+                    <a href="{{ route('meets') }}"
+                       class="link-body-emphasis fw-semibold text-decoration-none icon-link icon-link-hover d-none d-xxl-block">
+                        Ближайшие встречи
                         <x-icon path="i.arrow-right" class="bi" /></a>
                 </div>
-                <div class="d-none d-sm-flex col">
-                    <img src="/img/ui/console.svg" class="img-fluid d-block mx-auto">
-                </div>
+
+            </div>
+        </div> <!-- Row END -->
+    </div>
+
+
+
+    <x-header image="/img/ui/crane-h.svg">
+        <x-slot:sup>Обучение</x-slot>
+        <x-slot:title>
+            Документация, гайды и видео
+        </x-slot>
+
+        <x-slot:description>
+            Каждый способ поможет плавно начать и освоить Laravel, шаг за шагом двигаясь к мастерству.
+        </x-slot>
+
+        <x-slot name="content">
+            <div data-controller="prism">
+                <pre class="rounded position-relative overflow-hidden bg-body p-4 text-white border border-dashed language-php"
+                     data-bs-theme="dark" tabindex="0" style="
+    transform: rotate(350deg);"><code
+                        class="language-php">Route::get('/user/{user}', function (User $user) {
+    return $user;
+});
+
+Route::post('/user', function (CreateUserRequest $request) {
+    $user = User::create($request->validated());
+
+    // Поздравьте по электронной почте.
+    Mail::to($user->email)->send(new WelcomeMessage());
+
+    // Мгновенный ответ с информацией о созданном пользователе.
+    return $user;
+});
+</code></pre>
+            </div>
+        </x-slot>
+
+        <x-slot:actions>
+            <a href="{{ route('courses') }}" class="btn btn-primary btn-lg px-4">Выбрать курс</a>
+            <a href="{{ route('library') }}"
+               class="d-none d-md-inline-flex link-body-emphasis text-decoration-none icon-link icon-link-hover">
+                Библиотека знаний
+                <x-icon path="i.arrow-right" class="bi"/>
+            </a>
+        </x-slot>
+    </x-header>
+
+    <x-container class="mt-5 py-5">
+        <div class="slider rounded">
+            <div class="slide-track">
+                @foreach(\App\School\Courses::items()->shuffle() as $key => $course)
+                    <div class="col-12 col-md-6 col-lg-4 col-sm-2 mx-3 slide">
+                        <div
+                            class="d-grid gap-4 d-flex align-items-center position-relative  rounded bg-body-tertiary h-100 p-3">
+                            <img src="{{ $course->image }}" height="80">
+                            <a href="{{ $course->link }}" rel="nofollow"
+                               target="_blank"
+                               class="link-body-emphasis stretched-link text-decoration-none text-balance">
+                                <p class="h6 mb-1">{{ $course->name }}</p>
+                                <p class="opacity-75 line-clamp line-clamp-3 small">
+                                    {{ $course->description }}
+                                </p>
+                            </a>
+                        </div>
+                    </div>
+                @endforeach
             </div>
         </div>
     </x-container>
+
 
 
     <div class="bg-dark-subtle text-white py-5" style="background-image: url('/img/bg-packages.svg')" data-bs-theme="dark">
@@ -280,275 +503,11 @@ background: #1A1319!important;">
                 </div>
             </div>
 
-
-
-
-
-            {{--
-            <div class="row g-4" style="min-height: 450px">
-
-                <div class="col-sm-6 col-lg-3">
-                    <!-- Card -->
-                    <div class="card rounded-3 text-white bg-opacity-50 p-4 overflow-hidden h-100 simple-gradient shadow"
-                        style="background-color: #312e3e;">
-                        <!-- Card header -->
-                        <div class="card-header bg-transparent p-0">
-                            <h6>Лучшая Админка</h6>
-                        </div>
-                        <!-- Card body -->
-                        <div class="card-body p-0 mt-3">
-                            <!-- Title -->
-                            <h3 class="mb-2"><a href="#"
-                                    class="stretched-link link-light text-decoration-none">Orchid</a></h3>
-                            <small>
-                                Мощное и простое в использовании решение для создания административных панелей и
-                                бизнес-приложений.
-                            </small>
-                            <!-- Image -->
-                            <img src="https://orchid.software/img/next/attachments.svg" class="opacity-5 mb-n5 mt-5"
-                                alt="">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-lg-3">
-                    <!-- Card -->
-                    <div class="card simple-gradient text-white bg-opacity-50 p-4 overflow-hidden h-100 shadow"
-                        style="background-color: #52545e">
-                        <!-- Card header -->
-                        <div class="card-header bg-transparent p-0">
-                            <h6>Среда Разработки</h6>
-                        </div>
-                        <!-- Card body -->
-                        <div class="card-body p-0 mt-3">
-                            <!-- Title -->
-                            <h3 class="mb-2"><a href="#"
-                                    class="stretched-link link-light text-decoration-none">Laravel
-                                    IDEA</a>
-                            </h3>
-                            <small>
-                                Полный автокомплит полей и отношений практически во всех методах и функциях.
-                            </small>
-                            <!-- Image -->
-                            <img src="https://laravel-idea.com/img/logo.svg" class="opacity-5 mb-n5 mt-5 d-block ms-auto"
-                                style="min-height: 120px" alt="">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-lg-3">
-                    <!-- Card -->
-                    <div class="card text-white bg-opacity-50 p-4 overflow-hidden h-100 simple-gradient shadow"
-                        style="background-color: #bf4545">
-                        <!-- Card header -->
-                        <div class="card-header bg-transparent p-0">
-                            <h6>Надёжные Утилиты</h6>
-                        </div>
-                        <!-- Card body -->
-                        <div class="card-body p-0 mt-3">
-                            <!-- Title -->
-                            <h3 class="mb-2"><a href="#"
-                                    class="stretched-link link-light text-decoration-none">CyberCog</a></h3>
-                            <small>Полезные утилиты на каждый день</small>
-                            <!-- Image -->
-                            <img src="https://avatars.githubusercontent.com/u/5887416?s=200&v=4"
-                                class="opacity-5 mb-n5 mt-5 d-block ms-auto rounded-4" alt="">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-lg-3">
-                    <!-- Card -->
-                    <div class="card text-white bg-info bg-opacity-50 p-4 overflow-hidden h-100 simple-gradient shadow">
-                        <!-- Card header -->
-                        <div class="card-header bg-transparent p-0">
-                            <h6>Очень скоро</h6>
-                        </div>
-                        <!-- Card body -->
-                        <div class="card-body p-0 mt-3">
-                            <!-- Title -->
-                            <h3 class="mb-2"><a href="#"
-                                    class="stretched-link link-light text-decoration-none">Railt</a></h3>
-                            <small class="lead">GraphQL Framework</small>
-                            <!-- Image -->
-                            <img src="assets/images/element/exam.svg" class="opacity-5 mb-n5" alt="">
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-                   --}}
         </div>
     </div>
 
 
     @include('particles.sponsors')
-
-    <x-container class="mt-5 py-5">
-        <div class="slider rounded">
-            <div class="slide-track">
-                @foreach(\App\School\Courses::items()->shuffle() as $key => $course)
-                    <div class="col-12 col-md-6 col-lg-4 col-sm-2 mx-3 slide">
-                        <div
-                            class="d-grid gap-4 d-flex align-items-center position-relative  rounded bg-body-tertiary h-100 p-3">
-                            <img src="{{ $course->image }}" height="80">
-                            <a href="{{ $course->link }}" rel="nofollow"
-                               target="_blank"
-                               class="link-body-emphasis stretched-link text-decoration-none text-balance">
-                                <p class="h6 mb-1">{{ $course->name }}</p>
-                                <p class="opacity-75 line-clamp line-clamp-3 small">
-                                    {{ $course->description }}
-                                </p>
-                            </a>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-    </x-container>
-
-    <div class="container mt-5 py-5">
-        <div class="row g-4 g-md-5 align-items-center justify-content-between">
-            <div class="col-xl-7 col-md-6 order-2 order-md-1">
-                <div class="row mt-0 mt-xl-5 mb-xl-4">
-                    <!-- Review -->
-                    <div class="col-xl-6 position-relative mb-0 mt-0 mt-md-5 d-none d-xl-block">
-                        <!-- SVG -->
-                        <figure class="text-primary position-absolute top-0 start-0 translate-middle mb-3">
-                            <img src="/img/bird.svg" class="z-n1 user-select-none d-none d-xxl-block">
-                        </figure>
-
-                        <div class="bg-body-tertiary text-center p-4 rounded position-relative mb-5 mb-md-0">
-                            <!-- Avatar -->
-                            <div class="avatar avatar-xl mb-3">
-                                <img class="avatar-img rounded-circle" loading="lazy"
-                                    src="https://avatars.githubusercontent.com/SerafimArts?v=4" alt="avatar">
-                            </div>
-                            <!-- Content -->
-                            <blockquote class="px-3">
-                                <p class="text-balance mb-0">
-                                    «Laravel - лучшее решение для <span class="text-primary">быстрого запуска</span> PHP приложений! 🚀»
-                                </p>
-                            </blockquote>
-
-                            <!-- Info -->
-                            <p class="mb-0 fw-semibold">Кирилл Несмеянов</p>
-                        </div>
-                    </div>
-
-                    <!-- Mentor list -->
-                    <div class="col-12 col-xl-6 mt-5 mt-md-0 d-none d-md-block">
-                        <div class="bg-body-tertiary p-4 rounded d-inline-block position-relative">
-                            <!-- Icon -->
-                            <div
-                                class="icon-lg bg-warning rounded-circle position-absolute top-0 start-100 translate-middle">
-                                <i class="bi bi-shield-fill-check text-dark"></i>
-                            </div>
-                            <!-- Title -->
-                            <h6 class="mb-4"><span class="text-primary">150+</span> профессионалов в Laravel разработке</h6>
-
-
-                            <!-- Mentor Item -->
-                            <div class="d-flex align-items-center mb-4">
-                                <!-- Avatar -->
-                                <div class="avatar avatar-sm">
-                                    <img class="avatar-img rounded-circle"
-                                         loading="lazy"
-                                         src="https://avatars.githubusercontent.com/Butochnikov?v=4" alt="avatar">
-                                </div>
-                                <!-- Info -->
-                                <div class="ms-2">
-                                    <h6 class="mb-0">Алексей Буточников</h6>
-                                    <p class="mb-0 small">Лидер сообщества</p>
-                                </div>
-                            </div>
-
-                            <!-- Mentor Item -->
-                            <div class="d-flex align-items-center mb-4">
-                                <!-- Avatar -->
-                                <div class="avatar avatar-sm">
-                                    <img class="avatar-img rounded-circle"
-                                         loading="lazy"
-                                        src="https://avatars.githubusercontent.com/tabuna?v=4" alt="avatar">
-                                </div>
-                                <!-- Info -->
-                                <div class="ms-2">
-                                    <h6 class="mb-0">Александр Черняев</h6>
-                                    <p class="mb-0 small">Автор множества пакетов</p>
-                                </div>
-                            </div>
-
-                            <!-- Mentor Item -->
-                            <div class="d-flex align-items-center">
-                                <!-- Avatar -->
-                                <div class="avatar avatar-sm">
-                                    <img class="avatar-img rounded-circle"
-                                         loading="lazy"
-                                        src="https://avatars.githubusercontent.com/dmitriy-afanasyev?v=4" alt="avatar">
-                                </div>
-                                <!-- Info -->
-                                <div class="ms-2">
-                                    <h6 class="mb-0">Дмитрий Афанасьев</h6>
-                                    <p class="mb-0 small">Автор курсов по разработке</p>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div> <!-- Row END -->
-
-                <div class="row mt-5 mt-xl-0 d-none d-xl-flex">
-                    <!-- Rating -->
-                    <div class="col-4 mt-0 mt-xl-5 text-end position-relative z-index-1 d-none d-md-block">
-                        <x-icon path="l.cube" width="46" height="53" fill="none"/>
-                    </div>
-
-                    <!-- Review -->
-                    <div class="col-md-7 mt-n6 mb-0 mb-md-5">
-                        <div class="bg-body-tertiary text-center p-5 rounded">
-                            <!-- Avatar -->
-                            <div class="avatar avatar-xl mb-3">
-                                <img class="avatar-img rounded-circle"
-                                     loading="lazy"
-                                    src="https://avatars.githubusercontent.com/adelf?v=4" alt="avatar">
-                            </div>
-                            <!-- Content -->
-                            <blockquote>
-                                <p class="text-balance mb-0">
-                                    «Laravel - это <span class="text-primary">лучшее</span>, что произошло в моей карьере! 🤙»
-                                </p>
-                            </blockquote>
-
-                            <!-- Info -->
-                            <p class="mb-0 fw-semibold">Адель Файзрахманов</p>
-                        </div>
-                    </div>
-                </div> <!-- Row END -->
-            </div>
-            <div class="col-xl-5 col-md-6 order-1 pe-xl-0">
-                <!-- Title -->
-
-                <span class="text-primary mb-3 d-block text-uppercase fw-semibold ls-xl ">Не только знания и ресурсы</span>
-                <h2 class="display-5 fw-semibold mb-4 ">Живое общение, новые знакомства</h2>
-                <p>
-                    Laravel предназначен для всех — независимо от того, занимаетесь ли вы программированием 20 лет или
-                    20 минут. Астронавтов-архитекторов и хакеров выходного дня.
-                    Для тех, у кого есть высшее образование, и для тех, кто бросил учебу ради своей мечты.
-                    Вместе мы создаем удивительные вещи.
-                </p>
-
-                <div class="gap-3 d-block d-md-flex justify-content-center justify-content-md-start align-items-baseline">
-                    <a href="{{ auth()->check() ? route('feed') : route('login') }}" class="d-block d-md-inline-block btn btn-outline-primary btn-lg px-4 mt-3">Присоединиться</a>
-
-                    <a href="{{ route('meets') }}"
-                       class="link-body-emphasis fw-semibold text-decoration-none icon-link icon-link-hover d-none d-xxl-block">
-                        Ближайшие встречи
-                        <x-icon path="i.arrow-right" class="bi" /></a>
-                </div>
-
-            </div>
-        </div> <!-- Row END -->
-    </div>
 
 
 
