@@ -77,17 +77,17 @@ Route::screen('meets', App\Orchid\Screens\Meet\ListScreen::class)
         ->parent('platform.index')
         ->push('События'));
 
-Route::screen('idea', App\Orchid\Screens\Idea\ListScreen::class)
-    ->name('platform.idea')
-    ->breadcrumbs(fn (Trail $trail) => $trail
-        ->parent('platform.index')
-        ->push('Idea'));
-
 Route::screen('idea/{ideaRequest}/edit', App\Orchid\Screens\Idea\EditScreen::class)
     ->name('platform.idea.request')
     ->breadcrumbs(fn (Trail $trail) => $trail
         ->parent('platform.idea')
         ->push('Запрос ключа'));
+
+Route::screen('idea', App\Orchid\Screens\Idea\ListScreen::class)
+    ->name('platform.idea')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+        ->parent('platform.index')
+        ->push('Ключи Idea',  route('platform.idea')));
 
 Route::screen('post', App\Orchid\Screens\Post\ListScreen::class)
     ->name('platform.post')

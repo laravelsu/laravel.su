@@ -90,15 +90,9 @@ class ListScreen extends Screen
 
             Layout::table('ideaRequests', [
 
-                TD::make(__('Actions'))
-                    ->width(100)
-                    ->render(fn (IdeaRequest $ideaRequest) => Link::make('Просмотр')
-                        ->route('platform.idea.request', $ideaRequest->id)
-                        ->icon('bs.pencil')),
-
                 TD::make('Пользователь')
                     ->cantHide()
-                    ->width(200)
+                    ->width(230)
                     ->render(fn (IdeaRequest $ideaRequest) => new Persona($ideaRequest->user->presenter())),
 
                 /*
@@ -115,7 +109,12 @@ class ListScreen extends Screen
 
                 TD::make('message', 'Сообщение')
                     ->alignLeft()
-                    ->render(fn (IdeaRequest $ideaRequest) => Str::of($ideaRequest->message)->trim()->words(10))
+                    ->render(fn (IdeaRequest $ideaRequest) =>
+                        Str::of($ideaRequest->message)->trim()->words(10) . Link::make()
+                            ->class('hidden')
+                            ->route('platform.idea.request', $ideaRequest->id)
+                            ->stretched()
+                    )
                     ->width(300),
 
                 TD::make('key', 'Статус')

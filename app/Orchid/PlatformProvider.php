@@ -83,7 +83,7 @@ class PlatformProvider extends OrchidServiceProvider
                 ->icon('bs.collection')
                 ->route('platform.challenges'),
 
-            Menu::make('Idea')
+            Menu::make('Ключи Idea')
                 ->icon('bs.box-seam')
                 ->route('platform.idea')
                 ->badge(function () {
