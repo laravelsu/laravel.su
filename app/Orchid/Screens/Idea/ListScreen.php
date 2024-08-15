@@ -109,11 +109,10 @@ class ListScreen extends Screen
 
                 TD::make('message', 'Сообщение')
                     ->alignLeft()
-                    ->render(fn (IdeaRequest $ideaRequest) =>
-                        Str::of($ideaRequest->message)->trim()->words(10) . Link::make()
-                            ->class('hidden')
-                            ->route('platform.idea.request', $ideaRequest->id)
-                            ->stretched()
+                    ->render(fn (IdeaRequest $ideaRequest) => Str::of($ideaRequest->message)->trim()->words(10).Link::make()
+                        ->class('hidden')
+                        ->route('platform.idea.request', $ideaRequest->id)
+                        ->stretched()
                     )
                     ->width(300),
 

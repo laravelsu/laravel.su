@@ -87,7 +87,7 @@ Route::screen('idea', App\Orchid\Screens\Idea\ListScreen::class)
     ->name('platform.idea')
     ->breadcrumbs(fn (Trail $trail) => $trail
         ->parent('platform.index')
-        ->push('Ключи Idea',  route('platform.idea')));
+        ->push('Ключи Idea', route('platform.idea')));
 
 Route::screen('post', App\Orchid\Screens\Post\ListScreen::class)
     ->name('platform.post')
