@@ -127,6 +127,40 @@ class Courses
     {
         return static::teachers()
             ->map(fn (Teacher $teacher) => $teacher->courses)
+            ->merge(static::ownCourses())
             ->flatten();
+    }
+
+    /**
+     * @return Collection
+     */
+    public static function ownCourses(): Collection
+    {
+        return collect([
+            new Course(
+                'Orchid',
+                'Создание админ-панелей с Orchid. Простое и мощное решение.',
+                '/img/ui/courses/orchid.svg',
+                'https://www.youtube.com/playlist?list=PLM-y77GFP_D0ZtrNGXorSjlcO8KsFrcgJ&si=KERSYOr8_2YvcPDV'
+            ),
+            new Course(
+                'Livewire',
+                'Интерактивные интерфейсы на Laravel без JavaScript.',
+                '/img/ui/courses/livewire.svg',
+                'https://www.youtube.com/playlist?list=PLM-y77GFP_D0Dan4oTbsseQGM6lFGbmUQ'
+            ),
+            new Course(
+                'Очереди',
+                'Управление фоновыми задачами с помощью очередей в Laravel.',
+                '/img/ui/courses/queues.svg',
+                'https://www.youtube.com/playlist?list=PLM-y77GFP_D04J1DYprCCashJQHxtJed4&si=SlSjGYJRLZ5jSeg5'
+            ),
+            new Course(
+                'Итераторы',
+                'Работа с итераторами в PHP для эффективного управления данными.',
+                '/img/ui/courses/iterators.svg',
+                'https://www.youtube.com/watch?v=cPpEHTWDFv4'
+            ),
+        ]);
     }
 }
