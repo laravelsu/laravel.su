@@ -98,7 +98,7 @@
 
 
                     <div>
-                    <p class="h3 fw-semibold text-balance mb-4">Консоль</p>
+                    <p class="h3 fw-semibold text-balance mb-4">Фоновые процессы</p>
 
                     <p class="">
                         Автоматизируйте задачи и управляйте процессами с гибкостью и простотой, улучшая продуктивность команды.
