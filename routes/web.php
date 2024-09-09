@@ -63,6 +63,7 @@ Route::view('/library/security', 'library.security')->name('library.security');
 Route::view('/library/how-to-ask', 'library.how-to-ask')->name('library.how-to-ask');
 Route::view('/library/collection', 'library.collection')->name('library.collection');
 Route::view('/library/solid', 'library.solid')->name('library.solid');
+Route::view('/library/actions', 'library.actions')->name('library.actions');
 /*
 |--------------------------------------------------------------------------
 | Open Quiz
