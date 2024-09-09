@@ -20,7 +20,6 @@
                             консультация с широким активом играет важную роль в формировании модели развития.
                         </p>
 
-
                         <a href="{{route('home')}}" data-turbo-action="replace"
                            class="btn btn-primary m-auto d-flex align-items-center justify-content-center w-100">
                             Вернуться на главную
@@ -34,7 +33,7 @@
     <turbo-stream target="quiz" action="update">
         <template>
             <div class="d-flex p-0">
-                <img src="{{ asset('/img/ui/items.svg') }}" class="w-100 img-fluid">
+                <img src="{{ asset('/img/ui/review/quiz-loose.svg') }}" class="w-100 img-fluid">
             </div>
             <div class="card-body px-sm-4 pt-0">
                 <div class="my-3">

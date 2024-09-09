@@ -13,7 +13,7 @@
                 </h1>
 
                 <div class="d-flex p-0">
-                    <img src="{{ asset('/img/ivan.svg') }}" class="w-100 img-fluid">
+                    <img src="{{ asset('/img/ui/review/quiz-start.svg') }}" class="w-100 img-fluid">
                 </div>
 
                 <div class="px-sm-4 pt-0">
