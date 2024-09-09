@@ -138,8 +138,7 @@
                         <div class="col-sm-7">
                             <h3 class="mb-3 fw-bold text-balance">Архитектура сложных веб-приложений. <small class="small d-block">С примерами на Laravel.</small></h3>
                             <p class="mb-4 fw-light mb-md-auto h5 lead text-balance">
-                                Проекты бывают разные. К некоторым хорошо придутся определённые шаблоны и практики. Для
-                                других они будут излишни.
+                                Проекты бывают разные: для одних подойдут определённые шаблоны и практики, для других — нет.
                             </p>
                             <a
                                 href="https://github.com/adelf/acwa_book_ru"
