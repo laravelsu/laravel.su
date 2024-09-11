@@ -191,8 +191,7 @@
 
                     <div class="text-balance bg-body-secondary rounded p-4 p-xl-5 position-relative">
                         <blockquote class="lead">
-                            Сегодня два благодарственных сообщения! Первое — Аделю, создателю Laravel Idea. Он снова
-                            помог мне с лицензией. Лучший плагин для PHPStorm и Laravel. Стоит каждой копейки!
+                            Лучший плагин для PHPStorm и Laravel. Стоит каждой копейки!
                             Купите его и поддержите его отличную работу для сообщества!
                         </blockquote>
 
