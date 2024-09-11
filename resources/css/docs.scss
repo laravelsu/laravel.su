@@ -425,10 +425,18 @@ main,
         margin-bottom: 0;
         border-radius: 0.8rem;
         code {
-            white-space: pre-wrap !important;
+            white-space: nowrap!important
+        }
+    }
+
+    &.active {
+        pre {
+            border-radius: 0;
         }
     }
 }
+
+
 
 .tabbed-code {
     margin-top: 1.25rem;
