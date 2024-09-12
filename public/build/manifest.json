@@ -16,12 +16,12 @@
     "src": "public/img/ui/blockquote/warning.svg"
   },
   "resources/css/app.scss": {
-    "file": "assets/app-DDfGLNWb.css",
+    "file": "assets/app-C7sEQTod.css",
     "src": "resources/css/app.scss",
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-Gtx1u4JT.js",
+    "file": "assets/app-BoqYGGDa.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
