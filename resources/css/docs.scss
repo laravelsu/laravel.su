@@ -445,14 +445,11 @@ main,
 
     .tabbed-code-nav {
         display: flex;
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
-        padding-top: 0.5rem;
 
         .tabbed-code-nav-button {
             border-top-left-radius: 0.25rem;
             border-top-right-radius: 0.25rem;
-            padding: 0.625rem 0.75rem;
+            padding: .75rem 1rem;
             font-size: 0.875rem;
             line-height: 1.25rem;
             color: rgb(215, 215, 220);
