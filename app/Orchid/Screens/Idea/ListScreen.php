@@ -43,8 +43,8 @@ class ListScreen extends Screen
                 ->paginate(),
             'metrics'      => [
                 'used_keys_month' => IdeaKey::where('activated', 1)->whereDate('updated_at', '>', $start)->count(),
-                'unused_keys' => IdeaKey::where('activated', 0)->count(),
-                'used_keys'   => IdeaKey::where('activated', 1)->count(),
+                'unused_keys'     => IdeaKey::where('activated', 0)->count(),
+                'used_keys'       => IdeaKey::where('activated', 1)->count(),
             ],
         ];
     }
@@ -80,7 +80,7 @@ class ListScreen extends Screen
             ModalToggle::make('Добавить ключи')
                 ->modal('addKeys')
                 ->method('addKeys')
-                ->icon('file-earmark-arrow-up')
+                ->icon('file-earmark-arrow-up'),
         ];
     }
 
@@ -105,7 +105,6 @@ class ListScreen extends Screen
                 ]),
             ])->ratio('80/20'),
 
-
             Layout::table('ideaRequests', $this->getIdeaRequestsTableColumns()),
 
             Layout::modal('addKeys', Layout::rows([
@@ -122,8 +121,9 @@ class ListScreen extends Screen
     /**
      * Get the columns for the idea requests table.
      *
-     * @return TD[]
      * @throws \ReflectionException
+     *
+     * @return TD[]
      */
     private function getIdeaRequestsTableColumns(): array
     {
