@@ -139,10 +139,10 @@ class ListScreen extends Screen
                     .Link::make()->class('hidden')
                         ->route('platform.idea.request', $ideaRequest->id)
                         ->stretched())
-                ->width(400),
+                ->width(350),
 
             TD::make('city', 'Город')
-                ->width(120)
+                ->width(200)
                 ->align(TD::ALIGN_RIGHT),
 
             TD::make('key', 'Статус')
