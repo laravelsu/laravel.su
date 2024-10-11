@@ -113,7 +113,6 @@ class SpamDetector
         return $percentage > 1;
     }
 
-
     /**
      * @deprecated
      * Checks if the message contains an excessive amount of special characters.
