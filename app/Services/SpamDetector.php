@@ -46,6 +46,7 @@ class SpamDetector
         'увеличение прибыли в интернете', 'инвестирование в акции',
         'финансовая безопасность', 'нужен только телефон', 'стабильный доход',
         'бесплатное обучение', '18+', '18 лет', 'hamsterkombat', 'hamster',
+        'покупать тут',
     ];
 
     /**
@@ -66,6 +67,55 @@ class SpamDetector
     }
 
     /**
+     * Checks if the number of special characters (e.g., emojis) in the message exceeds the number of words.
+     *
+     * If the count of special characters is greater than the word count, it returns true.
+     *
+     * @return bool True if the number of special characters exceeds the number of words; otherwise, false.
+     */
+    public function hasTooManySpecialCharacters()
+    {
+        // Length of the message including special characters
+        $withSpecialCharacters = Str::of($this->message)
+            ->replace($this->getPhpSpecialSymbols(), ' ')
+            ->replaceMatches('/[\p{P}]+/u', '') // Removes all punctuation
+            ->squish()
+            ->length();
+
+        // Length of the message without special characters
+        $withOutSpecialCharacters = Str::of($this->message)
+            ->replace($this->getPhpSpecialSymbols(), '')
+            ->replaceMatches('/[^\p{L}\p{N}\p{Z}\s]/u', '')
+            ->squish()
+            ->length();
+
+        // Message contains only emojis
+        if ($withOutSpecialCharacters < 1) {
+            return true;
+        }
+
+        if ($withSpecialCharacters === $withOutSpecialCharacters) {
+            return false;
+        }
+
+        $countWords = Str::of($this->message)
+            ->slug()
+            ->replace('-', ' ')
+            ->squish()
+            ->wordCount();
+
+        $diff = ($withSpecialCharacters - $withOutSpecialCharacters) / 2;
+
+        // Proportion of special characters in the message
+        $percentage = round($diff / $countWords, 2);
+
+        // Check if the proportion of special characters exceeds the given threshold
+        return $percentage > 1;
+    }
+
+
+    /**
+     * @deprecated
      * Checks if the message contains an excessive amount of special characters.
      * For example, the proportion of special characters should not exceed a given threshold (default is 2%).
      *
@@ -102,6 +152,45 @@ class SpamDetector
 
         // Check if the proportion of special characters exceeds the given threshold
         return $unicodePercentage > $threshold;
+    }
+
+    /**
+     * Метод для получения специальных символов PHP
+     *
+     * @return string[]
+     */
+    private function getPhpSpecialSymbols()
+    {
+        return [
+            '$',                // Переменные
+            '->',               // Доступ к свойствам и методам объектов
+            '::',               // Доступ к статическим свойствам и методам
+            '[',                // Начало массива
+            ']',                // Конец массива
+            '(',                // Начало функции или метода
+            ')',                // Конец функции или метода
+            '{',                // Начало блока кода
+            '}',                // Конец блока кода
+            '=>',               // Ассоциативные массивы (ключ => значение)
+            '&&',               // Логическое "И"
+            '||',               // Логическое "ИЛИ"
+            '!',                // Логическое "НЕ"
+            '===',              // Строгое равенство
+            '!==',              // Строгое неравенство
+            '==',               // Равенство
+            '!=',               // Неравенство
+            '<',                // Меньше
+            '>',                // Больше
+            '<=',               // Меньше или равно
+            '>=',               // Больше или равно
+            '+',                // Сложение
+            '-',                // Вычитание
+            '*',                // Умножение
+            '/',                // Деление
+            '%',                // Остаток от деления
+            '**',               // Возведение в степень (с 7.0)
+            '=',
+        ];
     }
 
     /**
@@ -151,13 +240,13 @@ class SpamDetector
      *
      * @return bool True if classified as spam, otherwise false
      */
-    public function isSpam()
+    public function isSpam(): bool
     {
-        if ($this->hasExcessiveUnicodeCharacters()) {
+        if ($this->containsStopWords()) {
             return true;
         }
 
-        if ($this->containsStopWords()) {
+        if ($this->hasTooManySpecialCharacters()) {
             return true;
         }
 
