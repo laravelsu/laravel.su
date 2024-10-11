@@ -17,7 +17,7 @@
 <x-container>
 
     <div class="row g-4">
-        <div class="col-md-6 col-lg-8 mb-4">
+        <div class="col-md-6 col-lg-8">
 
             <div class="bg-primary bg-opacity-10 rounded p-4 p-xl-5 position-relative overflow-hidden mb-4">
                 <img src="/img/bird.svg" class="position-absolute w-50 bottom-0 end-0">
@@ -74,7 +74,7 @@
             </div>
         </div>
 
-        <div class="col-md-6 col-lg-4 mb-4">
+        <div class="col-md-6 col-lg-4">
             <div class="bg-secondary bg-opacity-10 rounded p-5 h-100 position-relative overflow-hidden">
                 <img src="/img/sign.svg" class="position-absolute w-100 bottom-0 end-0 d-none d-lg-block">
                 <ul class="d-grid gap-5 list-unstyled text-balance">
@@ -95,6 +95,25 @@
 
             </div>
         </div>
+
+
+        <div class="col-md-6 col-lg-4">
+            <div class="bg-secondary bg-opacity-10 rounded p-5 h-100 position-relative overflow-hidden">
+                <div class="d-flex flex-column position-relative h-100">
+                    <h3 class="mb-3 fw-bold">Действия</h3>
+                    <p class="mb-auto fw-light">
+                       Класс должен сосредоточиться на выполнении одной конкретной задачи
+                    </p>
+
+                    <a href="{{ route('library.actions') }}"
+                       class="link-body-emphasis text-decoration-none icon-link icon-link-hover stretched-link mt-4">
+                        Начать читать
+                        <x-icon path="i.arrow-right" class="bi" />
+                    </a>
+                </div>
+            </div>
+        </div>
+
     </div>
 
 </x-container>

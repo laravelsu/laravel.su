@@ -1,16 +1,13 @@
 @extends('layout')
 @section('title', 'Один класс — одна задача')
-@section('description', 'Каждый класс в приложении должен отвечать только за одну конкретную задачу или функциональность.')
+@section('description', 'Каждый класс в приложении должен отвечать только за одну конкретную задачу.')
 @section('content')
 
-    <x-header align="align-items-end">
-        <x-slot name="sup">Чистота и порядок</x-slot>
+    <x-header align="align-items-center" image="/img/ui/finger.svg">
+        <x-slot name="sup">Ясность с первого взгляда</x-slot>
         <x-slot name="title">Один класс — одна задача</x-slot>
         <x-slot name="description">
-            Каждый класс в приложении должен отвечать только за одну конкретную задачу или функциональность.
-        </x-slot>
-        <x-slot name="content">
-            <img src="/img/gusli.svg" class="img-fluid d-block mx-auto">
+            Каждый класс в приложении должен сосредоточиться на выполнении одной конкретной задачи или функции
         </x-slot>
     </x-header>
 
@@ -18,6 +15,7 @@
         $sections = collect([
             'basics',
             'focus',
+            'package',
             'conventions',
             'tests',
         ])
