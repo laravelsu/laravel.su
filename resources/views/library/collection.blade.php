@@ -3,17 +3,16 @@
 @section('description', 'Перестаньте использовать громоздкие примитивные массивы и начните использовать коллекции.')
 @section('content')
 
-    <x-header align="align-items-end">
+    <x-header align="align-items-center">
         <x-slot name="sup">Декларативный стиль</x-slot>
         <x-slot name="title">Высокий уровень через коллекцию</x-slot>
         <x-slot name="description">
             Опирайтесь на высокие абстракции вместо применения низкоуровневых конструкций.
         </x-slot>
         <x-slot name="content">
-            <img src="/img/gusli.svg" class="img-fluid d-block mx-auto">
+            <img src="/img/ui/kotomka.svg" class="img-fluid d-block mx-auto">
         </x-slot>
     </x-header>
-
 
     @php
         $sections = collect([
