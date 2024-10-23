@@ -394,7 +394,7 @@ Route::post('/auth/logout', [AuthController::class, 'logout'])->middleware('auth
 Route::view('/documentation-contribution-guide', 'docs.contribution')
     ->name('documentation-contribution-guide');
 
-Route::redirect('/docs/', '/docs/'.Docs::DEFAULT_VERSION);
+Route::redirect('/docs/', '/docs/'.Docs::DEFAULT_VERSION.'/'.Docs::DEFAULT_DOCUMENT);
 
 Route::get('/status/{version?}', [DocsController::class, 'status'])
     ->whereIn('version', Docs::SUPPORT_VERSIONS)
