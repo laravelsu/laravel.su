@@ -18,6 +18,11 @@ use Symfony\Component\Yaml\Yaml;
 class Docs
 {
     /**
+     * Default document of Laravel documentation
+     */
+    public const DEFAULT_DOCUMENT = 'installation';
+
+    /**
      * Default version of Laravel documentation
      */
     public const DEFAULT_VERSION = '11.x';
@@ -88,7 +93,7 @@ class Docs
             // Abort the request if the page doesn't exist
             abort_if(
                 $raw === null,
-                redirect(status: 300)->route('docs', ['version' => $this->version, 'page' => 'installation'])
+                redirect(status: 300)->route('docs', ['version' => $this->version, 'page' => self::DEFAULT_DOCUMENT])
             );
 
             return $raw;
