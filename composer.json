@@ -21,7 +21,7 @@
         "ext-dom": "*",
         "assisted-mindfulness/naive-bayes": "0.0.7",
         "cagilo/cagilo": "^3.3",
-        "esplora/spire": "0.0.2",
+        "esplora/spire": "0.0.3",
         "guzzlehttp/guzzle": "^7.2",
         "hotwired-laravel/turbo-laravel": "2.0.1",
         "intervention/image": "^3.4",

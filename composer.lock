@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cbdafaf5cfd25e8e193bc903f337c84f",
+    "content-hash": "84f204a7bc3969da8ed9d86d91f3dd07",
     "packages": [
         {
             "name": "assisted-mindfulness/naive-bayes",
@@ -708,16 +708,16 @@
         },
         {
             "name": "esplora/spire",
-            "version": "0.0.2",
+            "version": "0.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/esplora/spire.git",
-                "reference": "ed3055bc02d851f7d06f9c3c755e49822c985544"
+                "reference": "57080d413b26a7e195768b21e8601accc0266a52"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/esplora/spire/zipball/ed3055bc02d851f7d06f9c3c755e49822c985544",
-                "reference": "ed3055bc02d851f7d06f9c3c755e49822c985544",
+                "url": "https://api.github.com/repos/esplora/spire/zipball/57080d413b26a7e195768b21e8601accc0266a52",
+                "reference": "57080d413b26a7e195768b21e8601accc0266a52",
                 "shasum": ""
             },
             "require": {
@@ -727,7 +727,7 @@
             },
             "require-dev": {
                 "doctrine/dbal": "^3.1",
-                "laravel/pint": "^1.2",
+                "laravel/pint": "^1.17",
                 "mockery/mockery": "^1.4.2",
                 "orchestra/testbench-core": "^7.0|^8.0|^9.0",
                 "phpunit/phpunit": "^9.0|^10.0|^11.0"
@@ -760,9 +760,9 @@
             "description": "Easy Tools for Production Environment of Laravel SQLite Database",
             "support": {
                 "issues": "https://github.com/esplora/spire/issues",
-                "source": "https://github.com/esplora/spire/tree/0.0.2"
+                "source": "https://github.com/esplora/spire/tree/0.0.3"
             },
-            "time": "2024-03-26T23:59:54+00:00"
+            "time": "2024-10-24T15:10:55+00:00"
         },
         {
             "name": "firebase/php-jwt",

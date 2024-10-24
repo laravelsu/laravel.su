@@ -69,8 +69,8 @@ Facades\Schedule::command('model:prune', [
     ],
 ])->daily();
 
-// Оптимизация SQLite каждую минуту смотри https://www.sqlite.org/pragma.html#pragma_optimize
-Facades\Schedule::command('sqlite:optimize')->everyMinute();
+// Оптимизация SQLite смотри https://www.sqlite.org/pragma.html#pragma_optimize
+Facades\Schedule::command('sqlite:optimize')->everyFourHours();
 Facades\Schedule::command('sqlite:vacuum')->everyFourHours();
 
 // Перевод достижений каждую неделю по выходным
