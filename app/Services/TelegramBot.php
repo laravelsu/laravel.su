@@ -31,7 +31,7 @@ class TelegramBot
      *
      * @return \Illuminate\Http\Client\Response
      */
-    public function muteUserInGroup($chatId, $userId, $muteDuration = 60): Response
+    public function muteUserInGroup($chatId, $userId, int $muteDuration = 60): Response
     {
         $url = "https://api.telegram.org/bot{$this->token}/restrictChatMember";
 
