@@ -19,11 +19,11 @@ class DocsController extends Controller
      *
      * @return \Illuminate\View\View|
      */
-    public function show(string $version = Docs::DEFAULT_VERSION, string $page = null)
+    public function show(string $version = Docs::DEFAULT_VERSION, ?string $page = null)
     {
         abort_if(
-                $page === null,
-                redirect(status: 300)->route('docs', ['version' => $version, 'page' => Docs::DEFAULT_DOCUMENT])
+            $page === null,
+            redirect(status: 300)->route('docs', ['version' => $version, 'page' => Docs::DEFAULT_DOCUMENT])
         );
 
         $docs = new Docs($version, $page);
