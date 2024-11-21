@@ -11,9 +11,9 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use Laravel\Unfenced\UnfencedExtension;
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\Yaml\Yaml;
+use App\Markdown\GitHubMarkdownConverter;
 
 class Docs
 {
@@ -126,16 +126,12 @@ class Docs
      */
     public function content(): ?string
     {
-        return once(function () {
-            return Str::of($this->raw())
+        $content = Str::of($this->raw())
                 ->replace('{{version}}', $this->version)
                 ->after('---')
-                ->after('---')
-                ->markdown(extensions: [
-                    new UnfencedExtension,
-                ])
-                ->toString();
-        });
+                ->after('---');
+
+        return (new GitHubMarkdownConverter)->convert($content);
     }
 
     /**
@@ -149,11 +145,18 @@ class Docs
      */
     public function view(string $view)
     {
-        $data = Cache::remember('doc-file-view-data'.$this->path, now()->addMinutes(30), fn () => collect()->merge($this->variables())->merge([
+        // Cache во время разработки не нужен
+        //$data = Cache::remember('doc-file-view-data'.$this->path, now()->addMinutes(30), fn () => collect()->merge($this->variables())->merge([
+        //    'docs'    => $this,
+        //    'content' => $this->content(),
+        //    'edit'    => $this->getEditUrl(),
+        //]));
+
+        $data = collect()->merge($this->variables())->merge([
             'docs'    => $this,
             'content' => $this->content(),
             'edit'    => $this->getEditUrl(),
-        ]));
+        ]);
 
         return view($view, $data);
     }
