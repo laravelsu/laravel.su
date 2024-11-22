@@ -10,13 +10,13 @@ use Tempest\Highlight\IsInjection;
 use Tempest\Highlight\Escape;
 use Tempest\Highlight\Tokens\DynamicTokenType;
 
-final readonly class SingleQuoteValueInjection implements Injection
+final readonly class DoubleQuoteValueInjection implements Injection
 {
     use IsInjection;
 
     public function getPattern(): string
     {
-        return "(?<match>'(.|\n)*?')";
+        return '(?<match>".*?")';
     }
 
     public function parseContent(string $content, Highlighter $highlighter): string

@@ -9,13 +9,13 @@ use Tempest\Highlight\Pattern;
 use Tempest\Highlight\Tokens\TokenType;
 use Tempest\Highlight\Tokens\DynamicTokenType;
 
-final readonly class UsePattern implements Pattern
+final readonly class CatchTypePattern implements Pattern
 {
     use IsPattern;
 
     public function getPattern(): string
     {
-        return '/use\s+(function(\s)+)?[\w\\\\]*\b(?<match>[\w]+)[;]*/';
+        return 'catch \((?<match>[\w\||]+)';
     }
 
     public function getTokenType(): TokenType

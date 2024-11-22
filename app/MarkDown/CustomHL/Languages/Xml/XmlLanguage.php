@@ -14,6 +14,7 @@ use App\MarkDown\CustomHL\Languages\Xml\Patterns\XmlOpenTagPattern;
 use App\MarkDown\CustomHL\Languages\Xml\Patterns\XmlStartOpenTagPattern;
 use App\MarkDown\CustomHL\Languages\Xml\Patterns\XmlEndCloseTagPattern;
 use App\MarkDown\CustomHL\Languages\Xml\Patterns\XmlDoctypePattern;
+use App\MarkDown\CustomHL\Languages\Xml\Patterns\XmlDoctypeTypePattern;
 
 class XmlLanguage extends CustomBaseLanguage
 {
@@ -34,6 +35,7 @@ class XmlLanguage extends CustomBaseLanguage
         return [
             ...parent::getPatterns(),
             new XmlDoctypePattern(),
+            new XmlDoctypeTypePattern(),
             new XmlOpenTagPattern(),
             new XmlCloseTagPattern(),
             new XmlAttributePattern(),

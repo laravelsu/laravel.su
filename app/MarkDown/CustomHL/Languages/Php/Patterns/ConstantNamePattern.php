@@ -15,7 +15,7 @@ final readonly class ConstantNamePattern implements Pattern
 
     public function getPattern(): string
     {
-        return '\b(?<match>[A-Z_]+)\b';
+        return '\b(?<match>[A-Z_]+)\b(?!:)';
     }
 
     public function getTokenType(): TokenType

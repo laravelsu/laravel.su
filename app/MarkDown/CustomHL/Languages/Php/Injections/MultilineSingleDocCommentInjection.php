@@ -4,21 +4,21 @@ declare(strict_types=1);
 
 namespace App\MarkDown\CustomHL\Languages\Php\Injections;
 
-use Tempest\Highlight\After;
+use Tempest\Highlight\Before;
 use Tempest\Highlight\Highlighter;
 use Tempest\Highlight\Injection;
 use Tempest\Highlight\IsInjection;
 use Tempest\Highlight\Escape;
 use Tempest\Highlight\Tokens\DynamicTokenType;
 
-#[After]
-final readonly class SinglelineCommentInjection implements Injection
+#[Before]
+final readonly class MultilineSingleDocCommentInjection implements Injection
 {
     use IsInjection;
 
     public function getPattern(): string
     {
-        return '(?<match>\/\/(.)*)';  //(\r\n)*?
+        return '/(?<match>\/\*(.|\n)*?\*\/)/m';  //(\r\n)*?
     }
     
     public function parseContent(string $content, Highlighter $highlighter): string

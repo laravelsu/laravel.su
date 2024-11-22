@@ -7,7 +7,7 @@ namespace App\MarkDown\CustomHL\Languages\Php;
 use App\MarkDown\CustomHL\Languages\CustomBase\CustomBaseLanguage;
 //use Tempest\Highlight\Languages\Php\Injections\PhpAttributeInstanceInjection;
 //use Tempest\Highlight\Languages\Php\Injections\PhpAttributePlainInjection;
-//use Tempest\Highlight\Languages\Php\Injections\PhpDocCommentInjection;
+use App\MarkDown\CustomHL\Languages\Php\Injections\PhpDocCommentInjection;
 //use Tempest\Highlight\Languages\Php\Patterns\ClassPropertyPattern;
 use App\MarkDown\CustomHL\Languages\Php\Patterns\KeywordPattern;
 //use App\Tempest\Highlight\Languages\Php\Patterns\MultilineSingleDocCommentPattern;
@@ -31,7 +31,7 @@ final class PhpTypeLanguage extends CustomBaseLanguage
             ...parent::getInjections(),
             //new PhpAttributePlainInjection(),
             //new PhpAttributeInstanceInjection(),
-            //new PhpDocCommentInjection(),
+            new PhpDocCommentInjection(),
             new TypeForVariableInjection(),
         ];
     }

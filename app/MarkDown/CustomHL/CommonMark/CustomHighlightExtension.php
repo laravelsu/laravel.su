@@ -23,6 +23,7 @@ use App\MarkDown\CustomHL\Languages\Nginx\NginxLanguage;
 use App\MarkDown\CustomHL\Languages\JavaScript\JavaScriptLanguage;
 //use App\MarkDown\CustomHL\Languages\Html\HtmlLanguage;
 use App\MarkDown\CustomHL\Languages\Xml\XmlLanguage;
+use App\MarkDown\CustomHL\Languages\Json\JsonLanguage;
 
 final class CustomHighlightExtension implements ExtensionInterface
 {
@@ -39,6 +40,7 @@ final class CustomHighlightExtension implements ExtensionInterface
         $this->highlighter->addLanguage(new JavaScriptLanguage());
 //        $this->highlighter->addLanguage(new HtmlLanguage());
         $this->highlighter->addLanguage(new XmlLanguage());
+        $this->highlighter->addLanguage(new JsonLanguage());
     }
 
     public function register(EnvironmentBuilderInterface $environment): void

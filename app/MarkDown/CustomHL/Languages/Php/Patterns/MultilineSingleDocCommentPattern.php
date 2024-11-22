@@ -9,17 +9,17 @@ use Tempest\Highlight\Pattern;
 use Tempest\Highlight\Tokens\TokenType;
 use Tempest\Highlight\Tokens\DynamicTokenType;
 
-final readonly class ClassResolutionPattern implements Pattern
+final readonly class MultilineSingleDocCommentPattern implements Pattern
 {
     use IsPattern;
 
     public function getPattern(): string
     {
-        return '\:\:(?<match>class)';
+        return '/(?<match>\/\*(.|\n)*?\*\/)/m';
     }
 
     public function getTokenType(): TokenType
     {
-        return new DynamicTokenType('hl-php-keyword');
+        return new DynamicTokenType('hl-php-comment');
     }
 }

@@ -9,26 +9,27 @@ use Tempest\Highlight\Injection;
 use Tempest\Highlight\IsInjection;
 use Tempest\Highlight\Escape;
 use Tempest\Highlight\Tokens\DynamicTokenType;
+use Illuminate\Support\Str;
 
-final readonly class SingleQuoteValueInjection implements Injection
+final readonly class ClassResolutionInjection implements Injection
 {
     use IsInjection;
 
     public function getPattern(): string
     {
-        return "(?<match>'(.|\n)*?')";
+        return '/\:\:(?<match>[\w]+?)\b[^\(]/';
     }
 
     public function parseContent(string $content, Highlighter $highlighter): string
     {
         $theme = $highlighter->getTheme(); 
 
-        $clear_content = Escape::terminal($content);
+        $tokenType = Str::upper($content) == 'CLASS' ? 'hl-php-keyword' : 'hl-php-constant';
         
         return Escape::injection(
-            Escape::tokens($theme->before(new DynamicTokenType('hl-php-value')))
-            . $clear_content
-            . Escape::tokens($theme->after(new DynamicTokenType('hl-php-value')))
+            Escape::tokens($theme->before(new DynamicTokenType($tokenType)))
+            . $content
+            . Escape::tokens($theme->after(new DynamicTokenType($tokenType)))
         ); 
     }
 }

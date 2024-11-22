@@ -71,6 +71,10 @@ pre, code {
     color: #89DDFF;
 }
 
+.hl-shell-comment{
+    color: #697098;
+}
+
 
 .hl-ini-constant{
     color: #C792EA;
@@ -173,7 +177,7 @@ pre, code {
 
 
 .hl-js-property{
-    color: #82AAFF;
+    color: #89DDFF;
 }
 
 .hl-js-number{
@@ -186,6 +190,31 @@ pre, code {
 
 .hl-js-keyword{
     color: #C792EA;
+}
+
+.hl-js-comment{
+    color: #697098;
+}
+
+.hl-js-slug{
+    color: #FF5874;
+}
+
+.hl-js-constant{
+    color: #82AAFF;
+}
+
+.hl-js-operator{
+    color: #C792EA;
+}
+
+
+.hl-json-property{
+    color: #C3E88D;
+}
+
+.hl-json-value{
+    color: #80CBC4;
 }
 
 

@@ -17,11 +17,11 @@ final readonly class XmlDoctypePattern implements Pattern
     {
 //        return '(?<match>[\w\-:]*[\w\-]+)(=")?';
 //        return '/<[\w\- #]+\b(?<match>[\w\-:]*[\w\-]+)\s*(=")? >/';
-        return '/\<\!doctype (?<match>\w+)/i';
+        return '/\<\!(?<match>doctype)/i';
     }
 
     public function getTokenType(): TokenType
     {
-        return new DynamicTokenType('hl-xml-attr');
+        return new DynamicTokenType('hl-xml-tag');
     }
 }

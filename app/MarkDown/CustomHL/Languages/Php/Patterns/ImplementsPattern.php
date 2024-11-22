@@ -15,7 +15,7 @@ final readonly class ImplementsPattern implements Pattern
 
     public function getPattern(): string
     {
-        return 'implements(?<match>[\s\,\w]+)';
+        return 'implements(?<match>[\s\,\w\\\\]+)';
     }
 
     public function getTokenType(): TokenType

@@ -15,8 +15,10 @@ final class JsKeywordPattern implements Pattern
 
     private bool $caseInsensitive = false;
 
-    public function __construct(private string $keyword)
-    {
+    public function __construct(
+        private string $keyword,
+        private string $tokenType = 'hl-js-keyword'
+    ) {
     }
 
     public function caseInsensitive(): self
@@ -39,6 +41,6 @@ final class JsKeywordPattern implements Pattern
 
     public function getTokenType(): TokenType
     {
-        return new DynamicTokenType('hl-js-keyword');
+        return new DynamicTokenType($this->tokenType);
     }
 }

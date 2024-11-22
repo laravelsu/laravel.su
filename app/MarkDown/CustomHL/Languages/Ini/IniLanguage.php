@@ -15,6 +15,13 @@ class IniLanguage extends CustomBaseLanguage
         return 'ini';
     }
 
+    public function getAliases(): array
+    {
+        return [
+            'env',
+        ];
+    }
+
     public function getInjections(): array
     {
         return [

@@ -7,8 +7,6 @@ namespace App\MarkDown\CustomHL\Languages\Blade\Injections;
 use Tempest\Highlight\Highlighter;
 use Tempest\Highlight\Injection;
 use Tempest\Highlight\IsInjection;
-use Tempest\Highlight\Escape;
-use Tempest\Highlight\Tokens\DynamicTokenType;
 
 final readonly class BladeEchoInjection implements Injection
 {
@@ -16,7 +14,7 @@ final readonly class BladeEchoInjection implements Injection
 
     public function getPattern(): string
     {
-        return '({{(?!--))(?<match>.*)(}})';
+        return '({{(?!--))(?<match>(.|\n)*?)(}})';
     }
 
     public function parseContent(string $content, Highlighter $highlighter): string

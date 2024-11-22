@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace App\MarkDown\CustomHL\Languages\Php\Patterns;
+namespace App\MarkDown\CustomHL\Languages\Json\Patterns;
 
 use Tempest\Highlight\IsPattern;
 use Tempest\Highlight\Pattern;
 use Tempest\Highlight\Tokens\TokenType;
 use Tempest\Highlight\Tokens\DynamicTokenType;
 
-final readonly class UsePattern implements Pattern
+final readonly class JsonDoubleQuoteValuePattern implements Pattern
 {
     use IsPattern;
 
     public function getPattern(): string
     {
-        return '/use\s+(function(\s)+)?[\w\\\\]*\b(?<match>[\w]+)[;]*/';
+        return '\:(\s)*\"(?<match>.*?)\"';
     }
 
     public function getTokenType(): TokenType
     {
-        return new DynamicTokenType('hl-php-type');
+        return new DynamicTokenType('hl-json-value');
     }
 }

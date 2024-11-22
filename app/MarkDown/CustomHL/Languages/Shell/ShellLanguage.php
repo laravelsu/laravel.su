@@ -11,6 +11,7 @@ use App\MarkDown\CustomHL\Languages\Shell\Patterns\ShellKeyPattern;
 use App\MarkDown\CustomHL\Languages\Shell\Patterns\DoubleQuoteValuePattern;
 use App\MarkDown\CustomHL\Languages\Shell\Patterns\QuoteValuePattern;
 use App\MarkDown\CustomHL\Languages\Shell\Patterns\DelimeterPattern;
+use App\MarkDown\CustomHL\Languages\Shell\Patterns\SinglelineCommentPattern;
 
 class ShellLanguage extends CustomBaseLanguage
 {
@@ -41,6 +42,7 @@ class ShellLanguage extends CustomBaseLanguage
             new DoubleQuoteValuePattern(),
             new QuoteValuePattern(),
             new DelimeterPattern('(cd|\|)'),
+            new SinglelineCommentPattern(),
         ];
     }
 }

@@ -14,11 +14,13 @@ use App\MarkDown\CustomHL\Languages\JavaScript\Patterns\JsMethodPattern;
 //use App\Tempest\Highlight\Languages\JavaScript\Patterns\JsNewObjectPattern;
 //use App\Tempest\Highlight\Languages\JavaScript\Patterns\JsObjectPropertyPattern;
 use App\MarkDown\CustomHL\Languages\JavaScript\Patterns\JsPropertyPattern;
-//use App\Tempest\Highlight\Languages\JavaScript\Patterns\JsSinglelineCommentPattern;
+use App\MarkDown\CustomHL\Languages\JavaScript\Patterns\JsSinglelineCommentPattern;
 use App\MarkDown\CustomHL\Languages\JavaScript\Patterns\JsSingleQuoteValuePattern;
 //use App\Tempest\Highlight\Languages\JavaScript\Patterns\JsStaticClassPattern;
 //use App\Tempest\Highlight\Languages\JavaScript\Patterns\JsStaticPropertyPattern;
 use App\MarkDown\CustomHL\Languages\JavaScript\Patterns\DigitsPattern;
+use App\MarkDown\CustomHL\Languages\JavaScript\Patterns\ConstantNamePattern;
+use App\MarkDown\CustomHL\Languages\JavaScript\Patterns\OperatorPattern;
 
 class JavaScriptLanguage extends CustomBaseLanguage
 {
@@ -47,10 +49,14 @@ class JavaScriptLanguage extends CustomBaseLanguage
     {
         return [
             ...parent::getPatterns(),
+            new JsKeywordPattern('const'),
             new JsKeywordPattern('default'),
             new JsKeywordPattern('export'),
+            new JsKeywordPattern('false', 'hl-js-slug'),
             new JsKeywordPattern('from'),
             new JsKeywordPattern('import'),
+            new JsKeywordPattern('null', 'hl-js-slug'),
+            new JsKeywordPattern('true', 'hl-js-slug'),
             new JsKeywordPattern('var'),
             //new JsKeywordPattern('set'),
             //new JsKeywordPattern('of'),
@@ -62,7 +68,6 @@ class JavaScriptLanguage extends CustomBaseLanguage
             //new JsKeywordPattern('case'),
             //new JsKeywordPattern('catch'),
             //new JsKeywordPattern('class'),
-            //new JsKeywordPattern('const'),
             //new JsKeywordPattern('continue'),
             //new JsKeywordPattern('debugger'),
             //new JsKeywordPattern('delete'),
@@ -76,7 +81,7 @@ class JavaScriptLanguage extends CustomBaseLanguage
             //new JsKeywordPattern('if'),
             //new JsKeywordPattern('in'),
             //new JsKeywordPattern('instanceof'),
-            //new JsKeywordPattern('new'),
+            new JsKeywordPattern('new'),
             //new JsKeywordPattern('null'),
             //new JsKeywordPattern('return'),
             //new JsKeywordPattern('super'),
@@ -103,9 +108,11 @@ class JavaScriptLanguage extends CustomBaseLanguage
             //new JsKeywordPattern('constructor'),
             //new JsKeywordPattern('this'),
 
+            new OperatorPattern('(=|\?\?|===)'),
+            
             // COMMENTS
             //new JsMultilineCommentPattern(),
-            //new JsSinglelineCommentPattern(),
+            new JsSinglelineCommentPattern(),
 
             // TYPES
             //new JsClassNamePattern(),
@@ -113,7 +120,7 @@ class JavaScriptLanguage extends CustomBaseLanguage
             //new JsStaticClassPattern(),
 
             // PROPERTIES
-            //new JsPropertyPattern(),
+            new JsPropertyPattern(),
             //new JsObjectPropertyPattern(),
             new JsMethodPattern(),
             //new JsStaticPropertyPattern(),
@@ -122,6 +129,8 @@ class JavaScriptLanguage extends CustomBaseLanguage
             new JsSingleQuoteValuePattern(),
             //new JsDoubleQuoteValuePattern(),
             
+            new ConstantNamePattern(),
+
             new DigitsPattern(),
         ];
     }

@@ -44,8 +44,8 @@ final readonly class PhpDocCommentParamTypeInjection implements Injection
                 $k = $match['match'];
                 
                 array_walk($k, function($val, $key) use (&$types) {
-                    if (!empty(trim($val[$key]))) {
-                        array_push($types, trim($val[$key]));
+                    if (!empty(trim($val[0]))) {
+                        array_push($types, trim($val[0]));
                     }
                 });
 
@@ -59,8 +59,8 @@ final readonly class PhpDocCommentParamTypeInjection implements Injection
                 $k = $match['match'];
                 
                 array_walk($k, function($val, $key) use (&$types) {
-                    if (!empty(trim($val[$key]))) {
-                        array_push($types, trim($val[$key]));
+                    if (!empty(trim($val[0]))) {
+                        array_push($types, trim($val[0]));
                     }
                 });
 

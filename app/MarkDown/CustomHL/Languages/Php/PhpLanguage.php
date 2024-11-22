@@ -12,10 +12,9 @@ use App\MarkDown\CustomHL\Languages\Php\Injections\PhpDocCommentInjection;
 
 //use App\Tempest\Highlight\Languages\Php\Injections\PhpHeredocInjection;
 //use App\Tempest\Highlight\Languages\Php\Patterns\AttributeTypePattern;
-//use App\Tempest\Highlight\Languages\Php\Patterns\CatchTypePattern;
+use App\MarkDown\CustomHL\Languages\Php\Patterns\CatchTypePattern;
 use App\MarkDown\CustomHL\Languages\Php\Patterns\ClassNamePattern;
 //use App\Tempest\Highlight\Languages\Php\Patterns\ClassPropertyPattern;
-use App\MarkDown\CustomHL\Languages\Php\Patterns\ClassResolutionPattern;
 //use App\Tempest\Highlight\Languages\Php\Patterns\ConstantPropertyPattern;
 //use App\Tempest\Highlight\Languages\Php\Patterns\ConstantTypesPattern;
 //use App\Tempest\Highlight\Languages\Php\Patterns\DoubleQuoteValuePattern;
@@ -31,7 +30,7 @@ use App\MarkDown\CustomHL\Languages\Php\Patterns\InstanceOfPattern;
 
 use App\MarkDown\CustomHL\Languages\Php\Patterns\KeywordPattern;
 
-//use App\Tempest\Highlight\Languages\Php\Patterns\MultilineSingleDocCommentPattern;
+//use App\MarkDown\CustomHL\Languages\Php\Patterns\MultilineSingleDocCommentPattern;
 use App\MarkDown\CustomHL\Languages\Php\Patterns\NamedArgumentPattern;
 //use App\Tempest\Highlight\Languages\Php\Patterns\NestedFunctionCallPattern;
 //use App\MarkDown\CustomHL\Languages\Php\Patterns\NewObjectPattern;
@@ -70,10 +69,13 @@ use App\MarkDown\CustomHL\Languages\Php\Patterns\PhpOpenTagPattern;
 //use App\MarkDown\CustomHL\Languages\Php\Patterns\NamespacePattern;
 
 use App\MarkDown\CustomHL\Languages\Php\Injections\SinglelineCommentInjection;
+use App\MarkDown\CustomHL\Languages\Php\Injections\MultilineSingleDocCommentInjection;
 use App\MarkDown\CustomHL\Languages\Php\Injections\SingleQuoteValueInjection;
+use App\MarkDown\CustomHL\Languages\Php\Injections\DoubleQuoteValueInjection;
 use App\MarkDown\CustomHL\Languages\Php\Patterns\GenericPattern;
 use App\MarkDown\CustomHL\Languages\Php\Injections\NewObjectInjection;
-use App\MarkDown\CustomHL\Languages\Php\Patterns\UriPathPattern;
+//use App\MarkDown\CustomHL\Languages\Php\Patterns\UriPathPattern;
+use App\MarkDown\CustomHL\Languages\Php\Injections\ClassResolutionInjection;
 
 class PhpLanguage extends CustomBaseLanguage
 {
@@ -92,7 +94,10 @@ class PhpLanguage extends CustomBaseLanguage
             ////new PhpAttributeInstanceInjection(),
             new PhpFunctionParametersInjection(),
             new SingleQuoteValueInjection(),
+            new DoubleQuoteValueInjection(),
             new SinglelineCommentInjection(),
+            new MultilineSingleDocCommentInjection(),
+            new ClassResolutionInjection(),
             
             new ReturnTypeInjection(),
             new NewObjectInjection(),
@@ -112,7 +117,7 @@ class PhpLanguage extends CustomBaseLanguage
             new NamedArgumentPattern(),
             ////new OperatorPattern('&&'),
             ////new OperatorPattern('\|\|'),
-            new OperatorPattern('(!==|===|==|<|=>|>|=|\*|\+\+)'),
+            new OperatorPattern('(!==|===|==|<|=>|>|=|\*|\+\+|&&|\?)'),
             //new OperatorPattern('instanceof'),
             ////new OperatorPattern('\?'),
             ////new FunctionNamePattern(),
@@ -125,6 +130,8 @@ class PhpLanguage extends CustomBaseLanguage
             // KEYWORDS
             new KeywordPattern('null', 'hl-php-constant'),
             new GenericPattern('/(?<match>\$this)(\-|\$|\,|\)|\;|\:|\s|\()/', 'hl-php-this'),
+            new GenericPattern('/\->(?<match>[\w]+?)\b[^\(]/', 'hl-php-delimeter'),
+            new GenericPattern('/\((?<match>(string))\)/', 'hl-php-keyword'),
             ////new KeywordPattern('parent'),
             new KeywordPattern('true', 'hl-php-constant'),
             new KeywordPattern('false', 'hl-php-constant'),
@@ -136,7 +143,7 @@ class PhpLanguage extends CustomBaseLanguage
             ////new KeywordPattern('break'),
             ////new KeywordPattern('callable'),
             new KeywordPattern('case'),
-            ////new KeywordPattern('catch'),
+            new KeywordPattern('catch'),
             new KeywordPattern('class'),
             ////new KeywordPattern('clone'),
             ////new KeywordPattern('const'),
@@ -195,9 +202,9 @@ class PhpLanguage extends CustomBaseLanguage
             new KeywordPattern('return'),
             new KeywordPattern('static'),
             ////new KeywordPattern('switch'),
-            ////new KeywordPattern('throw'),
+            new KeywordPattern('throw'),
             ////new KeywordPattern('trait'),
-            ////new KeywordPattern('try'),
+            new KeywordPattern('try'),
             ////new KeywordPattern('unset'),
             new KeywordPattern('use'),
             new KeywordPattern('validate', 'hl-php-constant'),
@@ -206,14 +213,13 @@ class PhpLanguage extends CustomBaseLanguage
             ////new KeywordPattern('xor'),
             new KeywordPattern('yield'),
             ////new KeywordPattern('yield from'),
-            new ClassResolutionPattern(),
             ////new ShortFunctionReferencePattern(),
             ////new PropertyHookSetPattern(),
             ////new PropertyHookGetPattern(),
             new DigitsPattern(),
 
             // COMMENTS
-            ////new MultilineSingleDocCommentPattern(),
+            //new MultilineSingleDocCommentPattern(),
             //new SinglelineCommentPattern(),
 
             // TYPES
@@ -230,7 +236,7 @@ class PhpLanguage extends CustomBaseLanguage
             //new NewObjectPattern(),
             new InstanceOfPattern(),
             ////new UseAsPattern(),
-            ////new CatchTypePattern(),
+            new CatchTypePattern(),
             new EnumBackedTypePattern(),
             ////new GroupedTypePattern(),
             ////new PropertyHookSetParameterTypePattern(),
