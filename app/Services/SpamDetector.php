@@ -105,7 +105,7 @@ class SpamDetector
             ->squish()
             ->wordCount();
 
-        if($countWords === 0) {
+        if ($countWords === 0) {
             return true;
         }
 
