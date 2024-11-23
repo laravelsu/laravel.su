@@ -144,4 +144,10 @@ class SpamDetectorTest extends TestCase
         $spamDetector = new SpamDetector('🔥');
         $this->assertTrue($spamDetector->hasTooManySpecialCharacters());
     }
+
+    public function testMessageSpecialCharacters(): void
+    {
+        $spamDetector = new SpamDetector('✅ 🔤🔤🔤🔤 🔤🔤🔤🔤🔤🔤 ✅ 🔠🔠🔠🔠🔠 🔠 🔠🔠🔠🔠🔠🔠🔠 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥 🔥🔥🔥🔥🔥 ♦️🔺🔺♦️♦️ ♦️🔺🔺🔺 4️⃣2️⃣5️⃣💲 🔡 🔡🔡🔡🔡 ⚪️⚪️🔴⚪️⚪️🔴 🔴⚪️⚪️ 🔤🔤🔤🔤🔤🔤 🔤 🔤🔤');
+        $this->assertTrue($spamDetector->hasTooManySpecialCharacters());
+    }
 }

@@ -105,6 +105,10 @@ class SpamDetector
             ->squish()
             ->wordCount();
 
+        if($countWords === 0) {
+            return true;
+        }
+
         $diff = ($withSpecialCharacters - $withOutSpecialCharacters) / 2;
 
         // Proportion of special characters in the message
