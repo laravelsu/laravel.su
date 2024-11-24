@@ -9,9 +9,17 @@
         <x-slot:title>Достижения в сообществе</x-slot>
 
         <x-slot:description>
-            Делайте публикации, оставляйте комментарии и получайте награды
+            Публикуйте, комментируйте и зарабатывайте награды.
+            Выделите свои достижения, выбрав их для отображения в профиле.
         </x-slot>
 
+        <x-slot:actions>
+            <a href="{{ route('moments') }}" class="btn btn-primary btn-lg px-4">Особенные моменты</a>
+            <a href="{{ route('my.edit') }}"
+               class="d-none d-md-inline-flex link-body-emphasis text-decoration-none icon-link icon-link-hover">Мой профиль
+                <x-icon path="i.arrow-right" class="bi" />
+            </a>
+        </x-slot>
     </x-header>
 
     @foreach($groups as $name => $achievements)

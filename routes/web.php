@@ -43,6 +43,7 @@ Route::view('/privacy-policy', 'pages.privacy-policy')->name('privacy-policy');
 Route::view('/orchid-admin', 'pages.orchid')->name('orchid');
 Route::view('/donate', 'pages.donate')->name('donate');
 Route::view('/donate/frame', 'pages.donate-frame')->name('donate.frame');
+Route::view('/moments', 'pages.moments')->name('moments');
 
 Route::view('/courses', 'pages.courses')->name('courses');
 Route::view('/assets', 'pages.assets')->name('assets');
