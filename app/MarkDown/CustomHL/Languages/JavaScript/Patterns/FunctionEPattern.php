@@ -9,17 +9,17 @@ use Tempest\Highlight\Pattern;
 use Tempest\Highlight\Tokens\TokenType;
 use Tempest\Highlight\Tokens\DynamicTokenType;
 
-final readonly class JsSingleQuoteValuePattern implements Pattern
+final readonly class FunctionEPattern implements Pattern
 {
     use IsPattern;
 
     public function getPattern(): string
     {
-        return "'(?<match>.*?)'";
+        return '\((?<match>[a-z]+)\)';
     }
 
     public function getTokenType(): TokenType
     {
-        return new DynamicTokenType('hl-js-value');
+        return new DynamicTokenType('hl-js-constant');
     }
 }

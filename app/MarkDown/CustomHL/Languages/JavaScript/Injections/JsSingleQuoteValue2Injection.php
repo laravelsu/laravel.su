@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\MarkDown\CustomHL\Languages\Php\Injections;
+namespace App\MarkDown\CustomHL\Languages\JavaScript\Injections;
 
 use Tempest\Highlight\Highlighter;
 use Tempest\Highlight\Injection;
@@ -10,13 +10,13 @@ use Tempest\Highlight\IsInjection;
 use Tempest\Highlight\Escape;
 use Tempest\Highlight\Tokens\DynamicTokenType;
 
-final readonly class SingleQuoteValueInjection implements Injection
+final readonly class JsSingleQuoteValue2Injection implements Injection
 {
     use IsInjection;
 
     public function getPattern(): string
     {
-        return "(?<match>'(?!(s ))(.|\n)*?')";
+        return "(?<match>`.*?`)";
     }
 
     public function parseContent(string $content, Highlighter $highlighter): string
@@ -26,9 +26,9 @@ final readonly class SingleQuoteValueInjection implements Injection
         $clear_content = Escape::terminal($content);
         
         return Escape::injection(
-            Escape::tokens($theme->before(new DynamicTokenType('hl-php-value')))
+            Escape::tokens($theme->before(new DynamicTokenType('hl-js-value')))
             . $clear_content
-            . Escape::tokens($theme->after(new DynamicTokenType('hl-php-value')))
+            . Escape::tokens($theme->after(new DynamicTokenType('hl-js-value')))
         ); 
     }
 }

@@ -17,6 +17,8 @@ use App\MarkDown\CustomHL\Languages\Php\Patterns\KeywordPattern;
 //use Tempest\Highlight\Languages\Php\Patterns\VariablePattern;
 use App\MarkDown\CustomHL\Languages\Php\Patterns\OperatorPattern;
 use App\MarkDown\CustomHL\Languages\Php\Injections\TypeForVariableInjection;
+use App\MarkDown\CustomHL\Languages\Php\Patterns\DigitsPattern;
+//use App\MarkDown\CustomHL\Languages\Php\Patterns\NamedArgumentPattern;
 
 final class PhpTypeLanguage extends CustomBaseLanguage
 {
@@ -47,6 +49,7 @@ final class PhpTypeLanguage extends CustomBaseLanguage
 
             //new TypeForVariablePattern(),
 
+            //new NamedArgumentPattern(),
             new OperatorPattern('(<|=>|>|=|\*)'),
             //new KeywordPattern('array'),
             //new KeywordPattern('bool'),
@@ -56,6 +59,7 @@ final class PhpTypeLanguage extends CustomBaseLanguage
             new KeywordPattern('null', 'hl-php-constant'),
             new KeywordPattern('true', 'hl-php-constant'),
             new KeywordPattern('false', 'hl-php-constant'),
+            new KeywordPattern('use'),
             //new KeywordPattern('new'),
             //new KeywordPattern('readonly'),
 
@@ -64,6 +68,8 @@ final class PhpTypeLanguage extends CustomBaseLanguage
             
             // VARIABLES
             //new VariablePattern(),
+            
+            new DigitsPattern(),
         ];
     }
 }

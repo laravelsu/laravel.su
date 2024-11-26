@@ -7,20 +7,19 @@ namespace App\MarkDown\CustomHL\Languages\Json\Patterns;
 use Tempest\Highlight\IsPattern;
 use Tempest\Highlight\Pattern;
 use Tempest\Highlight\Tokens\TokenType;
-//use Tempest\Highlight\Tokens\DynamicTokenType;
-use App\MarkDown\CustomHL\Tokens\QuotedValueTokenType;
+use Tempest\Highlight\Tokens\DynamicTokenType;
 
-final readonly class JsonDoubleQuoteValuePattern implements Pattern
+final readonly class DigitsValuePattern implements Pattern
 {
     use IsPattern;
 
     public function getPattern(): string
     {
-        return '\:(\s)*\"(?<match>.*?)\"';
+        return '/\:(\s)*(?<match>[0-9.]+)/';
     }
 
     public function getTokenType(): TokenType
     {
-        return new QuotedValueTokenType();  //DynamicTokenType('hl-json-value');
+        return new DynamicTokenType('hl-js-number');
     }
 }

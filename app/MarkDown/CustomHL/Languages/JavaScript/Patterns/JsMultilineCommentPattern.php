@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace App\MarkDown\CustomHL\Languages\Php\Patterns;
+namespace App\MarkDown\CustomHL\Languages\JavaScript\Patterns;
 
 use Tempest\Highlight\IsPattern;
 use Tempest\Highlight\Pattern;
 use Tempest\Highlight\Tokens\TokenType;
 use Tempest\Highlight\Tokens\DynamicTokenType;
 
-final readonly class FunctionCallPattern implements Pattern
+final readonly class JsMultilineCommentPattern implements Pattern
 {
     use IsPattern;
 
     public function getPattern(): string
     {
-        return '/[(^)| |>|:]?(?!\$)\b(?<match>[_\-a-z\w]+)\(/';
+        return '/(?<match>\/\*(.|\n)*?\*\/)/m';
     }
 
     public function getTokenType(): TokenType
     {
-        return new DynamicTokenType("hl-php-function");
+        return new DynamicTokenType('hl-js-comment');
     }
 }

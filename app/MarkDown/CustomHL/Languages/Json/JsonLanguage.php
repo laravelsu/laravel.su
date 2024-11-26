@@ -10,6 +10,7 @@ use App\MarkDown\CustomHL\Languages\CustomBase\CustomBaseLanguage;
 use App\MarkDown\CustomHL\Languages\Json\Patterns\JsonDoubleQuoteValuePattern;
 use App\MarkDown\CustomHL\Languages\Json\Patterns\JsonPropertyPattern;
 use App\MarkDown\CustomHL\Languages\Json\Injections\JsonArrayInjection;
+use App\MarkDown\CustomHL\Languages\Json\Patterns\DigitsValuePattern;
 
 class JsonLanguage extends CustomBaseLanguage
 {
@@ -34,6 +35,7 @@ class JsonLanguage extends CustomBaseLanguage
             //new JsonAccoladesPattern(),
             //new JsonArrayBracketsPattern(),
             new JsonDoubleQuoteValuePattern(),
+            new DigitsValuePattern(),
         ];
     }
 }

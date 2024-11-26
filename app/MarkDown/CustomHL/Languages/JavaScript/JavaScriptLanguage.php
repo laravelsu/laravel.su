@@ -10,17 +10,19 @@ use App\MarkDown\CustomHL\Languages\CustomBase\CustomBaseLanguage;
 //use App\Tempest\Highlight\Languages\JavaScript\Patterns\JsDoubleQuoteValuePattern;
 use App\MarkDown\CustomHL\Languages\JavaScript\Patterns\JsKeywordPattern;
 use App\MarkDown\CustomHL\Languages\JavaScript\Patterns\JsMethodPattern;
-//use App\Tempest\Highlight\Languages\JavaScript\Patterns\JsMultilineCommentPattern;
+use App\MarkDown\CustomHL\Languages\JavaScript\Patterns\JsMultilineCommentPattern;
 //use App\Tempest\Highlight\Languages\JavaScript\Patterns\JsNewObjectPattern;
 //use App\Tempest\Highlight\Languages\JavaScript\Patterns\JsObjectPropertyPattern;
 use App\MarkDown\CustomHL\Languages\JavaScript\Patterns\JsPropertyPattern;
 use App\MarkDown\CustomHL\Languages\JavaScript\Patterns\JsSinglelineCommentPattern;
-use App\MarkDown\CustomHL\Languages\JavaScript\Patterns\JsSingleQuoteValuePattern;
 //use App\Tempest\Highlight\Languages\JavaScript\Patterns\JsStaticClassPattern;
 //use App\Tempest\Highlight\Languages\JavaScript\Patterns\JsStaticPropertyPattern;
 use App\MarkDown\CustomHL\Languages\JavaScript\Patterns\DigitsPattern;
 use App\MarkDown\CustomHL\Languages\JavaScript\Patterns\ConstantNamePattern;
 use App\MarkDown\CustomHL\Languages\JavaScript\Patterns\OperatorPattern;
+use App\MarkDown\CustomHL\Languages\JavaScript\Injections\JsSingleQuoteValueInjection;
+use App\MarkDown\CustomHL\Languages\JavaScript\Injections\JsSingleQuoteValue2Injection;
+use App\MarkDown\CustomHL\Languages\JavaScript\Patterns\FunctionEPattern;
 
 class JavaScriptLanguage extends CustomBaseLanguage
 {
@@ -42,6 +44,8 @@ class JavaScriptLanguage extends CustomBaseLanguage
         return [
             ...parent::getInjections(),
             //new JsDocInjection(),
+            new JsSingleQuoteValueInjection(),
+            new JsSingleQuoteValue2Injection(),
         ];
     }
 
@@ -56,6 +60,7 @@ class JavaScriptLanguage extends CustomBaseLanguage
             new JsKeywordPattern('from'),
             new JsKeywordPattern('import'),
             new JsKeywordPattern('null', 'hl-js-slug'),
+            new JsKeywordPattern('this', 'hl-js-slug'),
             new JsKeywordPattern('true', 'hl-js-slug'),
             new JsKeywordPattern('var'),
             //new JsKeywordPattern('set'),
@@ -111,7 +116,7 @@ class JavaScriptLanguage extends CustomBaseLanguage
             new OperatorPattern('(=|\?\?|===)'),
             
             // COMMENTS
-            //new JsMultilineCommentPattern(),
+            new JsMultilineCommentPattern(),
             new JsSinglelineCommentPattern(),
 
             // TYPES
@@ -126,12 +131,12 @@ class JavaScriptLanguage extends CustomBaseLanguage
             //new JsStaticPropertyPattern(),
 
             // VALUES
-            new JsSingleQuoteValuePattern(),
             //new JsDoubleQuoteValuePattern(),
             
             new ConstantNamePattern(),
 
             new DigitsPattern(),
+            new FunctionEPattern(),
         ];
     }
 }

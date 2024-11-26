@@ -15,7 +15,7 @@ final readonly class UsePattern implements Pattern
 
     public function getPattern(): string
     {
-        return '/use\s+(function(\s)+)?[\w\\\\]*\b(?<match>[\w]+)[;]*/';
+        return '/use\s+(function(\s)+)?[\w\\\\]*\b(?<match>[\w]+[, \w]*)[;]*/';
     }
 
     public function getTokenType(): TokenType

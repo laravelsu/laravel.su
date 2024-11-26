@@ -12,6 +12,8 @@ use Tempest\Highlight\Escape;
 use Tempest\Highlight\Tokens\DynamicTokenType;
 use App\MarkDown\CustomHL\Languages\Php\PhpConst;
 
+//use App\MarkDown\CustomHL\Languages\Php\PhpDocCommentParamTypes;
+
 final readonly class PhpDocCommentReturnTypeInjection implements Injection
 {
     use IsInjection;
@@ -25,6 +27,28 @@ final readonly class PhpDocCommentReturnTypeInjection implements Injection
     {
         $keywords = PhpConst::SYS_KEYWORDS;
         
+        $types = preg_match_all('/(?!([\w]+)\\\\)(?<match>[\w]+)/', $content, $matches);
+        
+        $theme = $highlighter->getTheme();
+        
+        if (key_exists('match', $matches))
+        {
+            foreach($matches['match'] as $type)
+            {
+                $token = (in_array($type, $keywords)) ? 'hl-php-keyword' : 'hl-php-type';
+
+                $content = preg_replace(
+                    '/\b' . $type . '[\b]*/',
+                    Escape::tokens($theme->before(new DynamicTokenType($token)))
+                    . $type
+                    . Escape::tokens($theme->after(new DynamicTokenType($token))),
+                    $content,
+                );
+            }
+        }
+        
+        
+        /*
         $types = explode('|', trim($content));
         
         $theme = $highlighter->getTheme(); 
@@ -34,7 +58,7 @@ final readonly class PhpDocCommentReturnTypeInjection implements Injection
             if (key_exists('match', $matches))
             {
                 $content = preg_replace(
-                    '/\barray[\b]*/',
+                    '/\barray[\b]* /',
                     Escape::tokens($theme->before(new DynamicTokenType('hl-php-keyword')))
                     . 'array'
                     . Escape::tokens($theme->after(new DynamicTokenType('hl-php-keyword'))),
@@ -56,7 +80,7 @@ final readonly class PhpDocCommentReturnTypeInjection implements Injection
                         $token = (in_array($tk, $keywords)) ? 'hl-php-keyword' : 'hl-php-type';
                         
                         $content = preg_replace(
-                            '/\b' . $tk . '[\b]*/',
+                            '/\b' . $tk . '[\b]* /',
                             Escape::tokens($theme->before(new DynamicTokenType($token)))
                             . $tk
                             . Escape::tokens($theme->after(new DynamicTokenType($token))),
@@ -73,7 +97,7 @@ final readonly class PhpDocCommentReturnTypeInjection implements Injection
                 $token = (in_array($type, $keywords)) ? 'hl-php-keyword' : 'hl-php-type';
             
                 $content = preg_replace(
-                    '/\b' . $type . '[\b]*/',
+                    '/\b' . $type . '[\b] * /',
                     Escape::tokens($theme->before(new DynamicTokenType($token)))
                     . $type
                     . Escape::tokens($theme->after(new DynamicTokenType($token))),
@@ -81,7 +105,7 @@ final readonly class PhpDocCommentReturnTypeInjection implements Injection
                 );
             }
         } 
-
+*/
         return $content;
     }
 }
