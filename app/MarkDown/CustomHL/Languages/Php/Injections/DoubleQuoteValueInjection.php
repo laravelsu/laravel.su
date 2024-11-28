@@ -16,7 +16,7 @@ final readonly class DoubleQuoteValueInjection implements Injection
 
     public function getPattern(): string
     {
-        return '(?<match>".*?")';
+        return '(?<match>"(\\\"|.)*?")';
     }
 
     public function parseContent(string $content, Highlighter $highlighter): string

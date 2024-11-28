@@ -15,7 +15,8 @@ final readonly class NewObjectPattern implements Pattern
 
     public function getPattern(): string
     {
-        return 'new (?<match>[\w\\\\]+)';
+        //return 'new (?<match>[\w\\\\]+)';
+        return '/new [\w\\\\]*\b(?<match>[\w]+)/';
     }
 
     public function getTokenType(): TokenType

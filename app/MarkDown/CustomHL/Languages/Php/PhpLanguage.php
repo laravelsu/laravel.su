@@ -84,6 +84,11 @@ class PhpLanguage extends CustomBaseLanguage
         return 'php';
     }
 
+    public function getAliases(): array
+    {
+        return ['txt'];
+    }
+
     public function getInjections(): array
     {
         return [
@@ -117,7 +122,7 @@ class PhpLanguage extends CustomBaseLanguage
             new NamedArgumentPattern(),
             ////new OperatorPattern('&&'),
             ////new OperatorPattern('\|\|'),
-            new OperatorPattern('(!==|===|==|<=>|<|=>|>|=|\*|\+\+|\+|&&|\?)'),
+            new OperatorPattern('(!==|===|==|<=>|<|=>|>|=|\*|\+\+|\+|&&|\?|\|\|)'),
             //new OperatorPattern('instanceof'),
             ////new OperatorPattern('\?'),
             ////new FunctionNamePattern(),
@@ -141,7 +146,7 @@ class PhpLanguage extends CustomBaseLanguage
             ////new KeywordPattern('and'),
             new KeywordPattern('as'),
             ////new KeywordPattern('break'),
-            ////new KeywordPattern('callable'),
+            new KeywordPattern('callable'),
             new KeywordPattern('case'),
             new KeywordPattern('catch'),
             new KeywordPattern('class'),

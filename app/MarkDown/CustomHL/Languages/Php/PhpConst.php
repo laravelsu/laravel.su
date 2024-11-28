@@ -14,5 +14,6 @@ class PhpConst
         'void',
         'int',
         'mixed',
+        'object',
     ];
 }

@@ -8,9 +8,13 @@ use Tempest\Highlight\Tokens\TokenType;
 
 final readonly class QuotedValueTokenType implements TokenType
 {
+    public function __construct(
+            private string $value = 'hl-json-value'
+    ) {}
+
     public function getValue(): string
     {
-        return 'hl-json-value';
+        return $this->value;
     }
 
     public function canContain(TokenType $other): bool

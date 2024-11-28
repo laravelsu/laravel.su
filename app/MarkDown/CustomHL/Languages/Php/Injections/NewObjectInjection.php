@@ -18,7 +18,8 @@ final readonly class NewObjectInjection implements Injection
 
     public function getPattern(): string
     {
-        return 'new (?<match>[\w\\\\]+)';
+        //return 'new (?<match>[\w\\\\]+)';
+        return '/new [\w\\\\]*\b(?<match>[\w]+)/';
     }
 
     public function parseContent(string $content, Highlighter $highlighter): string

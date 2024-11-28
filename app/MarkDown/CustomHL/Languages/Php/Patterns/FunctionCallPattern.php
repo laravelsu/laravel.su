@@ -16,6 +16,7 @@ final readonly class FunctionCallPattern implements Pattern
     public function getPattern(): string
     {
         return '/[(^)| |>|:]?(?!\$)\b(?<match>[_\-a-z\w]+)\(/';
+        //return '/[^\$][(^)| |>|:]?(?!\$)\b(?<match>[_\-a-z\w]+)\(/';
     }
 
     public function getTokenType(): TokenType
