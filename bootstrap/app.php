@@ -19,6 +19,7 @@ return Application::configure(basePath: dirname(__DIR__))
             SetDefaultVersionForUrl::class,
             // App\Http\Middleware\Opening\Opening::class,
             'cache.headers:private;must_revalidate;etag',
+            'throttle:100,1',
         ]);
 
         $middleware->validateCsrfTokens(except: [
