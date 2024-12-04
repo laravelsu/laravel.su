@@ -23,7 +23,8 @@ class ShellLanguage extends CustomBaseLanguage
     public function getAliases(): array
     {
         return [
-            'sh'
+            'sh',
+            'bash'
         ];
     }
     

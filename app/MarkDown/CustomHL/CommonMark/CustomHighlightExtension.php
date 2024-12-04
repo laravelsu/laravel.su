@@ -7,15 +7,15 @@ namespace App\MarkDown\CustomHL\CommonMark;
 use League\CommonMark\Environment\EnvironmentBuilderInterface;
 use League\CommonMark\Extension\CommonMark\Node\Block\FencedCode;
 use League\CommonMark\Extension\CommonMark\Node\Block\IndentedCode;
-use League\CommonMark\Extension\CommonMark\Node\Inline\Code;
+//use League\CommonMark\Extension\CommonMark\Node\Inline\Code;
 use League\CommonMark\Extension\ExtensionInterface;
 use Tempest\Highlight\Highlighter;
 use Tempest\Highlight\Themes\InlineTheme;
 use Tempest\Highlight\CommonMark\CodeBlockRenderer;
-use Tempest\Highlight\CommonMark\InlineCodeBlockRenderer;
+//use Tempest\Highlight\CommonMark\InlineCodeBlockRenderer;
 use App\MarkDown\CustomHL\Languages\Php\PhpLanguage;
 use App\MarkDown\CustomHL\Languages\Shell\ShellLanguage;
-use App\MarkDown\CustomHL\Languages\Bash\BashLanguage;
+//use App\MarkDown\CustomHL\Languages\Bash\BashLanguage;
 use App\MarkDown\CustomHL\Languages\Ini\IniLanguage;
 use App\MarkDown\CustomHL\Languages\Blade\BladeLanguage;
 use App\MarkDown\CustomHL\Languages\Vue\VueLanguage;
@@ -32,7 +32,7 @@ final class CustomHighlightExtension implements ExtensionInterface
     ) {
         $this->highlighter->addLanguage(new PhpLanguage());
         $this->highlighter->addLanguage(new ShellLanguage());
-        $this->highlighter->addLanguage(new BashLanguage());
+//        $this->highlighter->addLanguage(new BashLanguage());
         $this->highlighter->addLanguage(new IniLanguage());
         $this->highlighter->addLanguage(new BladeLanguage());
         $this->highlighter->addLanguage(new VueLanguage());
