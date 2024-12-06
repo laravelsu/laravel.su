@@ -135,7 +135,7 @@ class PhpLanguage extends CustomBaseLanguage
             // KEYWORDS
             new KeywordPattern('null', 'hl-php-constant'),
             new GenericPattern('/(?<match>\$this)(\-|\$|\,|\)|\;|\:|\s|\(|\])/', 'hl-php-this'),
-            new GenericPattern('/\->(?<match>[\w]+?)\b[^\(]/', 'hl-php-delimeter'),
+            new GenericPattern('/\->\b(?<match>[\w]+?)\b(?!\()/', 'hl-php-delimeter'),
             new GenericPattern('/\((?<match>(string))\)/', 'hl-php-keyword'),
             ////new KeywordPattern('parent'),
             new KeywordPattern('true', 'hl-php-constant'),

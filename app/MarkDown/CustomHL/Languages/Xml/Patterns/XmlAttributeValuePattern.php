@@ -8,6 +8,7 @@ use Tempest\Highlight\IsPattern;
 use Tempest\Highlight\Pattern;
 use Tempest\Highlight\Tokens\TokenType;
 use Tempest\Highlight\Tokens\DynamicTokenType;
+use App\MarkDown\CustomHL\Tokens\QuotedValueTokenType;
 
 final readonly class XmlAttributeValuePattern implements Pattern
 {
@@ -20,6 +21,7 @@ final readonly class XmlAttributeValuePattern implements Pattern
 
     public function getTokenType(): TokenType
     {
-        return new DynamicTokenType('hl-xml-attr-val');
+        //return new DynamicTokenType('hl-xml-attr-val');
+        return new QuotedValueTokenType('hl-xml-attr-val');
     }
 }

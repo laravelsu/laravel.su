@@ -7,6 +7,7 @@ namespace App\MarkDown\CustomHL\Languages\Blade\Injections;
 use Tempest\Highlight\Highlighter;
 use Tempest\Highlight\Injection;
 use Tempest\Highlight\IsInjection;
+use Tempest\Highlight\Escape;
 
 final readonly class BladeEchoInjection implements Injection
 {
@@ -19,6 +20,6 @@ final readonly class BladeEchoInjection implements Injection
 
     public function parseContent(string $content, Highlighter $highlighter): string
     {
-        return $highlighter->parse($content, 'php');
+        return $highlighter->parse(Escape::terminal($content), 'php');
     }
 }

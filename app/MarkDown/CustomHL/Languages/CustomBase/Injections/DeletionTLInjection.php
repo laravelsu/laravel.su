@@ -25,7 +25,7 @@ final readonly class DeletionTLInjection implements Injection
 
             $parsedMatchedContent = $open . str_replace(  // Escape::INJECTION_TOKEN . 
                 '// [tl! remove]',
-                Escape::INJECTION_TOKEN . $close,  // Escape::INJECTION_TOKEN . 
+                $close,  // Escape::INJECTION_TOKEN . 
                 $matchedContent,
             );
 

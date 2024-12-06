@@ -8,6 +8,7 @@ use Tempest\Highlight\IsPattern;
 use Tempest\Highlight\Pattern;
 use Tempest\Highlight\Tokens\TokenType;
 use Tempest\Highlight\Tokens\DynamicTokenType;
+use App\MarkDown\CustomHL\Tokens\CanNotContainTokenType;
 
 final readonly class JsSinglelineCommentPattern implements Pattern
 {
@@ -20,6 +21,6 @@ final readonly class JsSinglelineCommentPattern implements Pattern
 
     public function getTokenType(): TokenType
     {
-        return new DynamicTokenType('hl-js-comment');
+        return new CanNotContainTokenType('hl-js-comment');
     }
 }

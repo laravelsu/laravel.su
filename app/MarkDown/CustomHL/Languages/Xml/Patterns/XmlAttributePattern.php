@@ -17,7 +17,8 @@ final readonly class XmlAttributePattern implements Pattern
     {
 //        return '(?<match>[\w\-:]*[\w\-]+)(=")?';
 //        return '/<[\w\- #]+\b(?<match>[\w\-:]*[\w\-]+)\s*(=")? >/';
-        return '/(?<match>[\w\-\:]+)="/';
+//        return '/(?<match>[\w\-\:]+)="/';
+        return '/ #?(?<match>(?!--)[\w\-\:]+)(="|>)/';
     }
 
     public function getTokenType(): TokenType
