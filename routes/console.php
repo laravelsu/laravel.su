@@ -44,7 +44,6 @@ Artisan::command('app:update-packages', function () {
     });
 })->purpose('Update information about users packages');
 
-
 Artisan::command('santa:start', function () {
     $participants = \App\Models\SecretSantaParticipant::inRandomOrder()->get();
 
@@ -62,9 +61,8 @@ Artisan::command('santa:start', function () {
         $participant->save();
     }
 
-    $this->info("🎁 Пары успешно назначены!");
+    $this->info('🎁 Пары успешно назначены!');
 })->purpose('Назначение пар для участников Тайного Санты');
-
 
 /*
 |--------------------------------------------------------------------------
