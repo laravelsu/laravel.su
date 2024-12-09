@@ -1,0 +1,102 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use Orchid\Support\Facades\Toast;
+
+class SantaController extends Controller
+{
+    /**
+     * Отображает главную страницу Тайного Санты.
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
+    public function index(Request $request): View
+    {
+        $participant = $request->user()
+            ->secretSantaParticipant()
+            ->firstOrNew();
+
+        return view('santa.index', [
+            'participant' => $participant,
+        ]);
+    }
+
+    /**
+     * Отображает страницу с правилами участия в Тайном Санте.
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
+    public function rules(): View
+    {
+        return view('santa.rules');
+    }
+
+    /**
+     * Показывает форму для регистрации.
+     */
+    public function start(Request $request): View
+    {
+        $participant = $request->user()
+            ->secretSantaParticipant()
+            ->firstOrNew();
+
+        return view('santa.registration', [
+            'participant' => $participant,
+        ]);
+    }
+
+    /**
+     * Обрабатывает заявку участника на участие в Тайном Санте.
+     */
+    public function update(Request $request): RedirectResponse
+    {
+        $participant = $request->user()
+            ->secretSantaParticipant()
+            ->firstOrNew();
+
+        $data = $request->validate([
+            'address'         => 'required|string',
+            'about'           => 'required|string',
+            'tracking_number' => [
+                'nullable',
+                'string',
+                Rule::requiredIf($participant->receiver_id),
+            ],
+        ]);
+
+        $participant
+            ->fill($data)
+            ->save();
+
+        Toast::success('Ваша заявка на участие в принята! Готовьтесь к сюрпризу.')
+            ->disableAutoHide();
+
+        return redirect()->route('santa');
+    }
+
+    /**
+     * Отменяет заявку участника на участие.
+     *
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function delete(Request $request): RedirectResponse
+    {
+        $participant = $request->user()
+            ->secretSantaParticipant()
+            ->firstOrNew();
+
+        $participant->delete();
+
+        Toast::success('Ваша заявка на участие отозвана! Спасибо, что предупредили заранее.')
+            ->disableAutoHide();
+
+        return redirect()->route('santa');
+    }
+}
