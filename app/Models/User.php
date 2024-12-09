@@ -201,6 +201,14 @@ class User extends Authenticatable
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function secretSantaParticipant()
+    {
+        return $this->hasOne(SecretSantaParticipant::class);
+    }
+
+    /**
      * Reward the user with an achievement.
      *
      * @param string $type

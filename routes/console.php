@@ -44,6 +44,28 @@ Artisan::command('app:update-packages', function () {
     });
 })->purpose('Update information about users packages');
 
+
+Artisan::command('santa:start', function () {
+    $participants = \App\Models\SecretSantaParticipant::inRandomOrder()->get();
+
+    foreach ($participants as $index => $participant) {
+        $nextIndex = ($index + 1) % $participants->count();
+
+        // Если участник остается без пары, выводим информацию
+        if ($participants->count() % 2 !== 0 && $index === $participants->count() - 1) {
+            $participant->receiver_id = null;
+            $this->info("👤 Участник без пары: {$participant->user->name} (ID: {$participant->id})");
+        } else {
+            $participant->receiver_id = $participants[$nextIndex]->user_id;
+        }
+
+        $participant->save();
+    }
+
+    $this->info("🎁 Пары успешно назначены!");
+})->purpose('Назначение пар для участников Тайного Санты');
+
+
 /*
 |--------------------------------------------------------------------------
 | Schedule

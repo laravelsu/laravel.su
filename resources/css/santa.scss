@@ -1,0 +1,25 @@
+/* Контейнер снежинок */
+.snowflake {
+    position: fixed;
+    top: -10%;
+    width: var(--snowflake-size);
+    height: var(--snowflake-size);
+    background-image: var(--snowflake-image);
+    background-size: contain;
+    background-repeat: no-repeat;
+    left: var(--snowflake-left);
+    animation: fall var(--fall-duration) linear var(--fall-delay) infinite;
+    pointer-events: none;
+    z-index: -9999;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
