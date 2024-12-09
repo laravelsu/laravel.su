@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Notifications\SimpleMessageNotification;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -40,13 +39,13 @@ class SantaController extends Controller
     /**
      * Показывает форму для регистрации.
      */
-    public function game(Request $request): View
+    public function start(Request $request): View
     {
         $participant = $request->user()
             ->secretSantaParticipant()
             ->firstOrNew();
 
-        return view('santa.game', [
+        return view('santa.registration', [
             'participant' => $participant,
         ]);
     }
@@ -61,10 +60,8 @@ class SantaController extends Controller
             ->firstOrNew();
 
         $data = $request->validate([
-            'telegram'        => ['string', 'required_without:tracking_number'],
-            'phone'           => ['string', 'required_without:tracking_number'],
-            'address'         => ['string', 'required_without:tracking_number'],
-            'about'           => ['string', 'required_without:tracking_number'],
+            'address'         => 'required|string',
+            'about'           => 'required|string',
             'tracking_number' => [
                 'nullable',
                 'string',
@@ -75,11 +72,6 @@ class SantaController extends Controller
         $participant
             ->fill($data)
             ->save();
-
-        $participant
-            ->receiver
-            ?->user
-            ?->notify(new SimpleMessageNotification('Получатель подарка "Тайного Санты" обновил информацию. Пожалуйста, проверьте.'));
 
         Toast::success('Ваша заявка на участие в принята! Готовьтесь к сюрпризу.')
             ->disableAutoHide();

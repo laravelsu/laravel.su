@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -22,13 +21,6 @@ return new class extends Migration
             $table->text('address')
                 ->comment('Адрес участника для отправки подарка');
 
-            $table->string('telegram')
-                ->nullable()
-                ->comment('Телеграм участника для связи');
-
-            $table->string('phone')
-                ->comment('Контактные данные участника для связи');
-
             $table->text('about')
                 ->comment('Информация о пользователе, которую он предоставляет о себе для получателя');
 
@@ -41,10 +33,6 @@ return new class extends Migration
             $table->string('tracking_number')
                 ->comment('Номер отслеживания посылки')
                 ->nullable();
-
-            $table->string('status')
-                ->comment('Статус участника в Тайном Санте')
-                ->default('new');
 
             $table->timestamps();
             $table->softDeletes();

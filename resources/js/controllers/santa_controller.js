@@ -1,16 +1,13 @@
-import { Controller } from '@hotwired/stimulus';
+import {Controller} from "@hotwired/stimulus";
 
 export default class extends Controller {
+
     connect() {
         this.startSnowfall();
     }
 
     disconnect() {
-        this.snowflakes.forEach((snowflake) => {
-            snowflake.remove();
-        });
-
-        this.snowflakes = [];
+        this.clearSnowfall();
     }
 
     /**
@@ -24,11 +21,11 @@ export default class extends Controller {
         }
 
         if (screenWidth < 768) {
-            return 50; // Планшеты
+            return 40; // Планшеты
         }
 
         if (screenWidth < 1200) {
-            return 80; // Небольшие экраны
+            return 60; // Небольшие экраны
         }
 
         return 100; // Большие экраны
@@ -38,22 +35,19 @@ export default class extends Controller {
      * Запускает снегопад, создавая снежинки на странице.
      */
     startSnowfall() {
-        this.snowflakes = [];
-
         const snowflakeCount = this.getSnowflakeCount();
         const svgUrls = [
-            '/img/ui/santa/snowflake-2.svg',
-            '/img/ui/santa/snowflake-3.svg',
-            '/img/ui/santa/snowflake-4.svg',
-            '/img/ui/santa/snowflake-5.svg',
-            '/img/ui/santa/snowflake-6.svg',
-            '/img/ui/santa/snowflake-7.svg',
+            "/img/ui/santa/snowflake-2.svg",
+            "/img/ui/santa/snowflake-3.svg",
+            "/img/ui/santa/snowflake-4.svg",
+            "/img/ui/santa/snowflake-5.svg",
+            "/img/ui/santa/snowflake-6.svg",
+            "/img/ui/santa/snowflake-7.svg",
         ];
 
         for (let i = 0; i < snowflakeCount; i++) {
             const snowflake = this.createSnowflake(svgUrls);
             this.element.appendChild(snowflake);
-            this.snowflakes.push(snowflake);
         }
     }
 
@@ -61,15 +55,15 @@ export default class extends Controller {
      * Создаёт элемент снежинки с рандомными стилями.
      */
     createSnowflake(svgUrls) {
-        const snowflake = document.createElement('img');
-        snowflake.classList.add('snowflake');
+        const snowflake = document.createElement("img");
+        snowflake.classList.add("snowflake");
 
-        snowflake.src = svgUrls[Math.floor(Math.random() * svgUrls.length)];
+        snowflake.src= svgUrls[Math.floor(Math.random() * svgUrls.length)];
 
-        snowflake.style.setProperty('--snowflake-size', `${this.getRandomInRange(0.5, 1, 2)}rem`);
-        snowflake.style.setProperty('--snowflake-left', `${this.getRandomInRange(0, 100, 5)}vw`);
-        snowflake.style.setProperty('--fall-duration', `${this.getRandomInRange(5, 20, 2)}s`);
-        snowflake.style.setProperty('--fall-delay', `${this.getRandomInRange(0, 5, 1)}s`);
+        snowflake.style.setProperty("--snowflake-size", `${this.getRandomInRange(0.5, 1, 2)}rem`);
+        snowflake.style.setProperty("--snowflake-left", `${this.getRandomInRange(0, 100, 5)}vw`);
+        snowflake.style.setProperty("--fall-duration", `${this.getRandomInRange(5, 20, 2)}s`);
+        snowflake.style.setProperty("--fall-delay", `${this.getRandomInRange(0, 5, 1)}s`);
 
         return snowflake;
     }
