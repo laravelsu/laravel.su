@@ -467,7 +467,6 @@ Route::get('/@{user:nickname}/awards', [\App\Http\Controllers\ProfileController:
 Route::get('/@{user:nickname}/meets', [\App\Http\Controllers\ProfileController::class, 'meets'])
     ->name('profile.meets');
 
-
 /*
 |--------------------------------------------------------------------------
 | Secret Santa
@@ -482,7 +481,6 @@ Route::middleware(['auth'])
 
 Route::get('/santa', [\App\Http\Controllers\SantaController::class, 'index'])->name('santa');
 Route::get('/santa/rules', [\App\Http\Controllers\SantaController::class, 'rules'])->name('santa.rules');
-
 
 /*
 |--------------------------------------------------------------------------

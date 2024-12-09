@@ -1,7 +1,6 @@
-import {Controller} from "@hotwired/stimulus";
+import { Controller } from '@hotwired/stimulus';
 
 export default class extends Controller {
-
     connect() {
         this.startSnowfall();
     }
@@ -37,12 +36,12 @@ export default class extends Controller {
     startSnowfall() {
         const snowflakeCount = this.getSnowflakeCount();
         const svgUrls = [
-            "/img/ui/santa/snowflake-2.svg",
-            "/img/ui/santa/snowflake-3.svg",
-            "/img/ui/santa/snowflake-4.svg",
-            "/img/ui/santa/snowflake-5.svg",
-            "/img/ui/santa/snowflake-6.svg",
-            "/img/ui/santa/snowflake-7.svg",
+            '/img/ui/santa/snowflake-2.svg',
+            '/img/ui/santa/snowflake-3.svg',
+            '/img/ui/santa/snowflake-4.svg',
+            '/img/ui/santa/snowflake-5.svg',
+            '/img/ui/santa/snowflake-6.svg',
+            '/img/ui/santa/snowflake-7.svg',
         ];
 
         for (let i = 0; i < snowflakeCount; i++) {
@@ -55,15 +54,15 @@ export default class extends Controller {
      * Создаёт элемент снежинки с рандомными стилями.
      */
     createSnowflake(svgUrls) {
-        const snowflake = document.createElement("img");
-        snowflake.classList.add("snowflake");
+        const snowflake = document.createElement('img');
+        snowflake.classList.add('snowflake');
 
-        snowflake.src= svgUrls[Math.floor(Math.random() * svgUrls.length)];
+        snowflake.src = svgUrls[Math.floor(Math.random() * svgUrls.length)];
 
-        snowflake.style.setProperty("--snowflake-size", `${this.getRandomInRange(0.5, 1, 2)}rem`);
-        snowflake.style.setProperty("--snowflake-left", `${this.getRandomInRange(0, 100, 5)}vw`);
-        snowflake.style.setProperty("--fall-duration", `${this.getRandomInRange(5, 20, 2)}s`);
-        snowflake.style.setProperty("--fall-delay", `${this.getRandomInRange(0, 5, 1)}s`);
+        snowflake.style.setProperty('--snowflake-size', `${this.getRandomInRange(0.5, 1, 2)}rem`);
+        snowflake.style.setProperty('--snowflake-left', `${this.getRandomInRange(0, 100, 5)}vw`);
+        snowflake.style.setProperty('--fall-duration', `${this.getRandomInRange(5, 20, 2)}s`);
+        snowflake.style.setProperty('--fall-delay', `${this.getRandomInRange(0, 5, 1)}s`);
 
         return snowflake;
     }
