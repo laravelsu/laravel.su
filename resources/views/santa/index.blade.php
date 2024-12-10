@@ -29,46 +29,72 @@
             <div class="row gx-5 gy-4 gy-md-5 row-cols-1 row-cols-lg-3 text-balance">
                 <div class="col">
                     <p class="display-1 text-primary fw-bolder">1</p>
-                    <h3 class="fs-2 fw-bolder">Регистрация</h3>
+                    <h3 class="fs-2 fw-bolder">Присоединяйтесь к зимней игре</h3>
                     <hr class="w-25 text-primary">
-                    <p>
-                        Зарегистрируйте участие используя существующий аккаунт на сайте.
-                        Это поможет нам подготовить все необходимое для вашего участия.
+                    <p class="text-balance">
+                        Зарегистрируйтесь на странице игры, используя свой аккаунт.
+                        Это займет всего минуту и позволит нам организовать всё идеально.
                     </p>
                 </div>
                 <div class="col">
                     <p class="display-1 text-primary fw-bolder">2</p>
-                    <h3 class="fs-2 fw-bolder">Получение пары</h3>
+                    <h3 class="fs-2 fw-bolder">Узнайте, кого будете радовать</h3>
                     <hr class="w-25 text-primary">
-                    <p>Дождитесь 2 декабря и мы найдем вам пару! Она будет доступна на странице в указанный день.</p>
+                    <p class="text-balance">
+                        В назначенный день на вашей странице «Тайный Санта» появится информация о вашем получателе: его имя, предпочтения и адрес пункта выдачи Ozon.
+                    </p>
                 </div>
                 <div class="col">
                     <p class="display-1 text-primary fw-bolder">3</p>
-                    <h3 class="fs-2 fw-bolder">Подготовка подарка</h3>
+                    <h3 class="fs-2 fw-bolder">Закажите подарок на Ozon</h3>
                     <hr class="w-25 text-primary">
-                    <p>Не забудьте подготовить подарок для своего получателя и отправить его по почте.</p>
+                    <p class="text-balance">
+                        Найдите идеальный подарок на <a href="https://ozon.ru/" target="_blank">Ozon</a> и оформите заказ в указанный пункт выдачи. Это удобно: никаких
+                        очередей и долгой доставки!
+                    </p>
                 </div>
                 <div class="col">
                     <p class="display-1 text-primary fw-bolder">4</p>
-                    <h3 class="fs-2 fw-bolder">Отправка подарка</h3>
+                    <h3 class="fs-2 fw-bolder">Укажите номер заказа</h3>
                     <hr class="w-25 text-primary">
-                    <p>Укажите номер трека для отправления на странице Тайного Санты, чтобы ваш получатель мог отслеживать подарок.</p>
+                    <p class="text-balance">
+                        После покупки добавьте номер заказа и код получения на странице «Тайный Санта».
+                        Это нужно, чтобы ваш подарок можно было получить в пункте выдачи.
+                    </p>
                 </div>
                 <div class="col">
                     <p class="display-1 text-primary fw-bolder">5</p>
-                    <h3 class="fs-2 fw-bolder">Волшебство</h3>
+                    <h3 class="fs-2 fw-bolder">Получите свой подарок!</h3>
                     <hr class="w-25 text-primary">
-                    <p>Осталось немного подождать вашего подарка!</p>
+                    <p class="text-balance">
+                        Ждите подарок от вашего Тайного Санты! Как только он добавит информацию о своем заказе, вы
+                        сможете забрать сюрприз в вашем пункте выдачи.
+                    </p>
                 </div>
 
                 <div class="col">
-                    <div class="p-4 p-xl-5 bg-body rounded d-flex flex-column h-100 position-relative d-flex align-items-center">
-                        <span class="text-decoration-none d-block text-center my-auto opacity-75">
+                    <div class="p-4 p-xl-5 bg-body rounded d-flex flex-column h-100 position-relative d-flex align-items-center shadow-sm"
+                    style="
+    background: url(/img/ui/santa/pattern.svg);
+    background-repeat: repeat;
+    background-size: contain;">
+
+
+                        <div class="text-decoration-none d-flex flex-column gap-1 text-center my-auto opacity-75">
                             <span class="d-block mb-3 display-1">
                               🎅
                             </span>
-                            Я в деле!
-                        </span>
+
+                            <div class="d-flex flex-column gap-1 fw-bolder text-balance" style="transform: rotate(10deg);">
+                                <span class="text-primary fs-4 mb-1 fw-bolder">
+                                    Хо<span class="text-body-emphasis">-</span>хо<span class="text-body-emphasis">-</span>хо
+                                </span>
+
+                                <span class="fs-5 text-body-emphasis">
+                                    Праздник станет еще ярче!
+                                </span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
