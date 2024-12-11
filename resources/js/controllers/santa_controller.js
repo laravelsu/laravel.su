@@ -6,7 +6,11 @@ export default class extends Controller {
     }
 
     disconnect() {
-        this.clearSnowfall();
+        this.snowflakes.forEach((snowflake) => {
+            snowflake.remove();
+        });
+
+        this.snowflakes = [];
     }
 
     /**
@@ -20,11 +24,11 @@ export default class extends Controller {
         }
 
         if (screenWidth < 768) {
-            return 40; // Планшеты
+            return 50; // Планшеты
         }
 
         if (screenWidth < 1200) {
-            return 60; // Небольшие экраны
+            return 80; // Небольшие экраны
         }
 
         return 100; // Большие экраны
@@ -34,6 +38,8 @@ export default class extends Controller {
      * Запускает снегопад, создавая снежинки на странице.
      */
     startSnowfall() {
+        this.snowflakes = [];
+
         const snowflakeCount = this.getSnowflakeCount();
         const svgUrls = [
             '/img/ui/santa/snowflake-2.svg',
@@ -47,6 +53,7 @@ export default class extends Controller {
         for (let i = 0; i < snowflakeCount; i++) {
             const snowflake = this.createSnowflake(svgUrls);
             this.element.appendChild(snowflake);
+            this.snowflakes.push(snowflake);
         }
     }
 

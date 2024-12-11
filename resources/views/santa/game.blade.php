@@ -7,7 +7,16 @@
 
     <x-container>
         <div class="row">
-            <div class="bg-body-tertiary p-4 p-xl-5 rounded">
+            <div class="bg-body-tertiary p-4 p-xl-5 rounded position-relative">
+
+                <button type="button"
+                        data-controller="history"
+                        data-history-url-value="{{route('santa')}}"
+                        data-action="click->history#back"
+                        class="position-absolute top-0 end-0 m-4 btn btn-link link-secondary text-decoration-none fs-3 d-none d-md-inline">
+                    <x-icon path="bs.x-lg"/>
+                </button>
+
                 <div class="col-xxl-8 mx-auto d-flex flex-column gap-3">
 
                     <x-profile :user="auth()->user()" class="mb-3"/>
@@ -17,7 +26,7 @@
                         <div class="alert alert-warning text-center lh-sm text-balance" role="alert">
                             <strong>У вас есть время до 20 декабря, чтобы изменить свою заявку! 🎁</strong>
                             <small class="opacity-75 d-block">После этой даты вы сможете увидеть информацию о получателе
-                                                              вашего подарка и указать трек-номер для отправления.
+                                                              вашего подарка и указать секретный-номер для отправления.
                                                               🚚</small>
                         </div>
                     @endif
@@ -25,12 +34,13 @@
 
                     @if($participant->exists && $participant->hasReceiver())
                     <dl class="bg-body rounded shadow-sm p-4 py-4 d-flex flex-column gap-3">
+
                         <div class="d-flex">
                             <dt class="opacity-50 fw-light me-3 col-4">
-                                О получателе:
+                                Номер получателя:
                             </dt>
                             <dd class="text-body-emphasis">
-                                {{  $participant->receiver->about }}
+                                {{ $participant->receiver->id }}
                             </dd>
                         </div>
                         <div class="d-flex">
@@ -41,11 +51,19 @@
                                 {{  $participant->receiver->address }}
                             </dd>
                         </div>
+                        <div class="d-flex">
+                            <dt class="opacity-50 fw-light me-3 col-4">
+                                Вот, что получатель рассказал о себе:
+                            </dt>
+                            <dd class="text-body-emphasis">
+                                {!! nl2br(e($participant->receiver->about)) !!}
+                            </dd>
+                        </div>
                     </dl>
                     @endif
 
 
-                    <form action="{{ route('santa.start') }}" method="post">
+                    <form action="{{ route('santa.game') }}" method="post">
                         @csrf
 
                         <div class="row g-5">
@@ -57,12 +75,10 @@
                                         <label for="address" class="form-label">Адрес доставки</label>
 
                                         <div class="form-text">
-                                            <p>Укажите свой домашний адрес или любого другого человека, который сможет
-                                               забрать и
-                                               передать вашу посылку с подарком, например, ваш родственник или близкий
-                                               друг -
-                                               договоритесь с ними, если не хотите раскрывать свою личность Тайному
-                                               Санте.</p>
+                                            <p>
+                                                Укажите адрес пункта выдачи OZON, удобного для вас.
+                                                Например, рядом с домом. Или постамат в торговом центре.
+                                            </p>
                                         </div>
 
                                         <textarea
@@ -72,11 +88,10 @@
                                             rows="4"
                                             name="address"
                                             id="address"
-                                            placeholder="398027, г.Липецк ул. Красивых молдавских партизан, д.6 кв.18 Багратионов Иван Дмитриевич">{{ old('address', $participant->address) }}</textarea>
+                                            placeholder="г.Липецк ул. Красивых молдавских партизан, д.6">{{ old('address', $participant->address) }}</textarea>
                                         <x-error field="address" class="invalid-feedback my-3"/>
                                         <div class="form-text">
-                                            <p>Укажите полный адрес, чтобы ваш подарок точно нашёл вас! Для
-                                               непредвиденных случаев желательно указать номер телефона.</p>
+                                            <p><a href="https://www.ozon.ru/geo/" target="_blank">Укажите полный адрес</a>, чтобы ваш подарок точно нашёл вас! Лучше всего выбрать постамат</p>
                                         </div>
 
                                     </div>
@@ -105,35 +120,80 @@
                                             пожелания!
                                         </div>
                                     </div>
+
+
+                                    <div class="mb-3">
+                                        <label for="about" class="form-label">Контакты</label>
+
+                                        <div class="form-text">
+                                            <p>
+                                                Для непредвиденных случаев укажите номер телефона.
+                                            </p>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <input
+                                                class="form-control text-balance mb-3 p-4 {{ $errors->has('phone') ? 'is-invalid' : '' }}"
+                                                required
+                                                @disabled($participant->hasReceiver())
+                                                name="phone"
+                                                id="phone"
+                                                pattern="^\+7\d{10}$"
+                                                value="{{ old('phone', $participant->phone) }}"
+                                                placeholder="+79513000000"/>
+                                            <x-error field="phone" class="invalid-feedback my-3"/>
+                                            <div class="form-text">
+                                                Его увидит только администрация сайта и свяжется с вами в случае необходимости.
+                                            </div>
+                                        </div>
+
+
+                                        <input
+                                            class="form-control text-balance mb-3 p-4 {{ $errors->has('telegram') ? 'is-invalid' : '' }}"
+                                            @disabled($participant->hasReceiver())
+                                            name="phone"
+                                            id="phone"
+                                            value="{{ old('telegram', $participant->telegram) }}"
+                                            placeholder="@tabuna"/>
+                                        <x-error field="telegram" class="invalid-feedback my-3"/>
+                                        <div class="form-text">
+                                            Мы бы предпочти решать все вопросы оперативно в Telegram. Укажите ваш никнейм, если у вас есть аккаунт.
+                                            Его так же увидит только администрация сайта.
+                                        </div>
+                                    </div>
                                 @endif
 
                                 @if($participant->hasReceiver())
                                     <div class="mb-3">
-                                        <label for="tracking_number" class="form-label">Трек-номер</label>
+                                        <label for="tracking_number" class="form-label">Цифровой код</label>
                                         <input
-                                            class="form-control mb-3 {{ $errors->has('tracking_number') ? 'is-invalid' : '' }}"
+                                            class="form-control mb-3 p-4 {{ $errors->has('tracking_number') ? 'is-invalid' : '' }}"
                                             name="tracking_number"
                                             id="tracking_number"
                                             type="text"
-                                            placeholder="Введите трек-номер отправления"
+                                            placeholder="Введите секретный код заказа"
                                             value="{{ old('tracking_number', $participant->tracking_number) }}"/>
                                         <x-error field="tracking_number" class="invalid-feedback my-3"/>
                                         <div class="form-text">
-                                            Если вы уже отправили подарок, укажите трек-номер для отслеживания.
+                                            Если вы уже отправили подарок, укажите цифровой код, который находится
+                                            под штрихкодом в приложении или в разделе “Заказы” на сайте.
                                         </div>
                                     </div>
                                 @endif
 
                             </div>
 
-                            @if(!$participant->hasReceiver())
+
                             <div class="col-12 col-lg-5 d-none d-lg-block">
                                 <div class="bg-body rounded p-4 d-flex flex-column gap-3">
-                                    <small class="fw-bolder d-block">Полезные советы</small>
-                                    <p class="opacity-50 mb-0 small text-balance">
-                                        Тайный Санта — это весёлый обмен подарками. Не бойтесь проявить фантазию!
-                                        Если вы сомневаетесь в выборе, небольшой сувенир или открытка всегда уместны.
-                                    </p>
+
+
+                                    @if(!$participant->hasReceiver())
+                                        <small class="fw-bolder d-block">Полезные советы</small>
+                                        <p class="opacity-50 mb-0 small text-balance">
+                                            Тайный Санта — это весёлый обмен подарками. Не бойтесь проявить фантазию!
+                                            Если вы сомневаетесь в выборе, небольшой сувенир или открытка всегда уместны.
+                                        </p>
 
                                     <p class="opacity-50 mb-0 small text-balance">
                                         Вашу личную информацию, необходимую для отправки подарка, получит лишь один
@@ -146,25 +206,43 @@
                                         Если вы не сможете участвовать в Тайном Санте, удалите свою заявку
                                         <strong>до жеребьевки</strong>, чтобы не стать гринчем и не испортить праздник.
                                     </p>
+                                    @else
+                                        <small class="fw-bolder d-block">❗ Код в каждом заказе уникален и обновляется раз в сутки.</small>
+
+                                        <p class="opacity-50 mb-0 small text-balance">
+                                            Пожалуйста, укажите так что бы он был актуален на момент отправки и
+                                            у получателя была возможность забрать его в течении дня.
+                                        </p>
+                                    @endif
                                 </div>
                             </div>
-                            @endif
 
                         </div>
 
                         <div
-                            class="mt-3 d-flex flex-column flex-md-row justify-content-center justify-content-md-start align-items-md-baseline">
+                            class="mt-3 d-flex flex-column flex-md-row justify-content-center justify-content-md-start align-items-md-baseline gap-4">
                             <button type="submit"
                                     class="btn btn-primary mb-3 mb-md-0">{{ $participant->exists ? "Обновить заявку" : "Отправить заявку" }}</button>
 
                             @if($participant->exists && !$participant->hasReceiver())
-                                <a class="justify-content-center justify-content-md-start link-body-emphasis ms-md-auto icon-link text-decoration-none"
+                                <a class="justify-content-center justify-content-md-start link-body-emphasis icon-link text-decoration-none"
                                    data-turbo-method="delete"
                                    data-turbo-confirm="Вы уверены, что хотите удалить свою заявку?"
                                    href="{{route('santa.delete')}}">
                                     Я не смогу участвовать :(
                                 </a>
                             @endif
+
+                            {{--
+                            @if($participant->exists && $participant->hasReceiver())
+                                <a class="justify-content-center justify-content-md-start link-body-emphasis icon-link text-decoration-none"
+                                   data-turbo-method="delete"
+                                   data-turbo-confirm="Вы точно получили подарок?"
+                                   href="{{route('santa.delete')}}">
+                                    Я получил подарок 🎁
+                                </a>
+                            @endif
+                            --}}
                         </div>
 
 

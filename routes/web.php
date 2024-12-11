@@ -474,9 +474,9 @@ Route::get('/@{user:nickname}/meets', [\App\Http\Controllers\ProfileController::
 */
 Route::middleware(['auth'])
     ->group(function () {
-        Route::get('/santa/start', [\App\Http\Controllers\SantaController::class, 'start'])->name('santa.start');
-        Route::post('/santa/start', [\App\Http\Controllers\SantaController::class, 'update'])->name('santa.update');
-        Route::delete('/santa/start', [\App\Http\Controllers\SantaController::class, 'delete'])->name('santa.delete');
+        Route::get('/santa/game', [\App\Http\Controllers\SantaController::class, 'game'])->name('santa.game');
+        Route::post('/santa/game', [\App\Http\Controllers\SantaController::class, 'update'])->name('santa.update');
+        Route::delete('/santa/game', [\App\Http\Controllers\SantaController::class, 'delete'])->name('santa.delete');
     });
 
 Route::get('/santa', [\App\Http\Controllers\SantaController::class, 'index'])->name('santa');
