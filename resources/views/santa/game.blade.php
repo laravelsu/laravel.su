@@ -151,8 +151,8 @@
                                         <input
                                             class="form-control text-balance mb-3 p-4 {{ $errors->has('telegram') ? 'is-invalid' : '' }}"
                                             @disabled($participant->hasReceiver())
-                                            name="phone"
-                                            id="phone"
+                                            name="telegram"
+                                            id="telegram"
                                             value="{{ old('telegram', $participant->telegram) }}"
                                             placeholder="@tabuna"/>
                                         <x-error field="telegram" class="invalid-feedback my-3"/>
