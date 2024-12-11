@@ -6,7 +6,7 @@
     <div data-controller="santa"></div>
 
 
-    <x-header image="/img/ui/santa/tree.svg">
+    <x-header>
         <x-slot:sup>Станьте частью волшебства!</x-slot>
         <x-slot:title>Тайный Санта Laravel 2025</x-slot>
 
@@ -21,6 +21,16 @@
                 <x-icon path="i.arrow-right" class="bi"/>
             </a>
         </x-slot>
+
+        <x-slot:content>
+        <img src="/img/ui/santa/tree.svg" alt="Тайный Санта Laravel 2025"
+             class="d-none d-sm-block mx-lg-auto img-fluid pe-none"
+             style="max-height: 410px; object-fit: contain;"
+             width="700"
+             height="500"
+             loading="lazy">
+        </x-slot:content>
+
     </x-header>
 
     <x-container>

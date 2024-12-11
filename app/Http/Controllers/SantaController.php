@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SecretSantaParticipant;
 use App\Notifications\SimpleMessageNotification;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -18,9 +19,11 @@ class SantaController extends Controller
      */
     public function index(Request $request): View
     {
-        $participant = $request->user()
-            ->secretSantaParticipant()
+        $participant = $request?->user()
+            ?->secretSantaParticipant()
             ->firstOrNew();
+
+        $participant ??= new SecretSantaParticipant();
 
         return view('santa.index', [
             'participant' => $participant,
