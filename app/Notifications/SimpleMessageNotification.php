@@ -7,6 +7,7 @@ use App\Notifications\Channels\SiteChannel;
 use App\Notifications\Channels\SiteMessage;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use NotificationChannels\WebPush\WebPushChannel;
 use NotificationChannels\WebPush\WebPushMessage;
@@ -34,7 +35,24 @@ class SimpleMessageNotification extends Notification implements ShouldQueue
         return [
             SiteChannel::class,
             WebPushChannel::class,
+            'mail',
         ];
+    }
+
+    /**
+     * Get the mail representation of the notification.
+     *
+     * @param User $user
+     *
+     * @throws \Throwable
+     *
+     * @return MailMessage
+     */
+    public function toMail(User $user)
+    {
+        return (new MailMessage)
+            ->subject('Новое уведомление')
+            ->line($this->message);
     }
 
     /**

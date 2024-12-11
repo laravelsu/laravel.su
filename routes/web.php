@@ -469,6 +469,21 @@ Route::get('/@{user:nickname}/meets', [\App\Http\Controllers\ProfileController::
 
 /*
 |--------------------------------------------------------------------------
+| Secret Santa
+|--------------------------------------------------------------------------
+*/
+Route::middleware(['auth'])
+    ->group(function () {
+        Route::get('/santa/game', [\App\Http\Controllers\SantaController::class, 'game'])->name('santa.game');
+        Route::post('/santa/game', [\App\Http\Controllers\SantaController::class, 'update'])->name('santa.update');
+        Route::delete('/santa/game', [\App\Http\Controllers\SantaController::class, 'delete'])->name('santa.delete');
+    });
+
+Route::get('/santa', [\App\Http\Controllers\SantaController::class, 'index'])->name('santa');
+Route::get('/santa/rules', [\App\Http\Controllers\SantaController::class, 'rules'])->name('santa.rules');
+
+/*
+|--------------------------------------------------------------------------
 | Review
 |--------------------------------------------------------------------------
 */
