@@ -23,7 +23,7 @@ class SantaController extends Controller
             ?->secretSantaParticipant()
             ->firstOrNew();
 
-        $participant ??= new SecretSantaParticipant();
+        $participant ??= new SecretSantaParticipant;
 
         return view('santa.index', [
             'participant' => $participant,
