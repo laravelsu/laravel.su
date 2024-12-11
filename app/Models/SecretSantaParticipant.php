@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class SecretSantaParticipant extends Model
 {
-    use SoftDeletes, HasUuids;
+    use HasUuids, SoftDeletes;
 
     protected $fillable = [
         'address',
@@ -22,7 +22,7 @@ class SecretSantaParticipant extends Model
      * @var string[]
      */
     protected $with = [
-        'receiver'
+        'receiver',
     ];
 
     // Связь с пользователем
