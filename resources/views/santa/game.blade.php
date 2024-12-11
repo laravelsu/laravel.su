@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title', 'Заявка на участие в Тайном Санте')
+@section('title', 'Заявка на участие в игру "Тайный Санта"')
 
 @section('content')
 
