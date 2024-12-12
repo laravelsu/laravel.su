@@ -16,7 +16,7 @@
         </x-slot>
 
         <x-slot:actions>
-            <a href="{{ route('santa.game') }}" class="btn btn-primary btn-lg px-4">{{ $participant->exists ? 'Посмотреть статус' : 'Присоединится' }}</a>
+            <a href="{{ route('santa.game') }}" class="btn btn-primary btn-lg px-4">{{ $participant->exists ? 'Посмотреть статус' : 'Присоединиться' }}</a>
             <a href="{{ route('santa.rules') }}" class="d-none d-md-inline-flex link-body-emphasis text-decoration-none icon-link icon-link-hover">
                 Полные правила
                 <x-icon path="i.arrow-right" class="bi"/>
@@ -43,7 +43,7 @@
                     <h3 class="fs-2 fw-bolder">Присоединяйтесь к зимней игре</h3>
                     <hr class="w-25 text-primary">
                     <p class="text-balance">
-                        Нажмите на кнопку "Присоединится" на странице игры, используя свой аккаунт.
+                        Нажмите на кнопку "Присоединиться" на странице игры, используя свой аккаунт.
                         Заполните информацию о себе это позволит нам организовать всё идеально.
                     </p>
                 </div>

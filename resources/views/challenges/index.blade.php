@@ -13,7 +13,7 @@
 
         <x-slot:actions>
             @can('create', \App\Models\ChallengeApplication::class)
-                <a href="{{ route('challenges.registration') }}" class="btn btn-primary btn-lg px-4">Присоединится</a>
+                <a href="{{ route('challenges.registration') }}" class="btn btn-primary btn-lg px-4">Присоединиться</a>
             @elseif(!is_null($readyApplicationUrl))
                 <a href="{{ $readyApplicationUrl}}" target="_blank" rel="noreferrer" class="btn btn-primary btn-lg px-4" title="Вы уже участвуете">Вы уже участвуете</a>
             @else
@@ -155,7 +155,7 @@
                                 <span class="d-block mb-3">
                                     <x-icon path="i.sun" width="3rem" height="3rem"></x-icon>
                                 </span>
-                                Присоединится
+                                Присоединиться
                             </a>
 
                         @elseif(!is_null($readyApplicationUrl))

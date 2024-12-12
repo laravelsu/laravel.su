@@ -15,7 +15,7 @@
         </x-slot>
 
         <x-slot:actions>
-            <a href="{{ route('santa') }}" class="btn btn-primary btn-lg px-4">Присоединится</a>
+            <a href="{{ route('santa') }}" class="btn btn-primary btn-lg px-4">Присоединиться</a>
             <a href="{{ route('home') }}" class="d-none d-md-inline-flex link-body-emphasis text-decoration-none icon-link icon-link-hover">
                 На главную
                 <x-icon path="i.arrow-right" class="bi"/>
