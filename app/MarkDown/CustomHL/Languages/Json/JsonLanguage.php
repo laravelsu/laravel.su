@@ -11,6 +11,7 @@ use App\MarkDown\CustomHL\Languages\Json\Patterns\JsonDoubleQuoteValuePattern;
 use App\MarkDown\CustomHL\Languages\Json\Patterns\JsonPropertyPattern;
 use App\MarkDown\CustomHL\Languages\Json\Injections\JsonArrayInjection;
 use App\MarkDown\CustomHL\Languages\Json\Patterns\DigitsValuePattern;
+use App\MarkDown\CustomHL\Languages\CommonPatterns\KeywordPattern;
 
 class JsonLanguage extends CustomBaseLanguage
 {
@@ -31,6 +32,9 @@ class JsonLanguage extends CustomBaseLanguage
     {
         return [
             ...parent::getPatterns(),
+            
+            new KeywordPattern('null', 'hl-slug'),
+            
             new JsonPropertyPattern(),
             //new JsonAccoladesPattern(),
             //new JsonArrayBracketsPattern(),

@@ -218,20 +218,72 @@ pre, code {
 }
 
 
+.hl-yaml-property{
+    color: #89DDFF;
+}
+
+.hl-yaml-comment {
+    color: #697098;
+}
+
+
+
+
+
+.hl-slug{
+    color: #FF5874;
+}
+
+.hl-delimeter{
+    color: #89DDFF;
+}
+
+.hl-operator{
+    color: #C792EA;
+}
+
+.hl-tag {
+    color: #D3423E;
+}
+
+.hl-keyword {
+    color: #C792EA;
+}
+
 .hl-property {
-    color: #cb57ac;
+    color: #82AAFF;
 }
 
 .hl-attribute {
     font-style: italic;
 }
 
+.hl-type {
+    color: #FFCB8B;
+}
+
 .hl-generic {
-    color: #62c509;
+    color: #0000ff;
+}
+
+.hl-value {
+    color: #C3E88D;
+}
+
+.hl-literal {
+    color: #a31515;
+}
+
+.hl-number {
+    color: #F78C6C;
 }
 
 .hl-variable {
-    color: #fafafa;
+    color: #BEC5D4;
+}
+
+.hl-comment {
+    color: #697098;
 }
 
 .hl-blur {
@@ -247,21 +299,24 @@ pre, code {
 }
 
 .hl-addition {
+    display: inline-block;
     min-width: 100%;
-    background-color: #00FF0033;
+    background-color: #00FF0022;
 }
 
 .hl-deletion {
+    display: inline-block;
     min-width: 100%;
-    background-color: #ef535033;
+    background-color: #FF000011;
 }
 
 .hl-gutter {
     display: inline-block;
-    margin-right: 1ch;
     font-size: 0.9em;
     color: #555;
     padding: 0 1ch;
+    margin-right: 1ch;
+    user-select: none;
 }
 
 .hl-gutter-addition {

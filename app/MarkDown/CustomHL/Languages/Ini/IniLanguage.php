@@ -33,8 +33,8 @@ class IniLanguage extends CustomBaseLanguage
     {
         return [
             ...parent::getPatterns(),
-            new ConstantPattern(),
             new DoubleQuoteValuePattern(),
+            new ConstantPattern(),
         ];
     }
 }

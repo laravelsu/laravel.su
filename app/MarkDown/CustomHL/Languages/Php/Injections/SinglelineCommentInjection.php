@@ -10,6 +10,7 @@ use Tempest\Highlight\Injection;
 use Tempest\Highlight\IsInjection;
 use Tempest\Highlight\Escape;
 use Tempest\Highlight\Tokens\DynamicTokenType;
+use App\MarkDown\CustomHL\Tokens\CanNotContainTokenType;
 
 #[After]
 final readonly class SinglelineCommentInjection implements Injection
@@ -43,9 +44,9 @@ final readonly class SinglelineCommentInjection implements Injection
         
         //if (strpos($content, 'throttle') > 0) { dd($content, $clear_content, $t); }
         return Escape::injection(
-            Escape::tokens($theme->before(new DynamicTokenType('hl-php-comment')))
+            Escape::tokens($theme->before(new CanNotContainTokenType('hl-php-comment')))  //DynamicTokenType('hl-php-comment')))
             . $clear_content  //$content  //$clear_content
-            . Escape::tokens($theme->after(new DynamicTokenType('hl-php-comment')))
+            . Escape::tokens($theme->after(new CanNotContainTokenType('hl-php-comment')))  //DynamicTokenType('hl-php-comment')))
         ); 
     }
 }

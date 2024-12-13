@@ -20,7 +20,7 @@ final readonly class PhpDocCommentReturnTypeInjection implements Injection
 
     public function getPattern(): string
     {
-        return '\@(return|throws|var)(\s)+(?<match>.*?)(\*\/|$|\R)';
+        return '\@(return|throws|var|extends)(\s)+(?<match>.*?)(\*\/|$|\R)';
     }
 
     public function parseContent(string $content, Highlighter $highlighter): string

@@ -2,25 +2,26 @@
 
 declare(strict_types=1);
 
-namespace App\MarkDown\CustomHL\Languages\Ini\Patterns;
+namespace App\MarkDown\CustomHL\Languages\Yaml\Patterns;
 
 use Tempest\Highlight\IsPattern;
 use Tempest\Highlight\Pattern;
+use Tempest\Highlight\PatternTest;
 use Tempest\Highlight\Tokens\TokenType;
 use Tempest\Highlight\Tokens\DynamicTokenType;
 
-final readonly class ConstantPattern implements Pattern
+#[PatternTest(input: '# comment', output: '# comment')]
+final readonly class YamlCommentPattern implements Pattern
 {
     use IsPattern;
 
     public function getPattern(): string
     {
-        //return '/\s?(?<match>[\S]+)=/';
-        return '/(?<match>[\w]+)=/';
+        return '(?<match>\#(.)*)';
     }
 
     public function getTokenType(): TokenType
     {
-        return new DynamicTokenType('hl-ini-constant');
+        return new DynamicTokenType('hl-yaml-comment');
     }
 }

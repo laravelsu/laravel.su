@@ -19,7 +19,7 @@ final readonly class SingleQuoteValueInjection implements Injection
 
     public function getPattern(): string
     {
-        return "(?<match>'(?!(s ))(\\\'|.|\n)*?')";
+        return "(?<match>'(?!(s ))([^\\\\]\\\'|.|\n)*?')";
     }
 
     public function parseContent(string $content, Highlighter $highlighter): string
