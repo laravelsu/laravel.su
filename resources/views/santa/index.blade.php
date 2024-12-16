@@ -16,7 +16,19 @@
         </x-slot>
 
         <x-slot:actions>
-            <a href="{{ route('santa.game') }}" class="btn btn-primary btn-lg px-4">{{ $participant->exists ? 'Посмотреть статус' : 'Присоединиться' }}</a>
+
+            @if($participant->exists)
+                <a href="{{ route('santa.game') }}" class="btn btn-primary btn-lg px-4">
+                    Посмотреть статус
+                </a>
+            @else
+                <a href="{{ route('santa.game') }}" class="btn btn-primary btn-lg px-4 disabled pe-none" disabled>
+                    Санта уже укомплектован 🎅
+                    {{-- Присоединиться --}}
+                </a>
+            @endif
+
+
             <a href="{{ route('santa.rules') }}" class="d-none d-md-inline-flex link-body-emphasis text-decoration-none icon-link icon-link-hover">
                 Полные правила
                 <x-icon path="i.arrow-right" class="bi"/>
