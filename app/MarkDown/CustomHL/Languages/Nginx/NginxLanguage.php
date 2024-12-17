@@ -10,6 +10,7 @@ use App\MarkDown\CustomHL\Languages\Nginx\Patterns\DoubleQuoteValuePattern;
 use App\MarkDown\CustomHL\Languages\Nginx\Patterns\VariablesPattern;
 use App\MarkDown\CustomHL\Languages\Nginx\Patterns\OperatorPattern;
 use App\MarkDown\CustomHL\Languages\Nginx\Patterns\LocationPathPattern;
+use App\MarkDown\CustomHL\Languages\Nginx\Patterns\NginxKeywordPattern;
 
 class NginxLanguage extends CustomBaseLanguage
 {
@@ -47,6 +48,8 @@ class NginxLanguage extends CustomBaseLanguage
             new KeywordPattern('fastcgi_hide_header'),
             new KeywordPattern('deny'),
             
+            new NginxKeywordPattern(),
+
             new OperatorPattern('(=|~)'),
         
             new LocationPathPattern(),

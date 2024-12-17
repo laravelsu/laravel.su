@@ -23,6 +23,7 @@ use App\MarkDown\CustomHL\Languages\JavaScript\Patterns\OperatorPattern;
 use App\MarkDown\CustomHL\Languages\JavaScript\Injections\JsSingleQuoteValueInjection;
 use App\MarkDown\CustomHL\Languages\JavaScript\Injections\JsSingleQuoteValue2Injection;
 use App\MarkDown\CustomHL\Languages\JavaScript\Patterns\FunctionEPattern;
+use App\MarkDown\CustomHL\Languages\JavaScript\Injections\JsHTMLInjection;
 
 class JavaScriptLanguage extends CustomBaseLanguage
 {
@@ -36,6 +37,7 @@ class JavaScriptLanguage extends CustomBaseLanguage
         return [
             'javascript',
             'node',
+            'jsx',
         ];
     }
 
@@ -46,6 +48,7 @@ class JavaScriptLanguage extends CustomBaseLanguage
             //new JsDocInjection(),
             new JsSingleQuoteValueInjection(),
             new JsSingleQuoteValue2Injection(),
+            new JsHTMLInjection(),
         ];
     }
 
@@ -67,7 +70,7 @@ class JavaScriptLanguage extends CustomBaseLanguage
             //new JsKeywordPattern('of'),
             //new JsKeywordPattern('get'),
             //new JsKeywordPattern('eval'),
-            //new JsKeywordPattern('async'),
+            new JsKeywordPattern('async'),
             //new JsKeywordPattern('as'),
             //new JsKeywordPattern('break'),
             //new JsKeywordPattern('case'),
@@ -77,13 +80,13 @@ class JavaScriptLanguage extends CustomBaseLanguage
             //new JsKeywordPattern('debugger'),
             //new JsKeywordPattern('delete'),
             //new JsKeywordPattern('do'),
-            //new JsKeywordPattern('else'),
+            new JsKeywordPattern('else'),
             //new JsKeywordPattern('extends'),
             //new JsKeywordPattern('false'),
             //new JsKeywordPattern('finally'),
             //new JsKeywordPattern('for'),
             //new JsKeywordPattern('function'),
-            //new JsKeywordPattern('if'),
+            new JsKeywordPattern('if'),
             //new JsKeywordPattern('in'),
             //new JsKeywordPattern('instanceof'),
             new JsKeywordPattern('new'),
@@ -102,7 +105,7 @@ class JavaScriptLanguage extends CustomBaseLanguage
             //new JsKeywordPattern('let'),
             //new JsKeywordPattern('static'),
             //new JsKeywordPattern('yield'),
-            //new JsKeywordPattern('await'),
+            new JsKeywordPattern('await'),
             //new JsKeywordPattern('enum'),
             //new JsKeywordPattern('implements'),
             //new JsKeywordPattern('interface'),

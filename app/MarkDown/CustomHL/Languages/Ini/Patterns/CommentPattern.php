@@ -9,19 +9,17 @@ use Tempest\Highlight\Pattern;
 use Tempest\Highlight\Tokens\TokenType;
 use Tempest\Highlight\Tokens\DynamicTokenType;
 
-final readonly class ConstantPattern implements Pattern
+final readonly class CommentPattern implements Pattern
 {
     use IsPattern;
 
     public function getPattern(): string
     {
-        //return '/\s?(?<match>[\S]+)=/';
-        //return '/(?<match>[\w]+)=/';
-        return '/(?<match>[\w\.-]+)(\s)*=/';
+        return '/\A(\s)*(?<match>#(.)*)/';
     }
 
     public function getTokenType(): TokenType
     {
-        return new DynamicTokenType('hl-ini-constant');
+        return new DynamicTokenType('hl-comment');
     }
 }

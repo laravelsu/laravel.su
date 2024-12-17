@@ -15,7 +15,7 @@ final readonly class XmlEndCloseTagPattern implements Pattern
 
     public function getPattern(): string
     {
-        return '/<[\/\!]?[\w\-]+[ ]?(?<match>[\/]?>)/';
+        return '/("|\s|\w)(?<match>(\/|\?)?>)/';
     }
 
     public function getTokenType(): TokenType

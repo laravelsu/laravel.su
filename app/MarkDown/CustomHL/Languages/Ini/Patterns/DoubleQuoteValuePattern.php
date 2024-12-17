@@ -16,7 +16,7 @@ final readonly class DoubleQuoteValuePattern implements Pattern
 
     public function getPattern(): string
     {
-        return '(?<match>".*?")';
+        return '(?<match>"(.|\n)*?")';
     }
 
     public function getTokenType(): TokenType

@@ -7,19 +7,19 @@ namespace App\MarkDown\CustomHL\Languages\Php\Patterns;
 use Tempest\Highlight\IsPattern;
 use Tempest\Highlight\Pattern;
 use Tempest\Highlight\Tokens\TokenType;
-use Tempest\Highlight\Tokens\DynamicTokenType;
+use App\MarkDown\CustomHL\Tokens\CanNotContainTokenType;
 
-final readonly class UsePattern implements Pattern
+final readonly class SinglelineCommentPattern implements Pattern
 {
     use IsPattern;
 
     public function getPattern(): string
     {
-        return '/use\s+(function(\s)+)?[\w\\\\{]*\b(?<match>[\w]+[, \w]*)[;|}]*/';
+        return '(?<match>\/\/(.)*)';
     }
 
     public function getTokenType(): TokenType
     {
-        return new DynamicTokenType('hl-php-type');
+        return new CanNotContainTokenType('hl-php-comment');  //TokenTypeEnum::COMMENT;
     }
 }

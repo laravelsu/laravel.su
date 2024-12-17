@@ -15,7 +15,7 @@ final readonly class XmlOpenTagPattern implements Pattern
 
     public function getPattern(): string
     {
-        return '<(?<match>[\w\-\:\.]+)';
+        return '/<(\?)?(?<match>[\w\-\:\.]+)/';
     }
 
     public function getTokenType(): TokenType

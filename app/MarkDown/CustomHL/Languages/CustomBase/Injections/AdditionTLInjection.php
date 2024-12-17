@@ -21,7 +21,7 @@ final readonly class AdditionTLInjection implements Injection
             $matchedContent = $match[0];
 
             $open = '{+';
-            $close = '+}';  //'          +}';
+            $close = ' +}';  //'          +}';
 
             $parsedMatchedContent = $open . str_replace(  // Escape::INJECTION_TOKEN . 
                 '// [tl! add]',

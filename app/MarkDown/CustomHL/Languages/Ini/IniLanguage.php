@@ -7,6 +7,7 @@ namespace App\MarkDown\CustomHL\Languages\Ini;
 use App\MarkDown\CustomHL\Languages\CustomBase\CustomBaseLanguage;
 use App\MarkDown\CustomHL\Languages\Ini\Patterns\ConstantPattern;
 use App\MarkDown\CustomHL\Languages\Ini\Patterns\DoubleQuoteValuePattern;
+use App\MarkDown\CustomHL\Languages\Ini\Patterns\CommentPattern;
 
 class IniLanguage extends CustomBaseLanguage
 {
@@ -35,6 +36,8 @@ class IniLanguage extends CustomBaseLanguage
             ...parent::getPatterns(),
             new DoubleQuoteValuePattern(),
             new ConstantPattern(),
+
+            new CommentPattern(),
         ];
     }
 }

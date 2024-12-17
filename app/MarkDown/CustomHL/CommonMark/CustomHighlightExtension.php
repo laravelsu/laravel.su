@@ -24,6 +24,12 @@ use App\MarkDown\CustomHL\Languages\JavaScript\JavaScriptLanguage;
 //use App\MarkDown\CustomHL\Languages\Html\HtmlLanguage;
 use App\MarkDown\CustomHL\Languages\Xml\XmlLanguage;
 use App\MarkDown\CustomHL\Languages\Json\JsonLanguage;
+use App\MarkDown\CustomHL\Languages\Sql\SqlLanguage;
+use App\MarkDown\CustomHL\Languages\Yaml\YamlLanguage;
+use App\MarkDown\CustomHL\Languages\ExtendedCss\ExtendedCssLanguage;
+
+//use App\MarkDown\CustomHL\Languages\ExtendedPhp\ExtendedPhpLanguage;
+//use App\MarkDown\CustomHL\Languages\ExtendedXml\ExtendedXmlLanguage;
 
 final class CustomHighlightExtension implements ExtensionInterface
 {
@@ -41,6 +47,12 @@ final class CustomHighlightExtension implements ExtensionInterface
 //        $this->highlighter->addLanguage(new HtmlLanguage());
         $this->highlighter->addLanguage(new XmlLanguage());
         $this->highlighter->addLanguage(new JsonLanguage());
+        $this->highlighter->addLanguage(new SqlLanguage());
+        $this->highlighter->addLanguage(new YamlLanguage());
+        $this->highlighter->addLanguage(new ExtendedCssLanguage());
+        
+//        $this->highlighter->addLanguage(new ExtendedPhpLanguage());
+//        $this->highlighter->addLanguage(new ExtendedXmlLanguage());
     }
 
     public function register(EnvironmentBuilderInterface $environment): void

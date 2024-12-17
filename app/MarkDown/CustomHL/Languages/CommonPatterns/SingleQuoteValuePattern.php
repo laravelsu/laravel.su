@@ -8,14 +8,24 @@ use Tempest\Highlight\IsPattern;
 use Tempest\Highlight\Pattern;
 use Tempest\Highlight\Tokens\TokenType;
 use Tempest\Highlight\Tokens\DynamicTokenType;
+use App\MarkDown\CustomHL\Tokens\CanNotContainTokenType;
 
-final readonly class SingleQuoteValuePattern implements Pattern
+final class SingleQuoteValuePattern implements Pattern
 {
     use IsPattern;
+
+    private bool $canNotContain = false;
 
     public function __construct(
         private string $tokenType = 'hl-value',
     ) {
+    }
+
+    public function canNotContain(): self
+    {
+        $this->canNotContain = true;
+
+        return $this;
     }
 
     public function getPattern(): string
@@ -25,6 +35,13 @@ final readonly class SingleQuoteValuePattern implements Pattern
 
     public function getTokenType(): TokenType
     {
-        return new DynamicTokenType($this->tokenType);
+        if ($this->canNotContain)
+        {
+            return new CanNotContainTokenType($this->tokenType);
+        }
+        else
+        {
+            return new DynamicTokenType($this->tokenType);
+        }
     }
 }

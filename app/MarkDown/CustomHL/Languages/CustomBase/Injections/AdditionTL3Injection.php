@@ -11,20 +11,20 @@ use Tempest\Highlight\ParsedInjection;
 use Tempest\Highlight\Escape;
 
 #[Before]
-final readonly class DeletionTLInjection implements Injection
+final readonly class AdditionTL3Injection implements Injection
 {
     public function parse(string $content, Highlighter $highlighter): ParsedInjection
     {
-        preg_match_all('/(?<match>(.)*\/\/ \[tl\! remove\])/', $content, $matches, PREG_OFFSET_CAPTURE);
+        preg_match_all('/(?<match>(.)*# \[tl\! add\])/', $content, $matches, PREG_OFFSET_CAPTURE);
 
         foreach ($matches['match'] as $match) {
             $matchedContent = $match[0];
 
-            $open = '{-';
-            $close = ' -}';  //'          -}';
+            $open = '{+';
+            $close = '+}';  //'          +}';
 
             $parsedMatchedContent = $open . str_replace(  // Escape::INJECTION_TOKEN . 
-                '// [tl! remove]',
+                '# [tl! add]',
                 $close,  // Escape::INJECTION_TOKEN . 
                 $matchedContent,
             );

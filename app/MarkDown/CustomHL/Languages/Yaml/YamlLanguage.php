@@ -19,6 +19,8 @@ use App\MarkDown\CustomHL\Languages\Yaml\Patterns\YamlPropertyPattern;
 
 use App\MarkDown\CustomHL\Languages\CommonPatterns\DigitsPattern;
 use App\MarkDown\CustomHL\Languages\CommonPatterns\DoubleQuoteValuePattern;
+use App\MarkDown\CustomHL\Languages\CommonPatterns\SingleQuoteValuePattern;
+use App\MarkDown\CustomHL\Languages\CommonPatterns\KeywordPattern;
 
 class YamlLanguage extends CustomBaseLanguage
 {
@@ -57,8 +59,11 @@ class YamlLanguage extends CustomBaseLanguage
             new YamlCommentPattern(),
             //new YamlDoubleAccoladesValuePattern(),
             
+            new KeywordPattern('true', 'hl-slug'),
+
             new DigitsPattern(),
             new DoubleQuoteValuePattern(),
+            (new SingleQuoteValuePattern())->canNotContain(),
         ];
     }
 }

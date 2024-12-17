@@ -34,6 +34,8 @@ class JsonLanguage extends CustomBaseLanguage
             ...parent::getPatterns(),
             
             new KeywordPattern('null', 'hl-slug'),
+            new KeywordPattern('true', 'hl-slug'),
+            new KeywordPattern('false', 'hl-slug'),
             
             new JsonPropertyPattern(),
             //new JsonAccoladesPattern(),
