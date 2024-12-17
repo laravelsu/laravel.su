@@ -63,7 +63,7 @@ class SantaController extends Controller
             ->secretSantaParticipant()
             ->firstOrNew();
 
-        if (!$participant->exists) {
+        if (! $participant->exists) {
             Toast::warning('К сожалению, регистрация на Тайного Санту уже закрыта.')
                 ->disableAutoHide();
 
@@ -71,10 +71,10 @@ class SantaController extends Controller
         }
 
         $data = $request->validate([
-            //'telegram'        => ['string', 'required_without:tracking_number'],
-            //'phone'           => ['string', 'required_without:tracking_number'],
-            //'address'         => ['string', 'required_without:tracking_number'],
-            //'about'           => ['string', 'required_without:tracking_number'],
+            // 'telegram'        => ['string', 'required_without:tracking_number'],
+            // 'phone'           => ['string', 'required_without:tracking_number'],
+            // 'address'         => ['string', 'required_without:tracking_number'],
+            // 'about'           => ['string', 'required_without:tracking_number'],
             'tracking_number' => [
                 'nullable',
                 'string',
