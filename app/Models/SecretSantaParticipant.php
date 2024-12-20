@@ -23,6 +23,7 @@ class SecretSantaParticipant extends Model
      */
     protected $with = [
         'receiver',
+        'santa'
     ];
 
     // Связь с пользователем
@@ -36,7 +37,15 @@ class SecretSantaParticipant extends Model
     {
         return $this
             ->belongsTo(SecretSantaParticipant::class, 'receiver_id', 'user_id')
-            ->without('receiver');
+            ->without('receiver', 'santa');
+    }
+
+    // Связь с Сантой (кто отправляет мне подарок)
+    public function santa()
+    {
+        return $this
+            ->hasOne(SecretSantaParticipant::class, 'receiver_id', 'user_id')
+            ->without('receiver', 'santa');
     }
 
     /**
@@ -45,5 +54,15 @@ class SecretSantaParticipant extends Model
     public function hasReceiver(): bool
     {
         return $this->receiver_id !== null;
+    }
+
+    /**
+     * Проверяет, есть ли у пользователя Санта
+     *
+     * @return bool
+     */
+    public function hasSanta(): bool
+    {
+        return $this->santa !== null;
     }
 }
