@@ -23,7 +23,7 @@ class SecretSantaParticipant extends Model
      */
     protected $with = [
         'receiver',
-        'santa'
+        'santa',
     ];
 
     // Связь с пользователем
