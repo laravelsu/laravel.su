@@ -43,33 +43,36 @@
                     @endif
 
                     @if($participant->exists && $participant->hasReceiver())
-                    <dl class="bg-body rounded shadow-sm p-4 py-4 d-flex flex-column gap-3">
+                        <dl class="bg-body rounded shadow-sm p-4 py-4 d-flex flex-column gap-3">
 
-                        <div class="d-flex">
-                            <dt class="opacity-50 fw-light me-3 col-4">
-                                Номер получателя:
-                            </dt>
-                            <dd class="text-body-emphasis">
-                                {{ $participant->receiver->id }}
-                            </dd>
-                        </div>
-                        <div class="d-flex">
-                            <dt class="opacity-50 fw-light me-3 col-4">
-                                Адрес:
-                            </dt>
-                            <dd class="text-body-emphasis">
-                                {{  $participant->receiver->address }}
-                            </dd>
-                        </div>
-                        <div class="d-flex">
-                            <dt class="opacity-50 fw-light me-3 col-4">
-                                Вот, что получатель рассказал о себе:
-                            </dt>
-                            <dd class="text-body-emphasis">
-                                {!! nl2br(e($participant->receiver->about)) !!}
-                            </dd>
-                        </div>
-                    </dl>
+                            {{--
+                            <div class="d-flex">
+                                <dt class="opacity-50 fw-light me-3 col-4">
+                                    Номер:
+                                </dt>
+                                <dd class="text-body-emphasis">
+                                    {{ $participant->receiver->id }}
+                                </dd>
+                            </div>
+                            --}}
+
+                            <div class="d-flex">
+                                <dt class="opacity-50 fw-light me-3 col-4">
+                                    Адрес:
+                                </dt>
+                                <dd class="text-body-emphasis text-break text-balanced">
+                                    {{  $participant->receiver->address }}
+                                </dd>
+                            </div>
+                            <div class="d-flex">
+                                <dt class="opacity-50 fw-light me-3 col-4">
+                                    Вот, что получатель рассказал о себе:
+                                </dt>
+                                <dd class="text-body-emphasis text-break text-balanced">
+                                    {!! nl2br(e($participant->receiver->about)) !!}
+                                </dd>
+                            </div>
+                        </dl>
                     @endif
 
 
