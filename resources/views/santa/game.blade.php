@@ -31,6 +31,16 @@
                         </div>
                     @endif
 
+                    @if($participant->exists && !empty($participant->santa?->tracking_number))
+                        <div class="alert alert-warning text-center lh-sm text-balance" role="alert">
+                            <strong>Ваш подарок от Тайного Санты уже ждет вас в пункте выдачи! 🚚</strong>
+                            Назовите код <code>{{ $participant->santa->tracking_number }}</code> в пункте выдачи по адресу:
+                            <address>{{ $participant->address }}</address>
+                            <small class="opacity-75 d-block">
+                                Не забывайте, что код действует всего 24 часа! Если не удалось забрать подарок, напишите нам в Telegram на @tabuna. Мы обязательно свяжемся с вашим Санта, чтобы обновить код!
+                            </small>
+                        </div>
+                    @endif
 
                     @if($participant->exists && $participant->hasReceiver())
                     <dl class="bg-body rounded shadow-sm p-4 py-4 d-flex flex-column gap-3">
@@ -165,7 +175,7 @@
 
                                 @if($participant->hasReceiver())
                                     <div class="mb-3">
-                                        <label for="tracking_number" class="form-label">Цифровой код</label>
+                                        <label for="tracking_number" class="form-label">Цифровой код заказа</label>
                                         <input
                                             class="form-control mb-3 p-4 {{ $errors->has('tracking_number') ? 'is-invalid' : '' }}"
                                             name="tracking_number"
