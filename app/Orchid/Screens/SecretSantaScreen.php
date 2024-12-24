@@ -24,6 +24,7 @@ class SecretSantaScreen extends Screen
     {
         return [
             'participants' => SecretSantaParticipant::with(['receiver', 'santa', 'user'])
+                ->filters()
                 ->get(),
         ];
     }
