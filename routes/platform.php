@@ -133,6 +133,6 @@ Route::screen('challenges/create', App\Orchid\Screens\Challenges\EditScreen::cla
 
 Route::screen('/secret-santa', \App\Orchid\Screens\SecretSantaScreen::class)
     ->name('platform.secret-santa')
-    ->breadcrumbs(fn(Trail $trail) => $trail
+    ->breadcrumbs(fn (Trail $trail) => $trail
         ->parent('platform.index')
         ->push('Серетный Санта'));

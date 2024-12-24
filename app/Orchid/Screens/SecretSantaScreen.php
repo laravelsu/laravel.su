@@ -56,13 +56,13 @@ class SecretSantaScreen extends Screen
 
                 TD::make('receiver', 'Получатель')
                     ->width('20%')
-                    ->render(fn(SecretSantaParticipant $participant) => $participant->receiver?->user->name ?? 'Не назначен'
+                    ->render(fn (SecretSantaParticipant $participant) => $participant->receiver?->user->name ?? 'Не назначен'
                     ),
 
                 TD::make('santa', 'Санта')
                     ->width('20%')
                     ->align(TD::ALIGN_CENTER)
-                    ->render(fn(SecretSantaParticipant $participant) => $participant->santa?->user->name ?? 'Не назначен'
+                    ->render(fn (SecretSantaParticipant $participant) => $participant->santa?->user->name ?? 'Не назначен'
                     ),
 
                 TD::make('address', 'Адрес')
@@ -70,14 +70,14 @@ class SecretSantaScreen extends Screen
 
                 TD::make('telegram', 'Telegram')
                     ->width('15%')
-                    ->render(fn(SecretSantaParticipant $participant) => $participant->telegram
+                    ->render(fn (SecretSantaParticipant $participant) => $participant->telegram
                         ? Link::make($participant->telegram)->href("https://t.me/{$participant->telegram}")
                         : '—'
                     ),
 
                 TD::make('tracking_number', 'Трек-номер')
                     ->width('20%'),
-            ])
+            ]),
         ];
     }
 }
