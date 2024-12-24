@@ -4,6 +4,7 @@ namespace App\Orchid\Screens;
 
 use App\Models\SecretSantaParticipant;
 use Orchid\Screen\Actions\Link;
+use Orchid\Screen\Components\Cells\DateTimeSplit;
 use Orchid\Screen\Screen;
 use Orchid\Screen\TD;
 use Orchid\Support\Facades\Layout;
@@ -51,32 +52,41 @@ class SecretSantaScreen extends Screen
     {
         return [
             Layout::table('participants', [
-                TD::make('user.name', 'Пользователь')
-                    ->width('20%'),
+                TD::make('user.name', 'Пользователь (Санта)'),
 
                 TD::make('receiver', 'Получатель')
-                    ->width('20%')
-                    ->render(fn (SecretSantaParticipant $participant) => $participant->receiver?->user->name ?? 'Не назначен'
+                    ->render(fn(SecretSantaParticipant $participant) => $participant->receiver?->user->name ?? 'Не назначен'
                     ),
 
+                /*
                 TD::make('santa', 'Санта')
-                    ->width('20%')
-                    ->align(TD::ALIGN_CENTER)
-                    ->render(fn (SecretSantaParticipant $participant) => $participant->santa?->user->name ?? 'Не назначен'
+                    ->render(fn(SecretSantaParticipant $participant) => $participant->santa?->user->name ?? 'Не назначен'
                     ),
+                */
 
-                TD::make('address', 'Адрес')
-                    ->width('25%'),
+                TD::make('receiver.address', 'Адрес'),
 
-                TD::make('telegram', 'Telegram')
-                    ->width('15%')
-                    ->render(fn (SecretSantaParticipant $participant) => $participant->telegram
-                        ? Link::make($participant->telegram)->href("https://t.me/{$participant->telegram}")
+                TD::make('receiver.telegram', 'Telegram')
+                    ->render(fn(SecretSantaParticipant $participant) => $participant->receiver?->telegram
+                        ? Link::make($participant->receiver?->telegram)->href("https://t.me/{$participant->receiver?->telegram}")
                         : '—'
                     ),
 
-                TD::make('tracking_number', 'Трек-номер')
-                    ->width('20%'),
+                TD::make('receiver.tracking_number', 'Трек-номер'),
+
+                TD::make('receiver.phone', 'Номер телефона'),
+
+                TD::make('status', 'Статус')
+                ->render(fn(SecretSantaParticipant $participant) => $participant->status === 'done'
+                    ? '✅ Завершён'
+                    : '⏳ Ожидает'
+                ),
+
+                TD::make('updated_at', 'Последнее обновление')
+                    ->defaultHidden()
+                    ->usingComponent(DateTimeSplit::class)
+                    ->align(TD::ALIGN_RIGHT)
+                    ->sort(),
             ]),
         ];
     }
