@@ -108,7 +108,7 @@ class SecretSantaScreen extends Screen
                             .'<span>'.e($participant->receiver?->phone).'</span>';
                     }),
 
-                TD::make('receiver.tracking_number', 'Трек-номер'),
+                TD::make('tracking_number', 'Трек-номер'),
 
                 TD::make('status', 'Статус')
                     ->width(100)
