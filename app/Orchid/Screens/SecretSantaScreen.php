@@ -18,7 +18,7 @@ class SecretSantaScreen extends Screen
     public function query(): iterable
     {
         return [
-            'participants' => SecretSantaParticipant::with(['receiver', 'santa', 'user'])->all(),
+            'participants' => SecretSantaParticipant::with(['receiver', 'santa', 'user'])->get(),
         ];
     }
 
