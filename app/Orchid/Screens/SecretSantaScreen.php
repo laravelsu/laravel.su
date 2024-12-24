@@ -3,11 +3,17 @@
 namespace App\Orchid\Screens;
 
 use App\Models\SecretSantaParticipant;
+use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Orchid\Screen\Actions\Link;
+use Orchid\Screen\Actions\ModalToggle;
 use Orchid\Screen\Components\Cells\DateTimeSplit;
+use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Screen;
 use Orchid\Screen\TD;
 use Orchid\Support\Facades\Layout;
+use Orchid\Support\Facades\Toast;
 
 class SecretSantaScreen extends Screen
 {
@@ -51,11 +57,44 @@ class SecretSantaScreen extends Screen
     public function layout(): array
     {
         return [
+            Layout::modal('edit-participant', Layout::rows([
+                Input::make('participant.id')
+                    ->title('Номер участника')
+                    ->placeholder('Автоматически заполнено')
+                    ->readonly()
+                    ->help('Уникальный идентификатор участника. Поле только для чтения.'),
+
+                Input::make('participant.tracking_number')
+                    ->title('Трек-номер')
+                    ->placeholder('Введите трек-номер посылки')
+                    ->help('Используйте трек-номер для отслеживания посылки.'),
+
+                Select::make('participant.status')
+                    ->title('Статус участника')
+                    ->options([
+                        'new' => 'Новый',
+                        'pending' => 'Ожидает',
+                        'in_progress' => 'В процессе',
+                        'done' => 'Завершён',
+                    ])
+                    ->empty('Выберите статус')
+                    ->help('Укажите текущий статус участия.'),
+            ]))
+                ->method('update')
+                ->deferred('loadParticipant'),
+
+
             Layout::table('participants', [
-                TD::make('user.name', 'Пользователь (Санта)'),
+                TD::make('user.name', 'Пользователь (Санта)')
+                    ->render(fn(SecretSantaParticipant $participant) => ModalToggle::make($participant->user->name)
+                        ->modalTitle($participant->user->name)
+                        ->modal('edit-participant', [
+                            'participant' => $participant
+                        ])
+                    ),
 
                 TD::make('receiver', 'Получатель')
-                    ->render(fn (SecretSantaParticipant $participant) => $participant->receiver?->user->name ?? 'Не назначен'
+                    ->render(fn(SecretSantaParticipant $participant) => $participant->receiver?->user->name ?? 'Не назначен'
                     ),
 
                 /*
@@ -64,10 +103,11 @@ class SecretSantaScreen extends Screen
                     ),
                 */
 
-                TD::make('receiver.address', 'Адрес'),
+                TD::make('receiver.address', 'Адрес')
+                    ->width(200),
 
                 TD::make('receiver.telegram', 'Telegram')
-                    ->render(fn (SecretSantaParticipant $participant) => $participant->receiver?->telegram
+                    ->render(fn(SecretSantaParticipant $participant) => $participant->receiver?->telegram
                         ? Link::make($participant->receiver?->telegram)->href("https://t.me/{$participant->receiver?->telegram}")
                         : '—'
                     ),
@@ -77,7 +117,7 @@ class SecretSantaScreen extends Screen
                 TD::make('receiver.phone', 'Номер телефона'),
 
                 TD::make('status', 'Статус')
-                    ->render(fn (SecretSantaParticipant $participant) => $participant->status === 'done'
+                    ->render(fn(SecretSantaParticipant $participant) => $participant->status === 'done'
                         ? '✅ Завершён'
                         : '⏳ Ожидает'
                     ),
@@ -89,5 +129,24 @@ class SecretSantaScreen extends Screen
                     ->sort(),
             ]),
         ];
+    }
+
+    /**
+     * @param SecretSantaParticipant $participant
+     * @return SecretSantaParticipant[]
+     */
+    public function loadParticipant(SecretSantaParticipant $participant)
+    {
+        return [
+            'participant' => $participant
+        ];
+    }
+
+
+    public function update(Request $request, SecretSantaParticipant $participant): void
+    {
+        $participant->fill($request->input('participant'))->save();
+
+        Toast::info("Информация обновлена");
     }
 }
