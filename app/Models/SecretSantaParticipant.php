@@ -5,11 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Orchid\Filters\Filterable;
 use Orchid\Screen\AsSource;
 
 class SecretSantaParticipant extends Model
 {
-    use AsSource, HasUuids, SoftDeletes;
+    use AsSource, HasUuids, SoftDeletes, Filterable;
 
     protected $fillable = [
         'address',
@@ -25,6 +26,11 @@ class SecretSantaParticipant extends Model
     protected $with = [
         'receiver',
         'santa',
+    ];
+
+    protected $allowedSorts = [
+        'status',
+        'tracking_number',
     ];
 
     // Связь с пользователем

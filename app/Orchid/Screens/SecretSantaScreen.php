@@ -23,7 +23,8 @@ class SecretSantaScreen extends Screen
     public function query(): iterable
     {
         return [
-            'participants' => SecretSantaParticipant::with(['receiver', 'santa', 'user'])->get(),
+            'participants' => SecretSantaParticipant::with(['receiver', 'santa', 'user'])
+                ->get(),
         ];
     }
 
@@ -71,7 +72,6 @@ class SecretSantaScreen extends Screen
                     ->title('Статус участника')
                     ->options([
                         'new'         => 'Новый',
-                        'pending'     => 'Ожидает',
                         'in_progress' => 'В процессе',
                         'done'        => 'Завершён',
                     ])
@@ -112,10 +112,11 @@ class SecretSantaScreen extends Screen
                         );
                     }),
 
-                TD::make('tracking_number', 'Трек-номер'),
+                TD::make('tracking_number', 'Трек-номер')->sort(),
 
                 TD::make('status', 'Статус')
-                    ->width(100)
+                    ->width(150)
+                    ->sort()
                     ->render(fn (SecretSantaParticipant $participant) => $participant->status === 'done'
                         ? '✅ Завершён'
                         : '⏳ Ожидает'
