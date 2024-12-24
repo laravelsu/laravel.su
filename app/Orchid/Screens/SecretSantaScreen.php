@@ -86,6 +86,7 @@ class SecretSantaScreen extends Screen
                     ->width(100)
                     ->render(fn (SecretSantaParticipant $participant) => ModalToggle::make($participant->user->name)
                         ->modalTitle($participant->user->name)
+                        ->method('update')
                         ->modal('edit-participant', [
                             'participant' => $participant->id,
                         ])
@@ -139,7 +140,7 @@ class SecretSantaScreen extends Screen
 
     public function update(Request $request, SecretSantaParticipant $participant): void
     {
-        $participant->fill($request->input('participant'))->save();
+        $participant->forceFill($request->input('participant'))->save();
 
         Toast::info('Информация обновлена');
     }
