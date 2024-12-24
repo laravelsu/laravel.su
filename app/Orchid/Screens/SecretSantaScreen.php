@@ -55,7 +55,7 @@ class SecretSantaScreen extends Screen
                 TD::make('user.name', 'Пользователь (Санта)'),
 
                 TD::make('receiver', 'Получатель')
-                    ->render(fn(SecretSantaParticipant $participant) => $participant->receiver?->user->name ?? 'Не назначен'
+                    ->render(fn (SecretSantaParticipant $participant) => $participant->receiver?->user->name ?? 'Не назначен'
                     ),
 
                 /*
@@ -67,7 +67,7 @@ class SecretSantaScreen extends Screen
                 TD::make('receiver.address', 'Адрес'),
 
                 TD::make('receiver.telegram', 'Telegram')
-                    ->render(fn(SecretSantaParticipant $participant) => $participant->receiver?->telegram
+                    ->render(fn (SecretSantaParticipant $participant) => $participant->receiver?->telegram
                         ? Link::make($participant->receiver?->telegram)->href("https://t.me/{$participant->receiver?->telegram}")
                         : '—'
                     ),
@@ -77,10 +77,10 @@ class SecretSantaScreen extends Screen
                 TD::make('receiver.phone', 'Номер телефона'),
 
                 TD::make('status', 'Статус')
-                ->render(fn(SecretSantaParticipant $participant) => $participant->status === 'done'
-                    ? '✅ Завершён'
-                    : '⏳ Ожидает'
-                ),
+                    ->render(fn (SecretSantaParticipant $participant) => $participant->status === 'done'
+                        ? '✅ Завершён'
+                        : '⏳ Ожидает'
+                    ),
 
                 TD::make('updated_at', 'Последнее обновление')
                     ->defaultHidden()
