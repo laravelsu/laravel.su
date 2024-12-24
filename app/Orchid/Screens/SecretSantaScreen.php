@@ -104,8 +104,12 @@ class SecretSantaScreen extends Screen
                 TD::make('receiver.telegram', 'Контакты')
                     ->width(200)
                     ->render(function (SecretSantaParticipant $participant) {
-                        return "<strong class='d-block'>".e($participant->receiver?->telegram).'</strong>'
-                            .'<span>'.e($participant->receiver?->phone).'</span>';
+                        return sprintf(
+                            "<strong class='d-block'>%s</strong><a href='tel:%s'>%s</a>",
+                            e($participant->receiver?->telegram),
+                            e($participant->receiver?->phone),
+                            e($participant->receiver?->phone)
+                        );
                     }),
 
                 TD::make('tracking_number', 'Трек-номер'),
