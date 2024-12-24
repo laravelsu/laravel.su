@@ -10,7 +10,7 @@ use Orchid\Screen\AsSource;
 
 class SecretSantaParticipant extends Model
 {
-    use AsSource, HasUuids, SoftDeletes, Filterable;
+    use AsSource, Filterable, HasUuids, SoftDeletes;
 
     protected $fillable = [
         'address',
