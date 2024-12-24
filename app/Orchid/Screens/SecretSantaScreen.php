@@ -2,6 +2,7 @@
 
 namespace App\Orchid\Screens;
 
+use App\Models\Post;
 use App\Models\SecretSantaParticipant;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -84,38 +85,35 @@ class SecretSantaScreen extends Screen
                 ->deferred('loadParticipant'),
 
             Layout::table('participants', [
-                TD::make('user.name', 'Пользователь (Санта)')
+                TD::make('user.name', 'Санта')
+                    ->width(100)
                     ->render(fn (SecretSantaParticipant $participant) => ModalToggle::make($participant->user->name)
                         ->modalTitle($participant->user->name)
                         ->modal('edit-participant', [
-                            'participant' => $participant,
+                            'participant' => $participant->id,
                         ])
                     ),
 
                 TD::make('receiver', 'Получатель')
+                    ->width(100)
                     ->render(fn (SecretSantaParticipant $participant) => $participant->receiver?->user->name ?? 'Не назначен'
                     ),
 
-                /*
-                TD::make('santa', 'Санта')
-                    ->render(fn(SecretSantaParticipant $participant) => $participant->santa?->user->name ?? 'Не назначен'
-                    ),
-                */
-
                 TD::make('receiver.address', 'Адрес')
+                    ->defaultHidden()
                     ->width(200),
 
-                TD::make('receiver.telegram', 'Telegram')
-                    ->render(fn (SecretSantaParticipant $participant) => $participant->receiver?->telegram
-                        ? Link::make($participant->receiver?->telegram)->href("https://t.me/{$participant->receiver?->telegram}")
-                        : '—'
-                    ),
+                TD::make('receiver.telegram', 'Контакты')
+                    ->width(200)
+                    ->render(function (SecretSantaParticipant $participant) {
+                        return "<strong class='d-block'>".e($participant->receiver?->telegram).'</strong>'
+                            . "<span>".e($participant->receiver?->phone)."</span>";
+                    }),
 
                 TD::make('receiver.tracking_number', 'Трек-номер'),
 
-                TD::make('receiver.phone', 'Номер телефона'),
-
                 TD::make('status', 'Статус')
+                    ->width(100)
                     ->render(fn (SecretSantaParticipant $participant) => $participant->status === 'done'
                         ? '✅ Завершён'
                         : '⏳ Ожидает'
