@@ -103,6 +103,10 @@ class PlatformProvider extends OrchidServiceProvider
                 ->route('platform.services.telescope')
                 ->permission('platform.services.telescope'),
 
+            Menu::make('Секретный Санта')
+                ->route('platform.secret-santa')
+                ->icon('gift'),
+
             Menu::make(__('Users'))
                 ->icon('bs.people')
                 ->route('platform.systems.users')
