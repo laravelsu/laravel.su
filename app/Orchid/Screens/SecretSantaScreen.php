@@ -2,11 +2,8 @@
 
 namespace App\Orchid\Screens;
 
-use App\Models\Post;
 use App\Models\SecretSantaParticipant;
-use App\Models\User;
 use Illuminate\Http\Request;
-use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Actions\ModalToggle;
 use Orchid\Screen\Components\Cells\DateTimeSplit;
 use Orchid\Screen\Fields\Input;
@@ -107,7 +104,7 @@ class SecretSantaScreen extends Screen
                     ->width(200)
                     ->render(function (SecretSantaParticipant $participant) {
                         return "<strong class='d-block'>".e($participant->receiver?->telegram).'</strong>'
-                            . "<span>".e($participant->receiver?->phone)."</span>";
+                            .'<span>'.e($participant->receiver?->phone).'</span>';
                     }),
 
                 TD::make('receiver.tracking_number', 'Трек-номер'),
