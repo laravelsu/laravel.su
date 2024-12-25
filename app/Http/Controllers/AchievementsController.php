@@ -9,6 +9,7 @@ use App\Achievements\Contents\AuthorInteraction;
 use App\Achievements\Contents\CommentInteraction;
 use App\Achievements\Contents\HighCommentInteraction;
 use App\Achievements\Events\OpeningWebSite;
+use App\Achievements\Events\SecretSanta;
 use App\Achievements\Unique\BigMzungu;
 use App\Achievements\Unique\Lipa;
 use App\Achievements\Unique\Troll;
@@ -44,6 +45,7 @@ class AchievementsController extends Controller
 
             'Событийные' => [
                 OpeningWebSite::class,
+                SecretSanta::class,
             ],
         ])->map(fn ($achievements) => $this->setDataForAchievement($achievements, $request->user()));
 
