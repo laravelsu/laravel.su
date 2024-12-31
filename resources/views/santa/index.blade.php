@@ -23,7 +23,7 @@
                 </a>
             @else
                 <a href="{{ route('santa.game') }}" class="btn btn-primary btn-lg px-4 disabled pe-none" disabled>
-                    Санта уже укомплектован 🎅
+                    Санта укомплектован 🎅
                     {{-- Присоединиться --}}
                 </a>
             @endif
