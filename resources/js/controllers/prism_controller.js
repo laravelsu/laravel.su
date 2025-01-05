@@ -13,6 +13,12 @@ export default class extends Controller {
         Prism.manual = false;
 
         [...this.element.querySelectorAll('pre code')].forEach((el) => {
+
+            if(el.classList.contains('notranslate')){
+                return;
+            }
+
+
             if (el.getAttribute('class') === null) {
                 el.setAttribute('class', 'language-php');
             }

@@ -26,3 +26,13 @@
         opacity: 0.5;
     }
 }
+
+
+.code-marketing-snipped {
+    pre {
+        margin: 0;
+        code {
+            overflow: hidden;
+        }
+    }
+}

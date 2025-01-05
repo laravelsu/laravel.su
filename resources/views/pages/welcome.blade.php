@@ -260,6 +260,26 @@
 
 
 
+@php
+$markdownExampleRouteCode = '
+```php
+Route::get(\'/user/{user}\', function (User $user) {
+    return $user;
+});
+
+Route::post(\'/user\', function (CreateUserRequest $request) {
+    $user = User::create($request->validated());
+
+    // Поздравьте по электронной почте.
+    Mail::to($user->email)->send(new WelcomeMessage());
+
+    // Мгновенный ответ с информацией о созданном пользователе.
+    return $user;
+});
+```
+'
+@endphp
+
     <x-header image="/img/ui/crane-h.svg">
         <x-slot:sup>Обучение</x-slot>
         <x-slot:title>
@@ -271,24 +291,8 @@
         </x-slot>
 
         <x-slot name="content">
-            <div data-controller="prism">
-                <pre class="rounded position-relative overflow-hidden bg-body p-4 text-white border border-dashed language-php"
-                     data-bs-theme="dark" tabindex="0" style="
-    transform: rotate(350deg);"><code
-                        class="language-php">Route::get('/user/{user}', function (User $user) {
-    return $user;
-});
-
-Route::post('/user', function (CreateUserRequest $request) {
-    $user = User::create($request->validated());
-
-    // Поздравьте по электронной почте.
-    Mail::to($user->email)->send(new WelcomeMessage());
-
-    // Мгновенный ответ с информацией о созданном пользователе.
-    return $user;
-});
-</code></pre>
+            <div class="rounded position-relative overflow-hidden bg-body p-1 text-white border border-dashed code-marketing-snipped" style="transform: rotate(350deg);">
+                <x-posts.content :content="$markdownExampleRouteCode"/>
             </div>
         </x-slot>
 

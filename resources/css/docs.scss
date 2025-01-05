@@ -415,6 +415,12 @@ main,
             display: none !important;
         }
     }
+
+    pre code {
+        white-space: pre !important;
+        overflow: hidden;
+    }
+
 }
 
 .code-container {
