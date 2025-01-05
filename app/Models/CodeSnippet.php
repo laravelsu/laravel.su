@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Models\Concerns\HasAuthor;
-use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use App\Models\Concerns\HasNanoId;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Prunable;
@@ -12,7 +12,7 @@ use Orchid\Screen\AsSource;
 
 class CodeSnippet extends Model
 {
-    use AsSource, Chartable, HasAuthor, HasFactory, HasUuids, Prunable;
+    use AsSource, Chartable, HasAuthor, HasFactory, HasNanoId, Prunable;
 
     /**
      * The attributes that are mass assignable.
