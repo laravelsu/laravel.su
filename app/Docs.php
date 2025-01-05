@@ -132,7 +132,7 @@ class Docs
                 ->after('---')
                 ->after('---')
                 ->markdown(extensions: [
-                    new \Laravelsu\Highlight\CommonMark\HighlightExtension(),
+                    new \Laravelsu\Highlight\CommonMark\HighlightExtension,
                     new UnfencedExtension,
                 ])
                 ->toString();

@@ -54,7 +54,7 @@ class Content extends Component implements Htmlable
                     'max_nesting_level'  => 20,
                 ],
                     [
-                        new \Laravelsu\Highlight\CommonMark\HighlightExtension(),
+                        new \Laravelsu\Highlight\CommonMark\HighlightExtension,
                     ])
                 ->toString();
 

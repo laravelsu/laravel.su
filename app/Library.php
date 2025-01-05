@@ -31,7 +31,7 @@ class Library
             ->after('---')
             ->after('---')
             ->markdown(extensions: [
-                new HighlightExtension()
+                new HighlightExtension,
             ])
             ->toString();
     }
