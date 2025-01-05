@@ -52,7 +52,10 @@ class Content extends Component implements Htmlable
                     'allow_unsafe_links' => false,
                     'html_input'         => 'escape',
                     'max_nesting_level'  => 20,
-                ])
+                ],
+                    [
+                        new \Laravelsu\Highlight\CommonMark\HighlightExtension(),
+                    ])
                 ->toString();
 
             return app(Pipeline::class)

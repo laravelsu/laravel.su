@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Laravelsu\Highlight\CommonMark\HighlightExtension;
 use Symfony\Component\Yaml\Yaml;
 
 class Library
@@ -29,7 +30,9 @@ class Library
         $this->content = Str::of($raw)
             ->after('---')
             ->after('---')
-            ->markdown()
+            ->markdown(extensions: [
+                new HighlightExtension()
+            ])
             ->toString();
     }
 

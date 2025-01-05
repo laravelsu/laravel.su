@@ -125,6 +125,7 @@ class Comment extends Model
                 ],
             ],
             [
+                new \Laravelsu\Highlight\CommonMark\HighlightExtension(),
                 new MentionExtension,
             ]
         );
