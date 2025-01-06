@@ -35,6 +35,11 @@ code[class*='language-'] {
     -webkit-overflow-scrolling: touch;
     max-width: 100%;
 }
+
+code[class*='language-'] {
+    padding: 0!important;
+}
+
 pre[class*='language-']::selection,
 code[class*='language-']::selection,
 pre[class*='language-']::mozselection,
