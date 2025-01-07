@@ -10,7 +10,7 @@
         <form action="{{ route('pastebin.store') }}" method="post">
             <div data-controller="prism" class="rounded overflow-hidden">
             <pre contenteditable="true"
-                 class="rounded line-numbers border p-0 m-0"
+                 class="rounded line-numbers border p-4 m-0"
                  style="min-height: 600px;"
                  data-action="input->prism#paste keydown->prism#keydownPaste"
                  data-prism-target="editable"><code id="yaml"
