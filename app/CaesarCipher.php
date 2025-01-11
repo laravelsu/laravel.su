@@ -45,6 +45,7 @@ class CaesarCipher
             // Если символ не найден в алфавите, оставляем его без изменений
             if ($position === false) {
                 $processedText .= $char;
+
                 continue;
             }
 

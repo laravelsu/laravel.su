@@ -96,11 +96,11 @@ return [
         ],
 
         'telegram' => [
-            'driver' => 'monolog',
+            'driver'  => 'monolog',
             'handler' => TelegramBotHandler::class,
-            'level' => env('LOG_LEVEL', 'debug'),
-            'with' => [
-                'apiKey' => env('TELEGRAM_BOT_TOKEN', ''),
+            'level'   => env('LOG_LEVEL', 'debug'),
+            'with'    => [
+                'apiKey'  => env('TELEGRAM_BOT_TOKEN', ''),
                 'channel' => env('TELEGRAM_CHAT_ID', ''),
             ],
         ],
