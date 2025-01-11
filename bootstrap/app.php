@@ -3,7 +3,6 @@
 use App\Http\Middleware\RedirectToBanPage;
 use App\Http\Middleware\SetDefaultVersionForUrl;
 use Illuminate\Foundation\Application;
-use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 
 return Application::configure(basePath: dirname(__DIR__))
@@ -26,8 +25,4 @@ return Application::configure(basePath: dirname(__DIR__))
             'goronich',
         ]);
     })
-    ->withExceptions(function (Exceptions $exceptions) {
-        $exceptions->report(function (Throwable $e) {
-            \App\Services\TelegramBot::notificationToTelegram($e);
-        });
-    })->create();
+    ->create();
