@@ -150,11 +150,14 @@ class Docs
      */
     public function view(string $view)
     {
-        $data = Cache::remember('doc-file-view-data'.$this->path, now()->addMinutes(30), fn () => collect()->merge($this->variables())->merge([
-            'docs'    => $this,
-            'content' => $this->content(),
-            'edit'    => $this->getEditUrl(),
-        ]));
+        $data = Cache::flexible(
+            'doc-file-view-data'.$this->path,
+            [now()->addMinutes(30), now()->addHours(2)],
+            fn () => collect()->merge($this->variables())->merge([
+                'docs'    => $this,
+                'content' => $this->content(),
+                'edit'    => $this->getEditUrl(),
+            ]));
 
         return view($view, $data);
     }
@@ -166,18 +169,21 @@ class Docs
      */
     public function getMenu(): array
     {
-        return Cache::remember('doc-navigation-'.$this->version, now()->addHours(2), function () {
-            $page = Storage::disk('docs')->get($this->version.'/documentation.md');
+        return Cache::flexible(
+            'doc-navigation-'.$this->version,
+            [now()->addMinutes(30), now()->addHours(2)],
+            function () {
+                $page = Storage::disk('docs')->get($this->version.'/documentation.md');
 
-            $html = Str::of($page)
-                ->after('---')
-                ->after('---')
-                ->replace('{{version}}', $this->version)
-                ->markdown()
-                ->toString();
+                $html = Str::of($page)
+                    ->after('---')
+                    ->after('---')
+                    ->replace('{{version}}', $this->version)
+                    ->markdown()
+                    ->toString();
 
-            return $this->docsToArray($html);
-        });
+                return $this->docsToArray($html);
+            });
     }
 
     /**
@@ -300,8 +306,9 @@ class Docs
     {
         $hash = sha1($this->content());
 
-        return Cache::remember("docs-diff-$this->version-$this->file-$hash",
-            now()->addHours(2),
+        return Cache::flexible(
+            "docs-diff-$this->version-$this->file-$hash",
+            [now()->addMinutes(30), now()->addHours(2)],
             fn () => Http::withBasicAuth('token', config('services.github.token'))
                 ->get("https://api.github.com/repos/laravel/docs/commits?sha={$this->version}&path={$this->file}")
                 ->collect($key)
