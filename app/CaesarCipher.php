@@ -7,16 +7,11 @@ class CaesarCipher
     const ALPHABET_EN = 'abcdefghijklmnopqrstuvwxyz';
     const ALPHABET_RU = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя';
 
-    private string $alphabet;
-
     /**
-     * @param int         $shift
-     * @param string|null $alphabet
+     * @param int    $shift
+     * @param string $alphabet
      */
-    public function __construct(private int $shift, ?string $alphabet = self::ALPHABET_RU)
-    {
-        $this->alphabet = $alphabet;
-    }
+    public function __construct(private int $shift, private string $alphabet = self::ALPHABET_RU) {}
 
     /**
      * @param string|null $alphabet
@@ -32,38 +27,48 @@ class CaesarCipher
 
     /**
      * @param string $text
+     * @param int    $shift
      *
      * @return string
      */
-    public function encrypt(string $text)
+    private function process(string $text, int $shift): string
     {
-        $encryptedText = '';
+        $processedText = '';
+        $alphabetLength = mb_strlen($this->alphabet);
 
-        // Проходим по каждому символу входного текста
         for ($i = 0; $i < mb_strlen($text); $i++) {
-            $char = mb_substr($text, $i, 1); // Получаем текущий символ
+            $char = mb_substr($text, $i, 1);
 
             // Ищем позицию символа в алфавите
             $position = mb_strpos($this->alphabet, mb_strtolower($char));
 
             // Если символ не найден в алфавите, оставляем его без изменений
             if ($position === false) {
-                $encryptedText .= $char;
-            } else {
-                // Сдвигаем позицию символа на заданное количество шагов
-                $newPosition = ($position + $this->shift) % mb_strlen($this->alphabet);
-                $encryptedChar = mb_substr($this->alphabet, $newPosition, 1);
-
-                // Учитываем регистр символа
-                if (mb_strtoupper($char) === $char) {
-                    $encryptedText .= mb_strtoupper($encryptedChar);
-                } else {
-                    $encryptedText .= $encryptedChar;
-                }
+                $processedText .= $char;
+                continue;
             }
+
+            // Сдвигаем позицию символа
+            $newPosition = ($position + $shift + $alphabetLength) % $alphabetLength;
+            $processedChar = mb_substr($this->alphabet, $newPosition, 1);
+
+            // Учитываем регистр символа
+            $processedText .= mb_strtoupper($char) === $char
+                ? mb_strtoupper($processedChar)
+                : $processedChar;
         }
 
-        return $encryptedText;
+        return $processedText;
+    }
+
+    /**
+     * @param string $text
+     *
+     * @return string
+     */
+    public function encrypt(string $text): string
+    {
+        return $this->process($text, $this->shift);
     }
 
     /**
@@ -71,35 +76,8 @@ class CaesarCipher
      *
      * @return string
      */
-    public function decrypt(string $encryptedText)
+    public function decrypt(string $encryptedText): string
     {
-        $decryptedText = '';
-        $shift = mb_strlen($this->alphabet) - $this->shift;
-
-        // Проходим по каждому символу зашифрованного текста
-        for ($i = 0; $i < mb_strlen($encryptedText); $i++) {
-            $char = mb_substr($encryptedText, $i, 1); // Получаем текущий символ
-
-            // Ищем позицию символа в алфавите
-            $position = mb_strpos($this->alphabet, mb_strtolower($char));
-
-            // Если символ не найден в алфавите, оставляем его без изменений
-            if ($position === false) {
-                $decryptedText .= $char;
-            } else {
-                // Сдвигаем позицию символа на обратное количество шагов
-                $newPosition = ($position + $shift) % mb_strlen($this->alphabet);
-                $decryptedChar = mb_substr($this->alphabet, $newPosition, 1);
-
-                // Учитываем регистр символа
-                if (mb_strtoupper($char) === $char) {
-                    $decryptedText .= mb_strtoupper($decryptedChar);
-                } else {
-                    $decryptedText .= $decryptedChar;
-                }
-            }
-        }
-
-        return $decryptedText;
+        return $this->process($encryptedText, -$this->shift);
     }
 }
