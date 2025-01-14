@@ -33,7 +33,7 @@
                 <div class="col-md-8 col-xl-9">
                     <form class="row g-1 align-items-center justify-content-md-end" action="{{route('packages')}}" method="GET">
 
-                        <div class="col-md-6 col-xl-3 mb-2 mb-md-0">
+                        <div class="col-md-6 col-xl-4 mb-2 mb-md-0">
                             <div class="d-flex justify-content-between bg-body-secondary small px-3 py-1 py-md-2 rounded">
                                 <input name="q" type="text" class="form-search d-inline-block bg-body-secondary rounded"
                                        placeholder="Поиск" value="{{ request()->query('q') }}">
