@@ -48,7 +48,7 @@
                                             <x-icon path="i.ui" height="2rem" width="2rem" class="text-primary" />
                                             <div class="col-10">
                                                 <span class="d-block">Пакеты</span>
-                                                <small class="opacity-50 line-clamp line-clamp-2">Великолепные дополнения сообщества</small>
+                                                <small class="opacity-50 line-clamp line-clamp-2 text-balance">Великолепные дополнения сообщества</small>
                                             </div>
                                         </a>
                                     </li>
@@ -57,7 +57,7 @@
                                             <x-icon path="i.menu-idea" height="2rem" width="2rem" class="text-primary" />
                                             <div class="col-10">
                                                 <span class="d-block">Laravel Idea</span>
-                                                <small class="opacity-50 line-clamp line-clamp-2">
+                                                <small class="opacity-50 line-clamp line-clamp-2 text-balance">
                                                     Генерация кода для PHPStorm
                                                 </small>
                                             </div>
@@ -68,7 +68,7 @@
                                             <x-icon path="i.menu-events" height="2rem" width="2rem" class="text-primary" />
                                             <div class="col-10">
                                                 <span class="d-block">Мероприятия</span>
-                                                <small class="opacity-50 line-clamp line-clamp-2">
+                                                <small class="opacity-50 line-clamp line-clamp-2 text-balance">
                                                     Ни одна встреча не обходится без Laravel
                                                 </small>
                                             </div>
@@ -79,7 +79,7 @@
                                             <x-icon path="i.menu-ecosystem" height="2rem" width="2rem" class="text-primary"/>
                                             <div class="col-10">
                                                 <span class="d-block">Экосистема</span>
-                                                <small class="opacity-50 line-clamp line-clamp-2">Без корпоративной сложности</small>
+                                                <small class="opacity-50 line-clamp line-clamp-2 text-balance">Без корпоративной сложности</small>
                                             </div>
                                         </a>
                                     </li>
@@ -88,7 +88,7 @@
                                             <x-icon path="i.maintenance" height="2rem" width="2rem"  class="text-primary"/>
                                             <div class="col-10">
                                                 <span class="d-block">Курсы</span>
-                                                <small class="opacity-50 line-clamp line-clamp-2">Получайте новые знания в формате видеороликов</small>
+                                                <small class="opacity-50 line-clamp line-clamp-2 text-balance">Получайте новые знания в формате видеороликов</small>
                                             </div>
                                         </a>
                                     </li>
@@ -99,7 +99,7 @@
                                             <x-icon path="i.menu-library" height="2rem" width="2rem"  class="text-primary"/>
                                             <div class="col-10">
                                                 <span class="d-block">Библиотека</span>
-                                                <small class="opacity-50 line-clamp line-clamp-2">Учебные материалы для улучшения навыков</small>
+                                                <small class="opacity-50 line-clamp line-clamp-2 text-balance">Учебные материалы для улучшения навыков</small>
                                             </div>
                                         </a>
                                     </li>
@@ -108,7 +108,7 @@
                                             <x-icon path="i.orchid" height="2rem" width="2rem" class="text-primary"/>
                                             <div class="col-10">
                                                 <span class="d-block">Orchid</span>
-                                                <small class="opacity-50 line-clamp line-clamp-2">Админ панели и внутренние бизнес системы</small>
+                                                <small class="opacity-50 line-clamp line-clamp-2 text-balance">Админ панели и внутренние бизнес системы</small>
                                             </div>
                                         </a>
                                     </li>
@@ -118,7 +118,7 @@
                                             <x-icon path="i.utilities" height="2rem" width="2rem" class="text-primary"/>
                                             <div class="col-10">
                                                 <span class="d-block">Boilerplate</span>
-                                                <small class="opacity-50 line-clamp line-clamp-2">Готовый скелет для создания вашего пакета</small>
+                                                <small class="opacity-50 line-clamp line-clamp-2 text-balance">Готовый скелет для создания вашего пакета</small>
                                             </div>
                                         </a>
                                     </li>
@@ -128,7 +128,7 @@
                                             <x-icon path="i.code" height="2rem" width="2rem" class="text-primary"/>
                                             <div class="col-10">
                                                 <span class="d-block">Pastebin</span>
-                                                <small class="opacity-50 line-clamp line-clamp-2">Делитесь своим кодом правильно</small>
+                                                <small class="opacity-50 line-clamp line-clamp-2 text-balance">Делитесь своим кодом правильно</small>
                                             </div>
                                         </a>
                                     </li>
@@ -138,7 +138,7 @@
                                             <x-icon path="i.help" height="2rem" width="2rem" class="text-primary"/>
                                             <div class="col-10">
                                                 <span class="d-block">Помощь</span>
-                                                <small class="opacity-50 line-clamp line-clamp-2">Каждое изменение должно приносить результат</small>
+                                                <small class="opacity-50 line-clamp line-clamp-2 text-balance">Каждое изменение должно приносить результат</small>
                                             </div>
                                         </a>
                                     </li>

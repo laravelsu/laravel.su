@@ -30,7 +30,7 @@
                     <div class="vr bg-primary position-absolute start-0 opacity-100" style="top: 1.5em; bottom: 1.5em;"></div>
                     <div>
                         <div class="d-flex align-items-center mb-3 mb-md-0">
-                            <p class="fs-4 mb-0"><span class="fs-3">150+</span> млн</p>
+                            <p class="fs-4 mb-0"><span class="fs-3 fw-semibold">150+</span> млн</p>
                         </div>
                         <time class="small">Установок по всему миру</time>
                     </div>
@@ -41,7 +41,7 @@
                     <div class="vr bg-primary position-absolute start-0 opacity-100" style="top: 1.5em; bottom: 1.5em;"></div>
                     <div>
                         <div class="d-flex align-items-center mb-3 mb-md-0">
-                            <p class="fs-4 mb-0"><span class="fs-3">19+</span> тысяч</p>
+                            <p class="fs-4 mb-0"><span class="fs-3 fw-semibold">19+</span> тысяч</p>
                         </div>
                         <time class="small">Специалистов в России и СНГ</time>
                     </div>
@@ -52,7 +52,7 @@
                     <div class="vr bg-primary position-absolute start-0 opacity-100" style="top: 1.5em; bottom: 1.5em;"></div>
                     <div>
                         <div class="d-flex align-items-center mb-3 mb-md-0">
-                            <p class="fs-4 mb-0"><span class="fs-3">10+</span> лет</p>
+                            <p class="fs-4 mb-0"><span class="fs-3 fw-semibold">10+</span> лет</p>
                         </div>
                         <time class="small">Доказанной ценности</time>
                     </div>

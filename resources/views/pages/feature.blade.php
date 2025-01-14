@@ -65,7 +65,7 @@
                     <div class="d-none" data-tabs-target="panel">
                         <div class="row">
                             <div class="col-lg-6">
-                                <h4>Inertia</h4>
+                                <h4 class="display-5 lh-1 fw-semibold mb-3 text-balance">Inertia</h4>
                                 <p>Занимается маршрутизацией и передачей данных между серверной частью
                                 и внешним интерфейсом Laravel — нет необходимости создавать API или
                                 поддерживать два набора маршрутов. Легко
@@ -158,7 +158,7 @@ export default function Users({ users }) {
 
                         <div class="row">
                             <div class="col-lg-6">
-                                <h4>Livewire</h4>
+                                <h4 class="display-5 lh-1 fw-semibold mb-3 text-balance">Livewire</h4>
                                 <p>Современный способ создания динамических интерфейсов с использованием
                                    серверных шаблонов вместо JavaScript-фреймворков. Он сочетает в себе простоту и
                                    быстроту разработки серверного приложения с пользовательским опытом JavaScript SPA
@@ -250,7 +250,7 @@ HTML;
 
                         <div class="row">
                             <div class="col-lg-6">
-                                <h4>Не нужен фронтенд? Нет проблем.</h4>
+                                <h4 class="display-5 lh-1 fw-semibold mb-3 text-balance">Не нужен фронтенд? Нет проблем.</h4>
                                 <p>Laravel - идеальное бэкенд API для ваших JavaScript SPA и мобильных приложений. Вы
                                 получите доступ ко всем функциям Laravel, сохраняя рабочий процесс разработки фронтенда,
                                 к которому вы привыкли.</p>
@@ -638,18 +638,14 @@ $table->timestamps();
                                         фоновый режим, сохраняя отзывчивость веб-запросов. Пример
                                         использования:</p>
 
-                        <pre><code language="php">
-$podcast = Podcast::create(/* ... */);
+                        <pre><code language="php">$podcast = Podcast::create(/* ... */);
 
 ProcessPodcast::dispatch($podcast)
-    ->onQueue('podcasts');
-        </code></pre>
+    ->onQueue('podcasts');</code></pre>
 
                         <p class="mb-0">Вы можете запускать столько процессов очередей, сколько нужно для обработки вашей нагрузки:</p>
 
-                        <pre><code language="bash">
-php artisan queue:work redis --queue=podcasts
-        </code></pre>
+                        <pre><code language="bash">php artisan queue:work redis --queue=podcasts</code></pre>
                     </div>
             </div>
                 <div class="col-lg-6">
