@@ -6,6 +6,8 @@ $prefix: $variable-prefix !default;
 // scss-docs-start theme-color-variables
 $primary: #f9322c;
 $dark: #212529;
+$code-color: darken($primary, 35);
+$code-color-dark: lighten($primary, 10);
 
 $body-secondary-bg: #ebeef4;
 $body-secondary-bg-dark: #1a1e28;

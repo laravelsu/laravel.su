@@ -16,17 +16,17 @@
     "src": "public/img/ui/blockquote/warning.svg"
   },
   "resources/css/app.scss": {
-    "file": "assets/app-NKGlIn53.css",
+    "file": "assets/app-DKgGcTI_.css",
     "src": "resources/css/app.scss",
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-DIW8daw-.js",
+    "file": "assets/app-Cw1dfBf1.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
-      "assets/app-mELSyIb6.css"
+      "assets/app-Ccfm11b9.css"
     ]
   }
 }

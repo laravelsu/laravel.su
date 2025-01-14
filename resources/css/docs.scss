@@ -174,13 +174,6 @@ main div {
         }
     }
 
-    code {
-        @extend .text-wrap;
-        //@extend .text-nowrap;
-        //text-wrap: pretty !important;
-        color: rgba(235, 68, 50, 0.9);
-    }
-
     #support-policy {
         @extend .table-responsive;
     }

@@ -20,6 +20,14 @@ textarea {
     @extend .text-balance;
 }
 
+code {
+    @extend .text-wrap;
+    background-color: rgba($primary, 0.1);
+    border-radius: 0.15rem;
+    padding: 0.1rem 0.2rem;
+    display: inline;
+}
+
 pre {
     border-radius: 0.8rem;
 
