@@ -23,7 +23,7 @@ class SecretSanta implements Achievement
      */
     public function image(): string
     {
-        return asset('/img/achievements/gift.svg');
+        return asset('/img/achievements/christmas_tree.svg');
     }
 
     /**
