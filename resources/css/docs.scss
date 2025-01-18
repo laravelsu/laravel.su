@@ -384,6 +384,24 @@ main,
     }
 }
 
+@include media-breakpoint-down(md) {
+    main,
+    .main,
+    .post {
+        blockquote {
+            &:before {
+                width: 1em;
+                border: none;
+                background-image: none;
+                margin: 0;
+                padding: 0;
+                min-width: 1em;
+            }
+        }
+    }
+}
+
+
 .doc-navigation {
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */

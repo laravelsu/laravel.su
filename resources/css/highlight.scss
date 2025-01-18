@@ -62,10 +62,14 @@ pre {
             color: #d2cdea;
         }
 
+        .hl-addition, .hl-deletion {
+            display: inline-block;
+        }
+
         .hl-deletion {
             color: #d2cdea;
             min-width: 100%;
-            background-color: #ff000033;
+            background-color: #ef535033;
         }
 
         .hl-addition {

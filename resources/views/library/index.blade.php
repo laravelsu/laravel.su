@@ -19,7 +19,7 @@
     <div class="row g-4">
         <div class="col-md-6 col-lg-8">
 
-            <div class="bg-primary bg-opacity-10 rounded p-4 p-xl-5 position-relative overflow-hidden mb-4">
+            <div class="bg-primary bg-opacity-10 rounded p-4 p-xl-5 position-relative overflow-hidden mb-4 ratio-1x1 ratio-md-auto">
                 <img src="/img/bird.svg" class="position-absolute w-50 bottom-0 end-0">
                 <div class="row">
                     <div class="col-sm-7">
@@ -38,7 +38,7 @@
             </div>
 
             <div class="row">
-                <div class="col-lg-6 mb-4 mb-lg-0">
+                <div class="col-lg-6 mb-4 mb-lg-0 ratio-1x1">
                     <div class="bg-primary bg-opacity-10 rounded p-5 h-100 position-relative overflow-hidden">
                         <div class="d-flex flex-column position-relative h-100">
                             <h3 class="mb-3 fw-bold">Советы по безопасности</h3>
@@ -54,7 +54,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-6 ratio-1x1">
 
                     <div class="bg-secondary bg-opacity-10 rounded p-5 h-100 position-relative overflow-hidden">
                         <div class="d-flex flex-column position-relative h-100">
@@ -98,7 +98,7 @@
 
 
         <div class="col-md-6 col-lg-4">
-            <div class="bg-secondary bg-opacity-10 rounded p-5 h-100 position-relative overflow-hidden">
+            <div class="bg-secondary bg-opacity-10 rounded p-5 h-100 position-relative overflow-hidden ratio-1x1">
                 <div class="d-flex flex-column position-relative h-100">
                     <h3 class="mb-3 fw-bold">Действия</h3>
                     <p class="mb-auto fw-light">

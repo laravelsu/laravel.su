@@ -23,7 +23,7 @@
 
     <div class="row row-cols-lg-3 row-cols-1 g-4 sponsors">
         <div class="col">
-            <div class="p-4 p-xl-5 bg-body-tertiary rounded d-flex flex-column h-100 position-relative">
+            <div class="p-4 p-xl-5 bg-body-tertiary rounded d-flex flex-column h-100 position-relative ratio-xl-1x1">
                 <img src="/img/sponsors/am.svg" class="d-block mb-4 me-auto" height="64">
                 <p class="fw-normal">
                     Инструменты для управления эмоциями, которые помогают людям контролировать свою жизнь и лучше понимать себя.
@@ -37,7 +37,7 @@
 
         </div>
         <div class="col">
-            <div class="p-4 p-xl-5 bg-body-tertiary rounded d-flex flex-column h-100 position-relative">
+            <div class="p-4 p-xl-5 bg-body-tertiary rounded d-flex flex-column h-100 position-relative ratio-xl-1x1">
                 <img src="/img/sponsors/soidet.svg" class="d-block mb-4 me-auto" height="64">
                 <p class="fw-normal">
                     Подкасты c зажигательными эпизодами, которые заставят
@@ -51,7 +51,7 @@
             </div>
         </div>
         <div class="col d-none d-lg-block">
-            <div class="p-4 p-xl-5 bg-body-tertiary rounded d-flex flex-column h-100 position-relative d-flex bg-opacity-75 opacity-50 align-items-center">
+            <div class="p-4 p-xl-5 bg-body-tertiary rounded d-flex flex-column h-100 position-relative d-flex bg-opacity-75 opacity-50 align-items-center ratio-xl-1x1">
                 <a class="icon-link icon-link-hover stretched-link link-body-emphasis text-decoration-none d-block text-center my-auto" href="{{ route('advertising') }}">
 
                     <span class="d-block mb-3">
