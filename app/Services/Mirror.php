@@ -21,6 +21,7 @@ class Mirror
      *
      * @param string $currentUrl
      * @param string $baseUrl
+     *
      * @return bool
      */
     protected function isMirror(string $currentUrl, string $baseUrl): bool
