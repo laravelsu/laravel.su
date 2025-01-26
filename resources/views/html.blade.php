@@ -39,6 +39,8 @@
          image="{!! route('cover', ['text' => View::getSection('cover') ?? View::getSection('title', config('site.description'))]) !!}"
         {{-- csp="*.laravel.su *.gravatar.com *.githubusercontent.com" --}} />
 
+    <x-meta-no-index />
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&display=swap"
