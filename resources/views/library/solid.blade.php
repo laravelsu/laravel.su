@@ -22,7 +22,7 @@
         'srp',
         'ocp',
         'lsp',
-        'lsp',
+        'isp',
         'dip',
     ])
         ->map(fn ($file) => \Illuminate\Support\Str::of($file)->start('solid/'))
