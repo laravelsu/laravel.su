@@ -4,7 +4,7 @@
         <div class="d-flex align-items-center justify-content-between">
             <p class="mb-0 text-primary">{{ $meet->start_date->isoFormat('DD MMMM', 'Do MMMM') }}</p>
             @if(is_active('profile.meets'))
-                <div >
+                <div>
                     @can('update', $meet)
                         <a class="btn btn-link link-secondary" href="{{route('meets.edit', $meet)}}" title="Редактировать">
                             <x-icon path="i.edit"/>
@@ -39,12 +39,12 @@
 
         <div class="row align-items-center mb-3">
             <div class="col">
-                <h5 class="mb-0">{{ $meet->name }}</h5>
-                <small class="opacity-50">{{ $meet->location ?? 'Онлайн' }} в {{ $meet->start_date->isoFormat('HH:mm', 'Do MMMM') }}</small>
+                <h5 class="mb-0 text-balance">{{ $meet->name }}</h5>
+                <small class="opacity-50 text-balance">{{ $meet->location ?? 'Онлайн' }} в {{ $meet->start_date->isoFormat('HH:mm', 'Do MMMM') }}</small>
             </div>
         </div>
 
-        <div class="line-clamp line-clamp-5 mb-3">{{ $meet->description }}</div>
+        <div class="line-clamp line-clamp-5 mb-3 text-balance">{{ $meet->description }}</div>
     </div>
 
 
