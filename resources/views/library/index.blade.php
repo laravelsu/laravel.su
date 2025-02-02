@@ -23,8 +23,8 @@
                 <img src="/img/bird.svg" class="position-absolute w-50 bottom-0 end-0">
                 <div class="row">
                     <div class="col-sm-7">
-                        <h3 class="mb-3 fw-bold">Простые правила для вашего кода</h3>
-                        <p class="mb-4 fw-light mb-md-auto">
+                        <h3 class="mb-3 fw-bold text-balance">Простые правила для вашего кода</h3>
+                        <p class="mb-4 fw-light mb-md-auto text-balance">
                             Код должен быть понятен всем членам команды и легко читаем для разработчиков, которые могут внести изменения в него
                         </p>
 
@@ -41,8 +41,8 @@
                 <div class="col-lg-6 mb-4 mb-lg-0 ratio-1x1">
                     <div class="bg-primary bg-opacity-10 rounded p-5 h-100 position-relative overflow-hidden">
                         <div class="d-flex flex-column position-relative h-100">
-                            <h3 class="mb-3 fw-bold">Советы по безопасности</h3>
-                            <p class="mb-auto fw-light">
+                            <h3 class="mb-3 fw-bold text-balance">Советы по безопасности</h3>
+                            <p class="mb-auto fw-light text-balance">
                                 Распространенные ошибки в коде, приводящие к уязвимостям безопасности в приложениях на Laravel
                             </p>
 
@@ -58,8 +58,8 @@
 
                     <div class="bg-secondary bg-opacity-10 rounded p-5 h-100 position-relative overflow-hidden">
                         <div class="d-flex flex-column position-relative h-100">
-                            <h3 class="mb-3 fw-bold">Коллекции</h3>
-                            <p class="mb-auto fw-light">
+                            <h3 class="mb-3 fw-bold text-balance">Коллекции</h3>
+                            <p class="mb-auto fw-light text-balance">
                                 Перестаньте использовать громоздкие примитивные массивы и начните использовать коллекции.
                             </p>
 
@@ -79,14 +79,14 @@
                 <img src="/img/sign.svg" class="position-absolute w-100 bottom-0 end-0 d-none d-lg-block">
                 <ul class="d-grid gap-5 list-unstyled text-balance">
                     <li>
-                        <a href="{{ route('library.how-to-ask') }}" class="link-body-emphasis link-underline-opacity-0">
-                            <p class="mb-0 lead fw-bolder">Как задавать вопросы?</p>
+                        <a href="{{ route('library.how-to-ask') }}" class="link-body-emphasis link-underline-opacity-0 text-balance">
+                            <p class="mb-0 lead fw-bolder text-balance">Как задавать вопросы?</p>
                             <small>Правильно заданный вопрос содержит половину ответа</small>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('library.upgrade') }}" class="link-body-emphasis link-underline-opacity-0">
-                            <p class="mb-0 lead fw-bolder">Почему нужно обновляться?</p>
+                        <a href="{{ route('library.upgrade') }}" class="link-body-emphasis link-underline-opacity-0 text-balance">
+                            <p class="mb-0 lead fw-bolder text-balance">Почему нужно обновляться?</p>
                             <small>У программного обеспечения есть жизненный цикл, которого необходимо придерживаться</small>
                         </a>
                     </li>
@@ -101,11 +101,29 @@
             <div class="bg-secondary bg-opacity-10 rounded p-5 h-100 position-relative overflow-hidden ratio-1x1">
                 <div class="d-flex flex-column position-relative h-100">
                     <h3 class="mb-3 fw-bold">Действия</h3>
-                    <p class="mb-auto fw-light">
+                    <p class="mb-auto fw-light text-balance">
                        Класс должен сосредоточиться на выполнении одной конкретной задачи
                     </p>
 
                     <a href="{{ route('library.actions') }}"
+                       class="link-body-emphasis text-decoration-none icon-link icon-link-hover stretched-link mt-4">
+                        Начать читать
+                        <x-icon path="i.arrow-right" class="bi" />
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-6 col-lg-4">
+            <div class="bg-secondary bg-opacity-10 rounded p-5 h-100 position-relative overflow-hidden ratio-1x1">
+                <div class="d-flex flex-column position-relative h-100">
+                    <h3 class="mb-3 fw-bold">SOLID</h3>
+                    <p class="mb-auto fw-light text-balance">
+                        Когда ты понимаешь эти принципы, ты можешь писать код, который легко изменять и дополнять.
+                    </p>
+
+                    <a href="{{ route('library.solid') }}"
                        class="link-body-emphasis text-decoration-none icon-link icon-link-hover stretched-link mt-4">
                         Начать читать
                         <x-icon path="i.arrow-right" class="bi" />
