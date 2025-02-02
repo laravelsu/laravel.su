@@ -159,7 +159,6 @@ main div {
 
     p {
         font-size: 1em;
-        line-height: 1.6em;
         margin-bottom: 1.5rem;
         @extend .text-wrap;
         @extend .text-break;
@@ -182,7 +181,7 @@ main div {
 main,
 .main,
 .post {
-    line-height: 1.5em;
+    line-height: 1.8em;
     overflow: initial;
 
     img {
@@ -390,12 +389,12 @@ main,
     .post {
         blockquote {
             &:before {
-                width: 1em;
+                width: 0.5em;
+                min-width: 0.5em;
                 border: none;
-                background-image: none;
+                background-image: none!important;
                 margin: 0;
                 padding: 0;
-                min-width: 1em;
             }
         }
     }
