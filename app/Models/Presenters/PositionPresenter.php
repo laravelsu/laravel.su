@@ -27,7 +27,7 @@ class PositionPresenter extends Presenter
             return 'до '.$this->formatAmount($this->entity->salary_max).' ₽';
         }
 
-        return 'Не указано';
+        return '₽ Не указано';
     }
 
     /**
