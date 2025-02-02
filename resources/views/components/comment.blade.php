@@ -57,21 +57,21 @@
 
                         @can('update', $comment)
                             <a href="{{ route('comments.show.edit', $comment) }}" data-turbo-method="post"
-                               class="btn btn-link link-body-emphasis btn-sm">Редактировать</a>
+                               class="btn btn-link link-body-emphasis btn-sm link-underline link-underline-opacity-0 link-underline-opacity-75-hover">Редактировать</a>
                         @endcan
 
                         @can('delete', $comment)
                             · <a href="{{ route('comments.delete', $comment) }}"
-                                 class="btn btn-link link-body-emphasis btn-sm"
+                                 class="btn btn-link link-body-emphasis btn-sm link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
                                  data-turbo-method="DELETE"
                                  data-turbo-confirm="Вы уверены, что хотите удалить комментарий?">
                                 Удалить
                             </a>
                         @endcan
 
-
                     @can('reply', $comment)
-                        <a href="{{ route('comments.show.reply', $comment) }}" class="btn btn-link link-body-emphasis btn-sm"
+                        <a href="{{ route('comments.show.reply', $comment) }}"
+                           class="btn btn-link link-body-emphasis btn-sm link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
                            data-turbo-method="post">Ответить</a>
                     @endcan
                 </div>
