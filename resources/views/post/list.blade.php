@@ -82,7 +82,9 @@
             <a class="d-flex align-items-center text-body-secondary text-decoration-none me-4"
                href="{{ route('post.show', $post) }}">
                 <x-icon path="i.comment"/>
-                <span class="ms-2">{{ $post->comments_count }}</span>
+                @if($post->comments_count > 0)
+                    <span class="ms-2">{{ $post->comments_count }}</span>
+                @endif
             </a>
 
             <time
