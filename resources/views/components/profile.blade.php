@@ -17,6 +17,6 @@
                 @endif
             </a>
         </h6>
-        <p class="mb-0 small line-clamp line-clamp-1 opacity-75">{{ $user->presenter()->about() }}</p>
+        <p class="mb-0 small line-clamp line-clamp-1 opacity-75 me-4">{{ $user->presenter()->about() }}</p>
     </div>
 </div>
