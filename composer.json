@@ -37,7 +37,7 @@
         "laravel/tinker": "^2.8",
         "laravel/unfenced": "dev-main",
         "laravelsu/highlight": "dev-main",
-        "orchid/platform": "^14.39",
+        "orchid/platform": "^14.45",
         "overtrue/laravel-like": "^5.2",
         "spatie/laravel-activitylog": "^4.7",
         "spatie/laravel-backup": "^9.0.4",
@@ -55,7 +55,7 @@
         "nunomaduro/collision": "^8.1",
         "phpunit/phpunit": "^10.0",
         "spatie/laravel-ignition": "^2.0",
-        "vimeo/psalm": "^5.23"
+        "vimeo/psalm": "^6.1.0"
     },
     "repositories": [
         {
