@@ -34,7 +34,7 @@
                     <li class="col d-flex flex-column flex-lg-row gap-3 gap-lg-4 rounded p-3 p-xxl-4 align-items-center align-items-lg-start" id="first" data-tabs-target="tab" data-action="click->tabs#change:prevent">
                         <x-icon path="i.inertia" class="text-body-secondary flex-shrink-0" width="2rem" height="2rem"/>
                         <a href="#"
-                           class="text-body-secondary text-decoration-none flex-column gap-1"
+                           class="text-body-secondary text-decoration-none d-flex flex-column gap-1"
                            data-action="keydown.left->tabs#previousTab keydown.right->tabs#nextTab keydown.home->tabs#firstTab:prevent keydown.end->tabs#lastTab:prevent">
                             <h5 class="mb-0">Inertia</h5>
                             <small class="opacity-75 d-none d-lg-block lh-sm">Усовершенствуйте Laravel с помощью React, Vue или Svelte</small>
@@ -43,7 +43,7 @@
                     <li class="col d-flex flex-column flex-lg-row gap-3 gap-lg-4 rounded p-3 p-xxl-4 align-items-center align-items-lg-start" id="second" data-tabs-target="tab" data-action="click->tabs#change:prevent">
                         <x-icon path="i.livewire" class="text-body-secondary flex-shrink-0" width="2rem" height="2rem"/>
                         <a href="#"
-                           class="text-body-secondary text-decoration-none flex-column gap-1"
+                           class="text-body-secondary text-decoration-none d-flex flex-column gap-1"
                            data-action="keydown.left->tabs#previousTab keydown.right->tabs#nextTab keydown.home->tabs#firstTab:prevent keydown.end->tabs#lastTab:prevent">
                             <h5 class="mb-0">Livewire</h5>
                             <small class="opacity-75 d-none d-lg-block lh-sm">Реактивные шаблоны, построенные с помощью PHP</small>
@@ -52,7 +52,7 @@
                     <li class="col d-flex flex-column flex-lg-row gap-3 gap-lg-4 rounded p-3 p-xxl-4 align-items-center align-items-lg-start" id="third" data-tabs-target="tab" data-action="click->tabs#change:prevent">
                         <x-icon path="i.spa" class="text-body-secondary flex-shrink-0" width="2rem" height="2rem"/>
                         <a href="#"
-                           class="text-body-secondary text-decoration-none flex-column gap-1"
+                           class="text-body-secondary text-decoration-none d-flex flex-column gap-1"
                            data-action="keydown.left->tabs#previousTab keydown.right->tabs#nextTab keydown.home->tabs#firstTab:prevent keydown.end->tabs#lastTab:prevent">
                             <h5 class="mb-0">API</h5>
                             <small class="opacity-75 d-none d-lg-block lh-sm">Создавайте мощные API быстрее, чем когда-либо</small>
