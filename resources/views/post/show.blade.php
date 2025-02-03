@@ -6,7 +6,7 @@
 
 <x-container>
         <div class="row">
-            <div class="bg-body-tertiary p-4 p-xl-5 rounded z-1 position-relative">
+            <article class="bg-body-tertiary p-4 p-xl-5 rounded z-1 position-relative">
 
                 <button type="button"
                         data-controller="history"
@@ -92,7 +92,7 @@
                             datetime="{{ $post->created_at->toISOString() }}">{{ $post->created_at->diffForHumans() }}</time>
                     </div>
                 </div>
-            </div>
+            </article>
         </div>
 </x-container>
 
