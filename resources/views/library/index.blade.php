@@ -114,6 +114,27 @@
             </div>
         </div>
 
+        <div class="col-md-8">
+            <div class="bg-primary bg-opacity-10 rounded p-4 p-xl-5 position-relative overflow-hidden ratio-1x1 ratio-md-auto h-100">
+                <img src="/img/ui/book.svg" class="position-absolute w-50 bottom-0 end-0 z-n1 ps-xl-4">
+                <div class="row">
+                    <div class="col-sm-7">
+                        <h3 class="mb-3 fw-bold text-balance">Архитектура сложных веб-приложений.</h3>
+                        <p class="mb-4 fw-light mb-md-auto text-balance">
+                            Проекты очень разные. В этой книге Адель Файзрахманов, автор Laravel Idea, объясняет, как выбирать лучшие решения в Laravel.
+                        </p>
+                        <a href="https://github.com/adelf/acwa_book_ru" target="_blank" class="link-body-emphasis text-decoration-none icon-link icon-link-hover stretched-link mt-4">
+                            Читать книгу
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="bi" width="1em" height="1em" role="img" fill="currentColor" path="i.arrow-right" componentname="icon">
+                                <path d="m13,15c-.26,0-.51-.1-.71-.29-.39-.39-.39-1.02,0-1.41l3.29-3.29-3.29-3.29c-.39-.39-.39-1.02,0-1.41s1.02-.39,1.41,0l4,4c.39.39.39,1.02,0,1.41l-4,4c-.2.2-.45.29-.71.29Z"></path>
+                                <path d="m17,11H3c-.55,0-1-.45-1-1s.45-1,1-1h14c.55,0,1,.45,1,1s-.45,1-1,1Z"></path>
+                            </svg>
+
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="col-md-6 col-lg-4">
             <div class="bg-secondary bg-opacity-10 rounded p-5 h-100 position-relative overflow-hidden ratio-1x1">
