@@ -381,7 +381,7 @@ class UserController
                         </div>
                     </div>
                     <div class="col-lg-7 overflow-hidden">
-                        <img src="https://laravel.com/img/frontend/breeze-profile.png" class="mt-5 rounded-top-4 border-top border-start"
+                        <img src="/img/frontend/breeze-profile.png" class="mt-5 rounded-top-4 border-top border-start"
                              height="600px"/>
                     </div>
                 </div>
