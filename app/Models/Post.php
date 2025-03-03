@@ -7,6 +7,8 @@ use App\Models\Concerns\LogsActivityFillable;
 use App\Models\Concerns\Taggable;
 use App\Models\Enums\PostTypeEnum;
 use App\Models\Enums\StatusEnum;
+use App\Models\Scopes\PublishedScope;
+use Illuminate\Database\Eloquent\Attributes\ScopedBy;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -28,6 +30,7 @@ use Overtrue\LaravelLike\Traits\Likeable;
  *  inherit. The 'type' attribute is used to distinguish between different
  *  post types in the single 'posts' table.
  */
+#[ScopedBy([PublishedScope::class])]
 class Post extends Model
 {
     use AsSource, Chartable, Filterable, HasAuthor, HasFactory, Likeable, LogsActivityFillable, Searchable, Taggable;
