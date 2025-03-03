@@ -80,7 +80,7 @@
             <x-like :model="$post"/>
 
             <a class="d-flex align-items-center text-body-secondary text-decoration-none me-4"
-               href="{{ route('post.show', $post) }}">
+               href="{{ route('post.show', [$post, '#comments-frame']) }}">
                 <x-icon path="i.comment"/>
                 @if($post->comments_count > 0)
                     <span class="ms-2">{{ $post->comments_count }}</span>
