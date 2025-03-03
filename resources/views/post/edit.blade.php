@@ -6,7 +6,7 @@
             <div class="bg-body-tertiary p-4 p-xl-5 rounded">
                 <div class="col-xxl-8 mx-auto">
 
-                    <form method="post">
+                    <form method="post" data-controller="post-preview" data-post-preview-target="form">
                         <div
                             data-controller="tabs"
                             data-tabs-active-tab-class="bg-body-secondary"
@@ -29,7 +29,7 @@
                                         <button
                                             id="preview"
                                             data-tabs-target="tab"
-                                            data-action="click->tabs#change"
+                                            data-action="click->post-preview#validate click->tabs#change"
                                             type="submit"
                                             formaction="{{  route('post.preview') }}"
                                             class="btn btn-link text-decoration-none  link-body-emphasis"
