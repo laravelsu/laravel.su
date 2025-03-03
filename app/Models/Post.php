@@ -100,6 +100,11 @@ class Post extends Model
                     return;
                 }
 
+                // Не отправляем нотификацию, если публикация запланирована в будущее
+                if ($post->publish_at?->isFuture()) {
+                    return;
+                }
+
                 TelegramMessage::create()
                     ->to(config('services.telegram-bot-api.channel_id'))
                     ->escapedLine($post->title)
