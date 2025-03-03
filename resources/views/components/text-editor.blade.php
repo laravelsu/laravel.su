@@ -32,7 +32,7 @@
 
 
                 <x-text-editor-button label="Заголовок" format="header2" icon="type-h2"/>
-                <x-text-editor-button label="Жырный" format="bold" icon="type-bold"/>
+                <x-text-editor-button label="Жирный" format="bold" icon="type-bold"/>
                 <x-text-editor-button label="Курсив" format="italic" icon="type-italic"/>
                 <x-text-editor-button label="Цитата" format="blockquote" icon="quote"/>
                 <x-text-editor-button label="Код" format="code" icon="code-slash"/>
