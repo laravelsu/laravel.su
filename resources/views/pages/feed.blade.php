@@ -8,7 +8,7 @@
         <link><![CDATA[{{ config('app.url') }}]]></link>
         <description><![CDATA[{{ config('site.description') }}]]></description>
         <language>{{ config('app.locale') }}</language>
-        <pubDate>{{ $posts->first()?->created_at->toRssString() }}</pubDate>
+        <pubDate>{{ $posts->first()?->publish_at->toRssString() }}</pubDate>
 
         @foreach($posts as $post)
             <item>
@@ -16,7 +16,7 @@
                 <link>{{ route('post.show', $post) }}</link>
                 {{-- <description><![CDATA[{!! $post->title !!}]]></description> --}}
                 <guid isPermaLink="false">{{ $post->id }}</guid>
-                <pubDate>{{ $post->created_at->toRssString() }}</pubDate>
+                <pubDate>{{ $post->publish_at->toRssString() }}</pubDate>
                 <enclosure url="{{ route('cover', ['text' => $post->title]) }}" length="0" type="image/jpg" />
             </item>
         @endforeach
