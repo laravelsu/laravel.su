@@ -1,4 +1,10 @@
-<div {{ $attributes->merge(['class' => 'd-flex align-items-center'])->except('user') }}>
+<div {{ $attributes->merge([
+    'class' => 'd-flex align-items-center',
+    'itemscope',
+    'itemprop' => 'author',
+    'itemtype' => 'https://schema.org/Person'
+    ])->except('user') }}
+>
     <div class="avatar avatar-sm me-3">
         <a href="{{route('profile', $user)}}">
             <img class="avatar-img rounded-circle" src="{{ $user->avatar }}"
@@ -10,7 +16,7 @@
         <h6 class="mb-0 me-4">
             <a href="{{route('profile',$user)}}"
                class="link-body-emphasis text-decoration-none">
-                {{ $user->name }}
+                <span itemprop="name">{{ $user->name }}</span>
 
                 @if(!is_null($user->milestone))
                     <span class="text-primary small">({{ $user->milestone->name() }})</span>

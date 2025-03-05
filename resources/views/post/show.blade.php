@@ -5,96 +5,89 @@
 @section('content')
 
 <x-container>
-        <div class="row">
-            <article class="bg-body-tertiary p-4 p-xl-5 rounded z-1 position-relative">
+    <div class="row">
+        <article
+            class="bg-body-tertiary p-4 p-xl-5 rounded z-1 position-relative"
+            itemscope
+            itemtype="https://schema.org/Article">
 
-                <button type="button"
-                        data-controller="history"
-                        data-history-url-value="{{route('feed')}}"
-                        data-action="click->history#back"
-                        class="position-absolute top-0 end-0 m-4 btn btn-link link-secondary text-decoration-none fs-3 d-none d-md-inline">
-                    <x-icon path="bs.x-lg"/>
-                </button>
+            <button type="button"
+                    data-controller="history"
+                    data-history-url-value="{{route('feed')}}"
+                    data-action="click->history#back"
+                    class="position-absolute top-0 end-0 m-4 btn btn-link link-secondary text-decoration-none fs-3 d-none d-md-inline">
+                <x-icon path="bs.x-lg" />
+            </button>
 
-                <div class="col-lg-8 mx-auto">
+            <div class="col-lg-8 mx-auto">
 
-                    <main class="post" data-controller="prism">
-                        {{--
-                        <a class="text-decoration-none" href="#">Hotwire</a>
-                        --}}
-                        <h1>{{ $post->title }}</h1>
+                <main class="post" data-controller="prism">
+                    <h1 itemprop="headline">{{ $post->title }}</h1>
 
-                        <x-posts.content :content="$post->content"/>
-                    </main>
+                    <x-posts.content :content="$post->content" itemprop="articleBody" />
+                </main>
 
-                    <!-- Start Author  -->
-                    <div class="d-flex align-items-center justify-content-between mt-5 p-4 bg-body-secondary rounded-3 position-relative">
-                        <figure class="position-absolute top-0 end-0 translate-middle z-n1">
-                            <x-icon path="l.cube" width="46" height="53" fill="none"/>
-                        </figure>
+                <!-- Start Author  -->
+                <div class="d-flex align-items-center justify-content-between mt-5 p-4 bg-body-secondary rounded-3 position-relative">
+                    <figure class="position-absolute top-0 end-0 translate-middle z-n1">
+                        <x-icon path="l.cube" width="46" height="53" fill="none" />
+                    </figure>
 
-                        <x-profile :user="$post->author"/>
+                    <x-profile :user="$post->author" />
 
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <x-device phone="true" tablet="true">
+                            <button class=" btn btn-secondary"
+                                    data-controller="share"
+                                    data-share-title-value="{{$post->title}}"
+                                    data-share-url-value="{{ route('post.show', $post) }}"
+                                    data-action="click->share#dialog"
+                                    title="Поделиться">
+                                <x-icon path="i.share" />
+                            </button>
+                        </x-device>
 
-                        <div class="btn-group" role="group" aria-label="Basic example">
-                            <x-device phone="true" tablet="true">
-                                <button class=" btn btn-secondary"
-                                        data-controller="share"
-                                        data-share-title-value="{{$post->title}}"
-                                        data-share-url-value="{{ route('post.show', $post) }}"
-                                        data-action="click->share#dialog"
-                                        title="Поделиться"
-                                >
-                                    <x-icon path="i.share"/>
-                                </button>
-                            </x-device>
+                        <x-device desktop="true">
+                            <button class="btn btn-secondary clipboard" data-controller="clipboard"
+                                    data-action="clipboard#copy"
+                                    data-clipboard-done-class="done">
+                                <span class="d-none" data-clipboard-target="source">{{ url()->current() }}</span>
+                                <x-icon path="i.copy" class="copy-action" data-controller="tooltip"
+                                        title="Скопировать в буфер" />
+                                <x-icon path="i.copy-fill" class="copy-done" data-controller="tooltip"
+                                        title="Скопировано" />
+                            </button>
+                        </x-device>
 
-                            <x-device desktop="true">
-                                <button class="btn btn-secondary clipboard" data-controller="clipboard"
-                                        data-action="clipboard#copy"
-                                        data-clipboard-done-class="done">
-                                        <span class="d-none" data-clipboard-target="source">{{ url()->current() }}</span>
-                                        <x-icon path="i.copy" class="copy-action" data-controller="tooltip" title="Скопировать в буфер" />
-                                        <x-icon path="i.copy-fill" class="copy-done" data-controller="tooltip" title="Скопировано" />
-                                </button>
-                            </x-device>
-
-                            @can('update', $post)
-                                <a class="btn btn-secondary" href="{{route('post.edit', $post)}}" title="Редактировать">
-                                    <x-icon path="i.edit"/>
-                                </a>
-                            @endcan
-                        </div>
-                    </div>
-                    <!-- End Author  -->
-
-
-                    <div class="d-flex align-items-center mt-4">
-                        <x-like :model="$post"/>
-
-                        <a class="d-flex align-items-center text-body-secondary text-decoration-none me-4"
-                           href="{{ route('post.show', $post) }}">
-                            <x-icon path="i.comment"/>
-                            <span class="ms-2">{{ $post->comments_count }}</span>
-                        </a>
-
-                        {{--
-                        <span class="d-flex align-items-center text-body-secondary text-decoration-none ms-auto">
-                            <x-icon path="bs.clock"/>
-                            <span class="ms-2">{{ $post->estimatedReadingTime() }} мин</span>
-                        </span>
-                        --}}
-
-                        <time
-                            data-controller="tooltip"
-                            title="Опубликовано {{ $post->created_at->format('d.m.Y H:i') }}"
-                            class="text-body-secondary ms-auto user-select-none small"
-                            datetime="{{ $post->created_at->toISOString() }}">{{ $post->created_at->diffForHumans() }}</time>
+                        @can('update', $post)
+                            <a class="btn btn-secondary" href="{{route('post.edit', $post)}}" title="Редактировать">
+                                <x-icon path="i.edit" />
+                            </a>
+                        @endcan
                     </div>
                 </div>
-            </article>
-        </div>
+                <!-- End Author  -->
+
+                <div class="d-flex align-items-center mt-4">
+                    <x-like :model="$post" />
+
+                    <a class="d-flex align-items-center text-body-secondary text-decoration-none me-4"
+                       href="{{ route('post.show', $post) }}">
+                        <x-icon path="i.comment" />
+                        <span class="ms-2" itemprop="commentCount">{{ $post->comments_count }}</span>
+                    </a>
+
+                    <time data-controller="tooltip"
+                          title="Опубликовано {{ $post->created_at->format('d.m.Y H:i') }}"
+                          class="text-body-secondary ms-auto user-select-none small"
+                          datetime="{{ $post->created_at->toISOString() }}"
+                          itemprop="datePublished">{{ $post->created_at->diffForHumans() }}</time>
+                </div>
+            </div>
+        </article>
+    </div>
 </x-container>
+
 
 @include('particles.positions')
 
