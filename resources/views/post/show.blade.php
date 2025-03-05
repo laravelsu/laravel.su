@@ -21,10 +21,10 @@
 
                 <div class="col-lg-8 mx-auto">
 
-                    <main class="post" data-controller="prism">
+                    <main class="post" data-controller="prism" itemprop="articleBody">
                         <h1 itemprop="headline">{{ $post->title }}</h1>
 
-                        <x-posts.content :content="$post->content" itemprop="articleBody" />
+                        <x-posts.content :content="$post->content"/>
                     </main>
 
                     <!-- Start Author  -->
