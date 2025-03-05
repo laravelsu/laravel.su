@@ -1,6 +1,6 @@
 <div {{ $attributes->merge([
     'class' => 'd-flex align-items-center',
-    'itemscope',
+    'itemscope' => 'itemscope',
     'itemprop' => 'author',
     'itemtype' => 'https://schema.org/Person'
     ])->except('user') }}
