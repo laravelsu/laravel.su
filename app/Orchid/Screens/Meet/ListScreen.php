@@ -152,13 +152,12 @@ class ListScreen extends Screen
 
                             ModalToggle::make(__('Edit'))
                                 ->icon('bs.pencil')
-                                ->modal('editModal')
+                                ->modal('editModal', [
+                                    'meet' => $meet->id,
+                                ])
                                 ->modalTitle($meet->name)
                                 ->method('update', [
                                     'meet' => $meet,
-                                ])
-                                ->asyncParameters([
-                                    'meet' => $meet->id,
                                 ]),
 
                             Button::make(__('Delete'))

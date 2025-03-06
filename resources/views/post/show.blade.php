@@ -4,9 +4,12 @@
 
 @section('content')
 
-<x-container>
+    <x-container>
         <div class="row">
-            <article class="bg-body-tertiary p-4 p-xl-5 rounded z-1 position-relative">
+            <article
+                class="bg-body-tertiary p-4 p-xl-5 rounded z-1 position-relative"
+                itemscope
+                itemtype="https://schema.org/Article">
 
                 <button type="button"
                         data-controller="history"
@@ -18,11 +21,8 @@
 
                 <div class="col-lg-8 mx-auto">
 
-                    <main class="post" data-controller="prism">
-                        {{--
-                        <a class="text-decoration-none" href="#">Hotwire</a>
-                        --}}
-                        <h1>{{ $post->title }}</h1>
+                    <main class="post" data-controller="prism" itemprop="articleBody">
+                        <h1 itemprop="headline">{{ $post->title }}</h1>
 
                         <x-posts.content :content="$post->content"/>
                     </main>
@@ -53,9 +53,9 @@
                                 <button class="btn btn-secondary clipboard" data-controller="clipboard"
                                         data-action="clipboard#copy"
                                         data-clipboard-done-class="done">
-                                        <span class="d-none" data-clipboard-target="source">{{ url()->current() }}</span>
-                                        <x-icon path="i.copy" class="copy-action" data-controller="tooltip" title="Скопировать в буфер" />
-                                        <x-icon path="i.copy-fill" class="copy-done" data-controller="tooltip" title="Скопировано" />
+                                    <span class="d-none" data-clipboard-target="source">{{ url()->current() }}</span>
+                                    <x-icon path="i.copy" class="copy-action" data-controller="tooltip" title="Скопировать в буфер" />
+                                    <x-icon path="i.copy-fill" class="copy-done" data-controller="tooltip" title="Скопировано" />
                                 </button>
                             </x-device>
 
@@ -73,9 +73,9 @@
                         <x-like :model="$post"/>
 
                         <a class="d-flex align-items-center text-body-secondary text-decoration-none me-4"
-                           href="{{ route('post.show', $post) }}">
+                           href="{{ route('post.show', [$post, '#comments-frame']) }}">
                             <x-icon path="i.comment"/>
-                            <span class="ms-2">{{ $post->comments_count }}</span>
+                            <span class="ms-2" itemprop="commentCount">{{ $post->comments_count }}</span>
                         </a>
 
                         {{--
@@ -89,78 +89,79 @@
                             data-controller="tooltip"
                             title="Опубликовано {{ $post->publish_at->format('d.m.Y H:i') }}"
                             class="text-body-secondary ms-auto user-select-none small"
-                            datetime="{{ $post->publish_at->toISOString() }}">{{ $post->publish_at->diffForHumans() }}</time>
+                            datetime="{{ $post->publish_at->toISOString() }}"
+                            itemprop="datePublished">{{ $post->publish_at->diffForHumans() }}</time>
                     </div>
                 </div>
             </article>
         </div>
-</x-container>
-
-@include('particles.positions')
-
-<turbo-frame id="comments-frame" src="{{ route('post.comments', $post) }}" loading="lazy" target="_top">
-    <x-container>
-        <div class="row">
-            <div class="col-lg-8 mx-auto">
-                <p class="h5 mb-3 ms-3">
-                    <span class="placeholder rounded col-3"></span>
-                </p>
-            </div>
-
-            <div class="bg-body-tertiary p-4 p-xl-5 rounded">
-                <div class="row mb-4">
-                    <div class="col-12 col-lg-8 mx-auto">
-                        <div class="d-flex align-content-between align-items-stretch">
-                            <div class="col-1 me-3">
-                                <span class="placeholder avatar-img rounded-circle w-100 p-3">
-                                </span>
-                            </div>
-
-                            <div class="w-100">
-                                <p class="card-text placeholder-glow mb-2">
-                                    <span class="placeholder rounded col-4"></span>
-                                </p>
-                                <p class="card-text placeholder-glow small">
-                                    <span class="placeholder rounded col-7"></span>
-                                    <span class="placeholder rounded col-4"></span>
-                                    <span class="placeholder rounded col-4"></span>
-                                    <span class="placeholder rounded col-6"></span>
-                                    <span class="placeholder rounded col-8"></span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12 col-lg-8 mx-auto">
-                        <div class="d-flex align-content-between align-items-stretch">
-                            <div class="col-1 me-3">
-                                <span class="placeholder avatar-img rounded-circle w-100 p-3">
-                                </span>
-                            </div>
-
-                            <div class="w-100">
-                                <p class="card-text placeholder-glow mb-2">
-                                    <span class="placeholder rounded col-2"></span>
-                                </p>
-                                <p class="card-text placeholder-glow small">
-                                    <span class="placeholder rounded col-3"></span>
-                                    <span class="placeholder rounded col-5"></span>
-                                    <span class="placeholder rounded col-2"></span>
-                                    <span class="placeholder rounded col-7"></span>
-                                    <span class="placeholder rounded col-2"></span>
-                                    <span class="placeholder rounded col-4"></span>
-                                    <span class="placeholder rounded col-2"></span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </x-container>
-</turbo-frame>
 
-@include('particles.sponsors')
+    @include('particles.positions')
+
+    <turbo-frame id="comments-frame" src="{{ route('post.comments', $post) }}" loading="lazy" target="_top">
+        <x-container>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <p class="h5 mb-3 ms-3">
+                        <span class="placeholder rounded col-3"></span>
+                    </p>
+                </div>
+
+                <div class="bg-body-tertiary p-4 p-xl-5 rounded">
+                    <div class="row mb-4">
+                        <div class="col-12 col-lg-8 mx-auto">
+                            <div class="d-flex align-content-between align-items-stretch">
+                                <div class="col-1 me-3">
+                                <span class="placeholder avatar-img rounded-circle w-100 p-3">
+                                </span>
+                                </div>
+
+                                <div class="w-100">
+                                    <p class="card-text placeholder-glow mb-2">
+                                        <span class="placeholder rounded col-4"></span>
+                                    </p>
+                                    <p class="card-text placeholder-glow small">
+                                        <span class="placeholder rounded col-7"></span>
+                                        <span class="placeholder rounded col-4"></span>
+                                        <span class="placeholder rounded col-4"></span>
+                                        <span class="placeholder rounded col-6"></span>
+                                        <span class="placeholder rounded col-8"></span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-lg-8 mx-auto">
+                            <div class="d-flex align-content-between align-items-stretch">
+                                <div class="col-1 me-3">
+                                <span class="placeholder avatar-img rounded-circle w-100 p-3">
+                                </span>
+                                </div>
+
+                                <div class="w-100">
+                                    <p class="card-text placeholder-glow mb-2">
+                                        <span class="placeholder rounded col-2"></span>
+                                    </p>
+                                    <p class="card-text placeholder-glow small">
+                                        <span class="placeholder rounded col-3"></span>
+                                        <span class="placeholder rounded col-5"></span>
+                                        <span class="placeholder rounded col-2"></span>
+                                        <span class="placeholder rounded col-7"></span>
+                                        <span class="placeholder rounded col-2"></span>
+                                        <span class="placeholder rounded col-4"></span>
+                                        <span class="placeholder rounded col-2"></span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </x-container>
+    </turbo-frame>
+
+    @include('particles.sponsors')
 
 @endsection
