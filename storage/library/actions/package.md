@@ -39,7 +39,7 @@ class GenerateReservationCode
 GenerateReservationCode::run()
 ```
 
-Если вам нужно выполнить действие в очереди, то вы так же можете это сделать, например:
+Если вам нужно выполнить действие в очереди, то вы также можете это сделать, например:
 
 ```php
 GenerateReservationCode::dispatch();
