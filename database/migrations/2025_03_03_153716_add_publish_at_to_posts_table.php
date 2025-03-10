@@ -17,7 +17,7 @@ return new class extends Migration
         }
 
         Schema::table('posts', function (Blueprint $table) {
-            $table->timestamp('publish_at')->nullable()->useCurrent();
+            $table->timestamp('publish_at')->nullable();
         });
 
         // Проставляем publish_at текущим значением created_at
