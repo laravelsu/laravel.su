@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Jobs\TelegramMessage;
 use App\Services\Telegram\CaptchaCallback;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 
 class WebHookController extends Controller
 {
