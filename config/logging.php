@@ -137,14 +137,6 @@ return [
         'emergency' => [
             'path' => storage_path('logs/laravel.log'),
         ],
-
-        'tg-bot' => [
-            'driver' => 'daily',
-            'path' => storage_path('logs/tg-bot/tg-bot.log'),
-            'level' => env('LOG_LEVEL', 'debug'),
-            'replace_placeholders' => true,
-        ],
-
     ],
 
 ];

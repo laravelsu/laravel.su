@@ -31,7 +31,7 @@ class WebHookController extends Controller
             );
         }
 
-        Log::channel('tg-bot')->info(json_encode($request->all()));
+        Log::channel('telegram')->info(json_encode($request->all()));
 
         TelegramMessage::dispatch(
             $request->collect('message'),
