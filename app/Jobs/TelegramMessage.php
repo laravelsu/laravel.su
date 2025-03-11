@@ -3,13 +3,16 @@
 namespace App\Jobs;
 
 use App\Models\AntiSpamRecord;
-use App\Services\TelegramBot;
+use App\Services\Telegram\CaptchaCallback;
+use App\Services\Telegram\TelegramBot;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
 
 class TelegramMessage implements ShouldQueue
 {
@@ -20,15 +23,21 @@ class TelegramMessage implements ShouldQueue
     public $chatId;
     public $messageId;
 
+    public $firstName;
+
+    public $newChatMember;
+
     /**
      * Create a new job instance.
      */
-    public function __construct(public Collection $message)
+    public function __construct(public Collection $message, public ?CaptchaCallback $captcha)
     {
         $this->text = $this->message->only(['text', 'caption'])->first();
         $this->messageId = $this->message->get('message_id');
+        $this->firstName = $this->message->dot()->get('from.first_name');
         $this->chatId = $this->message->dot()->get('chat.id');
         $this->from = $this->message->dot()->get('from.id');
+        $this->newChatMember = (bool) $this->message->get('new_chat_member');
     }
 
     /**
@@ -36,6 +45,34 @@ class TelegramMessage implements ShouldQueue
      */
     public function handle(TelegramBot $telegramBot): void
     {
+        // Ban new user without duration and send captcha button
+        if ($this->newChatMember) {
+            $telegramBot->banUserInGroup($this->chatId, $this->from);
+            $telegramBot->sendWelcomeButton($this->chatId, $this->from, $this->firstName);
+
+            return;
+        }
+
+        // Unmute user after click button
+        if ($this->captcha?->checkId && ($this->captcha->checkId === $this->captcha->from)) {
+
+            $telegramBot->unmuteUserInGroup($this->captcha->chatId, $this->captcha->from);
+
+            $messageId = Cache::get("tg_message_{$this->captcha->chatId}_{$this->captcha->from}");
+
+            if ($messageId) {
+                $telegramBot->deleteMessage($this->captcha->chatId, $messageId);
+                Cache::forget("tg_message_{$this->captcha->chatId}_{$this->captcha->from}");
+            }
+
+            return;
+        }
+
+        // Return when captcha clicked not muted users.
+        if ($this->captcha?->checkId && ($this->captcha->checkId !== $this->captcha->from)) {
+            return;
+        }
+
         if (empty($this->from)) {
             return;
         }
