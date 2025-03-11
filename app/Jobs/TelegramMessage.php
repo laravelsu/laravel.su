@@ -41,8 +41,11 @@ class TelegramMessage implements ShouldQueue
         $this->from = $this->message->dot()->get('from.id');
         $this->newChatMember = (bool) $this->message->get('new_chat_member');
 
-        $this->locale = collect(config('telegram.chats'))
-            ->where('id', $this->chatId)?->first['locale'] ?? config('telegram.default_locale');
+        $chatConfig = collect(config('telegram.chats'))
+            ->where('id', $this->chatId)
+            ->first();
+
+        $this->locale = $chatConfig ? $chatConfig['locale'] : config('telegram.default_locale');
     }
 
     /**
