@@ -32,7 +32,7 @@ class WebHookController extends Controller
 
         TelegramMessage::dispatch(
             $request->collect('message'),
-            null,
+            $captcha,
         );
 
     }
