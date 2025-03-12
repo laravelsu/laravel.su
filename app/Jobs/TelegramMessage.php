@@ -13,6 +13,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
 
 class TelegramMessage implements ShouldQueue
 {
@@ -41,11 +42,15 @@ class TelegramMessage implements ShouldQueue
         $this->from = $this->message->dot()->get('from.id');
         $this->newChatMember = (bool) $this->message->get('new_chat_member');
 
+        Log::channel('telegram')->info('CHAT MEMBER CONSTRUCTOR:'.$this->newChatMember);
+
         $chatConfig = collect(config('telegram.chats'))
             ->where('id', $this->chatId)
             ->first();
 
         $this->locale = $chatConfig ? $chatConfig['locale'] : config('telegram.default_locale');
+
+        Log::channel('telegram')->info("TG Message Locale: $this->locale| TG Message chat:".json_encode($chatConfig));
     }
 
     /**
@@ -55,6 +60,7 @@ class TelegramMessage implements ShouldQueue
     {
         // Ban new user without duration and send captcha button
         if ($this->newChatMember) {
+            Log::channel('telegram')->info('NEW CHAT MEMBER IF');
             App::setLocale($this->locale);
             $telegramBot->banUserInGroup($this->chatId, $this->from);
             $telegramBot->sendWelcomeButton($this->chatId, $this->from, $this->firstName);

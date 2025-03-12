@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Jobs\TelegramMessage;
 use App\Services\Telegram\CaptchaCallback;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class WebHookController extends Controller
 {
@@ -29,6 +30,8 @@ class WebHookController extends Controller
                 chatId: $data->dot()->get('message.chat.id'),
             );
         }
+
+        Log::channel('telegram')->info(json_encode($request->all()));
 
         TelegramMessage::dispatch(
             $request->collect('message'),
