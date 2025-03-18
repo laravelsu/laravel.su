@@ -59,6 +59,7 @@ class TelegramMessage implements ShouldQueue
     public function handle(TelegramBot $telegramBot): void
     {
         // Ban new user without duration and send captcha button
+        /*
         if ($this->newChatMember) {
             Log::channel('telegram')->info('NEW CHAT MEMBER IF');
             App::setLocale($this->locale);
@@ -67,6 +68,7 @@ class TelegramMessage implements ShouldQueue
 
             return;
         }
+        */
 
         // Unmute user after click button
         if ($this->captcha?->checkId && ($this->captcha->checkId === $this->captcha->from)) {
@@ -98,7 +100,9 @@ class TelegramMessage implements ShouldQueue
             return;
         }
 
-        $existEntities = collect($this->message->get('entities'))->whereIn('type', ['url', 'pre'])->isNotEmpty();
+        $existEntities = collect($this->message->get('entities'))
+            ->whereIn('type', ['url', 'pre'])
+            ->isNotEmpty();
 
         if ($existEntities) {
             return;
