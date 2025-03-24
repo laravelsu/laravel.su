@@ -1,0 +1,93 @@
+---
+title: "Tell, Don’t Ask"
+description: "Объекты должны выполнять действия, а не только отдавать свои данные"
+---
+
+<mark>Tell, Don’t Ask</mark> – это один из хорошо сформулированных принципов качественного объектно-ориентированного проектирования, который помогает создать чистую и легко поддерживаемую архитектуру. 
+
+> «Не спрашивай объект о данных, чтобы принять решение – скажи объекту, что делать.»
+
+На первый взгляд этот принцип может показаться противоречащим принципу единой ответственности (SRP), но в реальной разработке зачастую приходится делать выбор, какой из принципов важнее в конкретном контексте. Тем не менее, чем больше принципов удается соблюсти одновременно, тем лучше.
+
+Вместо того чтобы создавать «глупый» объект, мы можем инкапсулировать бизнес-логику прямо в объекте или в связанном сервисе. Например, если нам необходимо валидировать и отправить приветственное письмо, можно поручить это объекту или сервису, который знает, как с ним работать. Рассмотрим два варианта:
+
+Вместо того чтобы извлекать данные и проверять их во внешнем коде, объект сам выполняет необходимое действие.
+
+```php
+class User
+{
+    protected string $name;
+    protected string $email;
+    
+     public function register(): void
+    {
+        $validator = Validator::make($data, [
+            'name' => 'required',
+            'email' => 'required|email',
+        ]);
+    
+        if ($validator->fails()) {
+            throw new RuntimeException("Данные не корректны");
+        }
+                
+        //...
+        
+        $this->notify(WelcomeNotification::class)
+    }   
+}
+
+
+$user = new User(
+    name: "John Doe",
+    email: "john.doe@example.com"
+);
+
+$user->register();
+```
+
+Здесь объект сам выполняет проверку и отправляет уведомление, а не предоставляет данные для обработки извне.
+
+
+Если объект не должен нести на себе всю логику, её можно вынести в сервис, передавая туда объект:
+
+```php
+class UserService
+{
+    public function __construct(
+        private Validator $validator,
+        private Mailer $mailer
+    ) {}
+
+    public function register(array $data): User
+    {
+        $this->validator->validate($data, [
+            'name' => 'required',
+            'email' => 'required|email',
+        ]);
+    
+        if (this->validator->fails()) {
+            throw new RuntimeException("Данные не корректны");
+        }
+
+        $user = new User($data);
+        
+        //...
+        
+        $this->mailer->sendWelcomeMessage($user->email);
+
+        return $user;
+    }
+}
+
+$user = app(UserService::class)->register([
+    'name' => 'John Doe',
+    'email' => 'john.doe@example.com',
+]);
+```
+
+Здесь объект `UserService` выполняет логику, а объект `User` остаётся максимально простым.
+
+
+> {tip} К тому же принцип **Tell, Don’t Ask** хорошо сочетается с **Законом Деметры** (*Law of Demeter, LoD*), который также способствует созданию более устойчивых и независимых объектов.
+
+Можно узнать больше из работ [Мартина Фаулера](https://martinfowler.com/bliki/TellDontAsk.html), [Аллена Холуба](https://www.infoworld.com/article/2161183/why-getter-and-setter-methods-are-evil.html) и [Егора Бугаенко](https://www.yegor256.com/2014/09/16/getters-and-setters-are-evil.html).
