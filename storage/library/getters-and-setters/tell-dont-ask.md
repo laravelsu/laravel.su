@@ -18,24 +18,29 @@ class User
 {
     protected string $name;
     protected string $email;
-    
-     public function register(): void
+
+    private function validate(): bool
     {
-        $validator = Validator::make($data, [
-            'name' => 'required',
+        $validator = Validator::make([
+            'name'  => $this->name,
+            'email' => $this->email,
+        ], [
+            'name'  => 'required',
             'email' => 'required|email',
         ]);
-    
-        if ($validator->fails()) {
-            throw new RuntimeException("Данные не корректны");
-        }
-                
-        //...
-        
-        $this->notify(WelcomeNotification::class)
-    }   
-}
 
+        return $validator->passes()
+    }
+
+    public function register(): void
+    {
+        $this->validate();
+
+        // Сохранение пользователя в БД...
+
+        $this->notify(WelcomeNotification::class);
+    }
+}
 
 $user = new User(
     name: "John Doe",
@@ -46,47 +51,6 @@ $user->register();
 ```
 
 Здесь объект сам выполняет проверку и отправляет уведомление, а не предоставляет данные для обработки извне.
-
-
-Если объект не должен нести на себе всю логику, её можно вынести в сервис, передавая туда объект:
-
-```php
-class UserService
-{
-    public function __construct(
-        private Validator $validator,
-        private Mailer $mailer
-    ) {}
-
-    public function register(array $data): User
-    {
-        $this->validator->validate($data, [
-            'name' => 'required',
-            'email' => 'required|email',
-        ]);
-    
-        if (this->validator->fails()) {
-            throw new RuntimeException("Данные не корректны");
-        }
-
-        $user = new User($data);
-        
-        //...
-        
-        $this->mailer->sendWelcomeMessage($user->email);
-
-        return $user;
-    }
-}
-
-$user = app(UserService::class)->register([
-    'name' => 'John Doe',
-    'email' => 'john.doe@example.com',
-]);
-```
-
-Здесь объект `UserService` выполняет логику, а объект `User` остаётся максимально простым.
-
 
 > {tip} К тому же принцип **Tell, Don’t Ask** хорошо сочетается с **Законом Деметры** (*Law of Demeter, LoD*), который также способствует созданию более устойчивых и независимых объектов.
 

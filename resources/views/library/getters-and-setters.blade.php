@@ -1,11 +1,11 @@
 @extends('layout')
-@section('title', 'Геттеры, сеттеры и DTO')
+@section('title', 'Геттеры и сеттеры')
 @section('description', 'Разрушают инкапсуляцию, увеличивают связанность кода и приводят к процедурному стилю программирования.')
 @section('content')
 
     <x-header align="align-items-center">
         <x-slot name="sup">Объектно-ориентированное программирование</x-slot>
-        <x-slot name="title">Геттеры, сеттеры и DTO</x-slot>
+        <x-slot name="title">Геттеры и сеттеры в объектах</x-slot>
         <x-slot name="description">
             Разрушают инкапсуляцию, увеличивают связанность кода и приводят к процедурному стилю программирования.
         </x-slot>
