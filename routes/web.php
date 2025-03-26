@@ -65,6 +65,7 @@ Route::view('/library/how-to-ask', 'library.how-to-ask')->name('library.how-to-a
 Route::view('/library/collection', 'library.collection')->name('library.collection');
 Route::view('/library/solid', 'library.solid')->name('library.solid');
 Route::view('/library/actions', 'library.actions')->name('library.actions');
+Route::view('/library/getters-and-setters', 'library.getters-and-setters')->name('library.getters-and-setters');
 /*
 |--------------------------------------------------------------------------
 | Open Quiz
