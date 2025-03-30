@@ -1,7 +1,8 @@
-🚀 *New release {{ $version }}* in {{ $repo }}
+🚀 *New Release {{ $version }}* in {{ $repo }}
 
 📝 *{{ $title }}*
 
 {{ $body }}
 
-[🔗 Link to release]({{ $url }})
+🔗 [Check it out now]({{ $url }})
+✨ Star the repo & share your feedback!

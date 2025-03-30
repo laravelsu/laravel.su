@@ -8,34 +8,38 @@ use Illuminate\Http\Request;
 class GithubWebHookController extends Controller
 {
     /**
-     * Handle incoming Telegram webhook requests.
+     * Handle incoming GitHub webhook requests.
      *
      * @param \Illuminate\Http\Request $request
      * @param TelegramBot              $telegramBot
      *
+     * @return void
      * @throws \Throwable
      *
-     * @return void
      */
-    public function release(Request $request, TelegramBot $telegramBot)
+    public function release(Request $request, TelegramBot $telegramBot): void
     {
-        $payload = $request->all();
+        $request->validate([
+            'action'               => 'required|string',
+            'release.tag_name'     => 'required|string',
+            'release.name'         => 'nullable|string',
+            'release.body'         => 'nullable|string',
+            'release.html_url'     => 'required|url',
+            'repository.full_name' => 'required|string',
+        ]);
 
-        if ($payload['action'] === 'published') {
-            $release = $payload['release'];
-            $repo = $payload['repository'];
+        abort_if($request->input('action') !== 'published', 400);
 
-            $message = view('telegram.github-release-notification', [
-                'repo'    => $repo['full_name'],
-                'version' => $release['tag_name'],
-                'title'   => $release['name'],
-                'body'    => $release['body'],
-                'url'     => $release['html_url'],
-            ])->render();
+        $message = view('telegram.github-release-notification', [
+            'repo'    => $request->input('repository.full_name'),
+            'version' => $request->input('release.tag_name'),
+            'title'   => $request->input('release.name'),
+            'body'    => $request->input('release.body'),
+            'url'     => $request->input('release.html_url'),
+        ])->render();
 
-            collect(config('telegram.chats'))
-                ->where('orchid_release', true)
-                ->each(fn ($subscriber) => $telegramBot->sendMessageToChat($subscriber['id'], $message));
-        }
+        collect(config('telegram.chats'))
+            ->where('orchid_release', true)
+            ->each(fn($subscriber) => $telegramBot->sendMessageToChat($subscriber['id'], $message));
     }
 }
