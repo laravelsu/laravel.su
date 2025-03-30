@@ -19,15 +19,6 @@ class GithubWebHookController extends Controller
      */
     public function release(Request $request, TelegramBot $telegramBot): void
     {
-        $request->validate([
-            'action'               => 'required|string',
-            'release.tag_name'     => 'required|string',
-            'release.name'         => 'nullable|string',
-            'release.body'         => 'nullable|string',
-            'release.html_url'     => 'required|url',
-            'repository.full_name' => 'required|string',
-        ]);
-
         abort_if($request->input('action') !== 'published', 400);
 
         $message = view('telegram.github-release-notification', [
