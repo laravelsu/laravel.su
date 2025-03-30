@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ChallengesController;
 use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\DocsController;
+use App\Http\Controllers\GithubWebHookController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\MeetController;
 use App\Http\Controllers\PackagesController;
@@ -25,6 +26,8 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('/webhook/github/release', [GithubWebHookController::class, 'release'])->name('webhook.github.release');
 
 Route::view('/', 'pages.welcome')->name('home');
 Route::view('/feature', 'pages.feature')->name('feature');
