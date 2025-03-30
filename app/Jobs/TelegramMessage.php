@@ -22,7 +22,6 @@ class TelegramMessage implements ShouldQueue
 
     public $firstName;
 
-
     /**
      * Create a new job instance.
      */

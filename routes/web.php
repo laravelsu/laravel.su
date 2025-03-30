@@ -6,7 +6,6 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ChallengesController;
 use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\DocsController;
-use App\Http\Controllers\GithubWebHookController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\MeetController;
 use App\Http\Controllers\PackagesController;
