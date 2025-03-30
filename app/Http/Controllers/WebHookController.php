@@ -19,21 +19,8 @@ class WebHookController extends Controller
      */
     public function telegram(Request $request): void
     {
-        $captcha = null;
-        if ($request->has('callback_query')) {
-            $data = $request->collect('callback_query');
-
-            $captcha = new CaptchaCallback(
-                checkId: $data->dot()->get('data'),
-                from: $data->dot()->get('from.id'),
-                messageId: $data->dot()->get('message.message_id'),
-                chatId: $data->dot()->get('message.chat.id'),
-            );
-        }
-
         TelegramMessage::dispatch(
             $request->collect('message'),
-            $captcha,
         );
 
     }

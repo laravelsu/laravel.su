@@ -98,4 +98,15 @@ class TelegramBot
 
         return (new SpamDetector($message))->isSpam();
     }
+
+    public function sendMessageToChat(int $chatId, string $message): Response
+    {
+        $url = "https://api.telegram.org/bot{$this->token}/sendMessage";
+
+        return Http::post($url, [
+            'chat_id'      => $chatId,
+            'text'         => $message,
+            'parse_mode'   => 'Markdown',
+        ]);
+    }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\Telegram\TelegramBot;
+use App\Services\TelegramBot;
 use Illuminate\Http\Request;
 
 class GithubWebHookController extends Controller
@@ -10,11 +10,12 @@ class GithubWebHookController extends Controller
     /**
      * Handle incoming Telegram webhook requests.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  TelegramBot  $telegramBot
+     * @param \Illuminate\Http\Request $request
+     * @param TelegramBot              $telegramBot
+     *
+     * @throws \Throwable
      *
      * @return void
-     * @throws \Throwable
      */
     public function release(Request $request, TelegramBot $telegramBot)
     {
@@ -29,12 +30,12 @@ class GithubWebHookController extends Controller
                 'version' => $release['tag_name'],
                 'title'   => $release['name'],
                 'body'    => $release['body'],
-                'url'     => $release['html_url']
+                'url'     => $release['html_url'],
             ])->render();
 
             collect(config('telegram.chats'))
                 ->where('orchid_release', true)
-                ->each(fn($subscriber) => $telegramBot->sendMessageToChat($subscriber['id'], $message));
+                ->each(fn ($subscriber) => $telegramBot->sendMessageToChat($subscriber['id'], $message));
         }
     }
 }
