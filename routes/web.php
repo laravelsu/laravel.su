@@ -27,8 +27,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/webhook/github/release', [GithubWebHookController::class, 'release'])->name('webhook.github.release');
-
 Route::view('/', 'pages.welcome')->name('home');
 Route::view('/feature', 'pages.feature')->name('feature');
 Route::view('/advertising', 'pages.advertising')->name('advertising');
