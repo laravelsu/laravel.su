@@ -13,9 +13,9 @@ class GithubWebHookController extends Controller
      * @param \Illuminate\Http\Request $request
      * @param TelegramBot              $telegramBot
      *
-     * @return void
      * @throws \Throwable
      *
+     * @return void
      */
     public function release(Request $request, TelegramBot $telegramBot): void
     {
@@ -40,6 +40,6 @@ class GithubWebHookController extends Controller
 
         collect(config('telegram.chats'))
             ->where('orchid_release', true)
-            ->each(fn($subscriber) => $telegramBot->sendMessageToChat($subscriber['id'], $message));
+            ->each(fn ($subscriber) => $telegramBot->sendMessageToChat($subscriber['id'], $message));
     }
 }
