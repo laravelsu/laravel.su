@@ -58,7 +58,7 @@
                                             <div class="col-10">
                                                 <span class="d-block">Laravel Idea</span>
                                                 <small class="opacity-50 line-clamp line-clamp-2 text-balance">
-                                                    Генерация кода для PHPStorm
+                                                    Самая продуктивная среда разработки
                                                 </small>
                                             </div>
                                         </a>
