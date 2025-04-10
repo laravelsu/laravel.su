@@ -133,6 +133,7 @@
                                         </a>
                                     </li>
 
+                                    {{--
                                     <li>
                                         <a href="{{ route('consultants') }}" class="link-body-emphasis text-decoration-none rounded-2 d-flex align-items-start gap-3 lh-sm text-start">
                                             <x-icon path="i.help" height="2rem" width="2rem" class="text-primary"/>
@@ -142,6 +143,7 @@
                                             </div>
                                         </a>
                                     </li>
+                                    --}}
                                 </ul>
                             </div>
                         </div>
