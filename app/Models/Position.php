@@ -99,7 +99,7 @@ class Position extends Model
             $slug = Str::slug($position->organization);
             $i = 1;
 
-            while (static::where('slug', $slug)->exists()) {
+            while (static::where('slug', $slug)->withTrashed()->exists()) {
                 $slug = Str::slug($position->organization).'-'.$i++;
             }
 
