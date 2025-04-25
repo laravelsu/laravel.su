@@ -87,7 +87,7 @@ class Post extends Model
             $slug = Str::slug($post->title);
             $i = 1;
 
-            while (static::where('slug', $slug)->withTrashed()->exists()) {
+            while (static::where('slug', $slug)->exists()) {
                 $slug = Str::slug($post->title).'-'.$i++;
             }
 
