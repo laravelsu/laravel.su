@@ -34,7 +34,7 @@ use Overtrue\LaravelLike\Traits\Likeable;
 #[ScopedBy([PublishedScope::class])]
 class Post extends Model
 {
-    use AsSource, Chartable, Filterable, HasAuthor, HasFactory, Likeable, LogsActivityFillable, Searchable, SoftDeletes, Taggable;
+    use AsSource, Chartable, Filterable, HasAuthor, HasFactory, Likeable, LogsActivityFillable, Searchable, Taggable, SoftDeletes;
 
     /**
      * @var string[]
@@ -53,11 +53,11 @@ class Post extends Model
      * @var array
      */
     protected $casts = [
-        'title'         => 'string',
-        'content'       => 'string',
-        'slug'          => 'string',
-        'type'          => PostTypeEnum::class,
-        'status'        => StatusEnum::class,
+        'title'       => 'string',
+        'content'     => 'string',
+        'slug'        => 'string',
+        'type'        => PostTypeEnum::class,
+        'status'      => StatusEnum::class,
         'published_at'  => 'datetime',
     ];
 
@@ -86,22 +86,23 @@ class Post extends Model
 
         static::creating(function ($post) {
 
-            if ($post->published_at === null) {
+            if($post->published_at === null) {
                 $post->published_at = now();
             }
 
             $slug = Str::slug($post->title);
             $i = 1;
 
-            while (static::where('slug', $slug)->withTrashed()->exists()) {
-                $slug = Str::slug($post->title).'-'.$i++;
+            while (static::withoutGlobalScopes()->where('slug', $slug)->withTrashed()->exists()) {
+                $slug = Str::slug($post->title) . '-' . $i++;
             }
+
 
             $post->slug = $slug;
         });
 
         static::created(function (Post $post) {
-            dispatch(fn () => $this->notifyAboutPublishedPost($post))->afterResponse();
+            dispatch(fn() => $this->notifyAboutPublishedPost($post))->afterResponse();
         });
     }
 
@@ -202,7 +203,6 @@ class Post extends Model
 
     /**
      * @param Post $post
-     *
      * @return void
      */
     public function notifyAboutPublishedPost(Post $post): void
