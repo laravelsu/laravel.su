@@ -89,9 +89,9 @@
 
             <time
                 data-controller="tooltip"
-                title="Опубликовано {{ $post->publish_at->format('d.m.Y H:i') }}"
+                title="Опубликовано {{ $post->published_at->format('d.m.Y H:i') }}"
                 class="text-body-secondary ms-auto user-select-none small"
-                datetime="{{ $post->publish_at->toISOString() }}">{{ $post->publish_at->diffForHumans() }}</time>
+                datetime="{{ $post->published_at->toISOString() }}">{{ $post->published_at->diffForHumans() }}</time>
         </div>
     </div>
 @empty

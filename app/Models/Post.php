@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Attributes\ScopedBy;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 use Laravel\Scout\Searchable;
 use NotificationChannels\Telegram\TelegramMessage;
@@ -33,7 +34,7 @@ use Overtrue\LaravelLike\Traits\Likeable;
 #[ScopedBy([PublishedScope::class])]
 class Post extends Model
 {
-    use AsSource, Chartable, Filterable, HasAuthor, HasFactory, Likeable, LogsActivityFillable, Searchable, Taggable;
+    use AsSource, Chartable, Filterable, HasAuthor, HasFactory, Likeable, LogsActivityFillable, Searchable, Taggable, SoftDeletes;
 
     /**
      * @var string[]
@@ -45,7 +46,7 @@ class Post extends Model
         'user_id',
         'type',
         'status',
-        'publish_at',
+        'published_at',
     ];
 
     /**
@@ -57,7 +58,7 @@ class Post extends Model
         'slug'        => 'string',
         'type'        => PostTypeEnum::class,
         'status'      => StatusEnum::class,
-        'publish_at'  => 'datetime',
+        'published_at'  => 'datetime',
     ];
 
     protected $attributes = [
@@ -76,7 +77,7 @@ class Post extends Model
         'title',
         'created_at',
         'updated_at',
-        'publish_at',
+        'published_at',
     ];
 
     public static function boot()
@@ -84,35 +85,24 @@ class Post extends Model
         parent::boot();
 
         static::creating(function ($post) {
+
+            if($post->published_at === null) {
+                $post->published_at = now();
+            }
+
             $slug = Str::slug($post->title);
             $i = 1;
 
-            while (static::where('slug', $slug)->exists()) {
-                $slug = Str::slug($post->title).'-'.$i++;
+            while (static::where('slug', $slug)->withTrashed()->exists()) {
+                $slug = Str::slug($post->title) . '-' . $i++;
             }
+
 
             $post->slug = $slug;
         });
 
         static::created(function (Post $post) {
-            try {
-                if (config('app.env') == 'local') {
-                    return;
-                }
-
-                // Не отправляем нотификацию, если публикация запланирована в будущее
-                if ($post->publish_at?->isFuture()) {
-                    return;
-                }
-
-                TelegramMessage::create()
-                    ->to(config('services.telegram-bot-api.channel_id'))
-                    ->escapedLine($post->title)
-                    ->content(route('post.show', $post))
-                    ->send();
-            } catch (\Throwable $e) {
-                report($e);
-            }
+            dispatch(fn() => $this->notifyAboutPublishedPost($post))->afterResponse();
         });
     }
 
@@ -209,5 +199,31 @@ class Post extends Model
     public function getDescriptionAttribute()
     {
         return Str::of($this->content)->words(30)->markdown()->stripTags();
+    }
+
+    /**
+     * @param Post $post
+     * @return void
+     */
+    public function notifyAboutPublishedPost(Post $post): void
+    {
+        try {
+            if (config('app.env') == 'local') {
+                return;
+            }
+
+            // Не отправляем нотификацию, если публикация запланирована в будущее
+            if ($post->published_at?->isFuture()) {
+                return;
+            }
+
+            TelegramMessage::create()
+                ->to(config('services.telegram-bot-api.channel_id'))
+                ->escapedLine($post->title)
+                ->content(route('post.show', $post))
+                ->send();
+        } catch (\Throwable $e) {
+            report($e);
+        }
     }
 }

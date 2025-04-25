@@ -10,6 +10,6 @@ class PublishedScope implements Scope
 {
     public function apply(Builder $builder, Model $model): void
     {
-        $builder->where('publish_at', '<=', now());
+        $builder->where('published_at', '<=', now());
     }
 }
