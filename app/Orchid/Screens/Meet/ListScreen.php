@@ -3,7 +3,6 @@
 namespace App\Orchid\Screens\Meet;
 
 use App\Models\Meet;
-use App\Models\Package;
 use App\Notifications\SimpleMessageNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Blade;
@@ -96,7 +95,7 @@ class ListScreen extends Screen
                     ->sort()
                     ->cantHide()
                     ->render(function (Meet $meet) {
-                        return "<strong class='d-block'>".e($meet->name)."</strong><span class='text-muted'>".e($meet->location)."</span>";
+                        return "<strong class='d-block'>".e($meet->name)."</strong><span class='text-muted'>".e($meet->location).'</span>';
                     })->filter(Input::make()),
 
                 TD::make('start_date', 'Начало')

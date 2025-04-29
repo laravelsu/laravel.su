@@ -101,7 +101,7 @@ class Post extends Model
         });
 
         static::created(function (Post $post) {
-            dispatch(fn() => $post->notifyAboutPublishedPost())->afterResponse();
+            dispatch(fn () => $post->notifyAboutPublishedPost())->afterResponse();
         });
     }
 
