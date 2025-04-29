@@ -3,6 +3,7 @@
 namespace App\Orchid\Screens\Meet;
 
 use App\Models\Meet;
+use App\Models\Package;
 use App\Notifications\SimpleMessageNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Blade;
@@ -95,12 +96,8 @@ class ListScreen extends Screen
                     ->sort()
                     ->cantHide()
                     ->render(function (Meet $meet) {
-                        return "<strong class='d-block'>".e($meet->name).'</strong>';
+                        return "<strong class='d-block'>".e($meet->name)."</strong><span class='text-muted'>".e($meet->location)."</span>";
                     })->filter(Input::make()),
-
-                TD::make('location', 'Адрес')
-                    ->width(200)
-                    ->filter(Input::make()),
 
                 TD::make('start_date', 'Начало')
                     ->usingComponent(DateTimeSplit::class)
@@ -124,8 +121,7 @@ class ListScreen extends Screen
                     ->sort(),
 
                 TD::make('Добавил')
-                    ->sort()
-                    ->cantHide()
+                    ->defaultHidden()
                     ->render(fn (Meet $meet) => new Persona($meet->author->presenter())),
 
                 TD::make('created_at', __('Created'))
@@ -153,7 +149,7 @@ class ListScreen extends Screen
                             ModalToggle::make(__('Edit'))
                                 ->icon('bs.pencil')
                                 ->modal('editModal', [
-                                    'meet' => $meet->id,
+                                    'meet' => $meet,
                                 ])
                                 ->modalTitle($meet->name)
                                 ->method('update', [
@@ -164,7 +160,7 @@ class ListScreen extends Screen
                                 ->icon('bs.trash3')
                                 ->confirm(__('Once the account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.'))
                                 ->method('remove', [
-                                    'meet' => $meet->id,
+                                    'meet' => $meet,
                                 ]),
                         ])),
             ]),

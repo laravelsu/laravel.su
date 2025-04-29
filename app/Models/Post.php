@@ -101,7 +101,7 @@ class Post extends Model
         });
 
         static::created(function (Post $post) {
-            dispatch(fn () => $this->notifyAboutPublishedPost($post))->afterResponse();
+            dispatch(fn() => $post->notifyAboutPublishedPost())->afterResponse();
         });
     }
 
@@ -200,12 +200,7 @@ class Post extends Model
         return Str::of($this->content)->words(30)->markdown()->stripTags();
     }
 
-    /**
-     * @param Post $post
-     *
-     * @return void
-     */
-    public function notifyAboutPublishedPost(Post $post): void
+    public function notifyAboutPublishedPost(): void
     {
         try {
             if (config('app.env') == 'local') {
@@ -213,14 +208,14 @@ class Post extends Model
             }
 
             // Не отправляем нотификацию, если публикация запланирована в будущее
-            if ($post->published_at?->isFuture()) {
+            if ($this->published_at?->isFuture()) {
                 return;
             }
 
             TelegramMessage::create()
                 ->to(config('services.telegram-bot-api.channel_id'))
-                ->escapedLine($post->title)
-                ->content(route('post.show', $post))
+                ->escapedLine($this->title)
+                ->content(route('post.show', $this))
                 ->send();
         } catch (\Throwable $e) {
             report($e);
