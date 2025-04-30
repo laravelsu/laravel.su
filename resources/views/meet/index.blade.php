@@ -47,7 +47,8 @@
                             <div class="col-sm-5 text-center">
                                 <div class="ticket-border ">
                                     <!-- QR code -->
-                                    <img class="img-fluid d-block mx-auto user-select-none rounded" src="https://chart.googleapis.com/chart?cht=qr&chl={{ urlencode($most->link) }}&chs=500x500" alt="">
+                                    <img class="img-fluid d-block mx-auto user-select-none rounded"
+                                         src="https://api.qrserver.com/v1/create-qr-code/?size=500x500&bgcolor=ffffff&margin=50&data={{ urlencode($most->link) }}" alt="">
                                 </div>
                             </div>
                         </div>
