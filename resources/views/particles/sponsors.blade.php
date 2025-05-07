@@ -2,7 +2,7 @@
     <div class="row g-4 g-md-5 justify-content-center align-items-end mb-5">
         <!-- Right side START -->
         <div class="col-lg-6">
-            <span class="text-primary mb-3 d-block text-uppercase fw-semibold ls-xl">Спонсоры</span>
+            <span class="text-primary mb-3 d-block text-uppercase fw-semibold ls-xl">Партнёры проекта</span>
             <!-- Title -->
             <h2 class="display-5 fw-semibold mb-0">Помощь в разработке вашего проекта на Laravel</h2>
         </div>
@@ -29,12 +29,11 @@
                     Инструменты для управления эмоциями, которые помогают людям контролировать свою жизнь и лучше понимать себя.
                 </p>
                 <a class="icon-link icon-link-hover stretched-link link-body-emphasis text-decoration-none small mt-auto"
-                   href="https://assisted-mindfulness.com/">
+                   href="https://github.com/Assisted-Mindfulness">
                     Перейти
                     <x-icon path="i.arrow-right" class="bi"/>
                 </a>
             </div>
-
         </div>
         <div class="col">
             <div class="p-4 p-xl-5 bg-body-tertiary rounded d-flex flex-column h-100 position-relative ratio-xl-1x1">
