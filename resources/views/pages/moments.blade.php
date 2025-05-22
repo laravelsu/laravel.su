@@ -17,7 +17,7 @@
         <div class="row g-4">
             <div class="col-md-6 col-lg-8 mb-4">
 
-                <div class="bg-primary bg-opacity-10 rounded p-4 p-xl-5 position-relative overflow-hidden mb-4">
+                <div class="bg-primary bg-opacity-10 rounded p-4 p-xl-5 position-relative overflow-hidden mb-4 ratio-1x1 ratio-xl-auto">
                     <img src="/img/ui/vostok/vostok2.svg" class="position-absolute w-50 bottom-0 end-0">
                     <div class="row">
                         <div class="col-sm-7">
@@ -28,7 +28,7 @@
 
                             <a href="{{ route('vostok') }}"
                                class="link-body-emphasis text-decoration-none icon-link icon-link-hover stretched-link mt-4">
-                                Начать читать
+                                Посмотреть
                                 <x-icon path="i.arrow-right" class="bi" />
                             </a>
                         </div>
@@ -37,7 +37,7 @@
 
                 <div class="row">
                     <div class="col-lg-6 mb-4 mb-lg-0">
-                        <div class="bg-primary bg-opacity-10 rounded p-5 h-100 position-relative overflow-hidden">
+                        <div class="bg-primary bg-opacity-10 rounded p-5 h-100 position-relative overflow-hidden ratio-1x1">
                             <div class="d-flex flex-column position-relative h-100">
 
                                 <div class="d-flex align-items-center gap-3 mb-auto">
@@ -54,7 +54,7 @@
 
                                 <a href="{{ route('quiz.open') }}"
                                    class="link-body-emphasis text-decoration-none icon-link icon-link-hover stretched-link mt-4">
-                                    Начать читать
+                                    Начать разгадки
                                     <x-icon path="i.arrow-right" class="bi" />
                                 </a>
                             </div>
@@ -62,7 +62,7 @@
                     </div>
                     <div class="col-lg-6">
 
-                        <div class="bg-secondary bg-opacity-10 rounded p-5 h-100 position-relative overflow-hidden">
+                        <div class="bg-secondary bg-opacity-10 rounded p-5 h-100 position-relative overflow-hidden ratio-1x1">
                             <div class="d-flex flex-column position-relative h-100">
                                 <h3 class="mb-3 fw-bold">На дне</h3>
                                 <p class="fw-light">
@@ -79,7 +79,7 @@
 
                                 <a href="{{ route('hangman') }}"
                                    class="link-body-emphasis text-decoration-none icon-link icon-link-hover stretched-link mt-4">
-                                    Начать читать
+                                    Сыграть
                                     <x-icon path="i.arrow-right" class="bi" />
                                 </a>
                             </div>
@@ -89,16 +89,28 @@
             </div>
 
             <div class="col-md-6 col-lg-4 mb-4">
-                <div class="p-4 p-xl-5 bg-body-tertiary rounded d-flex flex-column h-100 position-relative d-flex bg-opacity-75 opacity-50 align-items-center">
-                    <div class="text-decoration-none d-block text-center my-auto text-balance">
 
-                        <span class="d-block mb-3">
-                             <x-icon path="i.sun" width="3rem" height="3rem"></x-icon>
-                        </span>
+                <div class="bg-secondary bg-opacity-10 rounded p-5 h-100 d-flex flex-column position-relative overflow-hidden">
 
-                        Здесь скоро появится новое событие. Следите за обновлениями!
+                    <div class="d-flex flex-md-column align-items-center gap-3 mb-auto">
+                        <div class="col-11">
+                            <h3 class="mb-3 fw-bold">Тайный Санта</h3>
+                            <p class="mb-auto mb-md-2 fw-light text-balance">
+                                Пусть каждый жест сделает день особенным и принесет улыбку.
+                            </p>
+                        </div>
+                        <div class="col-5 col-md-10 me-auto mx-md-auto">
+                            <img src="/img/ui/santa/tree.svg" class="img-fluid">
+                        </div>
                     </div>
+
+                    <a href="{{ route('santa') }}"
+                       class="link-body-emphasis text-decoration-none icon-link icon-link-hover stretched-link mt-4">
+                        Учавствовать
+                        <x-icon path="i.arrow-right" class="bi" />
+                    </a>
                 </div>
+
             </div>
         </div>
     </x-container>
