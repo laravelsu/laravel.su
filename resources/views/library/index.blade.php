@@ -170,6 +170,22 @@
             </div>
         </div>
 
+        <div class="col-md-6 col-lg-4">
+            <div class="bg-secondary bg-opacity-10 rounded p-5 h-100 position-relative overflow-hidden ratio-1x1">
+                <div class="d-flex flex-column position-relative h-100">
+                    <h3 class="mb-3 fw-bold">Мифы, в которые пора перестать верить</h3>
+                    <p class="mb-auto fw-light text-balance">
+                        Некоторые выбирают себе религию по цвету иконки.
+                    </p>
+                    <a href="{{ route('library.fallacies') }}"
+                       class="link-body-emphasis text-decoration-none icon-link icon-link-hover stretched-link mt-4">
+                        Начать читать
+                        <x-icon path="i.arrow-right" class="bi" />
+                    </a>
+                </div>
+            </div>
+        </div>
+
     </div>
 
 </x-container>
