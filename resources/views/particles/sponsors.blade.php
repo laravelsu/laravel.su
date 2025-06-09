@@ -25,7 +25,7 @@
         <div class="col">
             <div class="p-4 p-xl-5 bg-body-tertiary rounded d-flex flex-column h-100 position-relative ratio-xl-1x1">
                 <img src="/img/sponsors/am.svg" class="d-block mb-4 me-auto" height="64">
-                <p class="fw-normal">
+                <p class="fw-normal text-balance">
                     Инструменты для управления эмоциями, которые помогают людям контролировать свою жизнь и лучше понимать себя.
                 </p>
                 <a class="icon-link icon-link-hover stretched-link link-body-emphasis text-decoration-none small mt-auto"
@@ -38,7 +38,7 @@
         <div class="col">
             <div class="p-4 p-xl-5 bg-body-tertiary rounded d-flex flex-column h-100 position-relative ratio-xl-1x1">
                 <img src="/img/sponsors/soidet.svg" class="d-block mb-4 me-auto" height="64">
-                <p class="fw-normal">
+                <p class="fw-normal text-balance">
                     Подкасты c зажигательными эпизодами, которые заставят
                     задуматься и приведут к новым перспективам.
                 </p>
@@ -49,6 +49,21 @@
                 </a>
             </div>
         </div>
+
+        <div class="col">
+            <div class="p-4 p-xl-5 bg-body-tertiary rounded d-flex flex-column h-100 position-relative ratio-xl-1x1">
+                <img src="/img/sponsors/phpyh.svg" class="d-block mb-4 me-auto" height="64">
+                <p class="fw-normal text-balance">
+                    Делятся опытом, находят друзей и обсуждают разработку и сопровождение все бэкенды на PHP.
+                </p>
+                <a class="icon-link icon-link-hover stretched-link link-body-emphasis text-decoration-none small mt-auto"
+                   href="https://conf.phpyh.ru/">
+                    Перейти
+                    <x-icon path="i.arrow-right" class="bi"/>
+                </a>
+            </div>
+        </div>
+
         <div class="col d-none d-lg-block">
             <div class="p-4 p-xl-5 bg-body-tertiary rounded d-flex flex-column h-100 position-relative d-flex bg-opacity-75 opacity-50 align-items-center ratio-xl-1x1">
                 <a class="icon-link icon-link-hover stretched-link link-body-emphasis text-decoration-none d-block text-center my-auto" href="{{ route('advertising') }}">
