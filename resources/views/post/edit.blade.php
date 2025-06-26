@@ -64,6 +64,7 @@
                                 <button
                                     formaction="{{ $post->exists ? route('post.update', $post) : route('post.store') }}"
                                     type="submit"
+                                    data-turbo-confirm="Ваша публикация будет доступно широкой аудитории. Публикуйте ответственно."
                                     class="btn btn-primary mb-3 mb-md-0">
                                     {{ $post->exists ? "Обновить" : "Опубликовать" }}
                                 </button>
