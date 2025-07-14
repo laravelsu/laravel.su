@@ -19,7 +19,7 @@ class HeaderBannerLine extends Component
             sprintf('Любите загадки? Событие еще доступно на  <a href="%s" class="text-white link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">сайте</a>.', route('quiz.open')),
             sprintf('Подписывайтесь на наш <a href="%s" class="text-white link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">Telegram канал</a> и будьте в курсе всех событий.', config('services.telegram.channel_url')),
             sprintf('Поддержите проект сделав <a href="%s" class="text-white link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">пожертвование</a>.', route('donate')),
-            sprintf('Новая <a href="%s" class="text-white link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">PHP-конференция</a> для всех', 'https://conf.phpyh.ru/')
+            sprintf('Новая <a href="%s" class="text-white link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">PHP-конференция</a> для всех', 'https://conf.phpyh.ru/'),
         ])->random();
     }
 
