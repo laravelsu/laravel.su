@@ -243,7 +243,7 @@ class Docs
             if (empty($subList)) {
                 $menu[] = [
                     'title' => $node->filter('a')->text(),
-                    'href'  => url($node->filter('a')->attr('href'))
+                    'href'  => url($node->filter('a')->attr('href')),
                 ];
             } else {
                 $menu[] = [
