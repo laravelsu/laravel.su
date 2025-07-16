@@ -21,28 +21,35 @@
                     <ul class="list-unstyled p-4 px-md-0">
                         @foreach ($docs->getMenu() as $item)
                             <li class="mb-2">
-                                <button
-                                    class="btn btn-toggle d-flex align-items-center rounded border-0 collapsed text-body-secondary p-0 w-100 text-start"
-                                    data-bs-toggle="collapse"
-                                    data-bs-target="#{{ \Illuminate\Support\Str::slug($item['title']) }}-collapse"
-                                    aria-expanded="true">
-                                    {{ $item['title'] }}
-                                </button>
+                                @if (!empty($item['list']))
+                                    <button
+                                            class="btn btn-toggle d-flex align-items-center rounded border-0 collapsed text-body-secondary p-0 w-100 text-start"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target="#{{ \Illuminate\Support\Str::slug($item['title']) }}-collapse"
+                                            aria-expanded="true">
+                                        {{ $item['title'] }}
+                                    </button>
 
-                                <div class="collapse {{ active(collect($item['list'])->map(fn($link) => $link['href']), 'show') }} mt-2"
-                                    id="{{ \Illuminate\Support\Str::slug($item['title']) }}-collapse"
-                                    data-bs-parent="#docs-menu">
-                                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-2">
-                                        @foreach ($item['list'] as $link)
-                                            <li>
-                                                <a href="{{ $link['href'] }}"
-                                                    class="{{ active(url($link['href']), 'active', 'link-body-emphasis') }} d-inline-flex text-decoration-none rounded p-2">
-                                                    {{ $link['title'] }}
-                                                </a>
-                                            </li>
-                                        @endforeach
-                                    </ul>
-                                </div>
+                                    <div class="collapse {{ active(collect($item['list'])->map(fn($link) => $link['href']), 'show') }} mt-2"
+                                         id="{{ \Illuminate\Support\Str::slug($item['title']) }}-collapse"
+                                         data-bs-parent="#docs-menu">
+                                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-2">
+                                            @foreach ($item['list'] as $link)
+                                                <li>
+                                                    <a href="{{ $link['href'] }}"
+                                                       class="{{ active(url($link['href']), 'active', 'link-body-emphasis') }} d-inline-flex text-decoration-none rounded p-2">
+                                                        {{ $link['title'] }}
+                                                    </a>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @else
+                                    <a href="{{ $item['href'] }}"
+                                       class="btn btn-toggle d-flex align-items-center rounded border-0 collapsed text-body-secondary p-0 w-100 text-start">
+                                        {{ $item['title'] }}
+                                    </a>
+                                @endif
                             </li>
                         @endforeach
                     </ul>
