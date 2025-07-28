@@ -29,9 +29,9 @@
                     Новый фрагмент
                 </a>
 
-                <div class="d-flex align-items-baseline clipboard ms-auto" data-controller="clipboard"
+                <div class="d-flex ms-md-auto align-items-baseline justify-content-center justify-content-md-end clipboard" data-controller="clipboard"
                      data-clipboard-done-class="done">
-                    <small class="user-select-all me-2 col-6 col-md-auto text-truncate lh-1"
+                    <small class="user-select-all me-2 col-6 col-md-auto text-truncate lh-1 w-auto"
                            data-clipboard-target="source">{{ url()->current() }}</small>
                     <a href="#"
                        data-action="clipboard#copy">
