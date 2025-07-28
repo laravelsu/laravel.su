@@ -16,10 +16,9 @@ class PublishedScopeTest extends TestCase
 
         $testUser = User::factory()->create();
 
-        Post::factory()->create(['user_id' => $testUser->id, 'publish_at' => Carbon::now()->subDay()]);
-        Post::factory()->create(['user_id' => $testUser->id, 'publish_at' => Carbon::now()]);
-        Post::factory()->create(['user_id' => $testUser->id, 'publish_at' => Carbon::now()->addDay()]);
-        Post::factory()->create(['user_id' => $testUser->id, 'publish_at' => null]);
+        Post::factory()->create(['user_id' => $testUser->id, 'published_at' => Carbon::now()->subDay()]);
+        Post::factory()->create(['user_id' => $testUser->id, 'published_at' => Carbon::now()]);
+        Post::factory()->create(['user_id' => $testUser->id, 'published_at' => Carbon::now()->addDay()]);
     }
 
     public function testFiltersCorrectlyForPosts(): void
@@ -28,6 +27,6 @@ class PublishedScopeTest extends TestCase
 
         $publishedPosts = Post::all();
         $this->assertCount(2, $publishedPosts);
-        $this->assertTrue($publishedPosts->first()->publish_at->lessThan(Carbon::now()));
+        $this->assertTrue($publishedPosts->first()->published_at->lessThan(Carbon::now()));
     }
 }
