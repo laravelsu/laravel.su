@@ -111,7 +111,7 @@
 
         <ul class="nav flex-column navbar-nav">
             <li class="nav-item mb-2">
-                <a href="{{ route('pastebin') }}" class="nav-link p-0">Кодоран</a>
+                <a href="{{ route('pastebin') }}" class="nav-link p-0">Pastebin</a>
             </li>
             <li class="nav-item mb-2">
                 <a href="{{ route('ecosystem') }}" class="nav-link p-0">Экосистема</a>
