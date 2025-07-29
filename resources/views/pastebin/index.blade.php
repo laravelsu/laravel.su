@@ -16,8 +16,7 @@
                  data-prism-target="editable"><code id="yaml"
                                                     placeholder="Поделитесь своим фрагментом кода тут!">{{ $content }}</code></pre>
 
-                <input name="code" data-prism-target="output" type="hidden" required value="{{ $content }}">
-            </div>
+                <input name="code" data-prism-target="output" class="w-100 border-0 p-0 position-relative d-block" style="height: 0px;"required value="{{ $content }}">             </div>
             <div
                 class="mt-3 d-flex flex-column flex-md-row justify-content-center justify-content-md-start align-items-md-baseline">
                 <button type="submit" class="btn btn-primary mb-3 mb-md-0">
