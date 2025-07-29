@@ -65,8 +65,6 @@
 
     <div class="text-editor__content grow stack position-relative">
             <textarea
-                data-contro1ller="textarea-autogrow"
-                data-texta1rea-autogrow-resize-debounce-delay-value="500"
                 name="{{ $name }}"
                 id="{{ $id }}"
                 class="w-100 my-3 form-editor clone-editor"
