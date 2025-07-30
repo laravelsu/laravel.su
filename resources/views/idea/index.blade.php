@@ -78,7 +78,14 @@
                     </div>
                 </div>
                 <div class="col-xl-6">
-                    <form action="{{ route('idea.store') }}" method="POST">
+
+                    <div class="p-3 bg-warning-subtle rounded text-balance mb-3">
+                        <a href="https://laravel.su/p/laravel-idea-teper-besplaten" class="text-decoration-none">
+                            Laravel Idea с 30 июля 2025 года бесплатен для всех пользователей PhpStorm.
+                        </a>
+                    </div>
+
+                    <form action="{{ route('idea.store') }}" method="POST" disabled class="opacity-25 disabled">
                         @csrf
 
                         <p>
