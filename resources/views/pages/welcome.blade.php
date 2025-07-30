@@ -153,7 +153,7 @@
                                 <i class="bi bi-shield-fill-check text-dark"></i>
                             </div>
                             <!-- Title -->
-                            <h6 class="mb-4"><span class="text-primary">150+</span> профессионалов в Laravel разработке</h6>
+                            <h6 class="mb-4"><span class="text-primary">2000+</span> профессионалов в Laravel разработке</h6>
 
 
                             <!-- Mentor Item -->
