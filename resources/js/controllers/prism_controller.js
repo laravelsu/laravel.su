@@ -4,7 +4,7 @@ import 'prismjs/plugins/line-numbers/prism-line-numbers.js';
 import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
 
 export default class extends Controller {
-    static targets = ['editable', 'output'];
+    static targets = ['editable', 'output', 'submit'];
 
     /**
      *
@@ -23,6 +23,8 @@ export default class extends Controller {
 
             Prism.highlightElement(el);
         });
+
+        this.toggleSubmit();
     }
 
     paste() {
@@ -34,6 +36,7 @@ export default class extends Controller {
             '<code data-prism-target="code" id="yaml" class="language-php">' + code + '</code>'
         );
         this.outputTarget.value = text;
+        this.toggleSubmit();
         // this.codeTarget.innerHTML = '<code data-prism-target="code" id="yaml" class="language-php">'+code+'</code>';
     }
 
@@ -48,6 +51,8 @@ export default class extends Controller {
                 this.setCursorPosition(this.editableTarget, position + 1);
             }, 10);
         }
+
+        this.toggleSubmit();
     }
 
     // Изменяем содержимое элемента и сохраняем позицию курсора
@@ -124,5 +129,21 @@ export default class extends Controller {
         getTextNodes(element);
 
         return textNodes;
+    }
+
+    toggleSubmit() {
+        const button = this.element
+            .closest('form')
+            .querySelector('button[type="submit"], input[type="submit"]');
+
+        if (!button) {
+            return;
+        }
+
+        const raw = this.hasOutputTarget
+            ? this.outputTarget.value
+            : this.editableTarget?.innerText || '';
+
+        button.disabled = raw.trim().length < 3;
     }
 }
