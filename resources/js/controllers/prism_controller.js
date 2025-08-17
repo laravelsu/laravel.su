@@ -132,17 +132,13 @@ export default class extends Controller {
     }
 
     toggleSubmit() {
-        const button = this.element
-            .closest('form')
-            .querySelector('button[type="submit"], input[type="submit"]');
+        const button = this.element.closest('form').querySelector('button[type="submit"], input[type="submit"]');
 
         if (!button) {
             return;
         }
 
-        const raw = this.hasOutputTarget
-            ? this.outputTarget.value
-            : this.editableTarget?.innerText || '';
+        const raw = this.hasOutputTarget ? this.outputTarget.value : this.editableTarget?.innerText || '';
 
         button.disabled = raw.trim().length < 3;
     }
