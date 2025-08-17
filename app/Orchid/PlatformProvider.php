@@ -83,15 +83,6 @@ class PlatformProvider extends OrchidServiceProvider
                 ->icon('bs.collection')
                 ->route('platform.challenges'),
 
-            Menu::make('Ключи Idea')
-                ->icon('bs.box-seam')
-                ->route('platform.idea')
-                ->badge(function () {
-                    $waiting = IdeaRequest::doesntHave('key')->count();
-
-                    return $waiting > 0 ? $waiting : null;
-                }, Color::DANGER),
-
             Menu::make('Яндекс Метрика')
                 ->icon('pie-chart')
                 ->href('https://metrika.yandex.ru/dashboard?id=96430041')

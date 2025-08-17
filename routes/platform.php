@@ -63,8 +63,6 @@ Route::screen('roles', RoleListScreen::class)
 Route::screen('telescope', \App\Orchid\Screens\Services\Telescope::class)
     ->name('platform.services.telescope');
 
-// Route::screen('idea', Idea::class, 'platform.screens.idea');
-
 Route::screen('packages', App\Orchid\Screens\Package\ListScreen::class)
     ->name('platform.packages')
     ->breadcrumbs(fn (Trail $trail) => $trail
@@ -76,18 +74,6 @@ Route::screen('meets', App\Orchid\Screens\Meet\ListScreen::class)
     ->breadcrumbs(fn (Trail $trail) => $trail
         ->parent('platform.index')
         ->push('События'));
-
-Route::screen('idea/{ideaRequest}/edit', App\Orchid\Screens\Idea\EditScreen::class)
-    ->name('platform.idea.request')
-    ->breadcrumbs(fn (Trail $trail) => $trail
-        ->parent('platform.idea')
-        ->push('Запрос ключа'));
-
-Route::screen('idea', App\Orchid\Screens\Idea\ListScreen::class)
-    ->name('platform.idea')
-    ->breadcrumbs(fn (Trail $trail) => $trail
-        ->parent('platform.index')
-        ->push('Ключи Idea', route('platform.idea')));
 
 Route::screen('post', App\Orchid\Screens\Post\ListScreen::class)
     ->name('platform.post')

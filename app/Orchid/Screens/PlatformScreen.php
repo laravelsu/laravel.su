@@ -44,10 +44,6 @@ class PlatformScreen extends Screen
                 Package::countByDays($start, $end)->toChart('Пакеты'),
                 Position::countByDays($start, $end)->toChart('Вакансии'),
             ],
-            'idea'            => [
-                IdeaRequest::countByDays($start, $end)->toChart('Запросы ключей'),
-                IdeaKey::where('activated', 1)->countByDays($start, $end, 'updated_at')->toChart('Выданные ключи'),
-            ],
             'docs'            => Document::selectRaw('version, SUM(behind) as behind')
                 ->groupBy('version')
                 ->pluck('behind', 'version')
@@ -101,10 +97,6 @@ class PlatformScreen extends Screen
             BasicIndicators::make('content')
                 ->title('Контент')
                 ->description('Количество новых стаей,пакетов,мероприятий и вакансий по дням'),
-
-            BasicIndicators::make('idea')
-                ->description('Количество запросов и выданных ключей Laravel Idea по дням')
-                ->title('Idea'),
         ];
     }
 }

@@ -18,28 +18,11 @@ class IdeaController extends Controller
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
-     *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store()
     {
-        $request->validate([
-            'first_name' => 'required|string|min:2',
-            'last_name'  => 'required|string|min:2',
-            'city'       => 'required|string|min:3',
-            'email'      => 'required|email',
-            'message'    => 'nullable|string',
-            'accepted'   => 'accepted',
-        ]);
-
-        $ideaRequest = new IdeaRequest;
-
-        $ideaRequest->fill($request->all())->forceFill([
-            'user_id' => $request->user()->id,
-        ])->save();
-
-        Toast::success('Ваш запрос принят и будет проверен модератором. При одобрении вы получите уведомление.')
+        Toast::success('Laravel Idea с 30 июля 2025 года бесплатен для всех пользователей PhpStorm.')
             ->disableAutoHide();
 
         return redirect()->route('home');
