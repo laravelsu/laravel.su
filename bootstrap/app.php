@@ -17,6 +17,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->appendToGroup('web', [
             RedirectToBanPage::class,
             SetDefaultVersionForUrl::class,
+            \App\Http\Middleware\UkraineMirror::class,
             // App\Http\Middleware\Opening\Opening::class,
             'cache.headers:private;must_revalidate;etag',
             'throttle:100,1',
