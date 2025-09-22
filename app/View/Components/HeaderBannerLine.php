@@ -16,12 +16,12 @@ class HeaderBannerLine extends Component
     public function __construct()
     {
         $this->message = collect([
-            sprintf('Любите загадки? Событие еще доступно на  <a href="%s" class="text-white link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">сайте</a>.', route('quiz.open')),
-            sprintf('Подписывайтесь на наш <a href="%s" class="text-white link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">Telegram канал</a> и будьте в курсе всех событий.', config('services.telegram.channel_url')),
-            sprintf('Поддержите проект сделав <a href="%s" class="text-white link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">пожертвование</a>.', route('donate')),
+            sprintf('Любите загадки? Событие всё ещё доступно на <a href="%s" class="text-white link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">сайте</a>', route('quiz.open')),
+            sprintf('Подписывайтесь на наш <a href="%s" class="text-white link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">Telegram-канал</a> и будьте в курсе всех событий', config('services.telegram.channel_url')),
+            sprintf('Поддержите проект, сделав <a href="%s" class="text-white link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">пожертвование</a>', route('donate')),
             sprintf(
-                'Новая PHP-конференция <a href="%s" class="text-white link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">Пых.конф’25</a> — уже 19 сентября!',
-                'https://conf.phpyh.ru/'
+                '🎩 Книга <a href="%s" class="text-white link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">«Денди-код»</a> о том, как сделать код аккуратным и понятным',
+                'https://github.com/tabuna/dandy-code'
             ),
         ])->random();
     }
