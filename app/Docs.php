@@ -232,24 +232,25 @@ class Docs
         $crawler = new Crawler;
         $crawler->addContent($html);
 
-        $crawler = new Crawler($html);
-
         $menu = [];
 
-        $crawler->filter('ul > li')->each(function (Crawler $node) use (&$menu) {
+        $crawler->filter('body > ul > li')->each(function (Crawler $node) use (&$menu) {
             $subList = $node->filter('ul > li')->each(fn (Crawler $subNode) => [
                 'title' => $subNode->filter('a')->text(),
                 'href'  => url($subNode->filter('a')->attr('href')),
             ]);
 
             if (empty($subList)) {
-                return null;
+                $menu[] = [
+                    'title' => $node->filter('a')->text(),
+                    'href'  => url($node->filter('a')->attr('href')),
+                ];
+            } else {
+                $menu[] = [
+                    'title' => $node->filter('h2')->text(),
+                    'list'  => $subList,
+                ];
             }
-
-            $menu[] = [
-                'title' => $node->filter('h2')->text(),
-                'list'  => $subList,
-            ];
         });
 
         return $menu;
