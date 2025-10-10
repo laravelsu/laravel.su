@@ -59,13 +59,16 @@ public function hasAccess(User $user): bool {
 }
 </code></pre>
                 </main>
-                <p class="text-balance"><strong>Для новичков</strong>, которые хотят сразу учиться писать чистый и понятный код.</p>
 
-                <p class="text-balance"><strong>Для опытных разработчиков</strong>, уставших от беспорядка и стремящихся к порядку и
-                    эффективности.</p>
+                <div class="d-none d-md-block">
+                    <p class="text-balance"><strong>Для новичков</strong>, которые хотят сразу учиться писать чистый и понятный код.</p>
 
-                <p class="text-balance"><strong>Для руководителей и тимлидов</strong>, желающих донести до команды важность стиля и общих
-                    правил.</p>
+                    <p class="text-balance"><strong>Для опытных разработчиков</strong>, уставших от беспорядка и стремящихся к порядку и
+                        эффективности.</p>
+
+                    <p class="text-balance"><strong>Для руководителей и тимлидов</strong>, желающих донести до команды важность стиля и общих
+                        правил.</p>
+                </div>
             </div>
 
             <div class="col-md-6 order-md-first mb-4 mb-md-0">
@@ -125,7 +128,7 @@ public function hasAccess(User $user): bool
 
 
 
-            <div class="col-md-6">
+            <div class="col-md-6 d-none d-md-block">
                 <img src="/img/dandy-code/man.svg" class="img-fluid" style="max-height: 350px; margin: 0 auto; display: block">
                 <div class="ms-3 lh-1 mt-3">
                     <div class="fw-bolder mb-1">Реальные советы</div>
