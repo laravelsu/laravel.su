@@ -9,14 +9,25 @@
             @isset($sup)
                 <span class="text-primary mb-3 d-block text-uppercase fw-semibold ls-xl">{{ $sup }}</span>
             @endisset
-            <p class="display-6 fw-bold text-balance">{!!  $title !!}</p>
+            <p class="display-6 fw-bold text-balance">{!! $title !!}</p>
             <p class="mb-lg-0 text-balance">
-                {!!  $description !!}
+                {!! $description !!}
             </p>
         </div>
 
-        <a href="{{ $attributes->get('link', '#') }}" class="d-block d-md-inline-block btn btn-outline-primary btn-lg px-4">
-            {{ $attributes->get('text', 'Перейти') }}
-        </a>
+        <div class="d-flex flex-column gap-2">
+
+            @isset($label)
+                {!! $label !!}
+            @endisset
+
+            <a href="{{ $attributes->get('link', '#') }}" class="d-block d-md-inline-block btn btn-outline-primary btn-lg px-4">
+                {{ $attributes->get('text', 'Перейти') }}
+            </a>
+
+            @isset($caption)
+                {!! $caption !!}
+            @endisset
+        </div>
     </div>
 </x-container>
