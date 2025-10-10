@@ -67,6 +67,8 @@ Route::view('/library/solid', 'library.solid')->name('library.solid');
 Route::view('/library/actions', 'library.actions')->name('library.actions');
 Route::view('/library/getters-and-setters', 'library.getters-and-setters')->name('library.getters-and-setters');
 Route::view('/library/fallacies', 'library.fallacies')->name('library.fallacies');
+
+Route::view('/dandy-code', 'pages.dandy-code')->name('dandy-code');
 /*
 |--------------------------------------------------------------------------
 | Open Quiz
