@@ -102,7 +102,12 @@
                                         {{ $type->text() }}
                                     </a>
                                     <p class="small opacity-50 fw-normal m-0">
-                                        {{ trans_choice('{1} :count пакет|[2,4] :count пакета|:count пакетов', \App\Models\Package::approved()->where('type', $type)->count()) }}
+                                        @php
+                                            $count = \App\Models\Package::approved()->where('type', $type)->count();
+                                            $forms = ['пакет', 'пакета', 'пакетов'];
+                                            $form = $forms[($count % 100 > 4 && $count % 100 < 20) ? 2 : [2, 0, 1, 1, 1, 2][min($count % 10, 5)]];
+                                        @endphp
+                                        {{ $count }} {{ $form }}
                                     </p>
                                 </div>
                             </div>
