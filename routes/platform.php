@@ -122,3 +122,21 @@ Route::screen('/secret-santa', \App\Orchid\Screens\SecretSantaScreen::class)
     ->breadcrumbs(fn (Trail $trail) => $trail
         ->parent('platform.index')
         ->push('Серетный Санта'));
+
+Route::screen('features', App\Orchid\Screens\Feature\ListScreen::class)
+    ->name('platform.feature')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+        ->parent('platform.index')
+        ->push('Предложения функций'));
+
+Route::screen('features/{feature}/edit', App\Orchid\Screens\Feature\EditScreen::class)
+    ->name('platform.feature.edit')
+    ->breadcrumbs(fn (Trail $trail, $feature) => $trail
+        ->parent('platform.feature')
+        ->push($feature->title ?? 'Создание', route('platform.feature.edit', $feature)));
+
+Route::screen('features/create', App\Orchid\Screens\Feature\EditScreen::class)
+    ->name('platform.feature.create')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+        ->parent('platform.feature')
+        ->push('Создать', route('platform.feature.create')));
