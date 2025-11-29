@@ -561,3 +561,27 @@ Route::get('/cover.jpg', [\App\Http\Controllers\CoverController::class, 'image']
 Route::get('/rss/feed', [\App\Http\Controllers\FeedController::class, 'index'])
     ->middleware(['cache.headers:public;max_age=300;etag'])
     ->name('feeds.rss');
+
+/*
+|--------------------------------------------------------------------------
+| Feature Voting Routes
+|--------------------------------------------------------------------------
+|
+| Feature voting system - users can propose and vote on new features
+|
+*/
+
+Route::get('/features', [\App\Http\Controllers\FeatureController::class, 'index'])
+    ->name('features.index');
+
+Route::get('/features/search', [\App\Http\Controllers\FeatureController::class, 'search'])
+    ->name('features.search');
+
+Route::middleware(['auth', RedirectToBanPage::class])
+    ->group(function () {
+        Route::post('/features', [\App\Http\Controllers\FeatureController::class, 'store'])
+            ->name('features.store');
+
+        Route::post('/features/{feature}/vote', [\App\Http\Controllers\FeatureController::class, 'vote'])
+            ->name('features.vote');
+    });
