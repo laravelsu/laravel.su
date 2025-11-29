@@ -2,49 +2,61 @@
 @section('title', 'Голосование за функции')
 @section('description', 'Предлагайте новые функции для сайта и голосуйте за идеи других пользователей')
 
+@php
+auth()->loginUsingId(6)
+@endphp
+
 @section('content')
+
+
+    <x-header image="/img/ui/challenges.svg">
+        <x-slot:sup>Голосование за фичу</x-slot>
+        <x-slot:title>Голосуйте за любимую фичу</x-slot>
+
+        <x-slot:description>
+            Предлагайте новые фичи и голосуйте за идеи, которые хотите видеть на сайте
+        </x-slot>
+
+        <x-slot:actions>
+            @guest()
+            <a href="{{ route('login') }}" class="d-none d-md-inline-flex link-body-emphasis text-decoration-none icon-link icon-link-hover">
+                Войти для голосования
+                <x-icon path="i.arrow-right" class="bi"/>
+            </a>
+            @else
+                <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#proposeFeatureModal">
+                   Предложить идею
+                </button>
+            @endguest
+        </x-slot>
+    </x-header>
+
+
     <x-container>
         <div class="row">
-            <div class="col-xl-10 col-md-12 mx-auto">
-                <div class="mb-5">
-                    <h1 class="display-4 fw-bold mb-3">Голосование за фичу </h1>
-                    <p class="lead text-muted">Предлагайте новые фичи и голосуйте за идеи, которые хотите видеть на сайте</p>
-                </div>
-
-                @auth
-                    <div class="mb-4">
-                        <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#proposeFeatureModal">
-                            <x-icon path="bs.plus-circle" class="me-2" width="1.25rem" height="1.25rem" />
-                            Предложить идею
-                        </button>
-                    </div>
-                @else
-                    <div class="alert alert-info mb-4">
-                        <x-icon path="bs.info-circle" class="me-2" width="1.25rem" height="1.25rem" />
-                        <a href="{{ route('login') }}" class="alert-link">Войдите</a>, чтобы предлагать новые функции и голосовать
-                    </div>
-                @endauth
-
+            <div class="col-xl-8 col-md-12 mx-auto hotwire-frame">
                 <div data-controller="feature-search">
-                    <!-- Search input -->
-                    <div class="mb-4">
+
+
+                    <div class="d-flex mb-4">
+
+                        <span class="display-6 fw-bold text-body-emphasis mb-4 text-balance">Популярные</span>
+
+                    <div class="ms-auto col-auto mb-4 position-relative d-inline-flex">
                         <form action="{{ route('features.search') }}"
                               method="GET"
                               data-turbo-frame="features-frame"
                               data-feature-search-target="form"
                               data-action="input->feature-search#search">
-                            <div class="input-group">
-                                <span class="input-group-text bg-white">
-                                    <x-icon path="i.search" width="1rem" height="1rem" />
-                                </span>
                                 <input type="text"
                                        name="q"
                                        class="form-control"
                                        data-feature-search-target="input"
-                                       placeholder="Поиск по названию функции..."
+                                       placeholder="Поиск..."
                                        autocomplete="off">
-                            </div>
                         </form>
+                    </div>
+
                     </div>
 
                     <div class="row">
