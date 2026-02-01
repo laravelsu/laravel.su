@@ -19,6 +19,11 @@ class Banner extends Component
     {
         $banner = collect([
             [
+                'title' => 'Сделай код аккуратным и понятным!',
+                'image' => asset('/img/ui/doc-banners/pastebin.svg'),
+                'href'  => "https://github.com/tabuna/dandy-code",
+            ],
+            [
                 'title' => 'Поделитесь своим кодом и идеями!',
                 'image' => asset('/img/ui/doc-banners/pastebin.svg'),
                 'href'  => route('pastebin'),
