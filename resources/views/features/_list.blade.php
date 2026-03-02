@@ -5,7 +5,7 @@
          class="bg-body-tertiary mb-4 p-4 p-xl-5 ps-3 ps-xl-4 rounded hotwire-frame">
 
         <div class="d-flex gap-3 align-items-start">
-            <div class="d-inline-flex mx-auto">
+            <div class="d-inline-flex">
                 @include('features._vote-button', ['feature' => $feature])
             </div>
 

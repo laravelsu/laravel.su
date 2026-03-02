@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Enums\FeatureStatusEnum;
 use App\Models\Feature;
 use Illuminate\Http\Request;
+use Orchid\Support\Facades\Toast;
 
 class FeatureController extends Controller
 {
@@ -47,10 +48,9 @@ class FeatureController extends Controller
             });
         }
 
-        // Check if this is a turbo request (frame or stream)
-        $isTurboRequest = $request->header('Turbo-Frame') || $request->wantsTurboStream();
+        $isTurboFrameRequest = $request->header('Turbo-Frame');
 
-        if (! $isTurboRequest) {
+        if (!$isTurboFrameRequest && !$request->isMethod('POST')) {
             return view('features.index', [
                 'features' => $features,
             ]);
@@ -65,6 +65,13 @@ class FeatureController extends Controller
             turbo_stream()->replace('feature-more', view('features._pagination', [
                 'features' => $features,
             ])),
+        ]);
+    }
+
+    public function create(Feature $feature)
+    {
+        return view('features.edit', [
+            'feature' => $feature,
         ]);
     }
 
@@ -92,18 +99,9 @@ class FeatureController extends Controller
         // Add user_vote attribute
         $feature->user_vote = $feature->getUserVote($request->user());
 
-        return turbo_stream([
-            turbo_stream()
-                ->target('features-frame')
-                ->action('prepend')
-                ->view('features._list', ['features' => collect([$feature])]),
+       Toast::info('Спасибо за предложение! Оно будет рассмотрено в ближайшее время.');
 
-            turbo_stream()
-                ->append('.toast-wrapper')
-                ->view('features._toast', [
-                    'message' => 'Спасибо за предложение! Оно будет рассмотрено в ближайшее время.',
-                ]),
-        ]);
+        return redirect()->route('features.index');
     }
 
     /**

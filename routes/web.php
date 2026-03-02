@@ -579,9 +579,14 @@ Route::get('/features/search', [\App\Http\Controllers\FeatureController::class, 
 
 Route::middleware(['auth', RedirectToBanPage::class])
     ->group(function () {
-        Route::post('/features', [\App\Http\Controllers\FeatureController::class, 'store'])
-            ->name('features.store');
+        Route::get('/feature/create', [\App\Http\Controllers\FeatureController::class, 'create'])
+            ->can('create', 'App\Models\Feature')
+            ->name('features.create');
 
-        Route::post('/features/{feature}/vote', [\App\Http\Controllers\FeatureController::class, 'vote'])
+        Route::post('/feature', [\App\Http\Controllers\FeatureController::class, 'store'])
+            ->can('create', 'App\Models\Feature')
+            ->name('feature.store');
+
+        Route::post('/feature/{feature}/vote', [\App\Http\Controllers\FeatureController::class, 'vote'])
             ->name('features.vote');
     });
