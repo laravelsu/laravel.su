@@ -86,7 +86,7 @@
             <div class="px-0 px-md-2 px-xl-3 col-md-10 col-lg-8 col-xl-8 col-xxl-6 order-md-1 order-first">
 
                 <div class="bg-body-tertiary p-4 p-xl-5 rounded">
-                    <main class="px-md-4 px-xl-5 documentations position-relative" data-controller="prism">
+                    <main class="p-md-4 documentations position-relative" data-controller="prism">
                         <h1 class="display-6 fw-bold text-body-emphasis">{{ $docs->title() }}</h1>
                         @if ($docs->isOlderVersion())
                             <div class="d-flex flex-md-row flex-column px-4 px-xl-5 py-3 py-xl-4 bg-body-secondary rounded position-relative align-items-md-center my-4">
