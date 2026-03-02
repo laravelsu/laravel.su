@@ -97,7 +97,7 @@
         </div>
     </x-container>
 
-    @include('particles.positions')
+    {{-- @include('particles.positions') --}}
 
     <turbo-frame id="comments-frame" src="{{ route('post.comments', $post) }}" loading="lazy" target="_top">
         <x-container>

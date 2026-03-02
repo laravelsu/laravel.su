@@ -57,7 +57,7 @@
         </form>
     </x-container>
 
-    @include('particles.positions')
+    {{-- @include('particles.positions') --}}
 
     <x-call-to-action link="{{ route('library') }}" text="Перейти в библиотеку">
         <x-slot:title>Откройте дверь к мастерству</x-slot>

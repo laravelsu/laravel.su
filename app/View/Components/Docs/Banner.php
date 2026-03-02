@@ -38,6 +38,7 @@ class Banner extends Component
                 'image' => asset('/img/ui/doc-banners/feed.svg'),
                 'href'  => route('feed'),
             ],
+            /*
             [
                 'title' => 'Ищете работу? Мы поможем!',
                 'image' => asset('/img/ui/doc-banners/jobs.svg'),
@@ -48,6 +49,7 @@ class Banner extends Component
                 'image' => asset('/img/ui/doc-banners/challenges.svg'),
                 'href'  => route('challenges'),
             ],
+            */
         ])->random();
 
         $this->title = $banner['title'];
