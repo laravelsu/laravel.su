@@ -21,7 +21,7 @@ class Banner extends Component
             [
                 'title' => 'Сделай код аккуратным и понятным!',
                 'image' => asset('/img/ui/doc-banners/pastebin.svg'),
-                'href'  => "https://github.com/tabuna/dandy-code",
+                'href'  => 'https://github.com/tabuna/dandy-code',
             ],
             [
                 'title' => 'Поделитесь своим кодом и идеями!',

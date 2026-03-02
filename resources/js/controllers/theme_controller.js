@@ -20,7 +20,7 @@ export default class extends Controller {
     // ── Actions ─────────────────────────────────────────────────────────
 
     toggleTheme() {
-        const selected = this.preferredTargets.find(el => el.checked);
+        const selected = this.preferredTargets.find((el) => el.checked);
         if (!selected) return;
 
         const choice = selected.value; // "light" | "dark" | "auto"
@@ -61,7 +61,7 @@ export default class extends Controller {
 
     #syncRadios() {
         // Синхронизируем radio с текущим выбором пользователя (не effective!)
-        this.preferredTargets.forEach(el => {
+        this.preferredTargets.forEach((el) => {
             el.checked = el.value === this.#userChoice;
         });
     }

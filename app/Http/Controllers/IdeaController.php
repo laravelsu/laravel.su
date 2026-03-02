@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\IdeaKey;
-use App\Models\IdeaRequest;
-use Illuminate\Http\Request;
 use Orchid\Support\Facades\Toast;
 
 class IdeaController extends Controller

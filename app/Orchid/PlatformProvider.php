@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Orchid;
 
-use App\Models\IdeaRequest;
 use App\Models\Meet;
 use App\Models\Package;
 use App\Models\Position;
