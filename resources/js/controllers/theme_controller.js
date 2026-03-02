@@ -1,57 +1,74 @@
 import { Controller } from '@hotwired/stimulus';
-
 export default class extends Controller {
     static targets = ['preferred'];
-    initialize() {
-        // Устанавливаем начальное значение темы
-        this.setThemeBody(this.getThemeValue());
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => this.toggleTheme());
+
+    #mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    #reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    #userChoice = 'auto'; // кэш текущего выбора пользователя
+
+    connect() {
+        this.#userChoice = localStorage.getItem('theme') ?? 'auto';
+        this.#applyTheme();
+        this.#mediaQuery.addEventListener('change', this.#onSystemChange);
     }
 
-    // Функция для смены темы
+    disconnect() {
+        this.#mediaQuery.removeEventListener('change', this.#onSystemChange);
+    }
+
+    // ── Actions ─────────────────────────────────────────────────────────
+
     toggleTheme() {
-        let theme = this.preferredTargets.find((element) => element.checked)?.value;
+        const selected = this.preferredTargets.find(el => el.checked);
+        if (!selected) return;
 
-        if (theme === undefined) {
-            return;
+        const choice = selected.value; // "light" | "dark" | "auto"
+        this.#userChoice = choice;
+        localStorage.setItem('theme', choice);
+
+        this.#applyTheme();
+    }
+
+    // ── Приватные методы ────────────────────────────────────────────────
+
+    #applyTheme() {
+        const effective = this.#getEffectiveTheme();
+
+        const update = () => {
+            document.documentElement.setAttribute('data-bs-theme', effective);
+            this.#syncRadios();
+        };
+
+        // Плавный переход только если изменилась видимая тема и разрешена анимация
+        const oldEffective = document.documentElement.getAttribute('data-bs-theme') || 'light';
+        const hasChanged = oldEffective !== effective;
+        const canAnimate = hasChanged && !this.#reducedMotionQuery.matches && document.startViewTransition;
+
+        if (canAnimate) {
+            document.startViewTransition(update);
+        } else {
+            update();
         }
-
-        this.setThemeStorage(theme);
-        this.setThemeBody(theme);
     }
 
-    // Получение текущей темы из localStorage
-    getThemeValue() {
-        const theme = localStorage.getItem('theme');
-
-        if (theme === null) {
-            return 'auto';
+    #getEffectiveTheme() {
+        if (this.#userChoice === 'auto') {
+            return this.#mediaQuery.matches ? 'dark' : 'light';
         }
-
-        return theme;
+        return this.#userChoice;
     }
 
-    // Получение текущей темы из localStorage
-    getTheme(theme) {
-        if (['dark', 'light'].includes(theme)) {
-            return theme;
+    #syncRadios() {
+        // Синхронизируем radio с текущим выбором пользователя (не effective!)
+        this.preferredTargets.forEach(el => {
+            el.checked = el.value === this.#userChoice;
+        });
+    }
+
+    #onSystemChange = () => {
+        if (this.#userChoice === 'auto') {
+            this.#applyTheme();
         }
-
-        return this.getPreferredTheme();
-    }
-
-    // Установка темы и сохранение в localStorage
-    setThemeStorage(theme) {
-        localStorage.setItem('theme', theme);
-    }
-
-    setThemeBody(theme) {
-        document.documentElement.setAttribute('data-bs-theme', this.getTheme(theme));
-        this.preferredTargets.find((element) => element.value === theme)?.setAttribute('checked', true);
-    }
-
-    // Получение предпочитаемой темы
-    getPreferredTheme() {
-        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    }
+    };
 }
