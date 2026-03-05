@@ -1,30 +1,30 @@
-@foreach($features as $feature)
-    <div id="@domid($feature)"
-         data-feature-search-target="item"
-         data-title="{{ strtolower($feature->title) }}"
+@foreach($ideas as $idea)
+    <div id="@domid($idea)"
+         data-idea-search-target="item"
+         data-title="{{ strtolower($idea->title) }}"
          class="bg-body-tertiary mb-4 p-4 p-xl-5 ps-3 ps-xl-4 rounded hotwire-frame">
 
         <div class="d-flex gap-3 align-items-start">
             <div class="d-inline-flex">
-                @include('features._vote-button', ['feature' => $feature])
+                @include('ideas._vote-button', ['idea' => $idea])
             </div>
 
             <div class="d-flex align-items-start gap-3 flex-column justify-content-between">
 
-                <x-profile :user="$feature->author" />
+                <x-profile :user="$idea->author" />
 
                 <div class="position-relative post overflow-hidden">
                     <h4 class="mb-3 mt-2">
-                        {{ $feature->title }}
-                        @if($feature->isProposed())
+                        {{ $idea->title }}
+                        @if($idea->isProposed())
                             <small class="badge bg-warning text-dark ms-2">
-                                {{ $feature->status->text() }}
+                                {{ $idea->status->text() }}
                             </small>
                         @endif
                     </h4>
 
                     <div class="post" data-controller="prism">
-                        <x-posts.content :content="$feature->description" />
+                        <x-posts.content :content="$idea->description" />
                     </div>
                 </div>
             </div>

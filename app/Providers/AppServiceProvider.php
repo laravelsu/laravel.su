@@ -4,16 +4,16 @@ namespace App\Providers;
 
 use App\Models\ChallengeApplication;
 use App\Models\Comment;
-use App\Models\Feature;
-use App\Models\IdeaKey;
+use App\Models\Idea;
+use App\Models\LegacyIdeaKey;
 use App\Models\Meet;
 use App\Models\Package;
 use App\Models\Position;
 use App\Models\Post;
 use App\Policies\ChallengeApplicationPolicy;
 use App\Policies\CommentPolicy;
-use App\Policies\FeaturePolicy;
-use App\Policies\IdeaKeyPolicy;
+use App\Policies\IdeaPolicy;
+use App\Policies\LegacyIdeaKeyPolicy;
 use App\Policies\MeetPolicy;
 use App\Policies\PackagePolicy;
 use App\Policies\PositionPolicy;
@@ -89,10 +89,10 @@ class AppServiceProvider extends ServiceProvider
             Comment::class              => CommentPolicy::class,
             Meet::class                 => MeetPolicy::class,
             Post::class                 => PostPolicy::class,
-            Feature::class              => FeaturePolicy::class,
+            Idea::class                => IdeaPolicy::class,
             Package::class              => PackagePolicy::class,
             Position::class             => PositionPolicy::class,
-            IdeaKey::class              => IdeaKeyPolicy::class,
+            LegacyIdeaKey::class        => LegacyIdeaKeyPolicy::class,
             ChallengeApplication::class => ChallengeApplicationPolicy::class,
         ];
     }

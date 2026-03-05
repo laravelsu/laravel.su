@@ -1,11 +1,11 @@
-@if($features->hasMorePages())
+@if($ideas->hasMorePages())
     <turbo-frame
-        id="feature-more"
+        id="idea-more"
         loading="lazy"
-        src="{{ $features->nextPageUrl() }}">
+        src="{{ $ideas->nextPageUrl() }}">
 
-        @foreach(range(0,5) as $placeholder)
-            <div class="bg-body-tertiary mb-4 p-xl-5 p-4 rounded post-placeholder">
+        @foreach(range(0, 5) as $placeholder)
+            <div class="bg-body-tertiary mb-4 p-xl-5 p-4 rounded post-placeholder idea-placeholder">
 
                 <span class="placeholder rounded col-6 mb-4"></span>
 

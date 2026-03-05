@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Orchid\Screens\Feature;
+namespace App\Orchid\Screens\Idea;
 
-use App\Models\Feature;
-use App\Notifications\FeatureNotification;
+use App\Models\Idea;
+use App\Notifications\IdeaNotification;
+use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\DropDown;
@@ -18,52 +19,32 @@ use Orchid\Support\Facades\Toast;
 
 class ListScreen extends Screen
 {
-    /**
-     * Fetch data to be displayed on the screen.
-     *
-     * @return array
-     */
     public function query(): iterable
     {
         return [
-            'features' => Feature::with('author')
+            'ideas' => Idea::with('author')
                 ->filters()
                 ->defaultSort('votes_count', 'desc')
                 ->paginate(),
         ];
     }
 
-    /**
-     * The name of the screen displayed in the header.
-     *
-     * @return string|null
-     */
     public function name(): ?string
     {
-        return 'Предложения функций';
+        return 'Идеи';
     }
 
-    /**
-     * A description of the screen to be displayed in the header.
-     *
-     * @return string|null
-     */
     public function description(): ?string
     {
-        return 'Управление предложениями новых функций от пользователей';
+        return 'Управление идеями от пользователей';
     }
 
-    /**
-     * The screen's action buttons.
-     *
-     * @return \Orchid\Screen\Action[]
-     */
     public function commandBar(): iterable
     {
         return [
             Link::make('Создать')
                 ->icon('bs.plus-circle')
-                ->route('platform.feature.create'),
+                ->route('platform.ideas.create'),
         ];
     }
 
@@ -74,51 +55,43 @@ class ListScreen extends Screen
         ];
     }
 
-    /**
-     * The screen's layout elements.
-     *
-     * @throws \ReflectionException
-     *
-     * @return \Orchid\Screen\Layout[]|string[]
-     */
     public function layout(): iterable
     {
         return [
-            Layout::table('features', [
-
+            Layout::table('ideas', [
                 TD::make('title', 'Название')
                     ->width(200)
                     ->sort()
                     ->cantHide()
-                    ->render(function (Feature $feature) {
-                        return "<strong class='d-block'>".e($feature->title).'</strong>';
+                    ->render(function (Idea $idea) {
+                        return "<strong class='d-block'>".e($idea->title).'</strong>';
                     })->filter(Input::make()),
 
                 TD::make('description', 'Описание')
                     ->width(300)
                     ->cantHide()
-                    ->render(function (Feature $feature) {
-                        return Str::of($feature->description)->words(15);
+                    ->render(function (Idea $idea) {
+                        return Str::of($idea->description)->words(15);
                     })->filter(Input::make()),
 
                 TD::make('votes_count', 'Голоса')
                     ->sort()
-                    ->render(function (Feature $feature) {
-                        $class = $feature->votes_count > 0 ? 'text-success' : ($feature->votes_count < 0 ? 'text-danger' : '');
+                    ->render(function (Idea $idea) {
+                        $class = $idea->votes_count > 0 ? 'text-success' : ($idea->votes_count < 0 ? 'text-danger' : '');
 
-                        return "<span class='badge fs-5 {$class}'>{$feature->votes_count}</span>";
+                        return "<span class='badge fs-5 {$class}'>{$idea->votes_count}</span>";
                     }),
 
                 TD::make('status', 'Статус')
                     ->sort()
-                    ->render(function (Feature $feature) {
+                    ->render(function (Idea $idea) {
                         $badges = [
                             'proposed'    => 'secondary',
                             'published'   => 'success',
                             'rejected'    => 'danger',
                             'implemented' => 'info',
                         ];
-                        $statusValue = is_object($feature->status) ? $feature->status->value : $feature->status;
+                        $statusValue = is_object($idea->status) ? $idea->status->value : $idea->status;
                         $badge = $badges[$statusValue] ?? 'secondary';
 
                         return "<span class='badge bg-{$badge}'>{$statusValue}</span>";
@@ -127,7 +100,7 @@ class ListScreen extends Screen
                 TD::make('Автор')
                     ->align(TD::ALIGN_CENTER)
                     ->cantHide()
-                    ->render(fn (Feature $feature) => new Persona($feature->author->presenter())),
+                    ->render(fn (Idea $idea) => new Persona($idea->author->presenter())),
 
                 TD::make('created_at', 'Создано')
                     ->usingComponent(DateTimeSplit::class)
@@ -137,36 +110,32 @@ class ListScreen extends Screen
                 TD::make('Действия')
                     ->align(TD::ALIGN_CENTER)
                     ->width('100px')
-                    ->render(fn (Feature $feature) => DropDown::make()
+                    ->render(fn (Idea $idea) => DropDown::make()
                         ->icon('bs.three-dots-vertical')
                         ->list([
                             Link::make('Редактировать')
-                                ->route('platform.feature.edit', $feature->id)
+                                ->route('platform.ideas.edit', $idea->id)
                                 ->icon('bs.pencil'),
 
                             Button::make('Удалить')
                                 ->icon('bs.trash3')
-                                ->confirm('Вы уверены, что хотите удалить это предложение?')
+                                ->confirm('Вы уверены, что хотите удалить эту идею?')
                                 ->method('remove', [
-                                    'feature' => $feature->id,
+                                    'idea' => $idea->id,
                                 ]),
                         ])),
             ]),
-
         ];
     }
 
-    /**
-     * @param Feature $feature
-     *
-     * @return void
-     */
-    public function remove(Feature $feature): void
+    public function remove(Request $request): void
     {
-        $feature->delete();
+        $idea = Idea::findOrFail($request->input('idea'));
 
-        $feature->author->notify(new FeatureNotification($feature));
+        $idea->delete();
 
-        Toast::info('Предложение удалено');
+        $idea->author->notify(new IdeaNotification($idea));
+
+        Toast::info('Идея удалена');
     }
 }

@@ -25,6 +25,7 @@
     </x-header>
 
 
+    {{--
     <x-container>
 
         <div class="p-4 p-xl-5 bg-body-tertiary rounded-3 position-relative mb-4">
@@ -147,7 +148,7 @@
             </div>
         </div>
     </x-container>
-
+    --}}
 
     <x-container class="mt-lg-5 pt-lg-5">
         <span class="text-primary mb-3 d-block text-uppercase fw-semibold ls-xl">Разработчики говорят:</span>

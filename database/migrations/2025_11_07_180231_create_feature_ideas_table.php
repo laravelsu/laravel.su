@@ -11,16 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('features', function (Blueprint $table) {
+        Schema::create('idea_votes', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('description');
-            $table->integer('votes_count')->default(0);
-            $table->string('status')->default('proposed');
+            $table->foreignId('idea_id')->constrained()->cascadeOnDelete();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->tinyInteger('vote')->default(1); // 1 for upvote, -1 for downvote
             $table->timestamps();
 
-            $table->index(['status', 'votes_count']);
+            $table->unique(['idea_id', 'user_id']);
         });
     }
 
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('features');
+        Schema::dropIfExists('idea_votes');
     }
 };

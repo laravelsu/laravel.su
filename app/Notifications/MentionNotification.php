@@ -3,7 +3,6 @@
 namespace App\Notifications;
 
 use App\Models\Comment;
-use App\Models\IdeaKey;
 use App\Models\User;
 use App\Notifications\Channels\SiteChannel;
 use App\Notifications\Channels\SiteMessage;
@@ -22,7 +21,7 @@ class MentionNotification extends Notification implements ShouldQueue
     /**
      * FriendlyHugs constructor.
      *
-     * @param IdeaKey $ideaKey
+     * @param Comment $comment
      */
     public function __construct(Comment $comment)
     {

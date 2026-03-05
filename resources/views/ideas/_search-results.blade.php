@@ -1,5 +1,5 @@
-<turbo-frame id="features-frame">
-    @if($features->isEmpty())
+<turbo-frame id="ideas-frame">
+    @if($ideas->isEmpty())
         <div class="col-12">
             <div class="text-center py-5">
                 <x-icon path="bs.inbox" class="text-muted" width="4rem" height="4rem" />
@@ -7,6 +7,6 @@
             </div>
         </div>
     @else
-        @include('features._list')
+        @include('ideas._list')
     @endif
 </turbo-frame>
