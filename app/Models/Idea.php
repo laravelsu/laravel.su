@@ -26,12 +26,12 @@ class Idea extends Model
     ];
 
     protected $casts = [
-        'status'     => IdeaStatusEnum::class,
+        'status'      => IdeaStatusEnum::class,
         'votes_count' => 'integer',
     ];
 
     protected $attributes = [
-        'status'     => 'proposed',
+        'status'      => 'proposed',
         'votes_count' => 0,
     ];
 
