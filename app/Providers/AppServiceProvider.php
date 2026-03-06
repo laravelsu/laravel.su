@@ -89,7 +89,7 @@ class AppServiceProvider extends ServiceProvider
             Comment::class              => CommentPolicy::class,
             Meet::class                 => MeetPolicy::class,
             Post::class                 => PostPolicy::class,
-            Idea::class                => IdeaPolicy::class,
+            Idea::class                 => IdeaPolicy::class,
             Package::class              => PackagePolicy::class,
             Position::class             => PositionPolicy::class,
             LegacyIdeaKey::class        => LegacyIdeaKeyPolicy::class,

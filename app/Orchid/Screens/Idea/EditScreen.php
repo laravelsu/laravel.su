@@ -26,7 +26,7 @@ class EditScreen extends Screen
 
     public function query(?Idea $idea = null): iterable
     {
-        $idea = $idea ?? new Idea;
+        $idea ??= new Idea;
         $this->idea = $idea;
         $this->isExisting = $idea->exists;
 

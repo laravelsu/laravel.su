@@ -13,9 +13,7 @@ class IdeaNotification extends Notification
 {
     use Queueable;
 
-    public function __construct(private Idea $idea)
-    {
-    }
+    public function __construct(private Idea $idea) {}
 
     /**
      * @return array<int, string>

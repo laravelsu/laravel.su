@@ -344,7 +344,6 @@ Route::middleware(['auth', RedirectToBanPage::class])
 */
 Route::view('/laravel-idea', 'laravel-idea.index')->name('laravel-idea.index');
 
-
 /*
 |--------------------------------------------------------------------------
 | User-Like Routes
