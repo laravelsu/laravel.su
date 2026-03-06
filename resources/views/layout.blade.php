@@ -97,7 +97,7 @@
                                     </li>
 
                                     <li>
-                                        <a href="{{ route('idea.index') }}"
+                                        <a href="{{ route('laravel-idea.index') }}"
                                            class="link-body-emphasis text-decoration-none rounded-2 d-flex align-items-start gap-3 lh-sm text-start">
                                             <x-icon path="i.menu-idea" height="2rem" width="2rem" class="text-primary" />
                                             <div class="col-10">
@@ -205,6 +205,21 @@
                                         </a>
                                     </li>
 
+
+                                    <li>
+                                        <a href="{{ route('ideas.index') }}"
+                                           class="link-body-emphasis text-decoration-none rounded-2 d-flex align-items-start gap-3 lh-sm text-start">
+                                            <x-icon path="i.courses" height="2rem" width="2rem" class="text-primary"/>
+                                            <div class="col-10">
+                                                <span class="d-block">Идеи</span>
+                                                <small class="opacity-50 line-clamp line-clamp-2 text-balance">
+                                                    Предложения для любимого сообщества
+                                                </small>
+                                            </div>
+                                        </a>
+                                    </li>
+
+
                                 </ul>
                             </div>
                         </div>
@@ -271,82 +286,140 @@
          data-bs-theme="dark">
         <div class="container py-5">
             <footer class="row py-md-5 g-4 justify-content-between navbar-dark">
-
-                {{-- Left column --}}
                 <div class="col-12 col-md-4">
-
                     <ul class="nav justify-content-start align-items-center list-unstyled d-flex mb-4">
-
-                        <li>
-                            <a href="https://vk.com/laravel_rus"
-                               target="_blank"
-                               class="link-body-emphasis">
-                                <x-icon path="i.vk" width="24" height="24" />
+                        <li class="">
+                            <a href="https://vk.com/laravel_rus" target="_blank" class="link-body-emphasis">
+                                <x-icon path="i.vk" width="24" height="24"/>
                             </a>
                         </li>
+                        <li class="ms-3">
+                            <a href="https://t.me/laravelrus" target="_blank" class="link-body-emphasis">
+                                <x-icon path="bs.telegram" width="24" height="24"/>
+                            </a>
+                        </li>
+                        <li class="ms-3">
+                            <a class="link-body-emphasis" href="{{ asset(config('services.github.org_url')) }}"
+                               target="_blank">
+                                <x-icon path="bs.github" width="24" height="24"/>
+                            </a>
+                        </li>
+
 
                         <li class="ms-3">
-                            <a href="https://t.me/laravelrus"
-                               target="_blank"
-                               class="link-body-emphasis">
-                                <x-icon path="bs.telegram" width="24" height="24" />
+                            <a href="https://www.youtube.com/@laravelrus" target="_blank" class="link-body-emphasis">
+                                <x-icon path="bs.youtube" width="24" height="24"/>
                             </a>
                         </li>
+
 
                         <li class="ms-3">
-                            <a href="{{ asset(config('services.github.org_url')) }}"
-                               target="_blank"
-                               class="link-body-emphasis">
-                                <x-icon path="bs.github" width="24" height="24" />
+                            <a class="link-body-emphasis" href="{{ asset('/rss/feed') }}"
+                               target="_blank">
+                                <x-icon path="bs.rss-fill" width="24" height="24"/>
                             </a>
                         </li>
-
-                        <li class="ms-3">
-                            <a href="https://www.youtube.com/@laravelrus"
-                               target="_blank"
-                               class="link-body-emphasis">
-                                <x-icon path="bs.youtube" width="24" height="24" />
-                            </a>
-                        </li>
-
-                        <li class="ms-3">
-                            <a href="{{ asset('/rss/feed') }}"
-                               target="_blank"
-                               class="link-body-emphasis">
-                                <x-icon path="bs.rss-fill" width="24" height="24" />
-                            </a>
-                        </li>
-
                     </ul>
 
                     <p class="small text-muted mb-2">
-                        Веб-сайт является неофициальным ресурсом, посвященным Laravel.
-                        Мы объединяем разработчиков и энтузиастов, желающих обмениваться знаниями и опытом.
-                        Мы не имеем официального статуса от
-                        <a href="https://laravel.com"
-                           target="_blank"
-                           rel="nofollow"
-                           class="link-body-emphasis">
-                            Laravel
-                        </a>
-                        или
-                        <a href="https://github.com/taylorotwell"
-                           target="_blank"
-                           rel="nofollow"
-                           class="link-body-emphasis">
-                            Taylor Otwell
-                        </a>.
+                        Веб-сайт является неофициальным ресурсом, посвященным Laravel. Мы объединяем разработчиков и
+                        энтузиастов, желающих обмениваться знаниями и опытом. Мы не имеем официального статуса от
+                        <a href="https://laravel.com" target="_blank" rel="nofollow" class="link-body-emphasis">Laravel</a> или <a href="https://github.com/taylorotwell" target="_blank" rel="nofollow" class="link-body-emphasis">Taylor Otwell</a>.
                     </p>
-
                     <p class="small text-muted">
-                        Логотип Laravel и другие сопутствующие товарные знаки принадлежат их законным владельцам.
+                        Логотип Laravel и другие сопутствующие товарные знаки принадлежат их законным
+                        владельцам.
                     </p>
-
                 </div>
 
-                {{-- Остальные колонки футера оставлены в том же стиле форматирования --}}
-                {{-- (структура сохранена, просто выровнена и приведена к единому стилю) --}}
+                <div class="col-6 col-md-auto">
+                    <p class="fw-normal text-white">Ресурсы сообщества</p>
 
+                    <div class="navbar navbar-dark">
+                        <ul class="nav flex-column navbar-nav">
+                            <li class="nav-item mb-2">
+                                <a href="{{ route('home') }}" class="nav-link p-0">Домашняя страница</a>
+                            </li>
+                            <li class="nav-item mb-2">
+                                <a href="{{ route('why-laravel') }}" class="nav-link p-0">Почему Laravel?</a>
+                            </li>
+                            <li class="nav-item mb-2">
+                                <a href="{{ route('feature') }}" class="nav-link p-0">Возможности</a>
+                            </li>
+                            <li class="nav-item mb-2">
+                                <a href="{{ route('meets') }}" class="nav-link p-0">Мероприятия</a>
+                            </li>
+                            <li class="nav-item mb-2">
+                                <a href="{{ route('ecosystem') }}" class="nav-link p-0">Экосистема</a>
+                            </li>
+                            <li class="nav-item mb-2">
+                                <a href="{{ route('packages') }}" class="nav-link p-0">Пакеты</a>
+                            </li>
+                            <li class="nav-item mb-2">
+                                <a href="{{ route('jobs') }}" class="nav-link p-0">Вакансии</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-auto">
+                    <p class="fw-normal text-white">Взаимодействие</p>
+                    <div class="navbar navbar-dark">
+                        <ul class="nav flex-column navbar-nav">
+                            <li class="nav-item mb-2">
+                                <a href="{{ route('advertising') }}" class="nav-link p-0">Партнёрство</a>
+                            </li>
+                            <li class="nav-item mb-2">
+                                <a href="{{ route('donate') }}" class="nav-link p-0">Сделать пожертвование</a>
+                            </li>
+                            <li class="nav-item mb-2">
+                                <a href="{{ route('assets') }}"
+                                   class="nav-link p-0">Графические материалы</a>
+                            </li>
+                            <li class="nav-item mb-2">
+                                <a href="{{ route('rules') }}"
+                                   class="nav-link p-0">Правила сообщества</a>
+                            </li>
+                            <li class="nav-item mb-2">
+                                <a href="{{ route('status') }}" class="nav-link p-0">Статус переводов</a>
+                            </li>
+                            <li class="nav-item mb-2">
+                                <a href="{{ route('contributors') }}" class="nav-link p-0">Участники</a>
+                            </li>
+                            <li class="nav-item mb-2">
+                                <a href="{{ route('achievements') }}" class="nav-link p-0">Достижения</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-auto">
+                    <div class="navbar navbar-dark">
+                        <div class="nav flex-column">
+                            <form data-controller="theme" data-action="change->theme#toggleTheme" data-turbo-permanent
+                                  class="btn-group" role="group" aria-label="Тема оформления" id="theme-checker-group">
+                                <input type="radio" value="auto" data-theme-target="preferred" class="btn-check"
+                                       name="theme-checker" id="theme-checker-auto" autocomplete="off" checked>
+                                <label class="btn btn-outline-secondary d-inline-flex align-items-center py-2" for="theme-checker-auto">
+                                    <x-icon path="i.theme-auto" class="my-1" width="1rem" height="1rem" />
+                                </label>
+
+                                <input type="radio" value="light" data-theme-target="preferred" class="btn-check"
+                                       name="theme-checker" id="theme-checker-light" autocomplete="off">
+                                <label class="btn btn-outline-secondary d-inline-flex align-items-center" for="theme-checker-light">
+                                    <x-icon path="i.theme-light" class="my-1" width="1rem" height="1rem" />
+                                </label>
+
+                                <input type="radio" value="dark" data-theme-target="preferred" class="btn-check"
+                                       name="theme-checker" id="theme-checker-dark" autocomplete="off">
+                                <label class="btn btn-outline-secondary d-inline-flex align-items-center" for="theme-checker-dark">
+                                    <x-icon path="i.theme-dark" class="my-1" width="1rem" height="1rem" />
+                                </label>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
             </footer>
         </div>
     </div>

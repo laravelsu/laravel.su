@@ -342,15 +342,8 @@ Route::middleware(['auth', RedirectToBanPage::class])
 | ...
 |
 */
+Route::view('/laravel-idea', 'laravel-idea.index')->name('laravel-idea.index');
 
-Route::middleware(['auth', RedirectToBanPage::class])
-    ->group(function () {
-        Route::get('/idea', [\App\Http\Controllers\IdeaController::class, 'index'])->name('idea.index');
-        Route::post('/idea', [\App\Http\Controllers\IdeaController::class, 'store'])->name('idea.store');
-        Route::get('/idea/{key}', [\App\Http\Controllers\IdeaController::class, 'key'])
-            ->can('owner', 'key')
-            ->name('idea.key');
-    });
 
 /*
 |--------------------------------------------------------------------------
@@ -564,29 +557,29 @@ Route::get('/rss/feed', [\App\Http\Controllers\FeedController::class, 'index'])
 
 /*
 |--------------------------------------------------------------------------
-| Feature Voting Routes
+| Ideas Routes
 |--------------------------------------------------------------------------
 |
-| Feature voting system - users can propose and vote on new features
+| Users can propose and vote on new ideas
 |
 */
 
-Route::get('/features', [\App\Http\Controllers\FeatureController::class, 'index'])
-    ->name('features.index');
+Route::get('/ideas', [\App\Http\Controllers\IdeaController::class, 'index'])
+    ->name('ideas.index');
 
-Route::get('/features/search', [\App\Http\Controllers\FeatureController::class, 'search'])
-    ->name('features.search');
+Route::get('/ideas/search', [\App\Http\Controllers\IdeaController::class, 'search'])
+    ->name('ideas.search');
 
 Route::middleware(['auth', RedirectToBanPage::class])
     ->group(function () {
-        Route::get('/feature/create', [\App\Http\Controllers\FeatureController::class, 'create'])
-            ->can('create', 'App\Models\Feature')
-            ->name('features.create');
+        Route::get('/ideas/create', [\App\Http\Controllers\IdeaController::class, 'create'])
+            ->can('create', \App\Models\Idea::class)
+            ->name('ideas.create');
 
-        Route::post('/feature', [\App\Http\Controllers\FeatureController::class, 'store'])
-            ->can('create', 'App\Models\Feature')
-            ->name('feature.store');
+        Route::post('/ideas', [\App\Http\Controllers\IdeaController::class, 'store'])
+            ->can('create', \App\Models\Idea::class)
+            ->name('idea.store');
 
-        Route::post('/feature/{feature}/vote', [\App\Http\Controllers\FeatureController::class, 'vote'])
-            ->name('features.vote');
+        Route::post('/ideas/{idea}/vote', [\App\Http\Controllers\IdeaController::class, 'vote'])
+            ->name('ideas.vote');
     });

@@ -123,20 +123,20 @@ Route::screen('/secret-santa', \App\Orchid\Screens\SecretSantaScreen::class)
         ->parent('platform.index')
         ->push('Серетный Санта'));
 
-Route::screen('features', App\Orchid\Screens\Feature\ListScreen::class)
-    ->name('platform.feature')
+Route::screen('ideas', App\Orchid\Screens\Idea\ListScreen::class)
+    ->name('platform.ideas')
     ->breadcrumbs(fn (Trail $trail) => $trail
         ->parent('platform.index')
-        ->push('Предложения функций'));
+        ->push('Идеи'));
 
-Route::screen('features/{feature}/edit', App\Orchid\Screens\Feature\EditScreen::class)
-    ->name('platform.feature.edit')
-    ->breadcrumbs(fn (Trail $trail, $feature) => $trail
-        ->parent('platform.feature')
-        ->push($feature->title ?? 'Создание', route('platform.feature.edit', $feature)));
+Route::screen('ideas/{idea}/edit', App\Orchid\Screens\Idea\EditScreen::class)
+    ->name('platform.ideas.edit')
+    ->breadcrumbs(fn (Trail $trail, $idea) => $trail
+        ->parent('platform.ideas')
+        ->push($idea->title ?? 'Создание', route('platform.ideas.edit', $idea)));
 
-Route::screen('features/create', App\Orchid\Screens\Feature\EditScreen::class)
-    ->name('platform.feature.create')
+Route::screen('ideas/create', App\Orchid\Screens\Idea\EditScreen::class)
+    ->name('platform.ideas.create')
     ->breadcrumbs(fn (Trail $trail) => $trail
-        ->parent('platform.feature')
-        ->push('Создать', route('platform.feature.create')));
+        ->parent('platform.ideas')
+        ->push('Создать', route('platform.ideas.create')));
