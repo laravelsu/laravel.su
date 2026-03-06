@@ -342,15 +342,7 @@ Route::middleware(['auth', RedirectToBanPage::class])
 | ...
 |
 */
-
-Route::middleware(['auth', RedirectToBanPage::class])
-    ->group(function () {
-        Route::get('/idea', [\App\Http\Controllers\IdeaController::class, 'index'])->name('idea.index');
-        Route::post('/idea', [\App\Http\Controllers\IdeaController::class, 'store'])->name('idea.store');
-        Route::get('/idea/{key}', [\App\Http\Controllers\IdeaController::class, 'key'])
-            ->can('owner', 'key')
-            ->name('idea.key');
-    });
+Route::view('/laravel-idea', 'laravel-idea.index')->name('laravel-idea.index');
 
 /*
 |--------------------------------------------------------------------------
@@ -561,3 +553,32 @@ Route::get('/cover.jpg', [\App\Http\Controllers\CoverController::class, 'image']
 Route::get('/rss/feed', [\App\Http\Controllers\FeedController::class, 'index'])
     ->middleware(['cache.headers:public;max_age=300;etag'])
     ->name('feeds.rss');
+
+/*
+|--------------------------------------------------------------------------
+| Ideas Routes
+|--------------------------------------------------------------------------
+|
+| Users can propose and vote on new ideas
+|
+*/
+
+Route::get('/ideas', [\App\Http\Controllers\IdeaController::class, 'index'])
+    ->name('ideas.index');
+
+Route::get('/ideas/search', [\App\Http\Controllers\IdeaController::class, 'search'])
+    ->name('ideas.search');
+
+Route::middleware(['auth', RedirectToBanPage::class])
+    ->group(function () {
+        Route::get('/ideas/create', [\App\Http\Controllers\IdeaController::class, 'create'])
+            ->can('create', \App\Models\Idea::class)
+            ->name('ideas.create');
+
+        Route::post('/ideas', [\App\Http\Controllers\IdeaController::class, 'store'])
+            ->can('create', \App\Models\Idea::class)
+            ->name('idea.store');
+
+        Route::post('/ideas/{idea}/vote', [\App\Http\Controllers\IdeaController::class, 'vote'])
+            ->name('ideas.vote');
+    });

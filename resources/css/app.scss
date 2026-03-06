@@ -147,6 +147,7 @@ $utilities: (
     aspect-ratio: 1/1;
     max-width: 100%;
     min-width: 40px;
+    min-height: 40px;
     object-fit: cover;
     background-color: rgba($secondary-bg-subtle, 0.7);
 }

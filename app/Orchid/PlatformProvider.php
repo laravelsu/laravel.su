@@ -82,6 +82,11 @@ class PlatformProvider extends OrchidServiceProvider
                 ->icon('bs.collection')
                 ->route('platform.challenges'),
 
+            Menu::make('Идеи')
+                ->permission('site.content')
+                ->icon('bs.lightbulb')
+                ->route('platform.ideas'),
+
             Menu::make('Яндекс Метрика')
                 ->icon('pie-chart')
                 ->href('https://metrika.yandex.ru/dashboard?id=96430041')

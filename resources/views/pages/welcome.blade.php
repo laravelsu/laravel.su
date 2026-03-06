@@ -498,7 +498,7 @@ background: #1A1319!important;">
                             </div>
 
                             <div class="col-xl-10 text-center mx-auto">
-                                <a href="{{ route('idea.index') }}" class="btn btn-outline-primary btn-lg w-100">Перейти</a>
+                                <a href="{{ route('laravel-idea.index') }}" class="btn btn-outline-primary btn-lg w-100">Перейти</a>
                             </div>
                         </div>
                     </div>

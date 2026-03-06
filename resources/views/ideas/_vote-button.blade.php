@@ -1,0 +1,35 @@
+<div id="idea-vote-{{ $idea->id }}" class="d-flex flex-column gap-1 align-items-center">
+    @if($idea->status->value === 'implemented')
+        <div class="d-flex flex-column align-items-center" title="Эта идея была реализована">
+            <button class="btn btn-sm btn-primary mb-1" disabled>
+                <x-icon path="bs.check-circle-fill" width="1rem" height="1rem" />
+            </button>
+            <div class="fw-bold fs-5 votes-count">{{ $idea->votes_count }}</div>
+        </div>
+    @else
+        @auth
+            @if(($idea->user_vote ?? 0) === 1)
+                <div class="d-flex flex-column align-items-center" title="Вы проголосовали за эту идею">
+                    <button class="btn btn-sm btn-success mb-1" disabled>
+                        <x-icon path="bs.check-circle-fill" width="1rem" height="1rem" />
+                    </button>
+                    <div class="fw-bold fs-5 votes-count">{{ $idea->votes_count }}</div>
+                </div>
+            @else
+                <form action="{{ route('ideas.vote', $idea) }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="vote" value="1">
+                    <button type="submit" class="btn btn-sm btn-link text-success-emphasis">
+                        <x-icon path="bs.caret-up-fill" width="1rem" height="1rem" />
+                    </button>
+                </form>
+                <div class="fw-bold votes-count">{{ $idea->votes_count }}</div>
+            @endif
+        @else
+            <button class="btn btn-sm btn-link text-success-emphasis" type="button" disabled>
+                <x-icon path="bs.caret-up-fill" width="1rem" height="1rem" />
+            </button>
+            <div class="fw-bold votes-count">{{ $idea->votes_count }}</div>
+        @endauth
+    @endif
+</div>

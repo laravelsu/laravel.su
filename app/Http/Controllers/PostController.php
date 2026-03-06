@@ -107,8 +107,8 @@ class PostController extends Controller
         ]);
 
         $post->fill([
-            'title'   => $request->get('title'),
-            'content' => $request->get('content'),
+            'title'   => $request->input('title'),
+            'content' => $request->input('content'),
             'user_id' => $request->user()->id,
         ])->save();
 
