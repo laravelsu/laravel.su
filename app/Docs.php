@@ -25,12 +25,13 @@ class Docs
     /**
      * Default version of Laravel documentation
      */
-    public const DEFAULT_VERSION = '12.x';
+    public const DEFAULT_VERSION = '13.x';
 
     /**
      * Array of supported versions
      */
     public const SUPPORT_VERSIONS = [
+        '13.x',
         '12.x',
         '11.x',
         '10.x',
