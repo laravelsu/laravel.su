@@ -8,6 +8,7 @@ use App\View\Modifications\HeaderLinksModifier;
 use App\View\Modifications\HTMLCleanseModifier;
 use App\View\Modifications\ImageAltModifier;
 use App\View\Modifications\RemoveFirstHeaderModifier;
+use App\View\Modifications\RemoveTableOfContentsModifier;
 use App\View\Modifications\ResponsiveTableModifier;
 use App\View\Modifications\TypografModifier;
 use Illuminate\Contracts\Support\Htmlable;
@@ -43,13 +44,14 @@ class Content extends Component implements Htmlable
      */
     public function toHtml(): string
     {
-        return Cache::remember('doc-content-'.sha1($this->content), now()->addWeek(), function () {
+        return Cache::remember('doc-content-v2-'.sha1($this->content), now()->addWeek(), function () {
             return app(Pipeline::class)
                 ->send($this->content)
                 ->through([
                     HTMLCleanseModifier::class, // Стандартизирует HTML
                     BlockquoteModifier::class, // Применяет цвет к блокам цитат (Например предупреждение)
                     RemoveFirstHeaderModifier::class, // Удаляет h1 заголовок
+                    RemoveTableOfContentsModifier::class, // Удаляет оглавление из документа
                     HeaderLinksModifier::class, // Добавляет ссылки для заголовков
                     ResponsiveTableModifier::class, // Добавляет к таблице класс table-responsive
                     BladeComponentModifier::class, // Применяет компоненты blade
