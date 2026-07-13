@@ -13,11 +13,18 @@
                             Чтобы участвовать в сообществе, войдите в учетную запись.
                         </h3>
 
-                        <a href="{{ route('auth.login') }}" name="button" type="submit"
-                           class="d-flex d-md-inline-flex justify-content-center justify-content-md-start btn btn-lg btn-primary icon-link">
-                            <x-icon path="bs.github" class="auth-google-icon"/>
-                            <span class="auth-google-text">Войти через GitHub</span>
-                        </a>
+                        @if ($githubLoginAvailable)
+                            <a href="{{ route('auth.login') }}"
+                               class="d-flex d-md-inline-flex justify-content-center justify-content-md-start btn btn-lg btn-primary icon-link">
+                                <x-icon path="bs.github" class="auth-google-icon"/>
+                                <span class="auth-google-text">Войти через GitHub</span>
+                            </a>
+                        @else
+                            <div class="alert border-danger mb-0" role="alert">
+                                Похоже, вы находитесь в Российской Федерации. К сожалению, из-за требований
+                                законодательства мы не можем предложить вход через GitHub на территории России.
+                            </div>
+                        @endif
 
                         <div class="text-opacity-50 small col-lg-7">
                             Создавая учетную запись, вы соглашаетесь с <a href="{{ route('rules') }}">правилами</a>.

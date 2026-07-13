@@ -10,8 +10,10 @@ use App\Http\Controllers\LikeController;
 use App\Http\Controllers\MeetController;
 use App\Http\Controllers\PackagesController;
 use App\Http\Controllers\PostController;
+use App\Http\Middleware\EnsureForeignLoginIsAvailable;
 use App\Http\Middleware\RedirectToBanPage;
 use App\Models\User;
+use App\Support\ForeignLoginAccess;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -374,9 +376,19 @@ Route::middleware('auth')
 |
 */
 
-Route::view('/login', 'auth.login')->middleware('guest')->name('login');
-Route::get('/auth/login', [AuthController::class, 'login'])->middleware('guest')->name('auth.login');
-Route::get('/auth/callback', [AuthController::class, 'callback'])->name('auth.callback')->middleware('guest');
+Route::get('/login', function (Request $request, ForeignLoginAccess $foreignLoginAccess) {
+    return view('auth.login', [
+        'githubLoginAvailable' => $foreignLoginAccess->allows($request),
+    ]);
+})->middleware('guest')->name('login');
+
+Route::get('/auth/login', [AuthController::class, 'login'])
+    ->middleware(['guest', EnsureForeignLoginIsAvailable::class])
+    ->name('auth.login');
+
+Route::get('/auth/callback', [AuthController::class, 'callback'])
+    ->middleware(['guest', EnsureForeignLoginIsAvailable::class])
+    ->name('auth.callback');
 Route::post('/auth/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
 
 /*
