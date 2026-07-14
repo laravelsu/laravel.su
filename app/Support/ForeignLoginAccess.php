@@ -2,17 +2,17 @@
 
 namespace App\Support;
 
+use App\Services\IpInfo;
 use Illuminate\Http\Request;
 
-final class ForeignLoginAccess
+final readonly class ForeignLoginAccess
 {
-    private const BLOCKED_COUNTRIES = ['RU', 'T1', 'XX'];
+    public function __construct(private IpInfo $ipInfo) {}
 
     public function allows(Request $request): bool
     {
-        $country = strtoupper(trim((string) $request->header('CF-IPCountry')));
+        $countryCode = $this->ipInfo->countryCodeFor($request->ip());
 
-        return preg_match('/^[A-Z]{2}$/', $country) === 1
-            && ! in_array($country, self::BLOCKED_COUNTRIES, true);
+        return filled($countryCode) && $countryCode !== 'RU';
     }
 }

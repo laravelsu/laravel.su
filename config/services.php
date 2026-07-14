@@ -44,6 +44,12 @@ return [
         ],
     ],
 
+    'ipinfo' => [
+        'url'     => 'https://api.ipinfo.io/lite',
+        'token'   => env('IPINFO_TOKEN'),
+        'timeout' => 3,
+    ],
+
     'donate' => [
         'yoomoney' => 'https://yoomoney.ru/to/4100118551993725',
     ],
