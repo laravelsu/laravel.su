@@ -14,6 +14,12 @@ class Courses
     public static function teachers(): Collection
     {
         return collect([
+            Teacher::make(
+                'Илья Чубаров',
+                '/img/community/chubarov.jpg',
+                static::ownCourses()
+            ),
+
             Teacher::make('Михаил Протасевич', '/img/community/protasevich.jpg', [
                 new Course(
                     'Laravel Reverb',
@@ -127,7 +133,6 @@ class Courses
     {
         return static::teachers()
             ->map(fn (Teacher $teacher) => $teacher->courses)
-            ->merge(static::ownCourses())
             ->flatten();
     }
 

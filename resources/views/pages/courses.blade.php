@@ -1,15 +1,24 @@
 @extends('layout')
-@section('title', 'Улучшите навыки разработки смотря видео курсы')
-@section('description', 'Тут собраны учебные материалы, которые помогут вам освоить фреймворк и разработку в целом смотря видео курсы.')
+@section('title', request()->routeIs('video')
+    ? 'Улучшите навыки разработки смотря видео курсы'
+    : 'Курсы от русскоязычного сообщества Laravel')
+@section('description', request()->routeIs('video')
+    ? 'Тут собраны учебные материалы, которые помогут вам освоить фреймворк и разработку в целом смотря видео курсы.'
+    : 'Персональные русскоязычные серии уроков от преподавателей сообщества Laravel.')
 
 @section('content')
 
+    @if(request()->routeIs('video'))
     <x-header image="/img/porridge.svg">
         <x-slot:sup>Всё наглядно</x-slot>
         <x-slot:title>Улучшите навыки смотря видео</x-slot>
 
         <x-slot:description>
             Тут собраны учебные материалы, которые помогут вам освоить фреймворк и разработку в целом.
+        </x-slot>
+
+        <x-slot:actions>
+            <a href="{{ route('courses') }}" class="btn btn-primary">Выбрать преподавателя</a>
         </x-slot>
     </x-header>
 
@@ -330,19 +339,23 @@
 
 
 
-    <x-container>
-        <div class="row g-4 g-md-5 justify-content-center align-items-end mb-5">
-            <div class="col-lg-8 me-auto">
-                <span class="text-primary mb-3 d-block text-uppercase fw-semibold ls-xl">В подборках</span>
-                <h2 class="display-5 fw-semibold mb-0">Персональные русскоязычные серии</h2>
-            </div>
-        </div>
+    @else
+    <x-header image="/img/porridge.svg">
+        <x-slot:sup>Опыт сообщества</x-slot>
+        <x-slot:title>Русскоязычные авторские курсы</x-slot>
 
+        <x-slot:description>
+            Преподаватели делятся реальным опытом и шаг за шагом помогают применять Laravel в рабочих проектах.
+        </x-slot>
+
+    </x-header>
+
+    <x-container>
         @foreach(\App\School\Courses::teachers() as $key => $teacher)
 
             <div class="row g-0 rounded bg-body-tertiary mb-5">
-                <div class="col-lg-4 {{ $key % 2 === 0 ? 'order-lg-last' : '' }}">
-                    <x-hero image="{{ $teacher->image }}" text="{{ $teacher->name }}" class="{{ $key % 2 === 0 ? 'rounded-end' : 'rounded-start' }}"/>
+                <div class="col-lg-4 {{ $key % 2 !== 0 ? 'order-lg-last' : '' }}">
+                    <x-hero image="{{ $teacher->image }}" text="{{ $teacher->name }}" class="{{ $key % 2 !== 0 ? 'rounded-end' : 'rounded-start' }}"/>
                 </div>
                 <div class="col-lg-8">
                     <div class="p-4 p-xl-5 my-xl-5">
@@ -578,4 +591,5 @@
             </div>
         </div>
     --}}
+    @endif
 @endsection

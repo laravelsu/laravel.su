@@ -1,53 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-labelledby="title description">
   <title id="title">Temporal</title>
-  <desc id="description">Заказы из нескольких ресторанов объединяются в Temporal workflow и отправляются в доставку</desc>
+  <desc id="description">Стилизованные песочные часы — надёжные процессы, продолжающиеся во времени</desc>
+
   <defs>
     <style>
-      .ink { fill: #171923; }
       .accent { fill: #ff2d20; }
-      .paper { fill: #fff; }
-      .flow {
+      .outline {
         fill: none;
-        stroke: #ff2d20;
+        stroke: #000;
         stroke-linecap: round;
         stroke-linejoin: round;
-        stroke-width: 2.5;
+        stroke-width: 2;
       }
     </style>
   </defs>
 
-  <!-- Same circular frame as the other course illustrations. -->
-  <path class="ink" d="M50 100C22.43 100 0 77.57 0 50S22.43 0 50 0s50 22.43 50 50-22.43 50-50 50Zm0-98C23.53 2 2 23.53 2 50s21.53 48 48 48 48-21.53 48-48S76.47 2 50 2Z"/>
+  <!-- Circular frame shared by the course illustrations. -->
+  <path d="M50 100C22.43 100 0 77.57 0 50S22.43 0 50 0s50 22.43 50 50-22.43 50-50 50Zm0-98C23.53 2 2 23.53 2 50s21.53 48 48 48 48-21.53 48-48S76.47 2 50 2Z"/>
 
-  <!-- Order flow: restaurants → durable workflow → delivery. -->
-  <path class="flow" d="M31 31c7 0 7 10 12 13M31 69c7 0 7-10 12-13M66 50h7"/>
-  <path class="accent" d="m72 46 6 4-6 4Z"/>
+  <!-- Compact, symmetrical red planes leave a calm margin inside the circular frame. -->
+  <path class="accent" d="M24 20h52v9H24zM24 71h52v9H24z"/>
+  <path class="accent" d="M34 31h32c-.91 6.67-6.24 12-16 19-9.76-7-15.09-12.33-16-19Z"/>
+  <path class="accent" d="M47.5 47h5v14h-5z"/>
+  <path class="accent" d="M32 71c2.08-6.82 8.32-10.67 18-17 9.68 6.33 15.92 10.18 18 17Z"/>
 
-  <!-- Two restaurants represent the aggregator's vendors. -->
-  <g>
-    <rect class="ink" x="14" y="25" width="18" height="17" rx="2"/>
-    <path class="accent" d="M12 23h22l-3 8H15Z"/>
-    <path class="paper" d="M18 33h5v9h-5zm8 0h3v4h-3z"/>
-  </g>
-  <g>
-    <rect class="ink" x="14" y="58" width="18" height="17" rx="2"/>
-    <path class="accent" d="M12 56h22l-3 8H15Z"/>
-    <path class="paper" d="M18 66h5v9h-5zm8 0h3v4h-3z"/>
-  </g>
+  <!-- Fine black construction gives the hourglass its hand-drawn character. -->
+  <path class="outline" d="M23 20h54v9H23zM23 71h54v9H23z"/>
+  <path class="outline" d="M30 29c.2 8.9 5.7 15.2 14.7 21C35.7 55.8 30.2 62.1 30 71M70 29c-.2 8.9-5.7 15.2-14.7 21 9 5.8 14.5 12.1 14.7 21"/>
+  <path class="outline" d="M34 32h32M33 68c4.19-5.22 9.86-8.67 17-13.35C57.14 59.33 62.81 62.78 67 68"/>
+  <path class="outline" d="M50 48.5v11.5"/>
 
-  <!-- Temporal keeps the workflow moving reliably over time. -->
-  <circle class="ink" cx="51" cy="50" r="18"/>
-  <circle class="paper" cx="51" cy="50" r="12"/>
-  <path class="accent" d="M49.5 40h3v10.8l7 4.4-1.8 2.8-8.2-5.2Z"/>
-  <circle class="accent" cx="51" cy="50" r="2.5"/>
-  <circle class="accent" cx="51" cy="34" r="2"/>
-  <circle class="accent" cx="51" cy="66" r="2"/>
-
-  <!-- A destination pin with a parcel makes delivery explicit. -->
-  <path class="accent" d="M82 31c-8.28 0-15 6.5-15 14.52C67 56.18 82 71 82 71s15-14.82 15-25.48C97 37.5 90.28 31 82 31Z"/>
-  <circle class="paper" cx="82" cy="45" r="8"/>
-  <path class="ink" d="M77 41h10v9H77z"/>
-  <path class="accent" d="M77 41h10l-2.5 3h-5Z"/>
-  <path class="paper" d="M81 41h2v4h-2z"/>
+  <!-- Slightly inset strokes add the layered ink quality used by the set. -->
+  <path class="outline" d="M28 23.5h44M28 76.5h44"/>
+  <circle cx="50" cy="63.5" r="1.5"/>
 </svg>

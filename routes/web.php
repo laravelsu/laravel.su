@@ -48,6 +48,7 @@ Route::view('/donate/frame', 'pages.donate-frame')->name('donate.frame');
 Route::view('/moments', 'pages.moments')->name('moments');
 
 Route::view('/courses', 'pages.courses')->name('courses');
+Route::view('/video', 'pages.courses')->name('video');
 Route::view('/assets', 'pages.assets')->name('assets');
 Route::view('/boilerplate', 'pages.boilerplate')->name('boilerplate');
 
