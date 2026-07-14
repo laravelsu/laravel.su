@@ -138,6 +138,12 @@ class Courses
     {
         return collect([
             new Course(
+                'Temporal',
+                'Шаг за шагом строим агрегатор доставки еды, добавляя возможности Temporal на каждом уроке.',
+                '/img/ui/courses/temporal.svg',
+                'https://www.youtube.com/watch?v=peF9GniYp_s&list=PLM-y77GFP_D2PFEzfQpeVQ3g0vpcMijfb'
+            ),
+            new Course(
                 'Orchid',
                 'Создание админ-панелей с Orchid. Простое и мощное решение.',
                 '/img/ui/courses/orchid.svg',

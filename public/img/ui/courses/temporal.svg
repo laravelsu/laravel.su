@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-labelledby="title description">
+  <title id="title">Temporal</title>
+  <desc id="description">Заказы из нескольких ресторанов объединяются в Temporal workflow и отправляются в доставку</desc>
+  <defs>
+    <style>
+      .ink { fill: #171923; }
+      .accent { fill: #ff2d20; }
+      .paper { fill: #fff; }
+      .flow {
+        fill: none;
+        stroke: #ff2d20;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 2.5;
+      }
+    </style>
+  </defs>
+
+  <!-- Same circular frame as the other course illustrations. -->
+  <path class="ink" d="M50 100C22.43 100 0 77.57 0 50S22.43 0 50 0s50 22.43 50 50-22.43 50-50 50Zm0-98C23.53 2 2 23.53 2 50s21.53 48 48 48 48-21.53 48-48S76.47 2 50 2Z"/>
+
+  <!-- Order flow: restaurants → durable workflow → delivery. -->
+  <path class="flow" d="M31 31c7 0 7 10 12 13M31 69c7 0 7-10 12-13M66 50h7"/>
+  <path class="accent" d="m72 46 6 4-6 4Z"/>
+
+  <!-- Two restaurants represent the aggregator's vendors. -->
+  <g>
+    <rect class="ink" x="14" y="25" width="18" height="17" rx="2"/>
+    <path class="accent" d="M12 23h22l-3 8H15Z"/>
+    <path class="paper" d="M18 33h5v9h-5zm8 0h3v4h-3z"/>
+  </g>
+  <g>
+    <rect class="ink" x="14" y="58" width="18" height="17" rx="2"/>
+    <path class="accent" d="M12 56h22l-3 8H15Z"/>
+    <path class="paper" d="M18 66h5v9h-5zm8 0h3v4h-3z"/>
+  </g>
+
+  <!-- Temporal keeps the workflow moving reliably over time. -->
+  <circle class="ink" cx="51" cy="50" r="18"/>
+  <circle class="paper" cx="51" cy="50" r="12"/>
+  <path class="accent" d="M49.5 40h3v10.8l7 4.4-1.8 2.8-8.2-5.2Z"/>
+  <circle class="accent" cx="51" cy="50" r="2.5"/>
+  <circle class="accent" cx="51" cy="34" r="2"/>
+  <circle class="accent" cx="51" cy="66" r="2"/>
+
+  <!-- A destination pin with a parcel makes delivery explicit. -->
+  <path class="accent" d="M82 31c-8.28 0-15 6.5-15 14.52C67 56.18 82 71 82 71s15-14.82 15-25.48C97 37.5 90.28 31 82 31Z"/>
+  <circle class="paper" cx="82" cy="45" r="8"/>
+  <path class="ink" d="M77 41h10v9H77z"/>
+  <path class="accent" d="M77 41h10l-2.5 3h-5Z"/>
+  <path class="paper" d="M81 41h2v4h-2z"/>
+</svg>
