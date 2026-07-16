@@ -20,7 +20,8 @@
                 {{-- Desktop logo --}}
                 <div class="col-md-auto me-auto me-lg-2">
                     <a href="{{ route('home') }}"
-                       oncontextmenu='window.location.assign(@js(route('assets'))); return false;'>
+                       data-assets-url="{{ route('assets') }}"
+                       oncontextmenu="window.location.assign(this.dataset.assetsUrl); return false;">
                         <img src="/img/logo.svg"
                              height="40"
                              class="d-lg-inline d-none pe-none">
