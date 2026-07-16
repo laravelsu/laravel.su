@@ -19,7 +19,8 @@
 
                 {{-- Desktop logo --}}
                 <div class="col-md-auto me-auto me-lg-2">
-                    <a href="{{ route('home') }}">
+                    <a href="{{ route('home') }}"
+                       oncontextmenu="window.location.assign(@js(route('assets'))); return false;">
                         <img src="/img/logo.svg"
                              height="40"
                              class="d-lg-inline d-none pe-none">
