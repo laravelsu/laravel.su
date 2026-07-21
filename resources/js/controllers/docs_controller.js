@@ -122,8 +122,9 @@ export default class extends Controller {
     }
 
     setupTableOfContents() {
-        this.sectionHeadings = Array.from(this.element.querySelectorAll('.documentations h2, .documentations h3'))
-            .filter((heading) => heading.querySelector('a[name], a[id], a[href^="#"]'));
+        this.sectionHeadings = Array.from(
+            this.element.querySelectorAll('.documentations h2, .documentations h3')
+        ).filter((heading) => heading.querySelector('a[name], a[id], a[href^="#"]'));
 
         if (this.sectionHeadings.length === 0) {
             return;
