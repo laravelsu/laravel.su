@@ -33,6 +33,28 @@ class RemoveTableOfContentsModifierTest extends TestCase
         $this->assertStringContainsString('<h2>Введение</h2>', $modifiedHtml);
     }
 
+    public function testItRemovesTableOfContentsImmediatelyAfterPageHeading(): void
+    {
+        $modifier = new RemoveTableOfContentsModifier;
+
+        $html = <<<'HTML'
+            <h1>Frontend</h1>
+            <ul>
+                <li><a href="#introduction">Введение</a></li>
+                <li><a href="#using-php">Использование PHP</a></li>
+            </ul>
+            <p><a name="introduction"></a></p>
+            <h2>Введение</h2>
+            <p>Laravel предоставляет инструменты для frontend-разработки.</p>
+        HTML;
+
+        $modifiedHtml = $modifier->handle($html, fn ($content) => $content);
+
+        $this->assertStringContainsString('<h1>Frontend</h1>', $modifiedHtml);
+        $this->assertStringNotContainsString('<a href="#introduction">Введение</a>', $modifiedHtml);
+        $this->assertStringContainsString('<h2>Введение</h2>', $modifiedHtml);
+    }
+
     public function testItKeepsRegularLists(): void
     {
         $modifier = new RemoveTableOfContentsModifier;

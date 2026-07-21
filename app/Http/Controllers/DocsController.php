@@ -75,9 +75,10 @@ class DocsController extends Controller
     public function search(string $version, Request $request)
     {
         $searchOffers = [];
+        $query = $request->string('text')->trim()->toString();
 
-        if ($request->filled('text')) {
-            $searchOffers = DocumentationSection::search($request->text)
+        if ($query !== '') {
+            $searchOffers = DocumentationSection::search($query)
                 ->where('version', $version)
                 ->orderBy('level')
                 ->get()
@@ -86,6 +87,7 @@ class DocsController extends Controller
 
         return turbo_stream()->replace('found_candidates', view('docs._search_lines', [
             'searchOffer' => $searchOffers,
+            'query'       => $query,
         ]));
     }
 }

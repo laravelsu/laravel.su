@@ -4,6 +4,7 @@ namespace App;
 
 use App\Models\Document;
 use App\Models\DocumentationSection;
+use App\View\Modifications\RemoveTableOfContentsModifier;
 use Exception;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
@@ -408,7 +409,13 @@ class Docs
      */
     public function getSections(): Collection
     {
-        $content = Str::of($this->content());
+        $content = app(RemoveTableOfContentsModifier::class)->handle(
+            $this->content(),
+            fn (string $content) => Str::of($content)
+                ->replaceMatches('/<p>\s*<a\b[^>]*\bname=(?:"[^"]*"|\'[^\']*\')[^>]*>\s*<\/a>\s*<\/p>/i', '')
+                ->toString(),
+        );
+        $content = Str::of($content);
 
         // Разбиваем HTML содержимое на разделы по заголовкам
         preg_match_all('/<h(\d)>(.+)<\/h\d>(.*)/sU', $content->toString(), $matches, PREG_SET_ORDER);

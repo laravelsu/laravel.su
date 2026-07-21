@@ -11,9 +11,10 @@
                 {{-- Mobile logo + menu --}}
                 <div class="col-md-auto d-lg-none me-2 me-sm-3">
                     <a href="{{ route('nav') }}"
-                       class="nav-link link-body-emphasis text-decoration-none d-flex align-items-center">
-                        <x-icon path="i.logo" height="2em" width="2em" class="me-2" />
-                        <x-icon path="i.menu" height="2em" width="2em" />
+                       class="nav-link link-body-emphasis text-decoration-none d-flex align-items-center"
+                       aria-label="Открыть главное меню">
+                        <x-icon path="i.logo" height="2em" width="2em" class="me-2" aria-hidden="true" focusable="false" />
+                        <x-icon path="i.menu" height="2em" width="2em" aria-hidden="true" focusable="false" />
                     </a>
                 </div>
 
@@ -21,8 +22,10 @@
                 <div class="col-md-auto me-auto me-lg-2">
                     <a href="{{ route('home') }}"
                        data-assets-url="{{ route('assets') }}"
-                       oncontextmenu="window.location.assign(this.dataset.assetsUrl); return false;">
+                       oncontextmenu="window.location.assign(this.dataset.assetsUrl); return false;"
+                       aria-label="Laravel Russian Community — главная">
                         <img src="/img/logo.svg"
+                             alt="Laravel Russian Community"
                              height="40"
                              class="d-lg-inline d-none pe-none">
                     </a>
@@ -237,14 +240,16 @@
                     </a>
 
                     <a href="{{ route('nav.docs') }}"
-                       class="nav-link link-body-emphasis d-md-none">
-                        <x-icon path="i.docs" height="1.5em" width="1.5em" />
+                       class="nav-link link-body-emphasis d-md-none"
+                       aria-label="Открыть разделы документации">
+                        <x-icon path="i.docs" height="1.5em" width="1.5em" aria-hidden="true" focusable="false" />
                     </a>
 
                     {{-- Notifications --}}
                     <a href="{{ route('profile.notifications') }}"
-                       class="nav-link link-body-emphasis position-relative">
-                        <x-icon path="i.bell" height="1.5em" width="1.5em" />
+                       class="nav-link link-body-emphasis position-relative"
+                       aria-label="Уведомления">
+                        <x-icon path="i.bell" height="1.5em" width="1.5em" aria-hidden="true" focusable="false" />
 
                         @if(auth()->user() == null || auth()->user()->unreadNotifications()->exists())
                             <span class="position-absolute bottom-0 start-70 translate-middle p-1 bg-primary rounded-circle">
@@ -258,14 +263,18 @@
                     {{-- Avatar --}}
                     @guest
                         <a href="{{ route('login') }}"
-                           class="avatar avatar-sm position-relative">
+                           class="avatar avatar-sm position-relative"
+                           aria-label="Войти">
                             <img src="{{ asset('img/ui/avatar.png') }}"
+                                 alt=""
                                  class="avatar-img rounded-circle border border-tertiary-subtle">
                         </a>
                     @else
                         <a href="{{ route('profile', auth()->user()) }}"
-                           class="avatar avatar-sm position-relative">
+                           class="avatar avatar-sm position-relative"
+                           aria-label="Открыть профиль {{ auth()->user()->name }}">
                             <img src="{{ auth()->user()->avatar }}"
+                                 alt=""
                                  class="avatar-img rounded-circle border border-tertiary-subtle">
                         </a>
                     @endif
@@ -280,6 +289,7 @@
     {{-- Footer sun --}}
     <div class="mt-5 pe-none d-none d-md-block">
         <img src="/img/sun.svg"
+             alt=""
              class="w-100 object-fit-cover footer-sun pe-none">
     </div>
 

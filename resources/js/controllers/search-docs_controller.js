@@ -17,7 +17,9 @@ export default class extends Controller {
 
     processIntersectionEntries(entries) {
         entries.forEach((entry) => {
-            this.textTarget.focus();
+            if (entry.isIntersecting) {
+                this.textTarget.focus({ preventScroll: true });
+            }
         });
     }
 
@@ -25,6 +27,6 @@ export default class extends Controller {
         clearTimeout(this.timeout);
         this.timeout = setTimeout(() => {
             this.textTarget.form.requestSubmit();
-        }, 340);
+        }, 220);
     }
 }

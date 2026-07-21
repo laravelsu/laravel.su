@@ -1,4 +1,4 @@
-<div class="anchors">
+<nav class="anchors" aria-label="Оглавление страницы">
     <ul>
         @foreach($anchors as $anchor)
             <li class="anchor-{{$anchor['level']}}">
@@ -9,4 +9,4 @@
             </li>
         @endforeach
     </ul>
-</div>
+</nav>

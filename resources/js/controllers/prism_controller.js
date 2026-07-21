@@ -132,7 +132,13 @@ export default class extends Controller {
     }
 
     toggleSubmit() {
-        const button = this.element.closest('form').querySelector('button[type="submit"], input[type="submit"]');
+        const form = this.element.closest('form');
+
+        if (!form) {
+            return;
+        }
+
+        const button = form.querySelector('button[type="submit"], input[type="submit"]');
 
         if (!button) {
             return;

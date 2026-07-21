@@ -43,7 +43,7 @@ class RemoveTableOfContentsModifier extends HTMLModifier
             $previousSibling = $previousSibling->previousSibling;
         }
 
-        if ($previousSibling !== null) {
+        if ($previousSibling !== null && strtolower($previousSibling->tagName) !== 'h1') {
             return false;
         }
 
