@@ -69,6 +69,7 @@ Route::view('/library/collection', 'library.collection')->name('library.collecti
 Route::view('/library/solid', 'library.solid')->name('library.solid');
 Route::view('/library/actions', 'library.actions')->name('library.actions');
 Route::view('/library/getters-and-setters', 'library.getters-and-setters')->name('library.getters-and-setters');
+Route::view('/library/concerns', 'library.concerns')->name('library.concerns');
 Route::view('/library/fallacies', 'library.fallacies')->name('library.fallacies');
 
 Route::view('/dandy-code', 'pages.dandy-code')->name('dandy-code');
