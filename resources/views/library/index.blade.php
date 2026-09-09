@@ -175,7 +175,7 @@
                 <div class="d-flex flex-column position-relative h-100">
                     <h3 class="mb-3 fw-bold">Concerns</h3>
                     <p class="mb-auto fw-light text-balance">
-                        Как вынести одинаковые методы и не раздувать модели.
+                        Как дать нескольким моделям общее поведение и сохранить правило в одном месте.
                     </p>
 
                     <a href="{{ route('library.concerns') }}"
