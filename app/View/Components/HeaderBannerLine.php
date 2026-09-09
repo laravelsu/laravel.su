@@ -8,13 +8,22 @@ use Illuminate\View\Component;
 
 class HeaderBannerLine extends Component
 {
-    public string $message;
+    public string $message = '';
+
+    public bool $showPyhnik;
 
     /**
      * Create a new component instance.
      */
     public function __construct()
     {
+        $this->showPyhnik = config('site.pyhnik_banner', true)
+            && now('Europe/Moscow')->lt('2026-10-03 00:00:00');
+
+        if ($this->showPyhnik) {
+            return;
+        }
+
         $this->message = collect([
             sprintf('Любите загадки? Событие всё ещё доступно на <a href="%s" class="text-white link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">сайте</a>', route('quiz.open')),
             sprintf('Подписывайтесь на наш <a href="%s" class="text-white link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">Telegram-канал</a> и будьте в курсе всех событий', config('services.telegram.channel_url')),

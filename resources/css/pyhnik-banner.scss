@@ -1,0 +1,203 @@
+.pyhnik-banner {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    color: #f4fff7;
+    background: radial-gradient(ellipse at 12% 0%, #234c42 0%, transparent 55%), #08152b;
+    border-bottom: 1px solid #4bfb7540;
+
+    &::before {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        width: 34rem;
+        height: 34rem;
+        top: 50%;
+        left: calc(50% - 34rem);
+        transform: translate(-50%, -50%) rotate(12deg);
+        background: repeating-conic-gradient(from 0deg, #73fa8a14 0deg 2deg, transparent 2deg 18deg);
+        mask-image: radial-gradient(circle, transparent 12%, #000 13%, transparent 68%);
+        pointer-events: none;
+    }
+
+    &__link {
+        display: grid;
+        grid-template-columns: 12rem 1fr auto;
+        grid-template-areas: 'brand copy date' 'brand copy action';
+        align-items: center;
+        column-gap: 2.5rem;
+        row-gap: 0.65rem;
+        padding-top: 1.25rem;
+        padding-bottom: 1.25rem;
+        color: inherit;
+        text-decoration: none;
+
+        &:hover {
+            color: inherit;
+        }
+
+        &:focus-visible {
+            outline: 2px solid #8bff9e;
+            outline-offset: -5px;
+        }
+    }
+
+    &__brand {
+        grid-area: brand;
+        display: grid;
+        gap: 0.5rem;
+
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    &__format {
+        color: #b2cec5;
+        font-size: 0.5625rem;
+        font-weight: 500;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        white-space: nowrap;
+        padding-left: 2.5rem;
+    }
+
+    &__copy {
+        grid-area: copy;
+        display: grid;
+        gap: 0.45rem;
+        padding-left: 2rem;
+        border-left: 1px solid #b2cec530;
+    }
+
+    &__title {
+        font-size: clamp(1rem, 1.8vw, 1.45rem);
+        font-weight: 700;
+        letter-spacing: -0.04em;
+        line-height: 1.25;
+        text-wrap: balance;
+    }
+
+    &__description {
+        color: #b2cec5;
+        font-size: 0.75rem;
+
+        span {
+            color: #70ee90;
+            padding: 0 0.4rem;
+        }
+    }
+
+    &__date {
+        grid-area: date;
+        text-align: center;
+        font-size: 0.75rem;
+        font-weight: 500;
+        white-space: nowrap;
+        color: #d8e9e4;
+    }
+
+    &__action {
+        grid-area: action;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        padding: 0.7rem 1rem;
+        border-radius: 0.4rem;
+        background: #86fa8b;
+        color: #081b20;
+        font-size: 0.75rem;
+        font-weight: 700;
+        white-space: nowrap;
+        transition: background-color 160ms ease;
+
+        svg {
+            flex-shrink: 0;
+            transition: transform 160ms ease;
+        }
+    }
+
+    &__link:hover &__action {
+        background: #adffac;
+
+        svg {
+            transform: translate(2px, -2px);
+        }
+    }
+
+    @include media-breakpoint-down(lg) {
+        &__link {
+            grid-template-columns: 9rem 1fr auto;
+            column-gap: 1.25rem;
+        }
+
+        &__format {
+            padding-left: 0;
+            font-size: 0.5625rem;
+        }
+
+        &__copy {
+            padding-left: 1.25rem;
+        }
+
+        &__description {
+            font-size: 0.6875rem;
+
+            span {
+                padding: 0 0.15rem;
+            }
+        }
+    }
+
+    @include media-breakpoint-down(md) {
+        &__link {
+            grid-template-columns: 1fr auto;
+            grid-template-areas: 'brand date' 'copy action';
+            gap: 1rem 0.75rem;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        &__brand img {
+            width: 8.5rem;
+        }
+
+        &__format,
+        &__description {
+            display: none;
+        }
+
+        &__copy {
+            padding: 0;
+            border: 0;
+        }
+
+        &__title {
+            font-size: 1.0625rem;
+        }
+
+        &__date {
+            font-size: 0.6875rem;
+            text-align: right;
+        }
+
+        &__action {
+            gap: 0.5rem;
+            padding: 0.75rem;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        &__action,
+        &__action svg {
+            transition: none;
+        }
+
+        &__link:hover &__action svg {
+            transform: none;
+        }
+    }
+}
