@@ -1,0 +1,15 @@
+#!/bin/sh
+set -eu
+
+cd "$(dirname "$0")/.."
+version=$(git rev-parse HEAD)
+host=root@148.253.210.79
+release=/opt/laravel-su/releases/$version
+if [ -n "$(git status --porcelain --untracked-files=no)" ]; then
+    echo 'Commit tracked changes before deployment.' >&2
+    exit 1
+fi
+ssh "$host" "mkdir -p '$release'"
+git archive HEAD boyarin bin/deploy-boyarin-server bin/register-boyarin-webhook \
+    | ssh "$host" "tar -x -C '$release'"
+ssh -t "$host" "cd '$release' && bin/deploy-boyarin-server '$release/boyarin' && bin/register-boyarin-webhook"
