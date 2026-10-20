@@ -36,5 +36,7 @@ COPY docker/deploy/Caddyfile /etc/caddy/Caddyfile
 COPY --chmod=755 docker/deploy/entrypoint.sh /usr/local/bin/app-entrypoint
 
 EXPOSE 80
+HEALTHCHECK --interval=10s --timeout=5s --start-period=60s --retries=5 \
+    CMD php -r 'exit(@file_get_contents("http://127.0.0.1/up") === false ? 1 : 0);'
 ENTRYPOINT ["app-entrypoint"]
 CMD ["frankenphp", "run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile"]
