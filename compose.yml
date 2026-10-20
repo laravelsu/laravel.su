@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  app:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "${APP_PORT:-8080}:80"
+    environment:
+      APP_KEY: "${APP_KEY:?Set APP_KEY in your environment or .env}"
+      APP_URL: "${APP_URL:-http://148.253.210.79}"
+    volumes:
+      - sqlite:/data
+      - uploads:/app/storage/app
+      - sessions:/app/storage/framework/sessions
+    healthcheck:
+      test: ["CMD", "php", "-r", "exit(file_get_contents('http://127.0.0.1/up') === false ? 1 : 0);"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 60s
+
+volumes:
+  sqlite:
+  uploads:
+  sessions:

@@ -1,0 +1,34 @@
+#!/bin/sh
+set -eu
+
+version=${1:?Pass the Git commit to deploy}
+shared=/opt/laravel-su/shared
+umask 077
+mkdir -p "$shared"
+
+if [ ! -s "$shared/app-key" ]; then
+    printf 'base64:%s\n' "$(openssl rand -base64 32)" > "$shared/app-key"
+fi
+if [ ! -s "$shared/tls.crt" ]; then
+    openssl req -x509 -newkey rsa:2048 -sha256 -nodes -days 365 \
+        -keyout "$shared/tls.key" -out "$shared/tls.crt" \
+        -subj '/CN=laravel.su' \
+        -addext 'subjectAltName=DNS:laravel.su,IP:148.253.210.79'
+fi
+mkdir -p .kamal
+cp "$shared/app-key" .kamal/app-key
+cp "$shared/tls.crt" .kamal/tls.crt
+cp "$shared/tls.key" .kamal/tls.key
+
+if ! docker container inspect laravel-su-registry >/dev/null 2>&1; then
+    docker run -d --restart unless-stopped --name laravel-su-registry \
+        --label com.centurylinklabs.watchtower.enable=false \
+        -p 127.0.0.1:5555:5000 -v laravel-su-registry:/var/lib/registry registry:3
+fi
+
+docker build -t "127.0.0.1:5555/laravel-su:$version" .
+docker push "127.0.0.1:5555/laravel-su:$version"
+
+docker run --rm -it --network host \
+    -v "$PWD:/workdir" -v /var/run/docker.sock:/var/run/docker.sock \
+    ghcr.io/basecamp/kamal:v2.12.0 deploy --skip-push --version "$version"

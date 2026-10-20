@@ -1,0 +1,57 @@
+service: laravel-su
+image: laravel-su
+minimum_version: 2.12.0
+
+servers:
+  web:
+    hosts:
+      - 148.253.210.79
+    options:
+      label:
+        com.centurylinklabs.watchtower.enable: "false"
+
+registry:
+  server: 127.0.0.1:5555
+  username: kamal
+  password: unused
+
+builder:
+  arch: amd64
+  context: .
+
+proxy:
+  hosts:
+    - 148.253.210.79
+    - laravel.su
+  app_port: 80
+  ssl:
+    certificate_pem: TLS_CERTIFICATE
+    private_key_pem: TLS_PRIVATE_KEY
+  ssl_redirect: false
+  healthcheck:
+    path: /up
+  run:
+    http_port: 80
+    https_port: 88
+    options:
+      label:
+        com.centurylinklabs.watchtower.enable: "false"
+
+ssh:
+  user: root
+  forward_agent: false
+
+env:
+  clear:
+    APP_URL: http://148.253.210.79
+    TRUSTED_PROXIES: "*"
+  secret:
+    - APP_KEY
+
+volumes:
+  - laravel-su-sqlite:/data
+  - laravel-su-uploads:/app/storage/app
+  - laravel-su-sessions:/app/storage/framework/sessions
+
+deploy_timeout: 120
+retain_containers: 2

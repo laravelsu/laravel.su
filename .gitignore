@@ -17,3 +17,8 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+
+/.kamal/app-key
+/.kamal/tls.crt
+/.kamal/tls.key
+/.kamal/deploy_key*
