@@ -8,7 +8,7 @@ servers:
       - 148.253.210.79
     options:
       label:
-        com.centurylinklabs.watchtower.enable: "false"
+        - com.centurylinklabs.watchtower.enable=false
 
 registry:
   server: 127.0.0.1:5555
@@ -35,7 +35,7 @@ proxy:
     https_port: 88
     options:
       label:
-        com.centurylinklabs.watchtower.enable: "false"
+        - com.centurylinklabs.watchtower.enable=false
 
 ssh:
   user: root
