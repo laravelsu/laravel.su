@@ -25,7 +25,4 @@ docker exec kamal-proxy kamal-proxy deploy boyarin \
     --target=boyarin-boyarin-1:8080 \
     --host=148.253.210.79 --host=laravel.su \
     --path-prefix=/webhook/telegram --strip-path-prefix=false \
-    --health-check-path=/health --deploy-timeout=60s \
-    --tls --tls-redirect=false \
-    --tls-certificate-path=/home/kamal-proxy/.apps-config/laravel-su/tls/web/cert.pem \
-    --tls-private-key-path=/home/kamal-proxy/.apps-config/laravel-su/tls/web/key.pem
+    --health-check-path=/health --deploy-timeout=60s
