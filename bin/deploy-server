@@ -26,8 +26,8 @@ if ! docker container inspect laravel-su-registry >/dev/null 2>&1; then
         -p 127.0.0.1:5555:5000 -v laravel-su-registry:/var/lib/registry registry:3
 fi
 
-docker build -t "127.0.0.1:5555/laravel-su:$version" .
-docker push "127.0.0.1:5555/laravel-su:$version"
+docker build --progress=plain --label service=laravel-su -t "127.0.0.1:5555/laravel-su:$version" .
+docker push --quiet "127.0.0.1:5555/laravel-su:$version"
 
 docker run --rm -it --network host \
     -v "$PWD:/workdir" -v /var/run/docker.sock:/var/run/docker.sock \
