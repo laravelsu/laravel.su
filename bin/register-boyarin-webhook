@@ -1,0 +1,42 @@
+#!/usr/bin/env python3
+import json
+import secrets
+import shlex
+import urllib.request
+from pathlib import Path
+
+shared = Path('/opt/laravel-su/shared')
+settings = {}
+for line in (shared / 'boyarin/.env').read_text().splitlines():
+    if '=' in line and not line.lstrip().startswith('#'):
+        name, value = line.split('=', 1)
+        parts = shlex.split(value, comments=True)
+        settings[name] = parts[0] if parts else ''
+
+boundary = secrets.token_hex(24)
+fields = {
+    'url': settings['WEBHOOK_URL'],
+    'secret_token': settings['WEBHOOK_SECRET'],
+    'allowed_updates': json.dumps(['message']),
+    'drop_pending_updates': 'false',
+    'max_connections': '5',
+}
+parts = []
+for name, value in fields.items():
+    parts.append(f'--{boundary}\r\nContent-Disposition: form-data; name="{name}"\r\n\r\n{value}\r\n'.encode())
+parts.append(f'--{boundary}\r\nContent-Disposition: form-data; name="certificate"; filename="tls.crt"\r\nContent-Type: application/x-pem-file\r\n\r\n'.encode())
+parts.append((shared / 'tls.crt').read_bytes() + b'\r\n')
+parts.append(f'--{boundary}--\r\n'.encode())
+base_url = 'https://api.telegram.org/bot' + settings['TELEGRAM_BOT_TOKEN']
+request = urllib.request.Request(base_url + '/setWebhook', data=b''.join(parts), headers={'Content-Type': 'multipart/form-data; boundary=' + boundary})
+try:
+    response = json.load(urllib.request.urlopen(request, timeout=30))
+    if response.get('ok') is not True:
+        raise RuntimeError(response.get('description', 'Telegram rejected webhook'))
+    info = json.load(urllib.request.urlopen(base_url + '/getWebhookInfo', timeout=30))
+except Exception as error:
+    raise SystemExit('Webhook registration failed (' + type(error).__name__ + ').') from None
+result = info['result']
+if result.get('url') != settings['WEBHOOK_URL'] or not result.get('has_custom_certificate'):
+    raise SystemExit('Telegram webhook configuration does not match requested URL and certificate.')
+print(json.dumps({key: result.get(key) for key in ['url', 'has_custom_certificate', 'pending_update_count', 'last_error_message']}, ensure_ascii=False))

@@ -1,0 +1,24 @@
+version: "3.8"
+
+services:
+  boyarin:
+    build: .
+    restart: unless-stopped
+    command: ["php", "artisan", "start", "--skip-webhook"]
+    env_file: /opt/laravel-su/shared/boyarin/.env
+    labels:
+      com.centurylinklabs.watchtower.enable: "false"
+    volumes:
+      - /opt/laravel-su/shared/boyarin/resources:/var/www/html/resources
+    networks:
+      - kamal
+    healthcheck:
+      test: ["CMD", "php", "-r", "exit(@file_get_contents('http://127.0.0.1:8080/health') === 'ok' ? 0 : 1);"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
+
+networks:
+  kamal:
+    external: true

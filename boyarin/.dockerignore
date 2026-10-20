@@ -1,0 +1,5 @@
+.env
+.git
+.idea
+vendor
+/resources/trusted-users.json

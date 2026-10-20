@@ -1,0 +1,33 @@
+# Environment and local credentials
+/.env
+/.env.*
+!/.env.example
+/auth.json
+
+# Composer
+/vendor/
+/composer.phar
+
+# Runtime data
+/resources/trusted-users.json
+
+# Tests, coverage and static analysis
+/.phpunit.cache/
+/.phpunit.result.cache
+/coverage/
+/.php-cs-fixer.cache
+/.phpstan.cache
+/.psalm/
+
+# Logs
+*.log
+
+# Editors
+/.idea/
+/.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Operating systems
+.DS_Store
+Thumbs.db

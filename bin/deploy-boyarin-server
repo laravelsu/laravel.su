@@ -1,0 +1,31 @@
+#!/bin/sh
+set -eu
+
+shared=/opt/laravel-su/shared/boyarin
+: "${1:?Pass Boyarin source directory}"
+source_dir=$1
+if [ ! -s "$shared/.env" ]; then
+    echo "Configure $shared/.env before deploying Boyarin." >&2
+    exit 1
+fi
+mkdir -p "$shared/resources"
+for name in classifiers stop-words.json; do
+    if [ ! -e "$shared/resources/$name" ]; then
+        cp -R "$source_dir/resources/$name" "$shared/resources/$name"
+    fi
+done
+if [ ! -f "$shared/resources/trusted-users.json" ]; then
+    cp "$source_dir/resources/trusted-users.example.json" "$shared/resources/trusted-users.json"
+fi
+chmod -R a+rX "$shared/resources"
+
+docker compose -p boyarin -f "$source_dir/compose.deploy.yaml" up -d --build --wait --wait-timeout 120
+
+docker exec kamal-proxy kamal-proxy deploy boyarin \
+    --target=boyarin-boyarin-1:8080 \
+    --host=148.253.210.79 --host=laravel.su \
+    --path-prefix=/webhook/telegram --strip-path-prefix=false \
+    --health-check-path=/health --deploy-timeout=60s \
+    --tls --tls-redirect=false \
+    --tls-certificate-path=/home/kamal-proxy/.apps-config/laravel-su/tls/web/cert.pem \
+    --tls-private-key-path=/home/kamal-proxy/.apps-config/laravel-su/tls/web/key.pem

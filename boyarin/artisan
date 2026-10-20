@@ -1,0 +1,26 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+use Boyarin\Console\AddHamCommand;
+use Boyarin\Console\AddSpamCommand;
+use Boyarin\Console\RegisterWebhookCommand;
+use Boyarin\Console\ServeCommand;
+use Boyarin\Console\StartCommand;
+use Illuminate\Console\Application;
+use Illuminate\Container\Container;
+use Illuminate\Events\Dispatcher;
+
+/** @var Container $container */
+$container = require __DIR__.'/bootstrap.php';
+
+$artisan = new Application($container, $container->make(Dispatcher::class), '1.0.0');
+$artisan->setName('Boyarin');
+$artisan->resolve(AddHamCommand::class);
+$artisan->resolve(AddSpamCommand::class);
+$artisan->resolve(RegisterWebhookCommand::class);
+$artisan->resolve(ServeCommand::class);
+$artisan->resolve(StartCommand::class);
+$artisan->setContainerCommandLoader();
+exit($artisan->run());
