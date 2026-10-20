@@ -12,8 +12,8 @@ fi
 if [ ! -s "$shared/tls.crt" ]; then
     openssl req -x509 -newkey rsa:2048 -sha256 -nodes -days 365 \
         -keyout "$shared/tls.key" -out "$shared/tls.crt" \
-        -subj '/CN=laravel.su' \
-        -addext 'subjectAltName=DNS:laravel.su,IP:148.253.210.79'
+        -subj '/CN=148.253.210.79' \
+        -addext 'subjectAltName=DNS:laravel.su,DNS:148.253.210.79,IP:148.253.210.79'
 fi
 mkdir -p .kamal
 cp "$shared/app-key" .kamal/app-key
