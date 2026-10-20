@@ -7,6 +7,7 @@ namespace Boyarin\Telegram;
 use Boyarin\Config;
 use Psr\Log\LoggerInterface;
 use React\Http\Browser;
+use React\Http\Message\ResponseException;
 use React\Promise\PromiseInterface;
 use Throwable;
 
@@ -118,12 +119,40 @@ final class TelegramClient implements TelegramGateway
         return $this->browser
             ->post($url, ['Content-Type' => 'application/json'], json_encode($payload, JSON_THROW_ON_ERROR))
             ->then(
-                static fn ($response) => json_decode((string) $response->getBody(), true),
+                function ($response) use ($method): ?array {
+                    $result = json_decode((string) $response->getBody(), true);
+                    if (is_array($result) && ($result['ok'] ?? null) === true) {
+                        $this->logger->info("Telegram {$method} succeeded.");
+
+                        return $result;
+                    }
+
+                    $description = is_array($result) ? ($result['description'] ?? null) : null;
+                    $this->logBotApiFailure($method, is_string($description) ? $description : 'Invalid or unsuccessful API response.');
+
+                    return null;
+                },
                 function (Throwable $error) use ($method): null {
-                    $this->logger->error("Telegram {$method} failed: ".$error->getMessage());
+                    $description = $error->getMessage();
+                    if ($error instanceof ResponseException) {
+                        $result = json_decode((string) $error->getResponse()->getBody(), true);
+                        if (is_array($result) && is_string($result['description'] ?? null)) {
+                            $description = $result['description'];
+                        }
+                    }
+                    $this->logBotApiFailure($method, $description);
 
                     return null;
                 },
             );
+    }
+
+    private function logBotApiFailure(string $method, string $description): void
+    {
+        $description = preg_replace('~https?://[^\s]+~i', '[redacted URL]', $description) ?? 'Request failed.';
+        if ($this->config->telegramToken !== '') {
+            $description = str_replace($this->config->telegramToken, '[redacted]', $description);
+        }
+        $this->logger->error("Telegram {$method} failed: ".$description);
     }
 }

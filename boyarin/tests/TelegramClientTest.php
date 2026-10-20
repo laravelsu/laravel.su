@@ -12,6 +12,7 @@ use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use React\Http\Browser;
 use React\Http\Message\Response;
+use React\Http\Message\ResponseException;
 use RuntimeException;
 
 final class TelegramClientTest extends TestCase
@@ -62,6 +63,79 @@ final class TelegramClientTest extends TestCase
 
         self::assertFalse($actual);
         self::assertCount(1, $logger->errors);
+    }
+
+    #[Test]
+    public function successfulDeletionReportsConfirmedSuccess(): void
+    {
+        $browser = $this->createStub(Browser::class);
+        $browser->method('post')->willReturn(\React\Promise\resolve(new Response(200, [], '{"ok":true,"result":true}')));
+        $logger = new FakeLogger();
+        $client = new TelegramClient($this->config(), $logger, $browser);
+        $actual = null;
+
+        $client->deleteMessage(-100, 10)->then(static function ($value) use (&$actual): void {
+            $actual = $value;
+        });
+
+        self::assertSame(['ok' => true, 'result' => true], $actual);
+        self::assertSame(['Telegram deleteMessage succeeded.'], $logger->info);
+        self::assertSame([], $logger->errors);
+    }
+
+    #[Test]
+    public function rejectedDeletionReportsTelegramDescriptionWithoutSuccess(): void
+    {
+        $browser = $this->createStub(Browser::class);
+        $error = new ResponseException(new Response(400, [], '{"ok":false,"description":"Bad Request: message to delete not found"}'));
+        $browser->method('post')->willReturn(\React\Promise\reject($error));
+        $logger = new FakeLogger();
+        $client = new TelegramClient($this->config(), $logger, $browser);
+        $actual = true;
+
+        $client->deleteMessage(-100, 10)->then(static function ($value) use (&$actual): void {
+            $actual = $value;
+        });
+
+        self::assertNull($actual);
+        self::assertSame([], $logger->info);
+        self::assertSame(['Telegram deleteMessage failed: Bad Request: message to delete not found'], $logger->errors);
+    }
+
+    #[Test]
+    public function unsuccessfulJsonDeletionReportsFailure(): void
+    {
+        $browser = $this->createStub(Browser::class);
+        $browser->method('post')->willReturn(\React\Promise\resolve(new Response(200, [], '{"ok":false,"description":"Bad Request: not enough rights"}')));
+        $logger = new FakeLogger();
+        $client = new TelegramClient($this->config(), $logger, $browser);
+        $actual = true;
+
+        $client->deleteMessage(-100, 10)->then(static function ($value) use (&$actual): void {
+            $actual = $value;
+        });
+
+        self::assertNull($actual);
+        self::assertSame([], $logger->info);
+        self::assertSame(['Telegram deleteMessage failed: Bad Request: not enough rights'], $logger->errors);
+    }
+
+    #[Test]
+    public function deletionExceptionDoesNotExposeTokenOrRequestUrl(): void
+    {
+        $browser = $this->createStub(Browser::class);
+        $browser->method('post')->willReturn(\React\Promise\reject(new RuntimeException('Failed https://api.telegram.org/bottoken/deleteMessage credential token')));
+        $logger = new FakeLogger();
+        $client = new TelegramClient($this->config(), $logger, $browser);
+
+        $client->deleteMessage(-100, 10);
+
+        self::assertSame([], $logger->info);
+        self::assertCount(1, $logger->errors);
+        self::assertStringContainsString('Telegram deleteMessage failed:', $logger->errors[0]);
+        self::assertStringNotContainsString('token', $logger->errors[0]);
+        self::assertStringNotContainsString('https://', $logger->errors[0]);
+        self::assertStringNotContainsString('api.telegram.org', $logger->errors[0]);
     }
 
     private function config(): Config

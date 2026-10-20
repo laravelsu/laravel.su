@@ -54,7 +54,7 @@ final readonly class UpdateProcessor implements UpdateHandler
                     return null;
                 }
 
-                $this->logger->info("Spam removed: user={$userId} chat={$chatId}");
+                $this->logger->info("Spam detected: user={$userId} chat={$chatId}");
 
                 return \React\Promise\all([
                     $this->telegram->deleteMessage($chatId, $messageId),

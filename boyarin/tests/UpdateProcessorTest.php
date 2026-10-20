@@ -94,7 +94,7 @@ final class UpdateProcessorTest extends TestCase
         self::assertSame(['обычное сообщение'], $checker->messages);
         self::assertSame([[-100, 10]], $telegram->deleted);
         self::assertSame([[-100, 99]], $telegram->muted);
-        self::assertSame(['Spam removed: user=99 chat=-100'], $logger->info);
+        self::assertSame(['Spam detected: user=99 chat=-100'], $logger->info);
     }
 
     /**
