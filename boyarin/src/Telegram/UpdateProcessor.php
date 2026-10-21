@@ -40,7 +40,7 @@ final readonly class UpdateProcessor implements UpdateHandler
             return;
         }
 
-        if (isset($message['reply_to_message']) || $this->hasIgnoredEntity($message)) {
+        if ($this->hasIgnoredEntity($message)) {
             return;
         }
 

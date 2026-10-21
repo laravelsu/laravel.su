@@ -17,6 +17,30 @@ done
 if [ ! -f "$shared/resources/trusted-users.json" ]; then
     cp "$source_dir/resources/trusted-users.example.json" "$shared/resources/trusted-users.json"
 fi
+python3 - "$source_dir/resources" "$shared/resources" <<'PYTHON'
+import json
+import sys
+from pathlib import Path
+
+source, target = map(Path, sys.argv[1:])
+for name in ['classifiers/spam.json', 'classifiers/ham.json', 'stop-words.json']:
+    incoming = json.loads((source / name).read_text())
+    current = json.loads((target / name).read_text())
+    if isinstance(incoming, list):
+        seen = set(current)
+        for text in incoming:
+            if text not in seen:
+                current.append(text)
+                seen.add(text)
+    else:
+        for key, values in incoming.items():
+            current.setdefault(key, [])
+            current[key].extend(value for value in values if value not in current[key])
+    path = target / name
+    temporary = path.with_suffix(path.suffix + '.new')
+    temporary.write_text(json.dumps(current, ensure_ascii=False, indent=4) + '\n')
+    temporary.replace(path)
+PYTHON
 chmod -R a+rX "$shared/resources"
 
 docker compose -p boyarin -f "$source_dir/compose.deploy.yaml" up -d --build --wait --wait-timeout 120

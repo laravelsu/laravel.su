@@ -1,0 +1,32 @@
+{
+    "reviewed_on": "2026-10-21",
+    "label_scope": "Off-topic VPN promotion in Orchid/Laravel; public reviews are not evidence of abuse in their original channels.",
+    "history_note": "No deleted-chat export available; public examples are not claimed to be deleted messages from the moderated group.",
+    "entries": [
+        {
+            "text": "Ваш ВПН самый лучший!! Просто чудо",
+            "source": "user report in this chat",
+            "origin": "reported_message"
+        },
+        {
+            "text": "Впн отличный, скорость высокая, очень стабильный. Все прекрасно работает и открывается. Радует цена.",
+            "source": "https://t.me/neovpnreview/100",
+            "origin": "public_review"
+        },
+        {
+            "text": "Сап! Спасибо огромное за впн, который работает, респект!",
+            "source": "https://t.me/neovpnreview/113",
+            "origin": "public_review"
+        },
+        {
+            "text": "Люблю вас и ваш ВПН самые лучшие",
+            "source": "https://telemetr.io/ru/channels/2774297148-gruvpnreviews",
+            "origin": "public_review_index"
+        },
+        {
+            "text": "Спасибо, впн реально афигенный, буду советовать вас всем друзьям",
+            "source": "https://telemetr.io/ru/channels/2774297148-gruvpnreviews",
+            "origin": "public_review_index"
+        }
+    ]
+}

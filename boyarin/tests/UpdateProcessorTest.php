@@ -39,14 +39,57 @@ final class UpdateProcessorTest extends TestCase
     }
 
     #[Test]
-    public function replyAndPreformattedCodeAreSkipped(): void
+    public function preformattedCodeIsSkipped(): void
     {
         [$processor, $telegram] = $this->processor();
 
-        $processor->process($this->update(extra: ['reply_to_message' => ['message_id' => 1]]));
         $processor->process($this->update(extra: ['entities' => [['type' => 'pre']]]));
 
         self::assertSame([], $telegram->knownChecks);
+    }
+
+    #[Test]
+    public function cleanReplyIsCheckedWithoutClassifyingQuotedMessage(): void
+    {
+        [$processor, $telegram, $checker] = $this->processor();
+
+        $processor->process($this->update(extra: [
+            'reply_to_message' => ['message_id' => 1, 'text' => 'quoted parent message'],
+        ]));
+
+        self::assertSame([99], $telegram->knownChecks);
+        self::assertSame(['обычное сообщение'], $checker->messages);
+        self::assertSame([], $telegram->deleted);
+        self::assertSame([], $telegram->muted);
+    }
+
+    #[Test]
+    public function locallyDetectedSpamReplyIsDeletedAndMuted(): void
+    {
+        [$processor, $telegram, $checker] = $this->processor(localSpam: true);
+
+        $processor->process($this->update(extra: [
+            'text' => 'Ваш ВПН самый лучший!! Просто чудо',
+            'reply_to_message' => ['message_id' => 1, 'text' => 'quoted parent message'],
+        ]));
+
+        self::assertSame(['Ваш ВПН самый лучший!! Просто чудо'], $checker->messages);
+        self::assertSame([[-100, 10]], $telegram->deleted);
+        self::assertSame([[-100, 99]], $telegram->muted);
+    }
+
+    #[Test]
+    public function casSpammerReplyIsDeletedAndMutedWithoutLocalClassification(): void
+    {
+        [$processor, $telegram, $checker] = $this->processor(knownSpammer: true);
+
+        $processor->process($this->update(extra: [
+            'reply_to_message' => ['message_id' => 1, 'text' => 'quoted parent message'],
+        ]));
+
+        self::assertSame([], $checker->messages);
+        self::assertSame([[-100, 10]], $telegram->deleted);
+        self::assertSame([[-100, 99]], $telegram->muted);
     }
 
     #[Test]
