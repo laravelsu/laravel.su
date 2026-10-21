@@ -31,28 +31,28 @@ final class VpnPromotionTest extends TestCase
     public static function messages(): array
     {
         return [
-            'reported reply' => ['Ваш ВПН самый лучший!! Просто чудо', true],
-            'lowercase praise' => ['Ваш впн просто великолепен, спасибо!', true],
-            'recommendation' => ['Лучшего VPN я не встречал, всем рекомендую!', true],
-            'miracle review' => ['Подключил ваш впн, чудо как хорошо работает!', true],
+            'reported reply'               => ['Ваш ВПН самый лучший!! Просто чудо', true],
+            'lowercase praise'             => ['Ваш впн просто великолепен, спасибо!', true],
+            'recommendation'               => ['Лучшего VPN я не встречал, всем рекомендую!', true],
+            'miracle review'               => ['Подключил ваш впн, чудо как хорошо работает!', true],
             'speed stability price review' => ['Впн отличный, скорость высокая, очень стабильный. Все прекрасно работает и открывается. Радует цена.', true],
-            'thanks review' => ['Сап! Спасибо огромное за впн, который работает, респект!', true],
-            'affection review' => ['Люблю вас и ваш ВПН самые лучшие', true],
-            'friends recommendation' => ['Спасибо, впн реально афигенный, буду советовать вас всем друзьям', true],
-            'latin punctuation' => ['ВАШ VPN — САМЫЙ ЛУЧШИЙ!!!', true],
-            'docker tunnel question' => ['Ваш VPN отлично работает с Docker? У меня Laravel не подключается к базе через туннель.', false],
-            'test stand comparison' => ['Ваш ВПН лучший для доступа к тестовому стенду или лучше WireGuard?', false],
-            'setup question' => ['Как настроить VPN на Ubuntu?', false],
-            'connection question' => ['Без VPN не подключается к серверу, кто сталкивался?', false],
-            'self hosted issue' => ['У меня свой VPN на VPS, после обновления пропал доступ.', false],
-            'laravel resolution' => ['Спасибо, проблема была в VPN, теперь Laravel работает.', false],
-            'choice question' => ['Какой VPN лучше для доступа к тестовому стенду?', false],
-            'broken service' => ['Ваш VPN перестал работать после обновления', false],
-            'negative review' => ['Ваш VPN не самый лучший, постоянно отключается.', false],
-            'ironic thanks' => ['Спасибо за VPN, но он не работает.', false],
-            'technical thanks' => ['Спасибо за VPN, теперь Laravel работает.', false],
-            'wireguard setup' => ['Лучший VPN — когда свой, как настроить WireGuard?', false],
-            'laravel thanks' => ['Спасибо за помощь с Laravel, всё работает!', false],
+            'thanks review'                => ['Сап! Спасибо огромное за впн, который работает, респект!', true],
+            'affection review'             => ['Люблю вас и ваш ВПН самые лучшие', true],
+            'friends recommendation'       => ['Спасибо, впн реально афигенный, буду советовать вас всем друзьям', true],
+            'latin punctuation'            => ['ВАШ VPN — САМЫЙ ЛУЧШИЙ!!!', true],
+            'docker tunnel question'       => ['Ваш VPN отлично работает с Docker? У меня Laravel не подключается к базе через туннель.', false],
+            'test stand comparison'        => ['Ваш ВПН лучший для доступа к тестовому стенду или лучше WireGuard?', false],
+            'setup question'               => ['Как настроить VPN на Ubuntu?', false],
+            'connection question'          => ['Без VPN не подключается к серверу, кто сталкивался?', false],
+            'self hosted issue'            => ['У меня свой VPN на VPS, после обновления пропал доступ.', false],
+            'laravel resolution'           => ['Спасибо, проблема была в VPN, теперь Laravel работает.', false],
+            'choice question'              => ['Какой VPN лучше для доступа к тестовому стенду?', false],
+            'broken service'               => ['Ваш VPN перестал работать после обновления', false],
+            'negative review'              => ['Ваш VPN не самый лучший, постоянно отключается.', false],
+            'ironic thanks'                => ['Спасибо за VPN, но он не работает.', false],
+            'technical thanks'             => ['Спасибо за VPN, теперь Laravel работает.', false],
+            'wireguard setup'              => ['Лучший VPN — когда свой, как настроить WireGuard?', false],
+            'laravel thanks'               => ['Спасибо за помощь с Laravel, всё работает!', false],
         ];
     }
 
@@ -85,11 +85,11 @@ final class VpnPromotionTest extends TestCase
     public static function invalidPatterns(): array
     {
         return [
-            'null' => [null],
-            'string' => ['vpn'],
-            'map' => [['vpn' => '~vpn~']],
+            'null'          => [null],
+            'string'        => ['vpn'],
+            'map'           => [['vpn' => '~vpn~']],
             'empty pattern' => [['']],
-            'non-string' => [[17]],
+            'non-string'    => [[17]],
             'invalid regex' => [['~[~']],
         ];
     }

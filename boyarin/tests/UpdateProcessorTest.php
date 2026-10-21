@@ -69,7 +69,7 @@ final class UpdateProcessorTest extends TestCase
         [$processor, $telegram, $checker] = $this->processor(localSpam: true);
 
         $processor->process($this->update(extra: [
-            'text' => 'Ваш ВПН самый лучший!! Просто чудо',
+            'text'             => 'Ваш ВПН самый лучший!! Просто чудо',
             'reply_to_message' => ['message_id' => 1, 'text' => 'quoted parent message'],
         ]));
 
