@@ -22,7 +22,7 @@ final readonly class UpdateProcessor implements UpdateHandler
     /**
      * Process an incoming Telegram update.
      *
-     * @param  array<string, mixed>  $update
+     * @param array<string, mixed> $update
      */
     public function process(array $update): void
     {
@@ -68,7 +68,7 @@ final readonly class UpdateProcessor implements UpdateHandler
     /**
      * Determine whether the message contains an entity that should bypass checks.
      *
-     * @param  array<string, mixed>  $message
+     * @param array<string, mixed> $message
      */
     private function hasIgnoredEntity(array $message): bool
     {
@@ -79,5 +79,4 @@ final readonly class UpdateProcessor implements UpdateHandler
                 true,
             ));
     }
-
 }

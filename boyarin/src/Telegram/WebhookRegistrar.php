@@ -33,9 +33,9 @@ final class WebhookRegistrar
         $error = null;
         $url = "https://api.telegram.org/bot{$this->config->telegramToken}/setWebhook";
         $payload = [
-            'url' => $this->config->webhookUrl,
-            'secret_token' => $this->config->webhookSecret,
-            'allowed_updates' => ['message'],
+            'url'                  => $this->config->webhookUrl,
+            'secret_token'         => $this->config->webhookSecret,
+            'allowed_updates'      => ['message'],
             'drop_pending_updates' => $dropPendingUpdates,
         ];
 

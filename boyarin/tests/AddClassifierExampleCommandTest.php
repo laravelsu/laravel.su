@@ -40,7 +40,7 @@ final class AddClassifierExampleCommandTest extends TestCase
     }
 
     #[Test]
-    public function it_adds_a_message_from_multiple_arguments(): void
+    public function itAddsAMessageFromMultipleArguments(): void
     {
         $command = $this->command();
 
@@ -58,7 +58,7 @@ final class AddClassifierExampleCommandTest extends TestCase
     }
 
     #[Test]
-    public function it_does_not_add_a_duplicate(): void
+    public function itDoesNotAddADuplicate(): void
     {
         $command = $this->command();
 
@@ -75,7 +75,7 @@ final class AddClassifierExampleCommandTest extends TestCase
     }
 
     #[Test]
-    public function it_adds_a_ham_message_to_the_ham_dataset(): void
+    public function itAddsAHamMessageToTheHamDataset(): void
     {
         $command = $this->command(new AddHamCommand($this->config()));
 
@@ -101,7 +101,7 @@ final class AddClassifierExampleCommandTest extends TestCase
     }
 
     #[Test]
-    public function it_preserves_the_existing_dataset_format(): void
+    public function itPreservesTheExistingDatasetFormat(): void
     {
         file_put_contents(
             $this->classifiersPath.'/spam.json',

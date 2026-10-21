@@ -12,7 +12,7 @@ final class FakeUpdateHandler implements UpdateHandler
     public array $updates = [];
 
     /**
-     * @param  array<string, mixed>  $update
+     * @param array<string, mixed> $update
      */
     public function process(array $update): void
     {

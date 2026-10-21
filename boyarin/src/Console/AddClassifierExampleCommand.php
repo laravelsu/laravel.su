@@ -56,10 +56,11 @@ abstract class AddClassifierExampleCommand extends Command
     /**
      * Read the classifier dataset.
      *
-     * @return Collection<int, string>
      *
      * @throws JsonException
      * @throws RuntimeException
+     *
+     * @return Collection<int, string>
      */
     private function messages(): Collection
     {

@@ -33,7 +33,7 @@ final class SpamDetectorTest extends TestCase
     public static function messages(): array
     {
         return [
-            'ham' => ['А вот интересно, какова вероятность кражи токена?', false],
+            'ham'        => ['А вот интересно, какова вероятность кражи токена?', false],
             'stop words' => ['Стабильный доход от 100$. Нужен только телефон', true],
             'emoji spam' => ['🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥', true],
         ];

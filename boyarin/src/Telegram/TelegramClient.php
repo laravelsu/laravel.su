@@ -22,8 +22,7 @@ final class TelegramClient implements TelegramGateway
         private readonly Config $config,
         private readonly LoggerInterface $logger,
         ?Browser $browser = null,
-    )
-    {
+    ) {
         $this->browser = $browser ?? new Browser();
     }
 
@@ -49,7 +48,7 @@ final class TelegramClient implements TelegramGateway
                         && ($payload->result ?? null) instanceof \stdClass
                         && get_object_vars($payload->result) !== [];
                     $this->casCache[$userId] = [
-                        'value' => $isSpammer,
+                        'value'      => $isSpammer,
                         'expires_at' => time() + $this->config->casCacheTtl,
                     ];
 
@@ -71,7 +70,7 @@ final class TelegramClient implements TelegramGateway
     public function deleteMessage(int $chatId, int $messageId): PromiseInterface
     {
         return $this->callBotApi('deleteMessage', [
-            'chat_id' => $chatId,
+            'chat_id'    => $chatId,
             'message_id' => $messageId,
         ]);
     }
@@ -84,24 +83,24 @@ final class TelegramClient implements TelegramGateway
     public function muteUser(int $chatId, int $userId): PromiseInterface
     {
         return $this->callBotApi('restrictChatMember', [
-            'chat_id' => $chatId,
-            'user_id' => $userId,
-            'until_date' => time() + $this->config->muteSeconds,
+            'chat_id'     => $chatId,
+            'user_id'     => $userId,
+            'until_date'  => time() + $this->config->muteSeconds,
             'permissions' => [
-                'can_send_messages' => false,
-                'can_send_audios' => false,
-                'can_send_documents' => false,
-                'can_send_photos' => false,
-                'can_send_videos' => false,
-                'can_send_video_notes' => false,
-                'can_send_voice_notes' => false,
-                'can_send_polls' => false,
-                'can_send_other_messages' => false,
+                'can_send_messages'         => false,
+                'can_send_audios'           => false,
+                'can_send_documents'        => false,
+                'can_send_photos'           => false,
+                'can_send_videos'           => false,
+                'can_send_video_notes'      => false,
+                'can_send_voice_notes'      => false,
+                'can_send_polls'            => false,
+                'can_send_other_messages'   => false,
                 'can_add_web_page_previews' => false,
-                'can_change_info' => false,
-                'can_invite_users' => false,
-                'can_pin_messages' => false,
-                'can_manage_topics' => false,
+                'can_change_info'           => false,
+                'can_invite_users'          => false,
+                'can_pin_messages'          => false,
+                'can_manage_topics'         => false,
             ],
         ]);
     }
@@ -109,7 +108,8 @@ final class TelegramClient implements TelegramGateway
     /**
      * Call a Telegram Bot API method.
      *
-     * @param  array<string, mixed>  $payload
+     * @param array<string, mixed> $payload
+     *
      * @return PromiseInterface<mixed>
      */
     private function callBotApi(string $method, array $payload): PromiseInterface

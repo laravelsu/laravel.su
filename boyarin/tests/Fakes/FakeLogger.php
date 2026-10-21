@@ -18,14 +18,14 @@ final class FakeLogger extends AbstractLogger
     /**
      * Record a log message for assertions.
      *
-     * @param  mixed  $level
-     * @param  array<string, mixed>  $context
+     * @param mixed                $level
+     * @param array<string, mixed> $context
      */
     public function log($level, string|Stringable $message, array $context = []): void
     {
         match ($level) {
             'error' => $this->errors[] = (string) $message,
-            'info' => $this->info[] = (string) $message,
+            'info'  => $this->info[] = (string) $message,
             default => null,
         };
     }

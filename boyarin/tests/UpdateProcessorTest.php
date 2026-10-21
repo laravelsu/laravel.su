@@ -120,7 +120,8 @@ final class UpdateProcessorTest extends TestCase
     }
 
     /**
-     * @param  array<string, mixed>  $extra
+     * @param array<string, mixed> $extra
+     *
      * @return array<string, mixed>
      */
     private function update(int $userId = 99, array $extra = []): array
@@ -128,9 +129,9 @@ final class UpdateProcessorTest extends TestCase
         return [
             'message' => array_replace_recursive([
                 'message_id' => 10,
-                'text' => 'обычное сообщение',
-                'from' => ['id' => $userId],
-                'chat' => ['id' => -100],
+                'text'       => 'обычное сообщение',
+                'from'       => ['id' => $userId],
+                'chat'       => ['id' => -100],
             ], $extra),
         ];
     }

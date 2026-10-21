@@ -47,8 +47,7 @@ $container->singleton(LoggerInterface::class, static function (): LoggerInterfac
 $container->singleton(ClassifierLoader::class, static fn () => new ClassifierLoader(
     $config->classifiersPath,
 ));
-$container->singleton(Classifier::class, static fn (Container $container) =>
-    $container->make(ClassifierLoader::class)->load());
+$container->singleton(Classifier::class, static fn (Container $container) => $container->make(ClassifierLoader::class)->load());
 $container->singleton(StopWords::class, static fn () => new StopWords(
     $config->stopWordsPath,
 ));

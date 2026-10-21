@@ -9,7 +9,7 @@ interface UpdateHandler
     /**
      * Process an incoming Telegram update.
      *
-     * @param  array<string, mixed>  $update
+     * @param array<string, mixed> $update
      */
     public function process(array $update): void;
 }
