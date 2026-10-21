@@ -7,7 +7,10 @@ COPY public ./public
 COPY vite.config.js ./
 RUN npm run build
 
+FROM php:8.4.27-zts-bookworm AS php
 FROM dunglas/frankenphp:1-php8.4-bookworm AS runtime
+COPY --from=php /usr/local/ /usr/local/
+COPY --from=php /usr/src/php.tar.xz /usr/src/php.tar.xz
 RUN install-php-extensions pdo_sqlite sqlite3 mbstring dom curl zip gd intl pcntl bcmath exif opcache \
     && cp "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 COPY --from=composer:2 /usr/bin/composer /usr/local/bin/composer

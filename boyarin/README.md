@@ -19,7 +19,8 @@ docker compose up -d --build
 ```
 
 Docker Compose автоматически использует `compose.yaml`. Образ собирается из
-`Dockerfile` на официальных образах `php:8.5-cli-alpine` и `composer:2`.
+`Dockerfile` на официальных образах PHP CLI Alpine и `composer:2`.
+PHP закреплён на 8.5.12 в официальном образе `php:8.5.12-cli-alpine`.
 
 Как и в Laravel, `.env.example` хранится в Git, а локальный `.env` игнорируется.
 `composer setup` создаёт отсутствующие `.env` и `trusted-users.json`, но никогда

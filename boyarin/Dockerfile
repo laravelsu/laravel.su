@@ -1,5 +1,5 @@
 FROM composer:2 AS composer
-FROM php:8.5-cli-alpine
+FROM php:8.5.12-cli-alpine
 
 RUN apk add --no-cache oniguruma \
     && apk add --no-cache --virtual .build-deps $PHPIZE_DEPS oniguruma-dev \
