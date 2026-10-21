@@ -16,7 +16,8 @@ RUN install-php-extensions pdo_sqlite sqlite3 mbstring dom curl zip gd intl pcnt
 COPY --from=composer:2 /usr/bin/composer /usr/local/bin/composer
 
 WORKDIR /app
-ENV APP_ENV=production \
+ENV PHP_VERSION=8.4.27 \
+    APP_ENV=production \
     APP_DEBUG=false \
     APP_URL=http://148.253.210.79 \
     DB_CONNECTION=sqlite \
