@@ -34,6 +34,9 @@ for name in ['classifiers/spam.json', 'classifiers/ham.json', 'stop-words.json']
                 seen.add(text)
     else:
         for key, values in incoming.items():
+            if key == "patterns":
+                current[key] = values
+                continue
             current.setdefault(key, [])
             current[key].extend(value for value in values if value not in current[key])
     path = target / name
