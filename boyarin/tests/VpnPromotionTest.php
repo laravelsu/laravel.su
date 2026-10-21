@@ -40,6 +40,8 @@ final class VpnPromotionTest extends TestCase
             'affection review' => ['Люблю вас и ваш ВПН самые лучшие', true],
             'friends recommendation' => ['Спасибо, впн реально афигенный, буду советовать вас всем друзьям', true],
             'latin punctuation' => ['ВАШ VPN — САМЫЙ ЛУЧШИЙ!!!', true],
+            'docker tunnel question' => ['Ваш VPN отлично работает с Docker? У меня Laravel не подключается к базе через туннель.', false],
+            'test stand comparison' => ['Ваш ВПН лучший для доступа к тестовому стенду или лучше WireGuard?', false],
             'setup question' => ['Как настроить VPN на Ubuntu?', false],
             'connection question' => ['Без VPN не подключается к серверу, кто сталкивался?', false],
             'self hosted issue' => ['У меня свой VPN на VPS, после обновления пропал доступ.', false],
