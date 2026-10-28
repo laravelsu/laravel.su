@@ -43409,5 +43409,11 @@
     "Разбираю «логирование Monolog» для нового сервиса. Есть ли подводные камни при использовании в продакшене?",
     "Кто модерирует секцию вопросов? Там два одинаковых сообщения подряд.",
     "Я бы оставил текущий вариант: он короче и понятнее для новых участников.",
-    "Подскажите по теме «Laravel Collections»: как лучше обработать ошибки и не усложнить тесты?"
+    "Подскажите по теме «Laravel Collections»: как лучше обработать ошибки и не усложнить тесты?",
+    "В Laravel сохраняем платежи USDT в decimal колонке, для расчётов используем строковые значения.",
+    "Обработчик платежа USDT должен проверять HMAC подпись и повторную доставку webhook перед обновлением заказа.",
+    "Тестируем интеграцию USDT API через Http fake, секретный ключ лежит в переменных окружения.",
+    "The PHP integration reads the USDT payment webhook and validates its HMAC signature before updating the order.",
+    "Laravel casts USDT payment amounts to decimal strings instead of floats to preserve precision.",
+    "A PHPUnit test mocks the USDT provider API response and checks that the invoice status is updated only once."
 ]
